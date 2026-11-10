@@ -1,0 +1,194 @@
+All Things Growth Hormone
+
+04 - Growth Hormone Muscle and Recovery
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=96abd44a17b64e9e8ebcc70c95c07c9e
+
+Text saved
+
+Growth hormone (GH), which is also known as somatotropin, is a peptide hormone that is important for things like growth, metabolism, and tissue repair. It is produced by the pituitary gland in a pulsatile manner and is regulated by hypothalamic hormones. Growth hormone secretagogues are compounds that stimulate the body's own GH release. Growth hormone secretagogues include GHRH analogs (drugs that mimic Growth Hormone-Releasing Hormone) and ghrelin mimetics (drugs that activate the ghrelin receptors). These growth hormone peptides have become pretty popular as alternatives to GH therapy. However, many people say that nothing truly compares to the real thing. In this course, we will break down each of these things as well as giving a true comparison between them all. 
+
+Visual representation overview of it all: 
+
+https://commons.m.wikimedia.org/wiki/File:1809_Hormonal_Regulation_of_Growth.jpg
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=88cd3898508e4730975dc5d35e8b9492
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Growth Hormone (Somatropin)
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=0a637d8cce824e6697e6af6e9095822b
+
+Text saved
+
+Endogenous GH Physiology: Growth hormone is secreted in pulses and typically peak during deep sleep and will reduce to low baseline levels in between those pulses. GH release is stimulated by GHRH and inhibited by somatostatin. Once it is released, growth hormone will directly effect tissues and stimulate the liver to produce IGF-1 (Insulin-like Growth Factor-1). 
+
+Recombinant GH (rHGH) Therapy: Exogenous GH (somatropin) is a 191-amino-acid protein that is identical to natural human GH. This is why often times you'll see growth hormone listed as HGH-191-aa. The FDA has this approved for things like GH deficiency in children and adults, certain pediatric growth disorders like Turner syndrome, Prader-Willi syndrome, etc) and other conditions where muscle wasting can occur. In people with GH deficiencies, rhGH therapy can restore the normal growth and metabolic function. In children, it can help with linear growth (height) and in adults with GH deficiency, it can help with body composition, bone density, and quality of life. It also is used (which is off-label) as an anti-aging or performance-enhancing compound. 
+
+Body Composition Effects: Growth hormone has anabolic (tissue building) and lipolytic (breaking down fat) effects. In people who have deficiencies or those who are older, it can help to reverse some of the body composition changes that come with age. There was actually a study by Rudman et al. (1990) that showed that 6 months of GH injections in men over 60 (with low IGF-1 levels) increased lean body mass by 8.8% and decreased adipose (fat) mass by 14.4% compared to controls. Now, this seems impressive but lets remember the population that's being studied. Men over 60 with IGF-1 deficiencies. It is effective, but we can't expect this to have the same results in a young, healthy adult with higher IGF-1 levels. In that study though, GH administration took their numbers from under 350 U/L to 500-1500 U/L. Important to note here is that the unit of measurement is different than how we currently test the IGF-1 with the ng/mL measurement. So they were getting it somewhere comparable to 200-400 ng/mL. It will also be used in younger adults or athletes looking for better muscle protein synthesis and better body composition. However, they don't always see significant results that people generally tie to GH usage. It was good, but not mind-blowing. 
+
+Metabolic and Other Effects: GH promotes lipolysis (especially in visceral fat) and has something called a diabetogenic effect of raising blood glucose by reducing insulin sensitivity (basically you could get diabetes from it). It also can be glucose-sparing by stimulating adipocytes (fat cells) to release fatty acids for fuel. GH can also increase protein synthesis and help with the growth of bone, cartilage, and organs, which is mostly done by IGF-1 increases. Most of the people who use GH will have better recovery, skin quality, and overall well-being improvements. On the other side of the coin, increases GH/IGF-1 can cause side effects like edema and joint pain due to the fluid retention, carpal tunnel syndrome, insulin resistance (elevated blood sugar), and with high and long enough doses, acromegaly (enlargement of facial features, hands, and feet). With clinical studies in HIV patients with central fat accumulation, high-dose GH can reduce visceral fat but can cause sometimes significant side effects (like hyperglycemia), which lead to some of the approaches with GH analogs, like Tesamorelin. 
+
+Dosage and Administration: Medical growth hormone therapy typically is given in daily subcutaneous injections and will be anywhere from 1-2 IU as a replacement dose and 2-4+ IU for anti-aging or athletic and performance uses. The higher the dose, the more dramatic the effects would be but also the more dramatic the side effects would be. GH has a pretty short half-life in the blood (minutes, so if you ever get an actual labwork GH test, inject about 1.5 hours before you go in. 6IU, IM administration) and is pretty hard to test, but most of its effects are carried out through IGF-1 which has a longer half-life. So daily dosing is going to maintain elevated IGF-1 levels and is also why testing IGF-1 levels is a pretty good indicator of effectiveness. Also, exogenous GH blunts your body's pulsatile GH secretion (but it will return shortly after you come off typically).
+
+
+
+Growth Hormone-Releasing Hormone Analogs
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=890cb7017ba34a52b70c4eeeba3d21ee
+
+Text saved
+
+GHRH analogs are peptides that are going to act like our natural growth hormone-releasing hormone (GHRH) and bind to receptors on pituitary somatotrope cells to stimulate GH release. Natural GHRH has pretty rapid degradation, but the synthetic analogs have modifications to increase their stability or half life. Ultimately what they are trying to do is boost GH in a more physiological manner by being more pulsatile. They do this by leveraging the body's own systems to do so. We recognize the GHRH analogs with things like Sermorelin, CJC-1295, Tesamorelin, etc. 
+
+Sermorelin - Sermorelin is a synthetic peptide that is made up of the first 29 amino acids of GHRH. It has a shorter half-life and can increase GH and IGF-1 modestly, but has really been passed by things that work a bit better. One thing to note is that it was an FDA-approved therapy at one point. 
+
+CJC-1295 with DAC - this is a modified GHRH analog that is designed to have a longer duration. CJC with DAC (Drug Affinity Complex) adds in a molecule that binds to albumin which gives it a half-life of about a week. This can create a more sustained elevation in GH and IGF-1 while still preserving some of the pulsatility of GH release. In a clinical trial, one injection of CJC-1295 gave a GH increase of about 2-10x over baseline for 6+ days, and raised IGF-1 by about 1.5-3x for 9-11 days. The numbers that were associated this were increases from a baseline of 123-152 ng/mL and went up to 232ng/mL at the lowest dose, all the way up to 435 ng/mL at the highest dose. Here's a link to the article, but you'll only be able to see the abstract which doesn't show the specific numbers (I had to login to do so). With multiple weekly injections, the IGF-1 levels remained elevated above the baseline for up to 28 days. One benefit of CJC-1295 w/ DAC is that it only has to be administered 1-2x weekly at a minimum due to the longer half-life, so it's a bit more convenient than doing daily GH injections. CJC-1295 no DAC is a very similar, but has a shorter half-life. In terms of data, there is no real data to support this compound that is peer-reviewed. 
+
+Tesamorelin - Tesamorelin is FDA-approved under the brand name of Egrifta as a treatment for HIV-associated lipodystrophy specifically to reduce excess visceral abdominal fat in HIV patients on antiretroviral therapy. It is typically given as a 2mg subcutaneous injection once daily for that purpose. Clinical trials were very effective and over the 26-week trial with HIV patients, they were able to reduce visceral adipose tissue by about 15% on average, where the placebo group actually increased 5%. That creates about a 20% relative reduction in visceral fat and was alongside of improved lipid profiles (triglycerides dropped by 50mg/dL in the Tesamorelin group where the placebo actually rose). IGF-1 levels also increased about 81% from baseline with Tesamorelin, which shows a pretty strong GH-axis activation, but with no significant changes in blood glucose or insulin over 6 months. The ability for Tesamorelin to reduce visceral fat while only mildly and transiently raising blood glucose is a pretty big advantage that Tesamorelin would have over high-dose HGH as it could give less diabetes risk than continuous high-dose HGH. Long-term studies do show that visceral fat reduction can be maintained with continued therapy and tends to return if the treatment is stopped, however we must remember the population that this is being studied for use for and the ability to minimize visceral fat return for non-HIV patients on antiretroviral therapy. They're also studying it further on non-HIV populations for things like generalized obesity or NAFLD.
+
+
+
+Ghrelin Mimetics (GHRPs)
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=2e4008578955415cb89d6d5bed7b769d
+
+Text saved
+
+The other set of growth hormone secretagogues that work by mimicking ghrelin which is the hunger hormone that can stimulate growth hormone release. Ghrelin is going to bind to the Growth Hormone Secretagogue Receptor in the pituitary and hypothalamus, which is different than the GHRH receptor. The ghrelin mimetics are things like GHRPs (Ipamorelin, GHRP-2, etc) and the non-peptide analogs like MK-677. These can override somatostatin inhibition and cause strong GH pulses and work especially well when combined with GHRH signals. 
+
+GHRP-6 - GHRP-6 a hexapeptide that can result in GH release with sharp GH spikes and a strong stimulation on appetite. I want to reiterate the STRONG appetite stimulation. Some who use this feel incredibly hungry, so just know that can happen. GHRP-6 has been observed to have some very strong peaks that are comparable to a strong physiological GH pulse. The downside with GHRP-6 is that it can potentially raise prolactin and cortisol slightly and are generally mild at normal dosages (which all GHRPs could potentially do). 
+
+GHRP-2 - GHRP-2 is another GHRP that is more potent than GHRP-6, but doesn't seem to have the same strength of appetite increases that GHRP-6 has, although it can still raise it in some capacity. GHRP-2 can also raise cortisol and prolactin potentially. In animal studies, GHRP-2 showed that the potency was higher, but the maximal GH release was lower compared to GHRP-6. So it was more potent, but less effective. GHRP-2 is also called pralmorelin and has been used as a diagnostic test for GH deficiency in countries like Japan. 
+
+Hexarelin - Hexarelin is a GHRP that is very potent in terms of GH release and is an analog of GHRP-6. A single IV dose of hexarelin took GH levels from basically zero to 55 ng/mL within 30 minutes, which was basically the theoretical maximum of GH output for the subjects. Hexarelin is typically administered via injection, but also has been studied to have some effects in both oral and intranasal methods of administration. One thing that is interesting about hexarelin is tachyphylaxis, which means that when used continuously, the GH response is going to attenuate, or reduce, over time. After two weeks or so of daily administration of hexarelin, the GH peak is reduced which could be due to receptor desensitization or increased somatostatin tone. For this reason, cycling or pulsing hexarelin (few days on, few days off) may be a better option for using it. Outside of the normal benefits, hexarelin has been shown to be cardioprotective in animal models, outside of the benefits of GH. From the research that's out there, hexarelin improved cardiac function in post-myocardial injury models and may activate cardiac receptors related to growth hormone secretagogue receptors in the heart. Hexarelin is really best for increasing IGF-1 more acutely, but not the most ideal for long-term therapy due to the attenuating effects of this compound. 
+
+Ipamorelin - Ipamorelin is a pentapeptide that was developed to release GH without significant activation of cortisol or prolactin release. In comparative studies, even the high doses of ipamorelin did not significantly raise ACTH/cortisol, where GHRP-2 and -6 did increase those levels. The GH-releasing potency of Ipamorelin is also on par with GHRP-6. In animal tests, ipamorelin produced a similar max GH output as GHRP-6 (only about 9 ng/mL difference. Because of that, ipamorelin is a pretty effective GH secretagogue that mimics the desirable parts of ghrelin's action (the GH release) without the undesirable parts (like cortisol release or excessive hunger). It is commonly used in combination with one of the GHRH analogs like CJC-1295 as a way to amplify the GH pulse.
+
+
+
+Pairing GHRHs with GHRPs
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=39124affb0464933acacab98490c3efb
+
+Text saved
+
+You will often see a GHRH paired with a GHRP. For example, CJC-1295 and Ipamorelin is a very common way of doing this. Is it necessary? No. But they can be synergistic in their effects when combined together. It is going to work through two pathways - GHRH receptor and GHS receptor (ghrelin receptor) to amplify the output from the pituitary glands more than either of them could do alone. Basically, the GHRH peptides are stimulating the release and the GHRP's can allow that to be magnified by inhibiting somatostatin's suppression (the hormone that inhibits the release of GH) and acting through that ghrelin receptor pathway. In some cases, we can see that using both a GHRH and a GHRP together can give a larger GH spike than just using one of these by themselves. Their synergistic relationship can be seen across a variety of studies online, such as this one. This is the reason why people will often times combine CJC, Tesa, Sermorelin, etc with Ipamorelin or something similar. Combining them can allow for maximum benefits and increases in IGF-1 levels, while still generally remaining within the physiological ranges. 
+
+Note - You don't HAVE to pair a GHRH with a GHRP. As stated above, there are benefits to doing so. If you want to get the most out of them, pairing them together will give the best results. However, either can be used individually.
+
+
+
+Comparison Between Exogenous GH and Secretagogues
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=a0adba959d28462fa68236bbe72e250f
+
+Text saved
+
+A question / statement that I get all the time is that you should just use GH and that everything else is pointless. But really, how does exogenous GH and the secretagogues really compare to each other? Based on some of the previous pages, you can probably interpret some of this for yourself, but I will break it down within this section so you can see it in a consolidated manner. 
+
+IGF-1 Increases: Exogenous GH can raise IGF-1 significantly, almost limitlessly, depending on the dose that is administered. Obviously, you're not going to run 40IU of exogenous GH daily. But 6IU of GH will increase IGF-1 levels more than 2IU of GH would. So using high-dose GH, you can push IGF-1 numbers well above the normal ranges. With the secretagogues, you can have some pretty noticeable IGF-1 increases, mostly to the high-normal levels, but not typically far beyond that. At some point, the secretagogues will run into a ceiling due to the body's natural feedback mechanisms (like somatostatin) or pituitary exhaustion. If your goal is maximum IGF-1 elevation (usually for people like bodybuilders), then the only thing that will really do that is going to be high-dose GH. But, if you wanted to restore IGF levels with some notable increases, both normal / lower dose exogenous GH and the secretagogues will be able to accomplish this. The other benefit of the secretagogues would be that it can increase IGF-1 with pulsatile GH and potentially contribute less to insulin resistance than constantly high GH levels. 
+
+Efficacy Regarding Body Composition Changes: Both exogenous GH and the secretagogues can promote lean tissue growth and fat loss, but the amount in which they do so can differ from each other. Especially in people who are deficient in growth hormone, GH therapy can be pretty effective in terms of the results and their is some pretty solid data supporting this. The secretagogues are less studied generally speaking, but as long as the pituitary gland can respond to their stimulus, there can be good results. In the growth hormone page of this course, we referenced the Rudman study to show the benefits that can be observed using exogenous GH administration. Tesamorelin is another with very significant benefits that are observed in clinical settings, especially when it comes to visceral fat reduction (which was about 15-20%) in a matter of 6 months (referenced in the Tesamorelin section) while also preserving lean mass in the patients that were observed. It's also important to remember the population it was studied in (HIV patients) and understand that the results may vary in different populations and under different circumstances. Ultimately, when it comes to the secretagogues, the amount of anabolic benefits and fat loss can depend on the compound itself as well as the population it's studied in. Exogenous GH is also a great fat-burner, especially in visceral fat, but could cause hyperglycemia whereas Tesamorelin was able to do so with less of that glycemic effect. If you're solely looking for visceral fat reduction, the secretagouges may be the better option as it could do it a bit more safely with a similar ultimate effect. In terms of muscle mass increases, the more IGF-1 increase you can have, the more muscle you should be able to grow. Growth hormone itself, especially in higher dosages, will be more effective in contributing to this at a higher level, but the secretagogues could still yield some gains, but a bit more modest. Truthfully, most normal people will likely see similar results between a lower dose of GH (like 1-2IU daily) and a normal dosage of a secretagogue, so either of these could work in this scenario for general longevity benefits and body composition changes. If someone already had sufficient levels, GH may be a better option to push those numbers in to more supraphysiologic levels and contribute to more muscle fullness, better recovery, etc. 
+
+Safety and Side Effects: In some capacities, the side effects that come along with the secretagogues and exogenous GH can be similar. Generally speaking, the secretagogues are likely a bit safer due to keeping levels within more natural ranges, but it is dose depending. Exogenous growth hormone can cause fluid retention, joint pain, nerve compression issues like carpal tunnel, and insulin resistance. Long-term high IGF-1 levels could also have some cancer concerns and, considering that typically GH needs to be administered for longer periods of time to really see the most benefits (6+ months), could potentially be more concerning for this. However, all of these compounds can increase IGF-1 levels, so understand the risk and safety considerations regardless. If we look at Tesamorelin, it had an 81% increase in IGF-1 levels but no real significant difference in fasting glucose over 6 months, where the comparable fat-loss dosages of GH caused higher glucose intolerance. When looking at GHRPs specifically, they may cause some habituation where your body might get used to them in some capacity, and the benefits / effects of them could be reduced over time where exogenous GH will always add the hormone to the body and avoid that habituation potential. There's no clinical data supporting this, but another thing to consider is that there MAY be a potential for long term pituitary strain by constant administration of secretagogues, but the data so far doesn't really show that. 
+
+So which is best? 
+
+Maximum GH/IGF-1 and Anabolic Effects: In this case, high-dose GH will always outperform the secretagogues, but you will also have more side effects. If you want a pretty safe and more physiologic restoration or increase of GH, the secretagogues can be a great option with potentially fewer side effects and also some specific advantages depending on the compound (like Tesamorelin visceral fat reduction). Ultimately, Tesamorelin was chosen as a therapy for HIV patients due to the targeted benefits it has with fewer metabolic downsides. If someone really had severe deficiencies, GH will really be the best approach to quickly replace what is missing. Some may try to combine GH with the secretagogues, but conceptually, this is pretty redundant and I would rather just do a higher dosage of the GH. 
+
+Dose Dependency: GH is superior ultimately, but it is dose-dependent. At low doses, GH will likley be somewhat similar to something like CJC/Ipamorelin in terms of similar IGF-1 increases. But, if you go up to 4+ IU daily of GH, then it is very likely that you'll go higher than what your body would be able to do naturally. The secretagogues are unable to really drive those IGF-1 levels to the extreme levels because of the body's natural feedback mechanisms. So if you have moderate goals, a secretagogue or low dose GH will be a decent option. If the goal is maximal gains, then GH will be the better option at higher dosages.
+
+
+
+IGF-1 and Cancer Risks
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=f0c80df3724c4d0fa8f1092c8a948324
+
+Text saved
+
+It's been coming up a lot lately with the risks of cancer and the increase in IGF-1 from things like the growth hormone secretagogues (tesa, CJC, ipa, etc) or exogenous growth hormone. Hopefully this post can help sort out just how risky it really is when evaluating the decision to explore these compounds.
+
+First let's talk about the Tesamorelin studies. They had over 800 patients with HIV-related lipodystrophy and 500 some got tesamorelin and the rest had the placebo. 15 different people got cancer, 12 of them in the group who was using Tesa and 3 in the placebo group. The investigators who looked at this only found that two of the cases of cancer could even be considered to be related to the treatment they were receiving. The interesting thing? One was using Tesamorelin and one was on the placebo. Technically, the placebo group had a higher occurrence if you look at it as a percentage of the population. Here's the review that looks at the risk profile of Egrifta (tesa): https://www.accessdata.fda.gov/drugsatfda_docs/nda/2010/022505orig1s000riskr.pdf
+
+Another thing to consider is that the FDA wanted a post-marketing surveillance to continue to look at patients to see if cancer was a major concern. In the 14-15 years since it was approved, they haven't observed this to be a significant risk and have it classified essentially as a theoretical concern based on the mechanisms of IGF-1 potentially causing growth. It even says it can be considered for use if cancer is gone and treatment is completed. Also, another important thing to note is that the HIV patients are generally at a higher predisposition for some cancers anyways vs the normal population, so not seeing a significant increase in that population should provide even more assurance.
+
+If this is the case then why are these concerns even around? Well, because IGF-1 can cause cells to grow and survive. It helps us grow muscle, bone, tissue, etc, but can it also grow cancer?
+
+Well there is some data that supports IGF-1 creating higher risk of developing some cancers like colorectal, prostate, and breast cancer. Somewhere in the 5-40% increase. In acromegaly where IGF-1 levels are at extreme levels for very long periods of time, they do see the higher rates of colorectal and thyroid cancers, but those also come alongside of significantly higher levels of IGF-1 than what the secretagogues are producing. Also, they're not seeing a spike in cancer for those on growth hormone replacement therapy either, which further solidifies that it might not be so incredibly risky like it's made out to be.
+
+Another thing worth looking at is what that percentage increase really correlates to. Let's just assume that everything is on the high end and that there's a 40% increase in risk. It's relative to the current risk percentage. So if your lifetime risk of colorectal cancer is around 4%, a 40% increase makes it around 6%. Prostate cancer would go from 12% to 17%. Breast cancer from 12% to 17%. The percentage number makes the risk seem significantly higher than it might be in terms of absolute numbers.
+
+Something else that is interesting is analyzing the bodybuilding world with IFBB professional bodybuilders. These competitors are pushing their IGF-1 levels to supraphysiological levels with high doses of growth hormone. So, we should expect them to have a very high rate of cancer compared to the general population. They actually studied over 20,000 bodybuilders over 8 years. Over those 8 years, 121 of them died. Out of that 121 that died, 6.6% of them died from cancer. If you look at that percentage as a percentage to the entire population, 0.05% of the entire group died from cancer. Which is about 1/3 of the normal percentage for the U.S. population of around 0.14%.
+
+So this creates the question of how dangerous is an increase in IGF-1 levels? Based on this data, it doesn't seem incredibly risky.
+
+If you look at the risks of obesity, poor diet and lifestyle, etc and the links to cancer, your risks are likely to be lower by using something that increases your IGF-1 levels than it would be for those other uses.
+
+I'm not a doctor and I'm not your doctor, but hopefully this helps you to understand better. If you have cancer, don't use a secretagogue to minimize potential risk. Don't push IGF-1 levels super super high for very long periods of time, and don't do things that contribute to poor lifestyle and you'll likely be okay based on what the data shows.
+
+
+
+Estrogen, AIs, and Growth Hormone
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=8c16e8b0699f41629d4cea76cc2ea809
+
+Text saved
+
+There has been some discussion about aromatase inhibitors (AIs) blocking the benefits of growth hormone secretagogues. This section is going to break down the relationship between all of these and help you understand what goes on here. 
+
+The first question is do AIs blunt GH secretagogue effects? There is a relationship between estradiol and GH secretion / IGF-1 production. In this article, you can see that in men there is definitely a relationship between the suppression of estradiol and the blunting of GH secretion and as a result IGF-1. So if you're running an AI pretty aggressively or suppression E2 below where is necessary, then it is likely that you are also crushing your body's IGF-1 potential as well. If you're looking at a secretagogue, it would play a role into this as well since it's using your body's natural systems to secrete more and increase these levels. 
+
+So what is the relationship between Estradiol and IGF-1? Well estradiol can stimulate GH secretion and in return increase IGF-1 levels. A big piece of the benefits also come from the aromatization of testosterone into estrogen. Outside of just the GH and IGF-1 component, estradiol is important for men and can help with a lot of things like cognitive function, bone health, body composition, etc. Also, as an example of SERMs/AIs and their effect on IGF-1, Tamoxifen has supporting data for its use to control IGF-1 in acromegaly patients. 
+
+So basically, don't crash estradiol. The AI itself may not be the biggest issue in terms of AI = poor IGF response, but more so the amount of suppression that you're doing to your estradiol. Estradiol is important for more than one reason. Lower isn't always better and it shouldn't just be looked at as a number on paper.
+
+
+
+Growth Hormone Peptides 101 Post
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=89e779a37a674e05b22a4f46578681e5
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=ac0d599e6fd345339d25e2b8902ef786
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

@@ -1,0 +1,376 @@
+Retatrutide Deep Dive
+
+03 - GLP-1 and Weight Management
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=793aae3e5397429f8ecc92949b0876ca
+
+Text saved
+
+This course will discuss all things Retatrutide. 
+
+Topics to be covered in this course:
+
+What is Retatrutide? 
+
+Mechanism of Action of Retatrutide
+
+Benefits of Retatrutide
+
+Side Effects and Risks
+
+Dosing, Titration, and Protocols
+
+Comparison to Other GLP-1s
+
+
+
+What is Retatrutide?
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=f89edc563e0847fd86bc29a514fab1e9
+
+Text saved
+
+Retatrutide (LY-3437943) is a triple receptor agonist peptide. What this means is that it targets three different receptors to assist in metabolic regulation: 
+
+GLP-1 Receptor (Glucagon-like-peptide-1)
+
+GIP Receptor (Glucose-Dependent Insulinotropic Polypeptide)
+
+Glucagon Receptor
+
+Retatrutide will target all three pathways to help control appetite, insulin sensitivity, fat storage, and glucose metabolism. Because it is targeting all three of these at once, it can give stronger and more comprehensive benefits than previous GLP-1s that are targeting only one or two different receptors. 
+
+The Glucagon Receptor
+
+The biggest piece of Retatrutide that makes it stand out is its targeting of the glucagon receptor. What this piece will do in the body is: 
+
+Increased energy expenditure: Glucagon can activate brown adipose tissue (brown fat) and burn calories to produce heat (thermogenesis). 
+
+Enhanced fat oxidation: Glucagon will help your body utilize stored fats for fuel, leading to more fat loss. 
+
+Lean mass preservation: A major issue with the other GLP-1s is the amount of muscle that is lost in the weight loss process. By promoting more fat breakdown, Retatrutide can reduce the amount of muscle loss that may occur. 
+
+What does the clinical data say? 
+
+In clinical trial data, Retatrutide showed: 
+
+Up to 24.2% of body weight loss after 48 weeks at the highest dose. 
+
+Compare this to Semaglutide (15%) and Tirzepatide (20%) in 72 weeks.
+
+Trial participants also saw insulin sensitivity improvements, fasting glucose, HbA1c, lipids, blood pressure, and liver fat.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=dc8f5d38a4c3424d9a79f30af90f6151
+
+Text saved
+
+Retatrutide is going to work by targeting three different pathways that will help with metabolism, appetite and hunger, and body composition. 
+
+GLP-1 Receptor Activation: 
+
+The GLP-1 receptor (glucagon-like-peptide-1 receptor) is also targeted by Semaglutide and Tirzepatide. 
+
+Reduces appetite by targeting appetite-regulating centers in the brain (hypothalamus). 
+
+Slows gastric emptying (food is going to leave the stomach slower), which will make you feel fuller longer. 
+
+Increases insulin secretion
+
+Improves HbA1c and blood sugar control. 
+
+This will reduce hunger and stabilize blood sugar so people will eat less calories, contributing to weight loss. This pathway is the primary reason for appetite suppression with GLP-1 compounds. 
+
+GIP Receptor Activation: 
+
+The GIP receptor (glucose-dependent insulinotropic polypeptide receptor) is the second piece that was added with Tirzepatide, and still is targeted with Retatrutide. 
+
+Improves insulin sensitivity
+
+Improves insulin secretion
+
+Can support better lipid metabolism
+
+GIP activation can help the body partition nutrients more effectively and can help improve insulin sensitivity more than GLP-1 receptor activation by itself. 
+
+Glucagon Receptor Activation
+
+This is the biggest piece that Retatrutide adds that separates itself from the pack of the other GLPs. 
+
+Increasing energy expenditure through brown fat activity
+
+Increase fat oxidation
+
+Increase resting metabolic rate
+
+Preserve lean muscle mass
+
+Glucagon activation is important because when you're losing weight in a caloric deficit, your metabolism can often slow down with it. Through the glucagon receptor activity, this can allow fat loss to continue even as the calorie intake is decreased. 
+
+By activating all of these receptors together, you accomplish this: 
+
+Appetite suppression
+
+Insulin sensitivity improvement
+
+Glucose control stabilization
+
+Increased fat oxidation
+
+Increased energy expenditure
+
+
+
+Retatrutide Benefits
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=8c4a6925d92441419f74bd7d5e7dceab
+
+Text saved
+
+Retatrutide is primarily being recognized as a weight loss / fat loss compound, but has far more benefits outside of this. It can have benefits on metabolic health, inflammation, insulin sensitivity, and liver function. Others even report benefits for things like ADHD and cognitive function. 
+
+Weight Loss / Fat Loss
+
+In the Phase 2 clinical trials, Retatrutide produced significant results for weight loss, especially compared to Semaglutide or Tirzepatide. 
+
+The trial was conducted over a 48-week period. 
+
+Patients who received the highest dose (12mg weekly, titrated to that point over time) lost 24.2% of their body weight on average. 
+
+At the 48-week point, patients were still losing weight. 
+
+Everyone on the trial lost at least 5% of bodyweight and 85% of trial participants lost 15% or more of their body weight in that 48-week period. 
+
+Compared against Semaglutide (15% loss) and Tirzepatide (20% loss), Retatrutide significantly outperformed. 
+
+Fat Loss
+
+Retatrutide adds in the glucagon activation which helps prevent muscle loss as it's primarily targeting fat. 
+
+In animal studies, the glucagon receptor activation stimulates fat oxidation but is sparing to lean muscle tissue. 
+
+When looking at this in human trials, results suggested that some lean muscle loss still occurred (as this happens when losing weight or being in caloric deficits), but the amount that was lost was better than other GLP-1 medications. 
+
+Improved Insulin Sensitivity
+
+Retatrutide can have a strong effect on insulin secretion and sensitivity. 
+
+HbA1c was reduced by up to 1.4% in Phase 2 trials, even in those without diabetes. 
+
+Fasting glucose was increased and patients with prediabetes had normalized glucose tolerance in most cases. 
+
+Based on this data, Retatrutide can likely benefit or even reverse Type 2 diabetes. 
+
+Liver Function and NAFLD
+
+Many people who are overweight or obese have non-alcoholic fatty liver disease (NAFLD). 
+
+In studies, they observed about an 86% reduction in NAFLD in patients. 
+
+Hepatic fat content was significantly reduced (accumulation of fat in the liver). 
+
+Cardiovascular Benefits
+
+Retatrutide, like other GLP-1s, shows improvement in cardiovascular risk markers. 
+
+Many people observed a reduction in both systolic and diastolic blood pressure. 
+
+Lipid profiles significantly improved (LDL decreased, triglycerides, improved HDL).
+
+
+
+Side Effects and Risks
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=427016fc92f5485c931503eb18e55ffc
+
+Text saved
+
+Retatrutide, like the other GLPs, can have some risk factors that are associated with it. A lot of times they are dose dependent, and often times when people start low and increase slowly over time, these are mitigated significantly. 
+
+Gastrointestinal Issues
+
+Nausea
+
+Vomiting
+
+Diarrhea
+
+Constipation
+
+Abdominal Discomfort
+
+Bloating
+
+These can all occur due to the GLP-1 receptor activation that slows down gastric emptying and can change gut motility. Over time, the body typically adapts to these changes and symptoms can be reduced. When dosages are increased, symptoms can reappear temporarily. 
+
+Importance of Titration
+
+Slower titration schedules (going up after 2-3 months vs going up after 1 month) can significantly reduce side effects. 
+
+Most of the trial participants in Phase 2 tolerated the higher doses as they increased to them slowly over time. 
+
+Heart Rate Increases
+
+Heart rate increases were observed in patients. The majority of heart rate increases occurred in patients who were starting at higher dosages. One interesting piece about this is that the ones who started low and increased over time had almost no occurrences of cardiac arrhythmias. 
+
+Most of the GLP-1 compounds were also raising heart rate. This is not uncommon, but is something that skeptics try to hyper-focus on with Retatrutide.
+
+
+
+Dosing, Titration, and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=5b8a9d0ec7134e5693a7fa86ee320f6a
+
+Text saved
+
+Retatrutide is still in clinical trials so there is no defined dosing protocol yet. But, based on how it was dosed in Phase 2 clinical trials, as well as how other GLP-1s are usually titrated, this can be evaluated and determined. The most important thing with this is a slow, steady titration schedule and never going higher than needed or going up too quickly. 
+
+Clinical Trial Dosages
+
+In clinical trials, patients started at .5, 1, 2, and 4mg to assess tolerance. 
+
+They gradually increased dosages over time (4-8 weeks). 
+
+At 12mg weekly, patients were still losing weight at 48 weeks. 
+
+General Titration Schedule (low and slow)
+
+Weeks 1-4: .5mg weekly
+
+Weeks 5-8: 1mg weekly
+
+Weeks 9-12: 2mg weekly
+
+Weeks 13-16: 4mg weekly
+
+Weeks 17-20: 8mg weekly
+
+Weeks 21+: 12mg weekly
+
+This can go significantly slower than this. There really is no need to increase at the 4 week mark. 
+
+Minimal Increase Schedule: 
+
+Weeks 1-8: 2mg weekly
+
+Weeks 9-16: 4mg weekly
+
+Weeks 17+: Increase as needed. If in a stall for over 4 weeks when nutrition, sleep, and exercise have all been kept consistent, increase dose by 2mg as needed. 
+
+Individualization of Dosing Schedules:
+
+One thing that is important to remember, is that everyone's schedule is going to look different based on individual response. 
+
+The majority of patients got the best results per mg between 4-8mg per week. Trial. participants only lost about another 1% over the 48-weeks when they increased to the 12mg per week point. 
+
+Ultimately when looking at the individualization of the dosages, the goal is to find the point that gives maximum results, at the minimum dosage, with the least amount of negative side effects. 
+
+Labwork on Retatrutide: 
+
+When on Retatrutide, labs that could/should be monitored are: 
+
+HbA1c
+
+Liver enzymes (AST, ALT)
+
+DEXA scans to analyze body composition
+
+Timing of Injections: 
+
+Retatrutide is typically administered once per week. 
+
+Some may choose to split the dosages to 2x weekly or even more frequently. When the dosages are split, it can mitigate side effects by keeping the levels more stable in the system as seen by the images below (once weekly, twice weekly, daily): 
+
+These are plotted on glp1plotter.com.
+
+
+
+Retatrutide Deep Dive Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=8c72ef8e6f754c0792a1898761fa91bd
+
+Text saved
+
+This video can also be found on my YouTube Channel: 
+
+https://youtu.be/g6BZsWrH0P0?si=WipH68_fwzSTNtAA
+
+
+
+Retatrutide Optimal Doses / Glucagon Receptor Myth
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=132aa65e4e4345398f4dad8492ebf3cd
+
+Text saved
+
+This video can also be found on my YouTube Channel: 
+
+https://youtu.be/T3KM9ibW1lc?si=pQtpUe-bd-RKE3gV
+
+
+
+Retatrutide Glucagon Receptor Activation Myth
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=79049377fedc45188a28aae0bef98287
+
+Text saved
+
+You may have heard that the Glucagon benefits of Retatrutide don't work until you've hit at least 4mg weekly. This one has always stumped me. Someone commented on my Instagram post and shared the link for why this is what people are saying, and I think I've finally cracked the nut on it!
+
+So, it still stands that I believe this is not true. But why are people saying this and why do people think this is the case?
+
+There is an article titled "LY3437943: a novel triple glucagon, GIP, and GLP-1 receptor agonist for glycemic control and weight loss: from delivery to proof of concept" (Cell Metabolism, 2022) that reviews the data from Phase 1 of the clinical trials. The dosages that were tested in Phase 1 are .1, .3, 1, 3, 4.5, and 6mg. What they noticed is that the largest glucagon reductions were noted at 4.5-6mg, but that's because those were the highest dosages tested, not because the GCGR activity starts to "kick in" when you get to that point. Looking at the data, they observed dose-dependent effects (meaning that the results were dependent on dosage essentially), and that the most significant reductions in fasting glucagon and the largest weight loss was at those dosages. Again, that's because they are the highest dosages tested during that phase of the trial. It stated "Following dosing at the highest 2 LY dose levels of 4.5 and 6.0 mg, a decrease in mean fasting glucagon was observed from 24 h post-dose to day 15 (Figure 4H). The observed decreases ranged approximately 50%–75% from the pre-dose levels in these cohorts, consistent with GLP-1R and GCGR target engagement."
+
+They also conducted Phase 1b trials and tested them at six dosage levels - .5, 1.5, 3, 6, 9, and 12mg. They never reported receptor-level biomarker changes at these dosages, so again the only data we have to go on is that limited observation in the previous piece of the study. They only looked at things like body weight, HbA1C, triglycerides, etc.
+
+Then, Phase 2 of the trials was conducted and the dosages were 1, 4, 8, and 12mg weekly. They also only measured the same things as the Phase 1b. So again, we have no data on receptor-level biomarker changes where we could infer the effectiveness or what level is needed to see impacts of the glucagon receptor agonist.
+
+Until they publish data that shows that you really get no benefits until a certain dose, the assumption should be that you are getting glucagon receptor benefits across the entire range of dosages, not just the 4mg and above range.
+
+Thankfully, someone commented this on my IG and told me the study that says the 4mg requirement for it (misinterpreted from the original article data) and I was able to do some digging and get to the bottom of where this information is likely stemming from.
+
+Hope this helps!
+
+edit: to clarify, I disagree that you have to go to 4mg to see the glucagon receptor benefits. I think it was an oversimplification of available data from an early trial and is the only data that looked at this in any capacity. As with anything, the highest amounts of anything are almost always observed at the highest dosages.
+
+Here is a snippet of the graph from the Phase 1 data.
+
+It is important to note that this was a single ascending dose. Meaning they gave each of the dosages and observed, vs repeating the dosage administration weekly. What you can see here in Graph H, is that every dosage had a reduction in fasting glucagon over the placebo.
+
+If the dosages had been repeatedly administered, then you could assume they would still see the effects of the glucagon activation across the dosage ranges vs returning back towards baseline.
+
+It was most significant at 3mg and above, but even at 1mg it did show a difference from the placebo. Since they didn't administer a 2mg dosage, you could likely assume that would be somewhere between the 1mg and 3mg dosages on the graph had it been plotted.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/381ee4ef?md=4f61f297205d41ed859e23c18907b49a
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

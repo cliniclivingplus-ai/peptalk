@@ -1,0 +1,100 @@
+Understanding COAs
+
+10 - Evidence Testing Community and Resources
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+What is a COA?
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=69d29bb81c694aeebfde75f0b6f92742
+
+Text saved
+
+A COA is a Certificate of Analysis that is basically your lab report for a compound. It is going to be a way to test the identity, purity, quantity, and generally the safety. There are further tests you can do for more "safety" measures, but the COA is the bare minimum that you want to see. 
+
+COAs typically are going to come from third-party testing facilities, but some companies may do their own in-house testing. While in house testing doesn't always mean that it's faked or not tested properly, third-party testing will pretty much always be the better option. The third-party testing is going to get rid of potential bias that could happen when something is tested in-house. Also, just because a company shows a COA for a product doesn't mean that it's real. Companies will continue to use the same COA for multiple batches, photoshop the results, or just use someone else's because they know that most people don't even know what they're looking for when they see these.
+
+
+
+How to Read a COA
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=2f962aca25df4fc495ffaaef689bd0cc
+
+Text saved
+
+Janoshik: 
+
+Chromate: 
+
+MZ Biolabs:
+
+
+
+Fake COA Example
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=623661214d144118938f90c40e051a69
+
+Text saved
+
+Just look at this COA. Stuff is missing. The text doesn't even look 100% the same in the client name area. But, look at the bottom. Where is the unique key? I address this in the general COA thoughts section. 
+
+Another thing to look for is the manufacturer COA. If the client info is not the same info as the company you're ordering from, then it's not their COA and they did not test the product. Plain and simple.
+
+
+
+COA FAQs
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=7ea5913c8bb545d1b69f248fbf03d4fb
+
+Text saved
+
+How recent does the COA need to be? It really just needs to be as recent as the batch is. If they're storing them properly, they will last a very long time. Now, could it be a concern if the testing date is very old? Yes. But, if a company orders very large quantities and they are selling through a specific product slower, the COA could be months old. That's fine. The product isn't degrading if storing properly. 
+
+How do you know if the product you receive is from the batch you're seeing? Truthfully, you don't. Trust is going to be the most important piece. I can tell you this - the companies I work with will hold batches until testing is completed. I have had conversations where they have the product for weeks ready to sell but wait until it is tested. Also, they have batches custom made for them. Then it is tested by the manufacturer. Then they test it when they receive it. So they're verifying multiple times, but always having a test once they receive it to confirm. But truthfully, you never know because bad companies will do this ALL THE TIME and sell products without testing because it's too expensive, takes too long, etc and they just want their money. I promise that happens across the industry. It's also nice to have a batch number printed on the label that ties to the COA. Could they fake this too? Yes. But it's another step to help verify.
+
+
+
+General COA Thoughts
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=ab62bc3d742d47558c31c8549494315c
+
+Text saved
+
+COAs are important. Do you ever truly know what you're getting? No. Because it could be very easy to deceive. But it's another level of assurance that something is what it is. 
+
+There are very popular companies out there that do not test their batches when they receive them. They get greedy. They get lazy. 
+
+Never trust a vendor COA. They are the manufacturer. They can literally do whatever they want to do. They can test one good vial that they know is good, then send everyone whatever they want. They also can swap the caps and do anything to make them look the same. 
+
+A good company will also typically let you send a vial for testing. You're going to have to cover the cost of testing. But they should have some sort of refund clause to take care of you if it test poorly. Good companies will do that and stand by that typically (not always) just as another layer of confidence. 
+
+THERE IS NO REASON THAT ANY PIECE OF THE COA SHOULD BE MISSING. I have seen people say that a vendor won't show the unique key at the bottom of a Janoshik COA because of "customer privacy" or something like that. No. That's a lie. That is 100% a lie and I will stand on that every single day of the week. Why is that a lie? Because the only information you get from that is the COA itself. What they're sending you would be what you would see. Which is what makes it a lie. They just don't want you to verify the COA on the site. 
+
+Janoshik "bribes" - Some people will tell you that Janoshik accepts bribes. If you've ever communicated with him or seen him post in any message threads online, the dude literally runs a multi multi million dollar business. He'll test like 50 vials a day. The cost to test is anywhere between $150-500 per test. Someone explain to me how much someone would have to pay him to justify him risking his reputation and I'll entertain this conversation. It would be cheaper for a company to just get good products than to try to pay him off. You can trust Janoshik. Don't listen to these people.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/9236945b?md=72d7ccc5e34544248d50e0b6caa4e3c5
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

@@ -1,0 +1,116 @@
+Glutathione Deep Dive
+
+05 - Longevity Energy and Bioregulators
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=ca58281de1984efaa83f7155b23110ca
+
+Text saved
+
+Glutathione is a tripeptide made of glutamate, cysteine, and glycine. It is commonly referred to as the master antioxidant of the body, and is produced within every cell of the body, especially the liver.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=0be3fee085bd47bbbe3d019b819de722
+
+Text saved
+
+So what does glutathione do in the body? 
+
+Glutathione basically helps to main a reducing environment within the cells, which means that it keeps the balance within them away from oxidation and more towards protection and repair. 
+
+Antioxidant Buffer - Glutathione is really the main redox regulator within the cells of the body. When it's in the reduced form, it's able to donate electrons to unstable molecules like reactive oxygen species (ROS) which allows those molecules to be neutralized before they are really able to damage the DNA or mitochondria. Then, once GSH (the reduced for of Glutathione) donates that electron, it turns into oxidized glutathione which your body will then try to recycle that back into it's reduced form to restart that entire process. By going back and forth between those two versions, your cells are protected vs being inflamed or oxidized. 
+
+Detoxification - Glutathione also plays a large role in Phase 2 liver detoxification, which is basically where your liver is neutralizing and getting the toxins and everything together so your body can excrete them safely. To do this, your liver is going to use enzymes called glutathione S-transferases (GSTs) to bind Glutathione directly to the toxic molecules. At that point, they become water soluble, so your body is able to excrete them through the bile or urine. If you start to become deficient in glutathione stores, your detoxification processes are gong to slow down and the toxic intermediaries start to build up in your system, creating more oxidative stress and negative effects associated with that. 
+
+Immune Modulation - Glutathione helps to balance your immune system's activity. When Glutathione levels are high, it can help with Th1 immune responses which can help the body fight off viruses, bacteria, and cancer cells. If levels drop, the balance is going more towards a Th2 state, which can cause allergic or autoimmune issues. Glutathione also helps T cells and natural killer (NK) cells (see TA-1 Deep Dive for more info on these) and allow them to release cytokines like interferon-gamma more effectively, which is an antiviral and antitumor defense signal for the body.
+
+
+
+Benefits of Glutathione
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=e6924e3c2c154be983b929a33661d8a1
+
+Text saved
+
+Liver Health and Detox - As mentioned previously, the liver has the highest concentration of glutathione within the body. It's basically your body's filtering mechanism that helps your body process the toxic byproducts. This is really the biggest and most noticeable benefit of glutathione. One interesting thing to note is that N-acetylcysteine (NAC), which is a precursor to glutathione, is used medically as a treatment for Tylenol overdose. It helps to break down many things like estrogen metabolites, alcohol derivatives, and heavy metals. Even outside of significant toxin exposure, people with lower GSH levels can be more prone to fatty liver and oxidative issues. In a trial of patients with NAFLD, they supplemented with 300mg/day of oral glutathione for 4 months and saw an improvement of about 37% in liver fat and also saw improved ALT and AST compared to the placebo group. 
+
+Immune Function and Inflammation - Glutathione will help to regulate the immunes system's function and by managing the redox environment within the immune cells, it will determine which pathways are getting activated. When the body is keeping GSH higher, the T helper 1 (Th1) activity is going to be higher which is what allows the immune system to target viruses and abnormal cells. When the Th2 is higher due to depleted GSH, allergic and autoimmune issues can occur. Ultimately, the person's immune system and function will be increased through Glutathione usage / supplementation. They actually see low glutathione in monocytes and T cells of HIV-infected patients with aligns with suppressed immune function. It will also likely lower some of the inflammation that can occur and allows the body to have a necessary immune response, but prevent the chronic, low grade inflammation that can cause a variety of other issues in the body. 
+
+Mitochondrial Function - In some of the other courses we talk about the function of the mitochondria to generate ATP, but that comes along with  leakage of reactive oxygen species in the process. Without some type of antioxidant defense mechanisms, the ROS can start to damage mitochondrial membranes and DNA and result in other potential issues. The defense system that is in place is mitochondrial glutathione, or mGSH, which can help to neutralize the ROS within the mitochondria right as it can become an issue. By maintaining those levels, it can preserve mitochondrial integrity and allow the body to continue to produce more energy day to day. One interesting study on this and glutathione restoration is with GlyNAC which is a Glycine and NAC combination which are precursors. What they saw was a 200% rise in intracellular GSH, 20-25% improvement in insulin sensitivity, and reduced oxidative stress markers. 
+
+Skin Health - Glutathione can help with the skin, especially with lightening or brightness. What Glutathione does is interferes with the tyrosine to dopaquinone conversion which helps with pigment synthesis by inhibiting tyrosinase and moving the melanin production from the darker eumelanin toward lighter pheomelanin. They conducted a placebo controlled trial with 500mg/day of oral glutathione for 8 weeks and noticed significantly lightened skin tone and improved brightness. It seemed that there were more improvements in individuals with higher baseline oxidative stress as well, since the redox balance in the melanosome is changed. Glutathione can also help reduce lipid peroxidation and help with collagen cross-linking and can basically help to prevent oxidative breakdown in the skin cells. 
+
+Neurological Health - Glutathione has a pretty heavy concentration in the brain and one of the earliest biochemical changes observed in neurodegenerative disorders like Parkinson's and Alzheimer's is depleted brain GSH. There's not much data on how Glutathione supplementation changes this, but MRI studies do show that individuals with higher brain glutathione concentrations have better cognitive performance and lower markers of oxidative damage.
+
+
+
+Dosage and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=3c4cc3a2fe0b47989d75cb6b2a706147
+
+Text saved
+
+Glutathione can be taken a few different ways. I'm going to touch on all of these (to include precursors) just to cover all of the bases here. 
+
+Precursors: 
+
+N-acetylcysteine (NAC): Typical dosages of NAC are 600-1,200 mg/day and in certain cases can go up to 1,800 mg/day. 
+
+GlyNAC: The studied amounts are quite high. You don't find the supplements in as high of a dosage. I think it's reasonable to start around 600mg of each and increase as needed. The studied dosage was up to 7-10g daily though, which is 10x what the starting amount listed is. 
+
+Direct Supplementation: 
+
+Oral Reduced GSH: 250-1000mg/day. Used for at least 8-12 weeks consistently. 
+
+Liposomal GSH: 250-500mg/day. 
+
+Injectable: 200-1200 mg/week, divided into multiple dosages typically. I like sitting in the 600-800 mg/week range. 
+
+Intravenous: You'll really only get this in a medspa. They might run anywhere between 600-1200 mg per infusion.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=af9c6c4cbb0a4d039c4ae4f78dc624ad
+
+Text saved
+
+Glutathione is pretty well tolerated (across all forms). There are some things that can occur. 
+
+Injection Site Reactions - Glutathione injections can be a bit spicy. It may be sore afterwards for a couple of days. Over time, may become more well tolerated. 
+
+Fatigue - As the body starts through detoxification, you may notice headaches, fatigue, or other similar symptoms. These are typically transient and go away over time.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/a2fabe16?md=41008814efdb404ca22442fd29afa1ac
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

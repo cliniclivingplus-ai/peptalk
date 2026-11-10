@@ -1,0 +1,104 @@
+SS-31 Deep Dive
+
+05 - Longevity Energy and Bioregulators
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=f37d9556e6db48299d98326cad54dfbb
+
+Text saved
+
+SS-31 is a synthetic peptide that is specifically designed to target mitochondrial function. It targets a lipid in the mitochondria called cardiolipin, which it binds to, to help restore energy efficiency, help protect from oxidative stress and damage, and preserve and restore the structure of the mitochondria. Mitochondrial dysfunction can lead to different chronic diseases and increased aging, so being able to utilize a compound like SS-31 may lead to the ability to improve health, but doing so at the cellular level.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=6e1fbaef737b401e8d641d04c760ad7a
+
+Text saved
+
+The primary thing that SS-31 does is interact with cardiolipin which is a phospholipid that is in the inner membrane of the mitochondria. It helps to maintain mitochondrial function and the electron transport chain, which helps to produce ATP (the cell's energy). When you encounter stressors or aging, the cardiolipin can be damaged or oxidized which messes up the electron transport chain, hurts the integrity of the membranes, reduces ATP production, and creates reactive oxygen species (ROS). When you use SS-31, it binds to the cardiolipin and helps to stabilize that inner membrane of the mitochondria and helps to protect the cardiolipin from oxidative damage. This then allows the mitochondrial membrane to have better potential which is highly important for ATP synthesis (energy production). What does all of this result in? 
+
+Electron Transport Chain and ATP Production: SS-31 is going to help keep the electron transport chain structured and helping to anchor them to cardiolipin. This will help the efficiency of the mitochondria and allow them to generate more ATP. One of the things that SS-31 is shown to do is increase ATP output in aged and stressed mitochondria and basically re-energize them. When doing this, it also helps to reduce the production of ROS which are harmful oxidative byproducts. 
+
+Antioxidation: SS-31 is different than regular antioxidants like a glutathione would be, but it can help to prevent oxidative damage. One of the ways that we already discussed is the prevention of ROS oxidation on cardiolipin. Since it's also make the electron transport chain be more efficient, there are also going to be fewer free radicals that are generated. When you're able to lower ROS in the mitochondria, it can protect the mitochondrial DNA, proteins, and lipids from damage. By preventing this damage, it can help mitigate inflammation and cell death pathways that can cause issues as we age. 
+
+Cell Death Prevention: When the cell is under heavy stress from things like too many free radicals, the mitochondria can undergo something called the mitochondrial permeability transition pore (mPTP). If this opens, the inner membrane loses its voltage (membrane potential), which is the component the mitochondria use to make ATP. Then you will have water and ions rush into the mitochondria causing them to swell and the internal structure will fall apart. Something called cytochrome c which can shuttle electrons to help make energy will become loose and then can trigger apoptosis or programmed cell death. With SS-31, this inner membrane is stabilized so it is less likely to open and allow the Cytochrome c to escape and instead will stay anchored to cardiolipin and help to regulate that energy production.
+
+
+
+Benefits of SS-31
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=247adbfde7944652b90a3de24443dc9f
+
+Text saved
+
+So we know how SS-31 is improving the function of the mitochondria, but what are the benefits that you will see form this? 
+
+Better Cellular Energy Production: SS-31 leads to an increased ATP output in the mitochondria which can increase the energy that is available to the cells. In aged mice, they were able to see an increase in muscle ATP levels and energy reserves which basically reversed age-related energy deficits at the cellular levels. What this translated to ultimately was improved stamina and reduced fatigue. Increased cellular energy can actually be very beneficial for high-demand tissues like the heart, brain, and muscles, which is partially why SS-31 was looked at for cardiac benefits. 
+
+Antioxidant and Anti-Aging Benefits: Since SS-31 helps to reduce mitochondrial ROS and protect the cells from oxidative damage, this can play a role in the anti-aging process. Excess free radicals can lead to things like cellular aging, DNA damage, and tissue inflammation, so by reducing these, we're helping to slow those processes. Now these benefits haven't been fully proven through clinical studies, but based on the mechanism of action we can hypothesize that these benefits are occurring in humans as they were in animal models. 
+
+Vision and Eye Health: One of the things that SS-31 is being studied for is vision improvement. The retina is a tissue that is energy hungry and has a high density of mitochondria in the photoreceptor cells. With things like age-related macular degeneration, they can be associated with mitochondrial dysfunction and oxidative stress. With SS-31, the benefits have been shown to potentially slow cell death and preserve visual function. They currently have elamipretide in Phase 3 studies for age-related macular degeneration and geographic atrophy and will be interesting to see how the results turn out. 
+
+Cardiac Support / Cardioprotection: Because organs like the heart are in high in energy demand, mitochondrial dysfunction can potentially lead to issues like heart disease or heart failure. In a pre-clinical studies, they saw that SS-31 therapy contributed to better heart pump function with less ejection fraction and increased cardiac output while pathological enlargement of the left ventricle was prevented. SS-31 potentially is providing the mitochondria in the heart cells with extra support during and after ischemic stress which can ultimately help with the heart's function.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=7bdaea3e2abe46009138df62b821d664
+
+Text saved
+
+There are a few different protocols that exist for SS-31. 
+
+My preferred protocol is 4mg a day until I have reached 50mg total. So that results in 12 days of 4mg, and one day of 2mg. This seems to work well as a general protocol for most. 
+
+If looking for longer term effects, anywhere from 1-10mg a day can be an option for 2-4+ weeks. For those with severe issues, even running SS-31 for 2-4 months could prove to potentially be beneficial. For the most severe issues, even running for 6-12 months may be necessary. 
+
+In clinical studies, around 40mg/day seems to be the amount that is typically used, however I think this is pretty cost inefficient and seems to be more than is necessary to yield results for most.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=a54fe1c597ea4ad08f0809fb47a2ea6e
+
+Text saved
+
+SS-31 has a fantastic overall safety profile with very minimal side effects that are reported. What are some of these potential side effects? 
+
+Injection Site Reactions: This is something that can happen with almost any injectable compound. Sometimes people may experience redness, itching, pain, or small lumps at the injection site. In the trials, pretty much every patient has some type of injection site reaction, but very few thought it was so bad that they couldn't continue treatment. 
+
+Systemic Side Effects: Some experience things like headaches or total body fatigue. The fatigue can be debilitating and there is really no way to fix it or overcome it. It can last for a few days for most and even longer for a smaller population of individuals. This usually resolves itself after the body goes through its reparative processes.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/365c055d?md=8475582cdcc9446097a2e8367a5efe21
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

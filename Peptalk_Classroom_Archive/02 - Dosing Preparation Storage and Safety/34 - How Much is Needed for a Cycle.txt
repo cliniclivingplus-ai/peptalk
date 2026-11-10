@@ -1,0 +1,222 @@
+How Much is Needed for a Cycle
+
+02 - Dosing Preparation Storage and Safety
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=1437427273014a5fb15a5cd74fa0f4da
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=9e2e7f11ef144bb3a04885e03ebd26cb
+
+Text saved
+
+This course will break down peptide cycles and how much is needed to run that cycle.
+
+
+
+The Basics
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=45c51755d0d844efa6aa9096ed529e2e
+
+Text saved
+
+Before you try to figure out how much to buy, you have to understand the dosing schedule and frequency. Some peptides are taken daily, some might be 5 days a week, and some are taken once a week. This is important to understand, because it changes how much you will use each week as well as over the course of the cycle. 
+
+Here's the information you need to figure out: 
+
+How much do you need for each dose? 
+
+How many times per week are you taking that dose? 
+
+How many weeks are you running the cycle? 
+
+Will you increase the dosage over the course of the cycle? 
+
+How many vials will that add up to based on the total amount of mg in the vial? 
+
+Peptides are typically labeled by milligrams (mg) vs mL, which can throw some people off. You are getting a certain number of mg (typically in a 3mL vial) and then you are adding the liquid. What is really important is how much of the compound is actually in the vial. 
+
+Let's say that you're dosing BPC-157 at 250mcg daily. A 5mg vial would be 5000mcg. If you take it daily, then that vial will last you 20 days. If you are doing it 5 days per week, that will last you 4 weeks. This is the type of logic that you have to apply to this and I will try to teach you in this course.
+
+
+
+Daily Dosing Example
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=25a954f9a4024c1abf54731f5df0172d
+
+Text saved
+
+This section is going to break down BPC-157 used daily as an example for how to calculate based off of the length of time you want to use it. 
+
+Assumptions: 
+
+250mcg per day dosage
+
+Taken daily (7 days per week)
+
+6 week length of cycle
+
+Step 1: Figure out weekly dose
+
+250mcg per day x 7 days = 1,750mcg per week
+
+Step 2: Multiply by the number of weeks
+
+1,750mcg/week x 6 weeks = 10,500mcg total
+
+10,500mcg is equal to 10.5mg
+
+Step 3: Determine the vial size you're going to get
+
+Let's assume BPC-157 vials are 5mg each
+
+You'll need at least 3 vials of 5mg to cover that 10.5mg, or adjust your cycle length a couple of days short to give an even 10mg amount. 
+
+If you got 3x 5mg vials, you would have 15 total mg, which is enough to cover the 10.5 mg. Or you could extend the cycle to be longer to use the entire 15mg.
+
+
+
+5x Weekly Dosing Example
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=4681bc0aa633433894b306362a800817
+
+Text saved
+
+This next example will cover a peptide that is being used 5 days per week, like CJC-1295/Ipamorelin since those are typically 5 days a week as opposed to 7. 
+
+Assumptions: 
+
+300mcg per dose (of each)
+
+Dosed 5 days per week
+
+Cycle length is 8 weeks
+
+Step 1: Determine weekly dose
+
+300mcg x 5 days = 1,500mcg per week
+
+Step 2: Determine total cycle dose
+
+1,500mcg x 8 weeks = 12,000mcg total
+
+12,000mcg is 12mg for the entire 8 week cycle
+
+Step 3: How many vials are needed? 
+
+If the vials are 5mg each, you will need 3 vials to cover the 12mg which would give you 15mg total. You could extend the length of the cycle to use the entirety of this, or you will have some left over unused.
+
+
+
+Once Per Week Dosing Example
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=235a6d1c05334a018e015c21dd509e0b
+
+Text saved
+
+For this example, we are going to use something typically dosed weekly by using a GLP. Since they typically aren't ran in cycles, we are going to cover how much you will need for a 2 month period as an example. 
+
+Assumptions: 
+
+Tirzepatide dosed at 7.5mg per week
+
+Dosed 1x weekly
+
+Need enough for 2 months
+
+Step 1: Determine total amount needed: 
+
+7.5mg x 8 weeks is 60mg total. Therefore, you will need 60mg total to last you for 2 months. 
+
+Step 2: Determine how many vials are needed: 
+
+For the purposes of calculating, we'll use a 20mg vial of Tirzepatide. 
+
+You will need at least 3x 20mg vials to cover those 2 months. Or, you could get 1x 60mg vial.
+
+
+
+Quick Reference Cheat Sheet
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=3ec876d4e8f145c89ae55d16e4734339
+
+Text saved
+
+I've given examples for how to calculate the total amount based on frequency, but want to make this simple so it can be repeated across different compounds and don't have to guess. 
+
+Step 1: Determine the frequency: 
+
+Daily (7x weekly)
+
+5x weekly
+
+Once weekly
+
+Once you figure this out, plug in your dose per injection in micrograms (mcg) or milligrams (mg). 
+
+Step 2: Multiply it out: 
+
+Daily: 
+
+Dose x 7 = weekly total
+
+Weekly total x number of weeks = total amount needed
+
+5x Weekly: 
+
+Dose x 5 = weekly total
+
+Weekly total x number of weeks = total amount needed
+
+Weekly: 
+
+Dose x number of weeks = total amount needed
+
+Convert micrograms to milligrams if needed: 
+
+1,000mcg = 1mg
+
+Step 3: Figure out how many vials are needed: 
+
+Once you know your total mg needed, divide by the vial size. 
+
+If you need 12mg total and you're buying 5mg vials: 
+
+12 / 5 = 2.4, so round up to 3 vials. Always round up as you can't use half of a vial you don't buy.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=7f2cc310fdf14e1a9a7dd40639ee783b
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

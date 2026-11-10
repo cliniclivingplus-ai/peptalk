@@ -1,0 +1,94 @@
+Slowing Aging: Everything to Fight Aging
+
+05 - Longevity Energy and Bioregulators
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=111ca56278724000936a326720d1a9ba
+
+Text saved
+
+This course intends to cover the science of why we age and what can be done about it. It's going to pull together different threads you might have seen throughout other courses and put them together into one comprehensive framework while adding some things that other courses might not have covered. 
+
+This course isn't just a bunch of random anti-aging things thrown together. We will first define what aging is and break it down into biological components. Then, we'll go through and look at a full catalog of interventions like peptides, supplements, topicals, hormones, and daily practices and show which things each one targets, as well as the level of evidence to support it.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=4f3b21ec6b2c446ba2b3caedd52acf08
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+What is aging?
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=a1ea81ff344d4261847993d2a4b55073
+
+Text saved
+
+Before we can start to fight against aging, we have to define what it actually is. And this can be a bit complex. Aging is the progressive, time-dependent decline in the function and integrity of cells, tissues, and organs, leading to increased vulnerability to disease, and, ultimately, death. When we look at thing like heart disease, most cancers, type 2 diabetes, Alzheimer's, osteoporosis, etc they are not independent problems that happen in older people. Instead, they are downstream consequences of the same underlying aging processes. If we target the shared root (aging) as opposed to each disease separately, you may be able to delay or prevent many diseases at once. 
+
+By reframing this, we also can rename what we're changing. Instead of lifespan, we're focusing on healthspan. Lifespan is how long you live. Healthspan is how good you live in good health, free of chronic disease and disability. The goal of serious longevity work isn't just to extend life at the end (while we're still frail and sick) but to extend our heathspan by compressing the period of decline and disease into as short a window as possible at the end of a long, functional life. We want to stay as healthy and capably as possible for as long as possible, then decline rapidly at the end instead of enduring a long, drawn-out deterioration.
+
+
+
+Biological Age vs. Chronological Age
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=cbaf77789fc34e8aaf09a9e67b0d739a
+
+Text saved
+
+This is another important distinction we need to make. Chronological age is how many years you've been alive. Biological age is how old your body actually is when we look at the cellular and functional level. Two people of the same age can have very different biological ages depending on genetics, lifestyle, and state of aging hallmarks. Biological age is the thing that we're trying to lower with some of these interventions. When we see that an intervention revered aging by a certain amount of time, it typically means it lowered a biological-age clock reading.
+
+
+
+The 12 Hallmarks of Aging
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=032c189ae71d4814b93a3d4adab3c6f6
+
+Text saved
+
+In 2013, there was a paper in the journal Cell that identified nine "hallmarks of aging" which were measurable biological processes that drive aging. In 2023, the same people published an updated version that expanded it to twelve hallmarks which are the framework for longevity research and what we will use to organize how we understand what to fight. 
+
+To qualify as a hallmark, it has to meet three criteria: appearing during normal aging, experimentally accelerates aging, and therapeutically targeting it slows, stops, or reverses aging. 
+
+There are three categories that these are grouped into. Primary hallmarks are the initial causes of cellular damage. The antagonistic hallmarks are responses to that damage that are beneficial at low levels but harmful when chronic or excessive. Integrative hallmarks are the consequences that arise when the damage goes beyond what the body can compensate for and are most directly responsible for the functional decline of aging. Damage goes from primary to antagonistic to integrative, which is why targeting the primary and antagonistic hallmarks can help to prevent the downstream decline. 
+
+Primary (the damage) 
+
+Genomic instability
+
+Telomere attrition
+
+Epigenetic alterations
+
+Loss of proteostasis
+
+Disabled macroautophagy
+
+Antagonistic (the responses)
+
+Deregulated nutrient-sensing
+
+Mitochondrial dysfunction
+
+Cellular senescence
+
+Integrative (the consequences)
+
+Stem cell exhaustion
+
+Altered intercellular communication
+
+Chronic inflammation
+
+Dysbiosis
+

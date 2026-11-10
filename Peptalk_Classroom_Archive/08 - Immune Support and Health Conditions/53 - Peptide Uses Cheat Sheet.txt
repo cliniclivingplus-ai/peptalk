@@ -1,0 +1,214 @@
+Peptide Uses Cheat Sheet
+
+08 - Immune Support and Health Conditions
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Peptide Uses Cheat Sheet
+
+https://www.skool.com/hacksmithspeptalk/classroom/b4de60b9?md=491f0e3e5cd745e19864897d6a14ce79
+
+Text saved
+
+Peptides
+
+5-Amino-1MQ: Fat loss, insulin sensitivity, energy. It blocks an enzyme called NNMT that burns through NAD inside fat cells, so more NAD stays available. Orally in capsules is my preferred method. It works at the margins of a deficit and does not override what you eat.
+
+Adamax: Memory, focus, neuroprotection, mood stabilization. A nasal spray in the same family as Semax, and reported to be stronger. It works through BDNF, which is a signal that helps neurons grow and survive.
+
+AICAR: Endurance, fatty acid oxidation. It switches on AMPK, the enzyme your cells use to sense that energy is running low, which pushes the body to burn fuel instead of storing it. Cycles are deliberately short here. The most common complaint is fatigue, which catches people off guard for an endurance compound.
+
+AOD-9604: Fat loss. It is the fragment of growth hormone that handles fat metabolism, without the rest of what GH does. That means no IGF-1 rise and no blood sugar effects, which is the safety advantage.
+
+ARA-290: Small fiber neuropathy, chronic inflammation, autoimmune support. It activates the innate repair receptor, which is the tissue protective side of EPO signalling, with none of the blood building effects. So it does not thicken your blood.
+
+BPC-157: Gut health, nerve repair, accelerated healing. It drives angiogenesis, meaning it grows new blood vessels, which is exactly what tendons and ligaments lack. You do not need to inject it at the injury, since it works systemically. Oral is reasonable for gut problems specifically.
+
+Bremelanotide (PT-141): Improved sexual function (men and women), enhanced libido. It works in the brain on melanocortin receptors rather than on blood flow, so it is a different mechanism to the ED drugs people usually take. Taken before activity rather than daily. Nausea and flushing are the usual complaints.
+
+Cagrilintide: Appetite suppression, insulin sensitivity, weight loss. An amylin analog, meaning it copies a hormone released alongside insulin that tells your brain you are full. It titrates up slowly like the GLP-1s do.
+
+CJC-1295 (DAC and no DAC): Muscle growth, recovery, anti-aging, fat loss, sleep. These raise how much growth hormone is available to release, which is a different lever to the ones that trigger the pulse. The DAC version lasts days and is dosed weekly. The no DAC version, Mod-GRF (1-29), is short acting and dosed daily.
+
+DSIP (Delta Sleep Inducing Peptide): Improved sleep, stress reduction, anxiety management. It is less of a sedative and more of a sleep regulator, so people describe better quality rather than falling asleep faster. Taken a couple of hours before bed. Response to this one varies a LOT between people.
+
+Eloralintide: Appetite suppression, weight loss. A selective amylin receptor agonist that went through a Phase 2 obesity trial, dosed once weekly. Doses escalate to improve gut tolerability, same pattern as the GLP-1s.
+
+Epitalon: Cellular health, restore circadian rhythm, immune health, neuroprotection, ocular health. Four amino acids, run in short courses a couple of times a year rather than continuously. Better sleep is the most consistent thing people report.
+
+FOXO4-DRI: Longevity, anti-aging, inflammation reduction, tissue repair and regeneration, cognitive support. A senolytic, which means it is meant to clear out senescent cells. Those are old cells that stop dividing but will not die, and they leak inflammation. Dosed in very short bursts, often only a few days once or twice a year.
+
+GHK-Cu: Collagen production, wound healing, hair growth, wrinkle reduction, loose skin. A copper binding peptide that stimulates collagen and shifts a broad set of genes toward repair. Topical for skin and hair, injectable for systemic effects.
+
+GHK Base (no Cu): Collagen and skin repair, hair growth, tissue remodeling. The same peptide without the copper attached. People use it when they want the signalling without adding to their copper load or have copper sensitivities. 
+
+GHRP-2: Muscle growth, fat loss, recovery. Triggers a growth hormone pulse through the ghrelin receptor. It also can raise cortisol and prolactin, which is the trade off against the cleaner options.
+
+GHRP-6: Muscle growth, fat loss, recovery. Same family and same fasted timing as GHRP-2. The difference people notice is appetite, because this one is notorious for making you ravenous. That is useful if you are trying to eat and a problem if you are not.
+
+Glutathione: Cellular health, liver detoxification, immune support. Your body's main antioxidant, so this is replacing something you already make rather than adding a foreign signal. Injectable absorbs far better than oral. Also used for skin brightening.
+
+Hexarelin: Muscle growth, fat loss, recovery. The strongest GH pulse of the ghrelin receptor group, but also desensitizes fastest. Cycling matters more here than with the others. Raises cortisol and prolactin like GHRP-2 does.
+
+Humanin: Mitochondrial protection, neuroprotection, longevity. A peptide encoded in your mitochondria rather than your main DNA, which is unusual and part of why it is interesting. 
+
+IGF-1 LR3: Muscle growth, bone density, anti-aging. A long acting version of the growth factor that sits downstream of growth hormone, so it does the building directly instead of signalling for it.
+
+Ipamorelin: Muscle growth, fat loss, recovery, enhanced sleep. The cleanest of the GH secretagogues, because it triggers the pulse without dragging cortisol and ACTH up with it. 
+
+Kisspeptin: Fertility (men and women), hormonal balance. It sits upstream of the whole reproductive hormone cascade, telling the brain to release the signals that drive LH and FSH. Because of that, this one is worth running with labs rather than by feel. Dosing varies widely depending on what you are trying to move.
+
+KLOW: Tissue healing, inflammation reduction, hair and skin. A blend rather than a single peptide, combining KPV, GHK-Cu, TB-4 and BPC-157. The logic is hitting gut lining, collagen, inflammation, and tissue repair at once.
+
+KPV: Gut inflammation (IBS, Crohn's, ulcerative colitis), eczema, psoriasis, acne. Three amino acids from the tail of alpha-MSH, carrying most of that hormone's anti-inflammatory activity.
+
+L-Carnitine: Fat loss, muscle endurance and recovery, cognitive support, cardiovascular health. It shuttles fatty acids into the mitochondria so they can be burned. Oral doses are large, injectable doses are much smaller. Taken before fasted training is the usual approach.
+
+Lipo-B: Fat loss, liver health, energy. A lipotropic blend, typically methionine, inositol and choline with B12. These are compounds that help the liver process fat rather than peptides in the strict sense. The B-12 piece of this only really helps if you have a deficiency. 
+
+Lipo-C: Fat loss, liver health, metabolism. The same idea as Lipo-B, without the B-12. 
+
+Liraglutide: Weight loss, diabetes, cardiovascular health. A first generation GLP-1, dosed daily instead of weekly. It has been largely replaced by semaglutide and tirzepatide on both convenience and results.
+
+LL-37: Immune function, wound healing, chronic inflammation, autoimmune issues. An antimicrobial peptide your own immune system makes, active against bacteria, viruses and fungi. Used in short stints rather than continuously. Running it long term risks overstimulating the immune response.
+
+Mazdutide: Weight loss, insulin sensitivity. A dual GLP-1 and glucagon receptor agonist, so it suppresses appetite and raises energy expenditure at the same time.
+
+Melanotan 1: Tanning, UV protection. It stimulates melanin production, so you tan with less sun exposure. More selective than MT-2, which means fewer of the side effects. No meaningful libido or appetite effects.
+
+Melanotan 2: Tanning, UV protection, libido, appetite suppression. Less selective than MT-1, which is both the appeal and the problem. The libido effect is strong and so is the nausea, especially early on. It also darkens existing moles and freckles. 
+
+MK-677: Muscle growth, bone density, anti-aging. Orally active and long acting, which is the main draw since it avoids injections entirely. Expect water retention, appetite increase, and keep an eye on blood sugar.
+
+MOTS-C: Metabolic health, anti-aging, mitochondrial function, increased energy and endurance. Another peptide encoded in the mitochondria. It behaves like an exercise mimetic, improving how cells handle glucose and fuel. Protocols vary a lot, so starting low and assessing is reasonable. 
+
+NAD+: Cellular energy, cognitive function, anti-aging. A coenzyme every cell uses to make energy, and levels fall with age. Injected NAD+ has a reputation for feeling rough if pushed too fast, so the dose builds up over weeks. Morning dosing, because it can be somewhat stimulating.
+
+Oxytocin: Neuromodulation, anti-stress, mood regulation, social bonding. Best known for bonding and childbirth, but it also dampens the stress response. Usually nasal, taken as needed rather than daily.
+
+P-21: Anti-aging, tissue repair, neuroprotection. Built to copy what BDNF does without being BDNF itself, which matters because BDNF does not cross into the brain well. Used for memory and focus.
+
+PE-22-28: Chronic inflammation, pain reduction, neuroinflammation, mood. It blocks a brain sodium channel involved in depression, which is a different route to anything in the SSRI world. Relatively fast action. 
+
+Retatrutide: Weight loss, glycemic control, cardiovascular health (LDL, triglycerides). A triple agonist hitting GLP-1, GIP and glucagon receptors, and the trial weight loss numbers are the highest of the group so far. Titrates up slowly.
+
+Selank: Anxiety, stress, focus, mood regulation. Based on a natural immune peptide, and it calms without sedating, which is the main reason people like it. Works well taken as needed rather than daily. Nasal and injectable both get used.
+
+Semaglutide: Weight loss, diabetes, cardiovascular health. The GLP-1 most people have heard of, dosed weekly with a slow titration. Appetite suppression is the main mechanism and it is strong. Muscle loss is the thing to manage, so protein and resistance training matter here.
+
+Semax: Memory, mental clarity, focus, stress, neurological recovery (TBI, etc). Works through BDNF like Adamax and P-21 do. Best used before the thing that needs the focus, but can be used every day. Nasal is the common route.
+
+Sermorelin: Muscle growth, fat loss, enhanced sleep, anti-aging. A GHRH analog, so it raises how much growth hormone is available to release. Short acting, dosed fasted before bed. The gentlest of the GH options.
+
+SS-31: Anti-aging, cardiovascular health, neuroprotection. It targets cardiolipin, a fat found only in the mitochondrial membrane, and helps those membranes work properly. Fatigue during the course is common and expected.
+
+Survodutide: Weight loss, blood sugar regulation, metabolic support. A dual GLP-1 and glucagon agonist, same broad family as mazdutide.
+
+TB-500 (TB-4): Wound healing, soft tissue repair, joint recovery. It works through actin, the structural protein cells use to move, so repair cells can physically reach an injury. That complements BPC-157, which brings the blood supply. The two together are the most common injury stack there is.
+
+Teriparatide: Bone density restoration, fracture recovery, connective tissue and skeletal support. A fragment of parathyroid hormone. Given intermittently it builds bone, which is the opposite of what constant exposure to that hormone does.
+
+Tesamorelin: Muscle growth, fat loss, enhanced sleep, anti-aging, visceral fat reduction. A GHRH analog like sermorelin, with studies showing efficacy in reducing visceral fat. 
+
+Tesofensine: Weight loss, increased energy. A triple monoamine reuptake inhibitor, which means it keeps dopamine, norepinephrine and serotonin active for longer. Expect effects on heart rate, blood pressure and sleep.
+
+Thymosin Alpha-1: Immune regulation, chronic infections, autoimmune support. It modulates the immune system rather than simply boosting it, which is why it gets used on both infection and autoimmune situations. 
+
+Tirzepatide: Weight loss, diabetes, cardiovascular health. A dual GLP-1 and GIP agonist, and it generally outperforms semaglutide on weight.
+
+Triptorelin: Fertility, prostate cancer treatment. A GnRH agonist. A single pulse can restart the hormonal axis, which is why it shows up in post-cycle protocols, but continuous use shuts the axis down instead.
+
+VIP (Vasoactive Intestinal Peptide): Inflammation, autoimmune, neuroprotection, respiratory issues, cardiovascular health. Effective nasally, and it has a following in the mold illness and CIRS world. It regulates inflammation broadly rather than targeting one tissue.
+
+Bioregulators
+
+Bonomarlot: Hematological health, anti-aging. The bone marrow bioregulator, aimed at the tissue that produces your blood cells.
+
+Bonothyrk: Osteoporosis, calcium imbalances, bone healing. Aimed at the parathyroid, which is the gland that controls how your body handles calcium.
+
+Bronchogen: Lung function, respiratory conditions, chronic bronchitis, asthma. The bronchial tissue bioregulator. 
+
+Cardiogen: Heart disease, cardiac output and function, chronic cardiac condition prevention. The heart muscle bioregulator. 
+
+Cartalax: Joint health, cartilage health. The cartilage bioregulator, and the one compound in this space aimed specifically at the hardest tissue in the body to repair. The framing is maintaining cartilage balance rather than regrowing it.
+
+Cerebrolysin: TBI, vascular dementia, memory, depression, anxiety, ADHD. Not a short bioregulator but a mixture of peptides derived from pig brain tissue.
+
+Cerluten: Cognitive function, memory, neurodegenerative disease prevention, brain health. The brain tissue bioregulator.
+
+Chonluten: Respiratory function, chronic lung conditions, fibrosis. Another lung focused bioregulator, aimed at the bronchial lining.
+
+Crystagen: Immune function, autoimmune issues, chronic illness. An immune bioregulator. 
+
+Endoluten: Anti-aging, circadian rhythm, hormonal balance.
+
+Glandokort: Adrenal fatigue, energy. The adrenal bioregulator.
+
+Gotratix: Muscle recovery, muscle growth. The skeletal muscle bioregulator.
+
+Libidon: Prostate health, libido, hormonal regulation (men), urinary function.
+
+Livagen: Anti-aging, immune support, stress resilience. A broad acting bioregulator rather than a tissue specific one.
+
+Normoftal: Macular degeneration, diabetic retinopathy, vision. 
+
+Ovagen: Liver health, liver detoxification, fat metabolism. Despite the name this one is the liver bioregulator.
+
+Pancragen: Blood sugar regulation, pancreatic function. The pancreas bioregulator.
+
+Pielotax: Kidney function, CKD. The kidney bioregulator.
+
+Pinealon: Memory, neurodegenerative support, mood and stress regulation. A short brain bioregulator, three amino acids, aimed at neuron function. Also can improve sleep. 
+
+Retinalamin: Retinal regeneration, vision, ocular inflammation, uveitis. The retina bioregulator and the one with the most clinical use behind it in that group, particularly in Russia.
+
+Sigumir: Joint health, inflammation reduction, cartilage repair. The cartilage and joint bioregulator, covering similar ground to Cartalax. 
+
+Svetinorm: Liver health, lipid regulation, hepatic encephalopathy. The liver bioregulator, used for both liver function and the lipid side.
+
+Testagen: Testosterone optimization, libido, ED, prostate function, energy. Aimed at supporting your own testosterone production rather than replacing it.
+
+Testoluten: Libido, sperm production, testosterone support, energy. The testicular bioregulator. 
+
+Thymalin: Immune function, autoimmune issues. The thymus bioregulator, and the thymus is the gland that trains your immune cells and shrinks as you age.
+
+Thymogen: Immune function, infection recovery. Another thymus derived option.
+
+Thyreogen: Thyroid function, Hashimoto's thyroiditis, energy, metabolism. The thyroid bioregulator.
+
+Ventfort: Vascular health, atherosclerosis, blood supply, cardiovascular protection. The blood vessel bioregulator.
+
+Vesilut: Bladder issues, urinary control. The bladder bioregulator. Can be used alongside Libidon when urinary symptoms are prostate related.
+
+Vesugen: Cardiovascular health, improved circulation, varicocele. A short vascular bioregulator, three amino acids.
+
+Vladonix: Immune function, autoimmune issues. Another thymus derived immune bioregulator.
+
+Zhenoluten: Fertility (women), PCOS, perimenopause, menopause, fibroids. The ovarian bioregulator and the main female hormone option in this group.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/b4de60b9?md=9e66bbb969e341c484049a04c5a85f7f
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

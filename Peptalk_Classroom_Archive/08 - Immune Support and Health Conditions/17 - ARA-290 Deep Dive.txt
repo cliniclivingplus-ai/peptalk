@@ -1,0 +1,132 @@
+ARA-290 Deep Dive
+
+08 - Immune Support and Health Conditions
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=25b074eb341241449d67b58aa218133d
+
+Text saved
+
+ARA-290 is an 11-amino acid peptide that is derived from erythropoietin (EPO). There is a component of EPO that is tissue-protective and anti-inflammatory and that is the component that is isolated to make ARA-290 to avoid the risks of red blood cell production. 
+
+There is a component that is targeted specifically by ARA-290 to allow it to act preferentially on damaged tissue which is the innate repair receptors (IRR). This deep dive will have a special section dedicated to that so you can better understand how it works and how the benefits may be recognized from ARA because of how that works.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=97f72a2f98194c09b9b595289e0931cb
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+The Innate Repair Receptors
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=6c44a91f29f04cb3ac4755ed89d4e631
+
+Images saved; no lesson text
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=34c05bff3db94f63a5c952c0babac07c
+
+Text saved
+
+Innate Repair Receptor Activation
+
+As mentioned in the previous graphics, the IRR is upregulated in injured and inflamed tissue so ARA-290 will have concentrated activity at those sites of damage. ARA-290 has a short half-life, but once the peptide binds to the receptor, it creates downstream signaling cascades which can give longer-term benefits. So every time you administer a dose, it's going to signal these reparative processes that are going to continue after the peptide itself can clear from your system. 
+
+Downstream Signaling Cascades
+
+Once ARA-290 activates the IRR, it triggers several intracellular signaling pathways that are going to give the benefits that we see:
+
+Anti-apoptotic signaling: the IRR activates the JAK2/STAT5 and PI3K/AKT pathways, which suppress programmed cell death or apoptosis. In injured tissue many cells that would otherwise die from the stress of injury or inflammation are instead rescued. This is really the core 'cytoprotective' effect that allows these at-risk cells to stay alive long enough to go through the recovery process. 
+
+Anti-inflammatory modulation: ARA-290 suppresses pro-inflammatory cytokine cascades and modulates NF-KB signaling, which is that same master inflammatory switch which we talk about in the immune system and other courses. This is going to dampen the activation of innate immune cells that drive chronic inflammation but it's going to do this without broad immunosuppression. What we have here is a rebalance of an overactive inflammatory response rather than just shutting the immune system down, which potentially could have negative effects. 
+
+TRPV1 and neuropathic pain modulation: In neuropathic states we have something called the TRPV1 ion channel, which is going to integrate pain signaling and neurogenic inflammation. This is going to become up-regulated and sensitized in peripheral nerve fibers. What ARA-290 is going to do is interact with this pathway, which is part of how it reduces that neuropathic pain alongside the structural nerve regeneration that it can promote. 
+
+Nerve Fiber Regeneration: Outside of just protecting the existing tissue, ARA-290 actively promotes the regrowth of small nerve fibers. This is really the most surprising and well documented effect, which is observed and measured in clinical trials, showing objective regrowth of nerve fibers, which most of the therapies out there are actually unable to achieve.
+
+
+
+Benefits of ARA-290
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=dd63ecb943734521a66cf2bf08c526ca
+
+Text saved
+
+A lot of the benefits that we see with ARA-290 actually come from Phase 2 clinical trials. I'm going to break them down in order of the quality of evidence that we have for these benefits, starting with the neuropathy and nerve components. 
+
+Small Fiber Neuropathy and Nerve Regeneration
+
+This is really the primary application for this compound and has some pretty strong data to support it.
+
+Small fiber neuropathy is a condition where the small nerve fibers, the unmyelinated C fibers and lightly myelinated A delta fibers that are responsible for sensing pain, temperature, and autonomic function, are going to become damaged and die back. What this ends up causing is a burning pain, numbness, tingling, and autonomic dysfunction. Most of the time these conventional treatments are really just limited to masking the symptoms because nothing is really able to regrow those lost nerve fibers. 
+
+The ARA-290's evidence comes from a double-blind randomized placebo trial where they looked at 64 patients with sarcoidosis-associated small fiber neuropathy. The patients got either 1 mg, 4 mg, or 8 mg of the compound or they were on a placebo and they were given it subcutaneously for 28 days.
+
+What they saw was that a 4 mg dose produced a significant increase in corneal nerve fiber area versus the placebo group and had about a 23% increase from baseline, which shows a pretty good measurable nerve growth. That same dosage also significantly increased skin nerve fiber length and the patients reported clinically meaningful reductions in pain, which is really a huge win because the pain is the most miserable component of this. 
+
+One thing that's interesting with this is that the 4 mg dose is actually what produces the strongest nerve response. In this case more doesn't really seem like it's actually better. 
+
+Diabetic Neuropathy and Metabolic Effects
+
+They did another placebo-controlled trial where they administered 4 mg of ARA-290 daily for 28 days to patients with type 2 diabetes. Outside of just the neuropathic symptom improvement, they actually noticed that there were some improvements in HbA1c, which is a marker of long-term blood sugar control, as well as lipid profile, with really no safety signals that were associated with this. This suggests that the IRR's anti-inflammatory and tissue protective effects might actually branch out into metabolic regulation, potentially through reducing chronic inflammation that can drive insulin resistance. This is something that they found that actually is going to need some more studies to determine exactly. 
+
+Diabetic neuropathy is really the most common and difficult complication that's associated with diabetes and the same way with sarcoidosis-related neuropathy. The conventional treatments are really just masking and managing symptoms but the nerve regeneration component is relevant here because the metabolic improvements are also an added bonus that makes sense with the overall anti-inflammatory mechanism of this compound. 
+
+Anti-Inflammatory and Autoimmune
+
+ one of the things that ARA-290 can do is calm overactive inflammatory responses without suppressing the entire immune system, and so this may actually help with some of the inflammatory autoimmune conditions. Now this is going to be different than the standard way that you would have treatments for these issues with conventional immunosuppressants, which are going to blanket suppress the entire immune function and also cause a potential risk for infection. What ARA-290 does is to help to rebalance the innate immune cell activation and tone down some of that chronic damaging inflammation while leaving the normal immune defense more intact. The sarcoidosis application kind of explains this a bit since sarcoidosis is an immune dysregulation disease. The anti-inflammatory mechanism is really going to make this be a good candidate for a lot of conditions that are driven by chronic inflammation. 
+
+Organ and Vascular Protection
+
+Some of the pre-clinical and mechanistic data surrounding ARA-290 suggests that it might protect the kidney, heart, and lungs against ischemic (which is low blood flow or inflammatory injury) through the same anti-apoptotic, cytoprotective IRR signaling. It can also help with something called endothelial health, which is the function of the cells lining blood vessels, which is relevant to microcirculation and vascular repair. This is more early-stage applications than some of the neuropathy data but this kind of fits into the overall picture of the compound that is going to help protect stressed tissue wherever the IRR is upregulated.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=c1d6b8b5b9b842bda3b4b9fc151dd2c6
+
+Text saved
+
+Across the phase 2 trials whether it was for the sarcoidosis-associated small fiber neuropathy or type 2 diabetes, the standard protocol was 4 mg subcutaneously once per day for 28 days. They did study it at 1, 4, and 8 mg but the 4 mg dose did produce the strongest nerve fiber response even better than the higher 8 mg dose. Some of the ophthalmic trials also extended the treatment to 12 weeks at 4 mg a day without safety issues and so really the most optimal dosage for this is going to be 4 mg a day. 
+
+Now there are people who have benefits using smaller dosages. I've seen people have benefits around 1 mg. However some people do have to increase the dosage up to something like 2 or even 4 mg before they start to really recognize the benefit. 
+
+As a cost savings measure it may be reasonable to start somewhere like 1 mg and work up over time but the more effective dosages are likely going to be in that 2 to 4 mg range.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=d01aaea4e61b400ab974ffe5f04d1354
+
+Text saved
+
+ARA-290 has a pretty clean safety profile and is backed by human trial data. Across the Phase 2 trials there were really no significant safety issues that were observed at any of the doses that were tested, even the 8 mg dose. 
+
+The biggest key safety component of this is that there are no erythropoietic effects and it doesn't stimulate red blood cell production. That's really the entire reason that this compound was designed: it selectively avoids the risk of EPO while taking all of the benefits towards healing. 
+
+Now some of the side effects that people might experience are:
+
+Injection Site Reactions: as always this can occur with any compound that is being injected. 
+
+Hypoglycemia: this one is unlikely to happen but for somebody who's using a GLP or some other compound, it's important to understand that this may also bring down blood sugar and so it's important to track and manage that appropriately. 
+
+One caveat that I want to mention is that you probably should avoid it with any type of active cancer because it can help to keep alive some of those cells, like we mentioned earlier with the anti-apoptotic signaling. You would not want to protect any type of malignant cells from the cell death that they should be experiencing.
+

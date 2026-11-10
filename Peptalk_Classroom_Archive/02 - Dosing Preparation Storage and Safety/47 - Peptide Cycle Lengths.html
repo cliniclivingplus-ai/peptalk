@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peptide Cycle Lengths</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #2D2F39;
+  background-color: #FFFFFF;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem 2rem;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111116;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #111116;
+  letter-spacing: -0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111116;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7F66FF;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+p {
+  margin-bottom: 1rem;
+}
+a {
+  color: #7F66FF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: #583EDB;
+  text-decoration: underline;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid #EAEAF2;
+  margin: 1.25rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: block;
+}
+nav {
+  background-color: #F8F9FD;
+  border: 1px solid #EAEAF2;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0 2.5rem 0;
+}
+nav strong {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7F66FF;
+  margin-bottom: 0.85rem;
+  font-weight: 800;
+}
+nav ol {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+nav li {
+  font-size: 0.95rem;
+  color: #5E6070;
+}
+nav a {
+  color: #111116;
+  font-weight: 600;
+}
+nav a:hover {
+  color: #7F66FF;
+}
+section {
+  border-top: 1px solid #EAEAF2;
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+ul, ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+li {
+  margin-bottom: 0.45rem;
+  line-height: 1.65;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 1px solid #EAEAF2;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+th {
+  background-color: #F1EEFE;
+  color: #7F66FF;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #D8D1FC;
+}
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #F0F1F6;
+  color: #2D2F39;
+}
+tr:hover td {
+  background-color: #FAF9FE;
+}
+pre {
+  background-color: #F8F9FD;
+  border: 1px solid #EAEAF2;
+  border-left: 4px solid #7F66FF;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.94rem;
+  color: #111116;
+  margin: 1.25rem 0;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #7F66FF;
+  background-color: #F1EEFE;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0 10px 10px 0;
+  margin: 1.25rem 0;
+  color: #333644;
+  font-style: italic;
+}
+.note {
+  display: none !important;
+}
+details {
+  background: #F8F9FD;
+  border: 1px solid #EAEAF2;
+  border-radius: 10px;
+  padding: 0.85rem 1.15rem;
+  margin: 1.25rem 0;
+}
+summary {
+  font-weight: 700;
+  color: #7F66FF;
+  cursor: pointer;
+  outline: none;
+}
+</style><body><h1>Peptide Cycle Lengths</h1><p>02 - Dosing Preparation Storage and Safety</p><nav><strong>Lessons</strong><ol><li><a href="#lesson-0">Overview</a></li><li><a href="#lesson-1">What is Peptide Cycling?</a></li><li><a href="#lesson-2">5-Amino-1MQ</a></li><li><a href="#lesson-3">Adamax</a></li><li><a href="#lesson-4">AOD 9604</a></li><li><a href="#lesson-5">ARA-290</a></li><li><a href="#lesson-6">BPC-157</a></li><li><a href="#lesson-7">PT-141 (Bremelanotide)</a></li><li><a href="#lesson-8">Cagrilintide</a></li><li><a href="#lesson-9">CJC-1295 w/ DAC</a></li><li><a href="#lesson-10">DSIP (Delta Sleep Inducing Peptide)</a></li><li><a href="#lesson-11">Epitalon</a></li><li><a href="#lesson-12">FOXO4 DRI</a></li><li><a href="#lesson-13">GHK-Cu</a></li><li><a href="#lesson-14">GHRP-2 and GHRP-6</a></li><li><a href="#lesson-15">Glutathione</a></li><li><a href="#lesson-16">Hexarelin</a></li><li><a href="#lesson-17">IGF-1 LR3</a></li><li><a href="#lesson-18">Ipamorelin</a></li><li><a href="#lesson-19">KLOW / GLOW</a></li><li><a href="#lesson-20">KPV</a></li><li><a href="#lesson-21">L-Carnitine</a></li><li><a href="#lesson-22">LL-37</a></li><li><a href="#lesson-23">Mazdutide</a></li><li><a href="#lesson-24">Melanotan 1 and 2</a></li><li><a href="#lesson-25">Mod-GRF (1-29)(CJC no DAC)</a></li><li><a href="#lesson-26">MOTS-C</a></li><li><a href="#lesson-27">NAD+</a></li><li><a href="#lesson-28">P-21</a></li><li><a href="#lesson-29">PE-22-28</a></li><li><a href="#lesson-30">Retatrutide</a></li><li><a href="#lesson-31">Selank</a></li><li><a href="#lesson-32">Semaglutide</a></li><li><a href="#lesson-33">Semax</a></li><li><a href="#lesson-34">Sermorelin</a></li><li><a href="#lesson-35">SS-31</a></li><li><a href="#lesson-36">Survodutide</a></li><li><a href="#lesson-37">TB-500 (Thymosin Beta-4)</a></li><li><a href="#lesson-38">Tesamorelin</a></li><li><a href="#lesson-39">Thymosin Alpha-1 (TA-1)</a></li><li><a href="#lesson-40">Tirzepatide</a></li><li><a href="#lesson-41">VIP (Vasoactive Intestinal Peptide)</a></li><li><a href="#lesson-42">Legal &amp; Disclaimer</a></li></ol></nav><section id="lesson-0"><h2>Overview</h2><p>This course will go over different peptides and their common cycle lengths. I will also try to explain some of why they are used for that amount of time and why it may be important to come off. </p></section><section id="lesson-1"><h2>What is Peptide Cycling?</h2><p>A peptide cycle is talking about the length of time that you are using a peptide (or multiple peptides) followed by a scheduled break from those compounds. </p><p><strong>Why Cycling Matters: </strong></p><ul><li><p>Prevent Diminishing Returns - In some cases, different peptides may lose their effectiveness overtime due to receptor downregulation. By cycling, you can keep those fresh and mitigate this issue. </p></li><li><p>Safety - Cycling can help mitigate the risk of long-term side effects depending on the compound. Things like blood pressure issues, insulin resistance, or immune suppression. </p></li><li><p>System Reset - This can be viewed similarly to the diminishing returns, but sometimes you just have to give your body a break. Often times, you will feel like you have better results again once you start back. </p></li><li><p>Cost Effectiveness - In my opinion, this is an important one. Often times, in an off-cycle, you can keep or retain a lot of the benefits you had before. Why not save a few bucks during that time? </p></li></ul><p><strong>Cycle Terms: </strong></p><ul><li><p>On-Cycle: The time that you are using a peptide (ranges from days to months)</p></li><li><p>Off-Cycle: The time that you are taking a break from using a peptide. Many will be within the 2-8 week range. </p></li><li><p>Tapering: This doesn't have to happen, but it can refer to gradually lowering the dose when you're coming off instead of quitting cold turkey. </p></li></ul></section><section id="lesson-2"><h2>5-Amino-1MQ</h2><p>5-Amino-1MQ inhibits NNMT and, as a result, boosts NAD+ and enhances metabolic performance. </p><p>Uses: </p><ul><li><p>Fat loss</p></li><li><p>Energy Production</p></li><li><p>Anti-Aging</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-12 weeks</p></li><li><p>Off-Cycle: 2-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Cost effectiveness</p></li><li><p>Mitigate potential adaptation and diminishing returns</p></li></ul></section><section id="lesson-3"><h2>Adamax</h2><p>Adamax is an analog of Semax with an adamantane group that can increase BDNF levels and improve cognitive performance. </p><p>Uses: </p><ul><li><p>Neurplasticity</p></li><li><p>Cognitive Enhancement</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 6-12 weeks</p></li><li><p>Off-Cycle: 2-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Maintain BDNF receptor responsiveness</p></li><li><p>Cost efficiency</p></li></ul></section><section id="lesson-4"><h2>AOD 9604</h2><p>AOD-9604 is a modified fragment of human growth hormone (176-191) that stimulates lipolysis. </p><p>Uses: </p><ul><li><p>Fat Loss</p></li><li><p>Weight Loss Stalls</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-12 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Cost effectiveness</p></li><li><p>Ability to use in another stall</p></li></ul><p>Thoughts: </p><p>AOD is great to introduce to break a stall. Another way this could be used is to introduce it to break a stall. Once the stall is broken, come off and save for the next one. </p></section><section id="lesson-5"><h2>ARA-290</h2><p>ARA-290 is derived from erythropoietin (EPO) and targets innate repair receptors (IRR) to help reduce inflammation and promote tissue regeneration. </p><p>Uses: </p><ul><li><p>Small Fiber Neuropathy</p></li><li><p>Tissue Repair</p></li><li><p>Pain Modulation</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent overstimulation of repair receptors</p></li></ul></section><section id="lesson-6"><h2>BPC-157</h2><p>BPC-157 is a peptide derived from gastric proteins and promotes angiogenesis, accelerate healing, and reduce inflammation. </p><p>Uses: </p><ul><li><p>Gut Health (IBS, etc)</p></li><li><p>Tendon, Ligament, and Muscle healing</p></li><li><p>Anti-Inflammatory</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Avoid unnecessary continuous use</p></li><li><p>Cost effectiveness</p></li></ul></section><section id="lesson-7"><h2>PT-141 (Bremelanotide)</h2><p>PT-141 is a melanocortin receptor agonist that can enhance sexual arousal and libido. </p><p>Uses: </p><ul><li><p>Increased libido (men and women)</p></li><li><p>Erectile Dysfunction</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: As needed or 2-3x weekly for 4-6 weeks. </p></li><li><p>Off-Cycle: 1-2 weeks. </p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Maintain effectiveness</p></li></ul></section><section id="lesson-8"><h2>Cagrilintide</h2><p>Cagrilintide is an amylin analogue that works by slowing gastric emptying and reducing food intake. </p><p>Uses: </p><ul><li><p>Appetite Suppression</p></li><li><p>Weight Loss</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-6 weeks</p></li><li><p>Tapering: Could be useful to mitigate appetite rebound</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent adaptation of appetite suppression</p></li><li><p>Cost effectiveness</p></li></ul></section><section id="lesson-9"><h2>CJC-1295 w/ DAC</h2><p>CJC-1295 w/ DAC is a long-acting growth hormone releasing hormone analogue that stimulates the pituitary to release growth hormone. The addition of DAC extends the half-life of the compound. </p><p>Uses: </p><ul><li><p>Muscle Growth and Recovery</p></li><li><p>Fat Loss</p></li><li><p>Anti-Aging</p></li><li><p>Sleep Improvement</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Allow IGF levels to return to baseline</p></li></ul></section><section id="lesson-10"><h2>DSIP (Delta Sleep Inducing Peptide)</h2><p>DSIP is a neuropeptide that helps with sleep regulation by promoting deep sleep and reducing stress-related cortisol spikes. </p><p>Uses: </p><ul><li><p>Improved Sleep Quality</p></li><li><p>Stress Reduction</p></li><li><p>Anxiety Relief</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks (can vary from this)</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent adaptation</p></li><li><p>Sleep improvement may be longer lasting even off-cycle</p></li><li><p>Maintain responsiveness</p></li></ul></section><section id="lesson-11"><h2>Epitalon</h2><p>Epitalon activates telomerase and can support pineal gland function and regulate circadian rhythm. </p><p>Uses: </p><ul><li><p>Anti-Aging and Longevity</p></li><li><p>Sleep Improvement</p></li><li><p>Cellular Repair</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle:10-20 days (1-2x yearly)</p></li><li><p>Off-Cycle: 4-6 months</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent unnecessary overuse </p></li></ul></section><section id="lesson-12"><h2>FOXO4 DRI</h2><p>FOXO4-DRI is a senolytic peptide that causes senescent (non-functional, aging) cells to undergo apoptosis without harming healthy cells. </p><p>Uses: </p><ul><li><p>Anti-Aging and Longevity</p></li><li><p>Tissue Regeneration</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 5-10 days</p></li><li><p>Off-Cycle: 6+ months (as needed)</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Occasional dosing is sufficient</p></li><li><p>Reduces risk of off-target effects</p></li></ul></section><section id="lesson-13"><h2>GHK-Cu</h2><p>GHK-Cu is a copper-binding peptide that can promote collagen production and tissue remodeling. </p><p>Uses: </p><ul><li><p>Collagen and Skin Repair</p></li><li><p>Hair Growth</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 2-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent copper buildup</p></li><li><p>Cost effectiveness</p></li><li><p>Allow benefits to continue in the off-cycle</p></li></ul></section><section id="lesson-14"><h2>GHRP-2 and GHRP-6</h2><p>GHRP-2 and GHRP-6 are growth-hormone releasing peptides that stimulates growth hormone by binding to the ghrelin receptor. </p><p>Uses: </p><ul><li><p>Growth Hormone Pulse</p></li><li><p>Muscle Growth and Recovery</p></li><li><p>Anti-Aging</p></li><li><p>Appetite Stimulation</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Maintain GH response over time</p></li></ul></section><section id="lesson-15"><h2>Glutathione</h2><p>Glutathione is a tripeptide that supports detoxification, reduces oxidative and can help with immune regulation. </p><p>Uses: </p><ul><li><p>Antioxidant Support</p></li><li><p>Liver Detoxification</p></li><li><p>Immune System Regulation</p></li><li><p>Skin Brightening</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 2-12 weeks (can be used longer term)</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Cost effectiveness</p></li><li><p>Not necessary depending on goals</p></li></ul></section><section id="lesson-16"><h2>Hexarelin</h2><p>Hexarelin is a GHRP that stimulates GH release. </p><p>Uses: </p><ul><li><p>Muscle Growth and Strength</p></li><li><p>Fat Loss</p></li><li><p>Sleep Improvement</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 6-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Minimize receptor desensitization</p></li><li><p>Preserve GH responsiveness</p></li></ul></section><section id="lesson-17"><h2>IGF-1 LR3</h2><p>IGF-1 LR3 is a long-acting analog of insulin-like growth factor 1 that promotes muscle growth by increasing cell differentiation and protein synthesis. </p><p>Uses: </p><ul><li><p>Muscle Growth</p></li><li><p>Fat Loss</p></li><li><p>Recovery</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Reduce risk of hypoglycemia</p></li><li><p>Avoid suppression of IGF-1 production</p></li></ul></section><section id="lesson-18"><h2>Ipamorelin</h2><p>Ipamorelin is a GHRP that stimulates growth hormone release that binds to the Ghrelin receptor. </p><p>Uses: </p><ul><li><p>Muscle Growth and Recovery</p></li><li><p>Fat Loss</p></li><li><p>Anti-Aging and Longevity</p></li><li><p>Sleep Support</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor downregulation</p></li><li><p>Maintain GH pulse sensitivity</p></li></ul></section><section id="lesson-19"><h2>KLOW / GLOW</h2><p>KLOW and GLOW are a peptide combo that target inflammation, injury repair, and tissue regeneration. The addition of KPV into KLOW can also help with immune modulation, eczema, psoriasis, and acne. </p><p>Uses: </p><ul><li><p>Tissue Healing</p></li><li><p>Inflammation Reduction</p></li><li><p>Hair and Skin</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-12 weeks (I prefer 4-8 weeks)</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Allow benefits to continue post use</p></li><li><p>Cost effectiveness</p></li></ul></section><section id="lesson-20"><h2>KPV</h2><p>KPV is a tripeptide that can give anti-inflammatory benefits, immune modulation, and assist with gut inflammation. </p><p>Uses: </p><ul><li><p>Gut Inflammation (IBS, Crohn's)</p></li><li><p>Skin Conditions (eczema, psoriasis, acne)</p></li><li><p>Inflammation</p></li><li><p>Immune Regulation</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 2-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent over-suppression of natural immune signaling</p></li><li><p>Optimize effectiveness</p></li></ul></section><section id="lesson-21"><h2>L-Carnitine</h2><p>L-Carnitine is an amino acid derivative that can transport fatty acids to the mitochondria for energy production. </p><p>Uses: </p><ul><li><p>Fat Loss</p></li><li><p>Energy and Athletic Performance</p></li><li><p>Recovery</p></li><li><p>Mitochondrial Function</p></li><li><p>Cardiovascular Health</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 6-12 weeks (can be ran longer term)</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent dependency</p></li><li><p>Use when really needed for maximum results</p></li></ul></section><section id="lesson-22"><h2>LL-37</h2><p>LL-37 is an antimicrobial peptide that can help with immune defense and has antiviral and antifungal properties. </p><p>Uses: </p><ul><li><p>Chronic Infections (bacterial, viral, and fungal)</p></li><li><p>Immune System Modulation</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 2-4 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Minimize immune overstimulation</p></li><li><p>Use for acute treatment of issues</p></li></ul></section><section id="lesson-23"><h2>Mazdutide</h2><p>Mazdutide is a GLP and there really is no cycle. If cycle is desired, it would be used to achieve the desired results and then a lifestyle change is required to maintain the weight/fat loss results after. I would do a minimum of 16 week cycles if I was cycling. </p></section><section id="lesson-24"><h2>Melanotan 1 and 2</h2><p>Melanotan stimulated melanocortin receptors to promote skin pigmentation and tanning. </p><p>Uses: </p><ul><li><p>Tanning and UV Protection</p></li><li><p>Libido Increase (MT2)</p></li><li><p>Appetite Suppression (MT2)</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks</p></li><li><p>Off-Cycle: 8-12 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>You will get insanely dark if you run this for a long period of time. People do not realize how tan they are and sometimes will look like you've spent your whole life in a tanning bed. </p></li><li><p>Avoid overstimulation of system</p></li></ul></section><section id="lesson-25"><h2>Mod-GRF (1-29)(CJC no DAC)</h2><p>CJC-1295 no DAC is a short-acting growth hormone releasing hormone analogue that stimulates the pituitary to release growth hormone. The absence of DAC shortens the half-life of the compound. </p><p>Uses: </p><ul><li><p>Muscle Growth and Recovery</p></li><li><p>Fat Loss</p></li><li><p>Anti-Aging</p></li><li><p>Sleep Improvement</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Allow IGF levels to return to baseline</p></li></ul></section><section id="lesson-26"><h2>MOTS-C</h2><p>MOTS-C is a mitochondrial peptide that can help with metabolic flexibility, insulin sensitivity, energy, and fat oxidation. </p><p>Uses: </p><ul><li><p>Metabolic Health</p></li><li><p>Fat Loss</p></li><li><p>Energy</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent tolerance</p></li><li><p>Cost effectiveness</p></li></ul></section><section id="lesson-27"><h2>NAD+</h2><p>NAD+ (Nicotinamide Adenine Dinucleotide) is a coenzyme that helps with energy production, DNA repair, and cell signaling and can replenish depleted stores in the body. </p><p>Uses: </p><ul><li><p>Cellular Energy</p></li><li><p>Cognitive Function</p></li><li><p>Anti-Aging</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-12 weeks (can be run longer term)</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Allow the body's natural processes to resume</p></li><li><p>Cost effectiveness</p></li><li><p>Desensitization to effects</p></li></ul></section><section id="lesson-28"><h2>P-21</h2><p>P-21 is a nootropic peptide that can help with memory, focus, and neuroplasticity. </p><p>Uses: </p><ul><li><p>Memory Enhancement</p></li><li><p>Focus and Mental Clarity</p></li><li><p>Neuroprotection</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Allow brain to "reset" in regards to BDNF</p></li><li><p>Prevent desensitization to use during times where needed for maximum benefit</p></li></ul></section><section id="lesson-29"><h2>PE-22-28</h2><p>PE-22-28 is a peptide that can provide antidepressant effects and promote neurogenesis. </p><p>Uses: </p><ul><li><p>Depression and Mood Support</p></li><li><p>Anxiety Reduction</p></li><li><p>Neurogenesis</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-6 weeks</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent adaptation</p></li><li><p>Provide targeted treatment for issues as needed and allow for continued benefits off cycle</p></li></ul></section><section id="lesson-30"><h2>Retatrutide</h2><p>Retatrutide is a GLP and there really is no cycle. If cycle is desired, it would be used to achieve the desired results and then a lifestyle change is required to maintain the weight/fat loss results after. I would do a minimum of 16 week cycles if I was cycling. </p></section><section id="lesson-31"><h2>Selank</h2><p> Selank is a nootropic peptide that can help with mood, anxiety, and depression and generally does note create dependence. </p><p>Uses: </p><ul><li><p>Anxiety</p></li><li><p>Stress Relief</p></li><li><p>Depression</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Avoid receptor adaptation and allow maximum results when using</p></li><li><p>Assess baseline mood and anxiety after a period of use</p></li></ul></section><section id="lesson-32"><h2>Semaglutide</h2><p>Semaglutide is a GLP and there really is no cycle. If cycle is desired, it would be used to achieve the desired results and then a lifestyle change is required to maintain the weight/fat loss results after. I would do a minimum of 16 week cycles if I was cycling. </p></section><section id="lesson-33"><h2>Semax</h2><p>Semax is a nootropic peptide that can help increase focus and recover from neurological stress. </p><p>Uses: </p><ul><li><p>Cognitive enhancement</p></li><li><p>Focus and Mental Clarity</p></li><li><p>Neuroprotection</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 2-4 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Avoid diminishing returns</p></li><li><p>Use during times of cognitive demand for maximum effects</p></li></ul></section><section id="lesson-34"><h2>Sermorelin</h2><p>Sermorelin is an analogue of growth hormone-releasing hormone that stimulates the pituitary gland to release more growth hormone. </p><p>Uses: </p><ul><li><p>Muscle Growth and Recovery</p></li><li><p>Better Sleep Quality</p></li><li><p>Anti-Aging</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Preserve responsiveness</p></li></ul></section><section id="lesson-35"><h2>SS-31</h2><p>SS-31 is a mitochondria peptide that can help mitochondrial function and reduce oxidative stress, improve energy, and fix age-related mitochondrial decline. </p><p>Uses: </p><ul><li><p>Mitochondrial Health and Energy</p></li><li><p>Anti-Aging and Longevity</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: Use until 50mg is reached. Can be ran at lower amounts for longer periods of time. 4-8 weeks at low doses is sufficient typically. </p></li><li><p>Off-Cycle: 2-4 times per year, break for 4-6 weeks between cycles</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Cost effectiveness</p></li><li><p>Benefits achieved without running long-term</p></li></ul></section><section id="lesson-36"><h2>Survodutide</h2><p>Survodutide is a GLP and there really is no cycle. If cycle is desired, it would be used to achieve the desired results and then a lifestyle change is required to maintain the weight/fat loss results after. I would do a minimum of 16 week cycles if I was cycling. </p></section><section id="lesson-37"><h2>TB-500 (Thymosin Beta-4)</h2><p>TB-500 is a peptide that can promote tissue repair, angiogenesis, and inflammation reduction in soft tissue, tendons, and ligaments. </p><p>Uses: </p><ul><li><p>Muscle and Tendon Repair</p></li><li><p>Injury Recovery</p></li><li><p>Inflammation Reduction</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Benefits achieved and can last through off-cycle periods</p></li><li><p>Allow natural healing to continue to occur</p></li></ul></section><section id="lesson-38"><h2>Tesamorelin</h2><p>Tesamorelin is a synthetic GHRH analogue that stimulates the pituitary gland to increase growth hormone secretion. </p><p>Uses: </p><ul><li><p>Visceral Fat Reduction</p></li><li><p>Muscle Growth and Fat Loss</p></li><li><p>Anti-Aging</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 8-16 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent receptor desensitization</p></li><li><p>Cost effectiveness</p></li></ul></section><section id="lesson-39"><h2>Thymosin Alpha-1 (TA-1)</h2><p>Thymosin Alpha-1 is a peptide that can help with immune regulation, T-cell production, and inflammation modulation. </p><p>Uses: </p><ul><li><p>Immune System Regulation</p></li><li><p>Chronic Infections</p></li><li><p>Autoimmune Support</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 2-8 weeks</p></li><li><p>Off-Cycle: 4-16 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Prevent immune system overstimulation</p></li><li><p>Use during times of need (sicknesses and infections) and allow natural immune responses to function after</p></li></ul></section><section id="lesson-40"><h2>Tirzepatide</h2><p>Tirzepatide is a GLP and there really is no cycle. If cycle is desired, it would be used to achieve the desired results and then a lifestyle change is required to maintain the weight/fat loss results after. I would do a minimum of 16 week cycles if I was cycling. </p></section><section id="lesson-41"><h2>VIP (Vasoactive Intestinal Peptide)</h2><p>VIP is a neuropeptide that helps regulate inflammation, lung health, blood pressure, cardiovascular function, and immune function. </p><p>Uses: </p><ul><li><p>Inflammation</p></li><li><p>Lung Health</p></li><li><p>Cardiovascular Function</p></li><li><p>Cognitive Function</p></li></ul><p>Cycle Length: </p><ul><li><p>On-Cycle: 4-8 weeks</p></li><li><p>Off-Cycle: 4-8 weeks</p></li><li><p>Tapering: Not required</p></li></ul><p>Why Cycle? </p><ul><li><p>Maximize results during periods of need</p></li></ul></section><section id="lesson-42"><h2>Legal &amp; Disclaimer</h2><p>Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.</p><p>Not Medical Advice — Disclaimer</p><p>The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.</p><p>Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.</p><p>Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.</p><p>Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.</p><p>Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.</p><p>To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.</p></section></body></html>

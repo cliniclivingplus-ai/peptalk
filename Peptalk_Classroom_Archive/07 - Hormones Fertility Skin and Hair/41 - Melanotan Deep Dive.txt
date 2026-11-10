@@ -1,0 +1,150 @@
+Melanotan Deep Dive
+
+07 - Hormones Fertility Skin and Hair
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=8510b9977290430a8367648620ab3595
+
+Text saved
+
+Melanotan 1 and Melanotan 2 are synthetic analogues of alpha-melanocyte-stimulating hormone (a-MSH) which is a naturally occurring peptide that your body produces in the pituitary gland and can help regulate skin pigmentation, sexual function, appetite, and pain responses. They were originally developed at the University of Arizona in the 80s and 90s for photoprotection by creating something that could stimulate tanning without the need for UV exposure which would theoretically reduce skin cancer risk. 
+
+One thing that is important to understand is that there is a whole system of melanocortin receptors within the body that can be activated. They're found throughout the body and have pretty diverse functions like skin pigmentation, sexual arousal, appetite suppression, inflammation, and compulsive behavior.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=afebcb852cc3404cae30b28eb7532359
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+The Melanocortin Receptors (Mechanism)
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=48fdb8dbd8d34b8ea57270143251f282
+
+Text saved
+
+Melanotan 1 and Melanotan 2 have some pretty distinct differences. Melanotan 1 is more selective than Melanotan 2 and primarily targets the MC1R (melanocortin 1 receptor) which is the receptor that is responsible for melanin production in your skin. MT-2 is less selective and hits all of the melanocortin receptors which is why you have the changes in libido and appetite changes, as well as worse side effects that come alongside of it. MT-1 also targets the MC1R receptor the same as afemelanotide (which is FDA approved for specific uses under the name Scenesse) and has the same chemical structure, but with different dosages and methods of administration (afemelanotide is an implant). Melanotan 2 is not approved in any capacity, but the sexual benefits of it were isolated and approved as the compound bremelanotide (PT-141) and is sold under the name Vyleesi. 
+
+
+
+
+
+
+
+Now there are technically 5 melanocortin receptors, but I'm going to give you an overview of 1-4. 
+
+MC1R - This is primarily located in skin melanocytes and immune cells and is responsible for melanin production (tanning) and some anti-inflammatory signaling. 
+
+MC2R - This is located in the adrenal glands and is responsible for cortisol production. 
+
+MC3R - This is located in the hypothalamus and the gut and is responsible for energy balance, appetite, and inflammation regulation. 
+
+MC4R - This is located in the hypothalamus and the brainstem and is responsible for appetite suppression, sexual function, and cardiovascular regulation. 
+
+Melanotan 2 activates all of the receptors except for MC2R as it responds to ACTH instead of a-MSH analogues (which melanotan is), where as Melanotan 1 primarily is selective towards MC1R. Below I will discuss how each of these receptors are activated and ultimately dictate specific outcomes: 
+
+Tanning and MC1R Activation - When the MC1R is activated on melanocytes (the cells that produce pigment) it signals the body to increase the production of something called eumelanin which is the dark brown-black pigment that is responsible for the protective, darkening tanning response. This is different than the reddening you may have when you're strictly exposed solely to UV. The melanocortin pathway actually produces a constitutive tan which is basically your "base tan" or skin color that gives you photoprotection from eumelanin's ability to absorb UV radiation. Once you understand this, you realize why these were developed for photoprotective properties and can be used for EPP which is a severe sensitivity to sun exposure. 
+
+Sexual Function and MC4R Activation - The MC4R in the hypothalamus are involved in sexual arousal in both men and women. When MT-2 activates this receptor, it produces pro-erectile signaling through the central nervous system. This increases nitric oxide production in penile tissue and activates the autonomic pathways to increase sexual arousal which is also what causes the libido-enhancing effects in men and women outside of MC4R receptor activation. This is the mechanism that was isolated within PT-141 to provide that benefit. 
+
+Appetite Suppression and MC3/MC4R Activation - Both MC3 and MC4R are involved in energy homeostasis. MC4R is actually targeted by a compound called setmelanotide which is an FDA-approved compound for obesity that is caused by MC4R pathway defects. When MT-2 activates this receptor, it can cause appetite suppression and reduce hunger signals for several hours after an injection. Not everyone will experience the same level of appetite suppression with this compound, but in some cases it can be significant enough to lead to a good bit of calorie restriction and compound itself with nausea. 
+
+Compulsive Behavior and Autism - Now this one is interesting, but likely not something I would specifically use MT-2 for. There are some studies where MC4R activation can regulate reward circuitry and may potentially suppress drug-seeking behavior where melanocortin agonists could be used for addiction treatment. There are also some studies where MT-2 may reverse some autistic social features in animal models.
+
+
+
+Benefits of Melanotan
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=0c93653c5a0d4bbd9c3c8170caee3f20
+
+Text saved
+
+Tanning and Photoprotection (Both) - The tanning effect was the original goal of both of these peptides. Both of them will produce a deep tan through eumelanin production that is more photoprotective than a tan that comes strictly from UV as eumelanin is produced with these compounds instead of phaeomelanin which is less protective. The tan will typically start to develop over 1-2 weeks (sometimes within 1-2 days) and can last for months after stopping. The melanin pigment is retained within the skin cells until they turn over. Now, this is able to do this in some capacity without UV, which is why it is used for conditions like EPP where people have extreme UV sensitivity. However, if you want to get the best results out of it, some sun exposure is going to give more tanning benefits. These compounds don't completely eliminate DNA damage, but can help protect against it in some capacity with the eumelanin absorbing some of the UV before it reaches your DNA. 
+
+Sexual Function (MT-2) - The sexual benefit of MT-2 is pretty well-known and reliable. For men, it will cause spontaneous erections and increases sexual desire. For women, it will results in increased arousal and libido more so than a physical response. This component of MT-2 is where PT-141 came from to treat hypoactive sexual desire disorder. It basically took MT-2 and modified it to be more specific into MC4R and reduce the tanning and other effects. But generally speaking, for most people, you will get the sexual function enhancements from MT-2. 
+
+Appetite Suppression (MT-2) - The appetite suppression of MT-2 can be pretty strong after using it. It usually can last for a few hours or more and can often be coupled by nausea. So, I guess if you were going to use MT-2 and weren't already having enough suppression to be in a calorie deficit, this could be an additional benefit. But if you want to avoid that issue disrupting your ability to intake calories, then I would eat and hydrate prior to using it. 
+
+Anti-Inflammatory (Both) - MC1R can suppress NF-kB inflammatory signaling in immune cells (see the Immune System course for more info), but is not the primary reason that I would try to use this compound. I would say it's more of a potential added benefit that you may experience over a primary use case. 
+
+Vitiligo (MT-1) - Now I want to preface by saying that MT-1 can either help or worsen vitiligo as I have seen people report both. But there is some data to suggest that MC1R agonists may help. I would say that this would only make sense to try if you are willing to accept that it may get worse.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=34fa269257c54f808fccccb43f6a0a71
+
+Text saved
+
+Melanotan-1: 
+
+For Melanotan 1, I do think a loading phase can be more appropriate as it is milder. For the loading phase, I like to do 100-250mcg daily for one week. 
+
+After the loading phase, that same dosage is only needed 1-3x weekly. Using it once weekly is honestly sufficient in most cases. 
+
+Melanotan 2: 
+
+For Melanotan 2, it is so strong that you really don't need a loading phase as much. If desired, 100mcg daily for the first week could work. But I prefer the entire protocol of melanotan 2 to be done no more than 3x weekly at the 100-250mcg dosage range. 
+
+The cycle of melanotan only needs to be a maximum of 4-6 weeks. As outlined earlier, the effects will last for months. 
+
+You may see people online pushing .5-1mg dosages for melanotan. For either of these, it is NOT NECESSARY to go that high. People have started to realize that those dosages are higher than needed. 
+
+Both of these two can work well as nasal sprays and is my preferred way to use them. 
+
+If nausea occurs, grab some Zofran from AlgoRX and eat some food prior to taking the Melanotan.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=b54f83b3143e4b2e809a32fd72466fac
+
+Text saved
+
+Melanotan 1 and 2 both may cause darkening or changes in moles. You also may notice more moles appearing. 
+
+There are only case studies that report melanoma during or after use of melanotan, but there is no definitive causation. In certain scenarios, the people were chronic tanning bed users. So what was the reason for the melanoma? 
+
+However, I do think the responsible thing is to be aware of that and monitor for any potential issues and if you see anything changing, go get it checked out. 
+
+Nausea and Flushing - This happens for probably 50% of people, more so with MT-2 than with MT-1 (maybe 5-10% of people report it with that one). Typically this will go away after a few hours and may diminish over time as you continue to use the compound. 
+
+Priapism - With MT-2, you will likely have spontaneous erections. There is a small potential for priapism which is where an erection lasts for longer than 4 hours and would more likely happen at higher dosages.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=7538aeb5d7e94c53b8c381d7b53f9e6d
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

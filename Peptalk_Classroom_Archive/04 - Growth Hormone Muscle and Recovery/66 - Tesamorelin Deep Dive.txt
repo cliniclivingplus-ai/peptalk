@@ -1,0 +1,124 @@
+Tesamorelin Deep Dive
+
+04 - Growth Hormone Muscle and Recovery
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=6ec5a13b8a694c5ead2976cb14e8d550
+
+Text saved
+
+Tesamorelin is a peptide analog of growth hormone releasing hormone that was modified to stimulate growth hormone release in the system and was developed and approved in 2010 by the FDA to treat HIV-associated lipodystrophy.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=2b21ffeea92b41a2a06f6e268152f215
+
+Text saved
+
+Tesamorelin is currently approved as a treatment for HIV-associated lipodystrophy, but how does it work in the body to accomplish what it does, whether treating HIV-associated lipodystrophy or providing benefits for biohackers? 
+
+The biggest thing that Tesamorelin is going to do in the body is agonize the GHRH receptors that are in the pituitary gland. It is going to do so by mimicking natural GHRH and binding to the GHRH receptors on the pituitary somatotroph cells to stimulate the synthesis and pulsatile release of endogenous growth hormone. Side note - the medical documentation for Tesamorelin mentions that GH is both anabolic and lipolytic. Anabolic in very simple terms means it can promote muscle repair and growth. Lipolytic is the breakdown of fats. Therefore, Tesamorelin should promote muscle growth and fat breakdown. This increase in growth hormone is going to lead to elevated levels of insulin-like growth factor 1 (IGF-1) primarily via the liver. In the clinical studies, Tesamorelin was able to basically double (about an 81% increase on average) IGF-1 levels in the patients that were treated. 
+
+Once the GH and IGF-1 increased occur, this can trigger multiple things like the anabolism and lipolytic benefits mentioned above. In adipose tissue specifically, GH does a great job at stimulating lipolysis and is extremely pronounced in visceral adipose tissue (VAT) or the fat around the organs. It is going to help to deplete those visceral fat stores and can reduce circulating triglyceride levels as your body is metabolizing the freed up fatty acids that are broken down through lipolysis.
+
+
+
+Benefits of Tesamorelin
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=375f5382469041638104411ff8d842fa
+
+Text saved
+
+Based on how Tesamorelin works, what are the benefits we will get as a result of that? 
+
+Visceral Fat Reduction - This is probably the biggest benefit of Tesamorelin based on the data. It significantly reduces visceral adipose tissue (VAT). In the randomized trials, they observed HIV patients reducing visceral fat by about 15-20% on average over 6 months. This is an incredibly important benefit for many as the visceral fat is the most metabolically dangerous fat locations.
+
+Lipid Profile Improvements - Another benefit of Tesamorelin is the improvements in blood lipids, especially in patients with dylipidemia. Over the course of a 26-week trial, they were able to observe a reduction in triglyceride levels by about 50mg/dL on average vs the placebo that has a slight increase of about 9mg/dL. Total cholesterol usually decreases as well and there are even some increases in HDL which can improve total/HDL cholesterol ratio and reducing potential cardiovascular risks. There is no direct outcomes that I've found, but by doing this it could prevent cardiovascular issues in treated populations. 
+
+Reduction in Liver Fat (NAFLD) - In the first bullet, we discussed the visceral fat reduction benefits of Tesamorelin. It is also being seen to be effective on liver fat content as visceral fat is pretty closely linked to things like non-alcoholic fatty liver diseasee (NAFLD). In a study, one year of Tesamorelin for HIV patients with NAFLD led to a 37% relative reduction in liver fat than the patients. Tesamorelini was also able to reduce liver inflammation markers like C-reactive protein (CRP) and they observed a reduction in ALT levels through the treatment. 
+
+Metabolic and Body Composition - As we stated, we stated the fat loss benefits of Tesamorelin, but it can also improve lean body mass as well as provide metabolic benefits. In the trials, they did see that there was a slight increase in lean body mass in DXA scans. So, less visceral fat and a little extra muscle, which can help with metabolism. Also, there was no really significant changes to insulin sensitivity in the studies. The patients HbA1c stayed the same or slightly elevated on occasion during the course of treatment. But in the long-term data, there was no significant difference in the glucose levels between the Tesamorelin groups and the placebo groups. This is a huge benefit, because the higher dose GH therapy is likely to cause some insulin resistance, where Tesamorelin can maintain glucose control for most of the people using it.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=98c23714b8f048afbfb20c5af7657faa
+
+Text saved
+
+Upon initial approval, Egrifta was available as a 1 mg per vial formulation with a recommended dose of 2mg injected subcutaneously once daily. In 2018, Egrifta SV became available as 2 mg per vial with a recommended dose of 1.4 mg subcutaneously once daily.
+
+The reason I linked the above information, is because I typically go with the 1mg dosage for cost effectiveness and maintaining a good cost/benefit ratio. So it doesn't HAVE to be the 2mg dosage. 
+
+There are a few ways that this compound could be ran. I will say that it is one of the more expensive compounds to run, so take that into consideration. 
+
+First, let me go into cycle length for this: 
+
+I think the sweet spot for a cycle of Tesamorelin is somewhere in the 12-16 week range. You will see protocols out there for 8 weeks on, 8 weeks off. I personally don't prefer that short of a cycle. Why? Because typically you don't see the results until at least 4-6 weeks in. So, if you barely start to see noticeable results at 6 weeks in, why stop 2 weeks later? You will likely continue to see more and more results as you stay on it a little bit longer, so I think going at least to 12 weeks is best. It could be ran for up to 6 months though if desired. 
+
+Next, let's look at the dosage options and what my thoughts are there:
+
+0.5mg - There are some who say this can be a pretty effective women's dosage. I also think this could work for men. Will you get AS much results as 1mg? Maybe not. But if you're on more of a budget, this could still give some results. 
+
+1mg - I think this is the sweet spot dose. It will likely yield the best cost / benefit ratio out of all of the dosage options. I personally like doing this amount and have seen great results and many others do as well. If you compare costs vs. the 2mg dosage, you're saving literally 50% of the costs. Well worth it IMO. 
+
+2mg - Could you get more results here? Potentially. Is it enough to make it worth doubling the cost of your cycle? In my opinion, no. 
+
+Lastly, let's look at frequency of administration: 
+
+In clinical applications, it is administered every day. If you think about this over the course of a 16 week cycle, you have to take an extra 32mg at 1mg dosage or an extra 64mg at the 2mg dosage. You're adding significant costs to your cycle. So, I think using it 5 on 2 off is best to save costs and still get similar results. Either of these options can work. 
+
+Note: You want to take this in a fasted state. I prefer at night. It could also be done in the morning if desired.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=6e188b3cc9cf43f6bbe987ebfe02af97
+
+Text saved
+
+Let's look at some of the common side effects from Tesamorelin. 
+
+Injection Site Reaction - This is common with a lot of injectable compounds. Common symptoms include redness, irritation, itching, pain, or swelling at the injection site. It can be a little spicy when you start using it, but usually after 1-2 weeks of using it that issue goes away and it's much more tolerable, typically with no pain or side effects. 
+
+Joint Pain - This is another common side effect that people can experience. It's generally due to fluid retention. Drink some extra water, reduce sodium intake slightly, and increase potassium intake slightly and it can mitigate this. It will usually resolve after a few weeks. 
+
+Water Retention - This is very common to have happen the first few weeks. I always tell people to expect to gain up to 10lbs. You may gain zero. You may gain two. But expect to gain up to 10 so you're at least ready for the scale to go up some. Drink some extra water, reduce sodium intake slightly, and increase potassium intake slightly and it can mitigate this. It will usually resolve after a few weeks. 
+
+Blood Sugar Increase - There is a slight potential for increase in blood glucose or insulin. It's usually not major and will go away after you come off of the compound. 
+
+Cancer - See the discussion about this in the All Things Growth Hormone Course. I think the risk is minimal, but mentioning it here because the question gets asked.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/5fab913e?md=32291e1bc2764c7eb19d441e0c72fcb0
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

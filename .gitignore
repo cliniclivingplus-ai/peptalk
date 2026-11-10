@@ -1,0 +1,29 @@
+# Heavy local media (3.5 GB MP4 videos exceeding GitHub 100MB limit)
+Classroom - Course Folders/
+
+# Sensitive credentials & cookies
+*cookies.txt
+*.cookie
+*.env
+*.env.local
+
+# Logs and error outputs
+*.log
+*.err
+
+# Browser downloads & incomplete files
+*.crdownload
+*.tmp
+
+# Scraping & build scratch folders
+peppal_scraped_data/
+Skool_Archive/
+video_work/
+video_tools/
+__pycache__/
+*.pyc
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

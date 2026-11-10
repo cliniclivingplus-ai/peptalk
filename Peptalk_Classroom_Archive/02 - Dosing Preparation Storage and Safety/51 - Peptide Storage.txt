@@ -1,0 +1,494 @@
+Peptide Storage
+
+02 - Dosing Preparation Storage and Safety
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=35f3b31037cf43be8de27c943701948b
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Cold Storage Supplies
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=ac31806ef622473ba4c1d3c2ee8eda52
+
+Text saved
+
+Here are a few options for things that I like to use for cold storage: 
+
+Hydrapeak Container (often sold out) 
+
+Hydrapeak Inserts
+
+Budget Storage Option
+
+Travel Storage Case
+
+
+
+Nasal Spray Storage
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=90bcb11994504a15a277f3a0115df58b
+
+Text saved
+
+Unmixed deionized water can be stored in a cabinet or a cool, dark place. 
+
+Once mixed, store in the fridge away from light.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=8060b20fdf9b4759a7d01435b97ac0c6
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+
+
+
+Does Shaking Damage Peptides?
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=62248e5b319b44cdbdf8f157ae0e68fa
+
+Text saved
+
+Source study: Does Shaking Damage Reconstituted Peptides?
+https://peptidecrafters.com/does-shaking-damage-reconstituted-peptides/
+
+ 
+
+“Don’t shake it, it’s fragile” is one of the most common rules repeated in peptide research especially after reconstitution. With larger, more complex peptides, the concern is that agitation might cause degradation, reduce purity, or damage the molecule in ways that compromise downstream experimental reproducibility.
+
+This study isolates a single question and tests it under controlled conditions: Does aggressive shaking damage reconstituted peptides? Specifically, we evaluated GLP-3 R because it represents a complex peptide where handling myths are most likely to surface, and where real degradation would be easiest to detect analytically.
+
+To answer this decisively, we paired HPLC (purity + degradation profile) with LC-MS (molecular integrity confirmation). We intentionally created a “worst-case handling” condition by aggressively shaking one reconstituted sample and comparing it to normally handled controls.
+
+Study Summary
+
+Purpose: Determine whether aggressive shaking during/after reconstitution causes measurable degradation or molecular damage.
+
+Peptide: GLP-3 R Complex peptide containing 39 amino acids (single batch, multi-vial controlled handling conditions).
+
+Design: Two controls (normal handling) vs one intentionally shaken sample (~60 seconds aggressive agitation).
+
+Analytics: HPLC to detect purity/impurity changes; LC-MS to confirm intact molecular mass and screen for structural damage.
+
+Conclusion: Shaken and unshaken samples were analytically indistinguishable under the conditions tested.
+
+In practical terms: agitation alone did not produce measurable degradation in this GLP-3 R study. The data supports that accidental or brief shaking is not inherently catastrophic under controlled lab conditions.
+
+Methods
+
+Controlled Reconstitution
+
+Samples were reconstituted under standard laboratory preparation conditions using ultra-filtered laboratory water. Handling was kept consistent across samples, with the only variable being the intentional agitation applied to the experimental vial.
+
+Sample Groups
+
+Sample A (Control): Normal laboratory preparation and handling.
+
+Sample B (Experimental): Aggressively shaken for approximately ~60 seconds to simulate a worst-case handling event.
+
+Sample C (Control Repeat): Normal laboratory preparation and handling.
+
+Analytical Approach
+
+HPLC was used to quantify purity and detect changes in chromatographic profile (new impurity peaks, peak broadening, retention time shifts, and/or loss of main peak area).
+
+LC-MS was performed to confirm molecular integrity — i.e., to verify that the molecule itself remained intact and to screen for evidence of truncation, fragmentation, or major chemical modification.
+
+Why LC-MS? HPLC can show purity remaining stable, but LC-MS confirms that the molecule’s mass/structure is still correct. In short: LC-MS validates molecular integrity post-agitation.
+
+Results
+
+HPLC (Purity & Degradation Profile)
+
+HPLC results across the tested samples showed consistently high purity with no meaningful impurity emergence attributable to agitation. Critically, the aggressively shaken sample remained consistent with controls in chromatographic appearance and purity metrics.
+
+No measurable degradation observed attributable to shaking.
+
+HPLC purity remained ~99.6–99.7% across samples.
+
+No new impurity peaks or peak distortions consistent with damage were observed.
+
+LC-MS (Molecular Integrity Verification)
+
+LC-MS screening identified signal patterns consistent with intact GLP-3 R molecular mass. The lab noted that multiple charge/adduct states are expected (H+, Na+, etc.), and that minor signals consistent with common peptide modifications (trace oxidation/deamidation) can occur in complex peptides, without indicating meaningful structural breakdown.
+
+Overall: The lab concluded there was near no difference between shaken and unshaken samples. Truncations or missing amino acids would present much further away in the spectra, and no such occurrences were identified.
+
+Analytical Data & Verification
+
+Click any thumbnail below to view the corresponding independent laboratory report.
+
+HPLC (All Samples)
+
+Analysis Across all Samples
+
+HPLC (Shaken Vial Only)
+
+Post-agitation HPLC profile
+
+LC-MS (Screening)
+
+Molecular integrity verification (See sources for spectra details)
+
+Interpretation
+
+This study isolates agitation as a variable and tests it deliberately. The experimental vial was not gently swirled, it was intentionally shaken for roughly a minute to create a clear “stress condition.”
+
+Under these controlled conditions, the data supports that agitation alone did not produce measurable degradation by HPLC, and did not compromise molecular integrity by LC-MS.
+
+Takeaway: For GLP-3 R in this test setup, aggressive shaking did not damage the reconstituted peptide.
+
+Limitations
+
+This study was designed to isolate agitation. It does not assess other degradation drivers such as:
+
+Long-term storage after reconstitution
+
+Heat exposure, light exposure, or repeated freeze–thaw cycling
+
+Improper solvents or pH-incompatible conditions
+
+This finding should not be interpreted as a blanket statement across all compounds. Results are specific to GLP-3 R and reflect observations from a single, isolated handling study of a complex peptide
+
+Technical Details
+
+This section explains what the LC-MS spectrum is showing, why multiple peaks are normal for a large peptide, and why the shaken vs. unshaken spectra indicate there is near no difference in molecular integrity.
+
+Non-Scientific Interpretation
+
+Think of a mass spectrometer like a highly sensitive “scale” that detects molecules by how they move when electrically charged. Large pep
+
+tides like GLP-3 (R) don’t show up as one single number, because the molecule can pick up different amounts of charge (like multiple “handles” the instrument uses to detect it).
+
+In our data, the two most important signals appear at approximately: 1577 m/z and 1183 m/z. These are simply the same GLP-3 (R) molecule being detected with different charge amounts. When you convert both back to a neutral molecular weight, they land on the same number: ~4728 Da (the molecular mass of GLP-3 (R)).
+
+You’ll also see nearby peaks around the same region. That’s normal because the molecule can be charged not only by hydrogen (H⁺), but also by sodium (Na⁺). That creates a family of “expected” signals that still correspond to the same intact peptide.
+
+Peaks farther away can occur from tiny, common changes seen in large peptides (like minor oxidation or deamidation). A peptide this size will almost never show zero of these micro-variations. What matters is whether shaking creates new degradation patterns or obvious breakdown products and it does not.
+
+Bottom line: The shaken and unshaken spectra look essentially the same, meaning aggressive shaking did not meaningfully impact the molecular integrity of GLP-3 (R).
+
+Technical Interpretation
+
+The LC-MS spectrum shows GLP-3 (R) observed predominantly as multiply-charged ions. Two primary charge states are emphasized:
+
+z = 3 dominant ion near m/z ~ 1577, consistent with [M + 3H]³⁺
+
+z = 4 dominant ion near m/z ~ 1183, consistent with [M + 4H]⁴⁺
+
+Neutral mass back-calculation confirms internal consistency:
+
+1577 × 3 − 3 = 4728 Da
+
+1183 × 4 − 4 = 4728 Da
+
+indicating the same intact GLP-3 (R) molecular mass from independent charge-state observations.
+
+Additional nearby ions are expected due to adduct formation, primarily Na⁺ replacing one or more protons (H⁺), generating a predictable set of mixed adduct species (e.g., [M + 2H + Na]³⁺, [M + H + 2Na]³⁺, etc.). These fall within the same charge-state envelopes for the monoisotopic mass.
+
+Minor signals farther from the main envelopes can be consistent with low-level, common peptide micro-variants such as oxidation and/or deamidation. For a peptide of this size, a fully “zero-modification” spectrum is not expected. Importantly, no evidence of truncation (missing residues) or broad fragmentation patterns is observed.
+
+Comparative review of shaken vs. unshaken spectra shows near no difference in charge-state distribution and expected adduct patterning, supporting that aggressive shaking does not materially impact GLP-3 (R) molecular integrity under the tested conditions.
+
+Referenced Figures (LC-MS)
+
+Figure 1 — Charge State / Adduct Assignments (z = 3 and z = 4)
+
+Used to explain why multiple peaks occur for the same molecule (H⁺ vs Na⁺ adduct combinations).
+
+Figure 2 — Unshaken LC-MS Spectrum (GLP-3 (R))
+
+Baseline spectrum showing expected dominant charge states and adduct envelope.
+
+Figure 3 — Shaken LC-MS Spectrum (GLP-3 (R))
+
+Post-agitation spectrum showing near no difference versus baseline (no new degradation pattern).
+
+Conclusion
+
+Based on independent HPLC and LC-MS testing, aggressive shaking did not damage the reconstituted GLP-3 R peptide under the conditions studied.
+
+No measurable degradation observed
+
+HPLC purity remained ~99.6–99.7%
+
+LC-MS confirmed intact molecular mass / integrity
+
+Shaken and unshaken samples were analytically indistinguishable in this study.
+
+Resources & Verification Links
+
+Independent Lab Data (Janoshik)
+
+Links below reference the same reports used for this study write-up.
+
+HPLC (all samples) https://verify.janoshik.com/tests/84860-GLP3_Reta_G1QW7HFLXJLR
+
+LC-MS (screening) https://verify.janoshik.com/tests/84861-GLP3_Reta_5UYECAARZJ31
+
+HPLC (shaken vial only) https://verify.janoshik.com/tests/86824-GLP3_Reta_FPSJ1LDMNURZ
+
+Raw Data References
+
+The following raw analytical files are provided for full transparency and independent review. These documents include original HPLC data and LC-MS spectra associated with this study.
+
+Sample A — View PDF
+
+Sample B — View PDF
+
+Sample C — View PDF
+
+Sample B — File 1 — View PDF
+
+Sample B — File 2 — View PDF
+
+Sample B — File 3 — View PDF
+
+Sample B — File 4 — View PDF
+
+Sample C — File 5 — View PDF
+
+Sample C — File 6 — View PDF
+
+Sample C — File 7 — View PDF
+
+Sample C — File 8 — View PDF
+
+Research Use Only (RUO): The data, materials, and analytical results presented in this study are provided solely for laboratory reference and research transparency. They are not intended for clinical, diagnostic, therapeutic, or human use.
+
+
+
+Does Your Water Quality Matter?
+
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=f5ec6cd4b63c44949e7178b0b1336afb
+
+Text saved
+
+Source study: The Crucial Role of Solvent Quality in In-Vitro Laboratory Research
+https://peptidecrafters.com/the-crucial-role-of-solvent-quality-in-in-vitro-laboratory-research/
+
+ 
+
+Disclaimer
+
+This report is not an endorsement of any particular brand, nor is it a guarantee of future performance. Results reflect a snapshot in time for the specific lots tested. Solvent quality can vary from batch to batch, and only consistent third-party testing and quality assurance with verifiable Certificates of Analysis (COAs) can be relied upon to ensure compliance and research integrity for all aftermarket solvents.
+
+Quick Summary: A recent analysis of bacteriostatic water samples revealed that 80%+ of them failed USP standards for benzyl alcohol concentration or pH. This has significant implications for peptide research, where poor solvents can cause aggregation, gel formation, or false degradation. Some compounds may tolerate these variations, others won’t. Knowing the difference can save your data and your investment in research.
+
+Expanded Dataset Update: Additional third-party COAs were added following the initial study. The expanded dataset further reinforces the observation that pH nonconformity was a more common failure mode than benzyl alcohol concentration deficiency among tested products.
+
+Reminder: Never let a $10 solvent compromise a $100 or $1,000 experiment. Verify the solvent before investing in the research. Poor solvents can compromise even the highest-quality research chemicals.
+
+Summary
+
+The selection of an appropriate solvent is a foundational aspect of in-vitro experimentation, yet it remains one of the most frequently overlooked variables impacting data reliability. This report investigates the impact of bacteriostatic water (BAC water) quality on peptide integrity, solubility, and visual appearance. Through third-party testing of five commercially available BAC waters, significant deviations in benzyl alcohol content and pH were found. These discrepancies highlight the potential for compromised research outcomes due to improper solvent selection. This study represents only a small glimpse into the issue, as hundreds of solvent brands in the real world remain untested and could pose similar or greater risks to research integrity.
+
+Following the initial publication, additional COAs were added to expand the dataset and provide a broader view of aftermarket solvent quality. These additional samples were evaluated using the same core criteria: benzyl alcohol content and pH conformity.
+
+Introduction
+
+Solvents in laboratory settings play a critical role in ensuring accurate, reproducible, and biologically relevant results. In the context of in-vitro peptide research, bacteriostatic water is often used as a reconstitution medium for lyophilized compounds. While its purpose appears routine, the quality of BAC water can significantly influence the physical and chemical behavior of solubilized compounds, including solubility, aggregation, and degradation kinetics.
+
+According to the U.S. Pharmacopeia <1231>, acceptable BAC water must contain 0.72–1.08% benzyl alcohol and maintain a pH between 4.0 and 7.0. This study evaluates samples submitted for testing to Vanguard Laboratory to assess compliance and impact on research quality.
+
+Materials And Methods
+
+BAC water samples were submitted by Peptide Crafters and tested by Vanguard Laboratory. Each sample was analyzed for:
+
+Benzyl Alcohol Content (%): Measured via HPLC-UV/VIS
+
+pH: Measured using AOAC 981.12 or USP <791> methodology where applicable
+
+Results
+
+Lambda Water — Lot #: 604 | Benzyl Alcohol (%): 0.88% | PH: 5.85 | Pass/Fail: ✅ Pass | Notes: Within ideal range
+
+Peptide Crafters [Discontinued] — Lot #: PC-Z1-BAC | Benzyl Alcohol (%): 0.88% | PH: 5.71 | Pass/Fail: ✅ Pass | Notes: Within ideal range
+
+Hospira — Lot #: LY6982 | Benzyl Alcohol (%): 0.87% | PH: 6.52 | Pass/Fail: ✅ Pass | Notes: Within ideal range
+
+Harmonify — Lot #: 5162025 | Benzyl Alcohol (%): 0.23% | PH: 5.54 | Pass/Fail: ❌ Fail | Notes: Insufficient BA; sterility risk
+
+Generic BAC0129 — Lot #: BAC0129 | Benzyl Alcohol (%): 0.86% | PH: 8.84 | Pass/Fail: ❌ Fail | Notes: Excessive pH; peptide instability risk
+
+Clear Choice Labs — Lot #: 250224 | Benzyl Alcohol (%): 1.15% | PH: 6.85 | Pass/Fail: ❌ Fail | Notes: BA above USP limit
+
+Pure Labs (Sample 1) — Lot #: 026-000 | Benzyl Alcohol (%): 0.00% | PH: 7.39 | Pass/Fail: ❌ Fail | Notes: No BA; pH above spec
+
+Pure Labs (Sample 2) — Lot #: 026-000 | Benzyl Alcohol (%): 0.00% | PH: 6.99 | Pass/Fail: ❌ Fail | Notes: No BA
+
+DNA Labs — Lot #: 03272025 | Benzyl Alcohol (%): 0.12% | PH: 5.91 | Pass/Fail: ❌ Fail | Notes: Insufficient BA
+
+Aqua Science — Lot #: 07152025 | Benzyl Alcohol (%): 0.11% | PH: 5.81 | Pass/Fail: ❌ Fail | Notes: Insufficient BA
+
+Research H2O (LAB1) — Lot #: SP02501 | Benzyl Alcohol (%): 1.06% | PH: 5.01 | Pass/Fail: ✅ Pass | Notes: At upper BA limit
+
+Quality Research — Lot #: B20223 | Benzyl Alcohol (%): 1.04% | PH: 6.59 | Pass/Fail: ✅ Pass | Notes: Within ideal range
+
+HydraTide Labs — Lot #: 126005 | Benzyl Alcohol (%): 0.93% | PH: 7.26 | Pass/Fail: ❌ Fail | Notes: pH above USP limit
+
+Awat Science — Lot #: 25120029 | Benzyl Alcohol (%): 0.81% | PH: 8.8 | Pass/Fail: ❌ Fail | Notes: Excessive pH; peptide instability risk
+
+Parrox Reconstitution Solution — Lot #: BF0116D06 | Benzyl Alcohol (%): 0.81% | PH: 7.53 | Pass/Fail: ❌ Fail | Notes: pH above USP limit
+
+BioVitalis Solutions — Lot #: 2027839828 | Benzyl Alcohol (%): 0.83% | PH: 6.92 | Pass/Fail: ✅ Pass | Notes: Within ideal range
+
+Regenix Research — Lot #: N/A | Benzyl Alcohol (%): 0.93% | PH: 7.32 | Pass/Fail: ❌ Fail | Notes: pH above USP limit
+
+AaBaCa LLC — Lot #: 51325 | Benzyl Alcohol (%): 0.87% | PH: 8.69 | Pass/Fail: ❌ Fail | Notes: Excessive pH; peptide instability risk
+
+JR Globals — Lot #: SP02412 | Benzyl Alcohol (%): 0.64% | PH: 6.7 | Pass/Fail: ❌ Fail | Notes: Insufficient BA concentration
+
+TM BioWater — Lot #: 2632715 | Benzyl Alcohol (%): 0.91% | PH: 8.2 | Pass/Fail: ❌ Fail | Notes: Excessive pH; peptide instability risk
+
+Quanta Nova Peptides — Lot #: BAC-1322A | Benzyl Alcohol (%): 0.72% | PH: 7.87 | Pass/Fail: ❌ Fail | Notes: BA at lower USP limit; excessive pH; peptide instability risk
+
+Reconstitution Solution — Lot #: TE202601 | Benzyl Alcohol (%): 0.61% | PH: 8.36 | Pass/Fail: ❌ Fail | Notes: Insufficient BA; excessive pH
+
+LivWell Research Labs — Lot #: LW100925 | Benzyl Alcohol (%): 0.81% | PH: 7.53 | Pass/Fail: ❌ Fail | Notes: pH above USP limit
+
+DBC Chandra Bhagat Pharma Ltd — Lot #: 124072 | Benzyl Alcohol (%): 0.35% | PH: 6.42 | Pass/Fail: ❌ Fail | Notes: Severely deficient BA concentration; sterility preservation risk
+
+Expanded Vendor Dataset
+
+Additional third-party COAs were added following publication of the initial study. These samples were tested using the same analytical methodology and evaluation criteria. The expanded dataset further reinforces the observation that pH nonconformity was a more common failure mode than benzyl alcohol concentration deficiency among tested products.
+
+Real World Implications
+
+Researchers frequently report symptoms of poor solvent quality, including:
+
+Cloudy or milky appearance post-reconstitution
+
+Gel-like consistency
+
+Unexpected precipitation or floating particulates
+
+Failed solubility, even with gentle agitation or sonication
+
+These symptoms can be mistakenly attributed to peptide degradation or supplier quality issues when in fact the solvent is the root cause in vast majority of use cases.
+
+Why Some Compounds Tolerate Poor Solvents—And Others Don’T
+
+Not all research chemicals respond to solvent quality in the same way. Some compounds remain fully soluble and stable in out-of-spec BAC water, while others degrade rapidly, aggregate, or become biologically inactive. This is largely due to differences in:
+
+Chemical structure: Linear peptides, disulfide-rich peptides, or hydrophobic compounds may respond differently to pH and preservative levels.
+
+Charge distribution: Solvent pH can alter the ionization state of amino acid side chains, affecting solubility and binding affinity.
+
+Filler sensitivity: Some peptides include excipients or stabilizers that are pH-sensitive, making them more susceptible to degradation.
+
+Formulation fragility: APIs without protective matrices are more likely to fail in high-pH or low-BA environments.
+
+This variability explains why one compound may appear unaffected while another shows cloudiness, loss of solubility, or even bioactivity failure in identical solvents.
+
+Conclusion
+
+This analysis confirms that solvent choice is not a trivial matter. In-vitro researchers working with peptides or biologically sensitive reagents should verify BA content and pH before introducing a solvent into their workflow. The tested BAC waters show clear risks for experimental integrity when benzyl alcohol concentration or pH fall outside expected specifications.
+
+Recommendations For Laboratory Use
+
+Verify all solvents against USP <1231> guidelines.
+
+Ensure In-vitro research with BAC waters that provide third-party Certificates of Analysis (COAs) and established brand.
+
+Avoid generic or unverified products, even if labeled as bacteriostatic.
+
+Observe for cloudiness, particles, or unexpected viscosity upon reconstitution.
+
+Document solvent brand and lot number in experimental notes for traceability.
+
+Avoid any solvents under 30mL from any vendor or brand unless they have COA, Batch and pH and BA content listed in range of tolerance. These are often made overseas with little to no quality assurance.
+
+Full COA Reports (Click To View)
+
+Swipe or scroll horizontally to review the COA documentation.
+
+References
+
+U.S. Pharmacopeia <1231>: Water for Pharmaceutical Purposes
+
+AOAC 981.12: pH Determination
+
+Internal COA Data: Vanguard Laboratory, July 2025, September 2025, March 2026 & May 2026
+
+Lambda Water – Report 001
+
+Peptide Crafters – Report 005
+
+Hospira – Report 004
+
+Harmonify – Report 002 (Fail)
+
+Generic BAC0129 – Report 003 (Fail)
+
+Clear Choice Labs – Fail
+
+Pure Labs – Fail (Sample 1)
+
+Pure Labs – Fail (Sample 2)
+
+DNA Labs – Fail
+
+Aqua Science – Fail
+
+Research H2O – Pass
+
+Quality Research – Pass
+
+Parrox Reconstitution Solution
+
+AaBaCa LLC
+
+Awat Science
+
+Reconstitution Solution
+
+BioVitalis Solutions
+
+HydraTide Labs
+
+JR Globals
+
+Lambda Water
+
+LivWell Research Labs
+
+Quanta Nova Peptides
+
+Regenix Research
+
+TM BioWater
+
+DBC Chandra Bhagat Pharma Ltd
+
+Research Use Only Disclaimer
+
+Research Use Only (RUO): The data, materials, and analytical results presented in this study are provided solely for laboratory reference and research transparency. They are not intended for clinical, diagnostic, therapeutic, human, or animal use.
+

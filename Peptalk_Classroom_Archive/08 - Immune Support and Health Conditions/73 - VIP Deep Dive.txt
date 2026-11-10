@@ -1,0 +1,126 @@
+VIP Deep Dive
+
+08 - Immune Support and Health Conditions
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=c8c03531f006433f898fe1170d47b61b
+
+Text saved
+
+Vasoactive Intestinal Peptide (VIP) is a 28-amino acid peptide hormone that acts as a neurotransmitter and hormone in the body. It is produced in many tissues like the gut, pancreas, and brain. This is one of my favorite peptides as it is almost a Swiss Army Knife with all of the things that it can do for, and throughout, the body.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=67b2234a4bbb4a9a9a8f8304aa0d7e6e
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=5953b33f65764db08bdf594048a78deb
+
+Text saved
+
+VIP binds to two class B G-protein-coupled receptors, VPAC1 and VPAC2, which are expressed across a lot of tissues within the body. This gives an explanation to why it may have such a broad spectrum of benefits as well. These receptors are found in the pulmonary vascular smooth muscle layer and in airway smooth muscle of large airways, sub-mucosal glands, airway epithelium, alveolar walls, innate immune cells like human mast cells, neutrophils, peripheral blood monocytes, and murine macrophages, within the CNS in piriform cortex, cerebral cortex, suprachiasmatic nucleus, hippocampus, and pineal gland, as well as the liver, intestine, pancreas, skeletal muscle, heart, kidney, adipose tissues, testis, and the stomach. Apologies for the long list, but that gives you an understanding of how broadly those VPAC1 and VPAC2 receptors may be spread throughout the body and how VIP may be able to exert its benefits by it's affinity to bind to those receptors and lead to it's benefits throughout the body. Once VIP hits those receptors, it can activate adenylyl cylase and raise intracellular cAMP levels, which activates protein kinase A (PKA), influences gene expression like increasing clock genes Per1 and Per2, synchronizing circadian rhythms, among other effects. So because of this, what are some things that VIP does downstream once it activates those receptors? 
+
+Side note, we know that VIP has a very short half life (see half-life course). However, the important thing here is that once VIP activates those receptors, it can create a cascading physiological effect throughout the body, which are listed below. However, the short half-life really seems to be the biggest challenge with VIP, as finding a way to leverage a potential longer half-life analog or derivative may yield even better benefits. 
+
+Smooth Muscle Relaxation and Vasodilation - Elevated cAMP (which VIP raises intracellularly as stated above) in smooth muscle cells causes relaxation. Therefore, VIP produces quite strong bronchodilation in airways and vasodilation in blood vessels that are independent of cholinergic and adrenergic pathways (basically, some pathways that act as signaling systems within the autonomic nervous system to regulate bodily functions through neurotransmitters and their receptors). The bronchodilator effects of VIP is about 100-fold more potent than isoproterenol (beta-1 and beta-1 adrenergic receptor agonist) and about 50x more in the vasodilatory effect on pulmonary arteries than prostacyclin (vasodilator). Ultimately, these actions are going to lead to bronchospasm relief, increased airflow, and reduced vascular resistance. VIP also can increase the secretion of pulmonary surfactant (a lipoprotein complex produced in the lungs that reduces surface tension at the air-fluid interface and allows expansion of alveoli and allow for gas exchange) and improves blood flow to the heart and lungs. 
+
+Immune Modulation and Anti-Inflammation - VIP also has a pretty significant role in immune modulation. It has been described as involving a "rebalancing" of the immune system by inhibiting pro-inflammatory responses (Th1 and Th17) and stimulating an anti-inflammatory response that is mediated by Th2 and Tregs. It works at the cellular level inhibiting macrophage activation and the release of those pro-inflammatory cytokines and upregulating the anti-inflammatory ones, pushing the T-helper cells away from those Th1 and Th17 phenotypes as stated above, which drive inflammation. It can also expand Treg populations and increases IL-10 which is a key anti-inflammatory cytokine. So that rebalancing effect that is happening is really the damping of excessive inflammatory reactions and encouraging tolerance.
+
+Neuroprotective and Neuroendocrine Effects - As addressed earlier, the receptors, as well as VIP, is abundant within the central nervous system, where it acts as a neuromodulator and neurotrophic factor. It is highly expressed in the suprachiasmatic nucleus (SCN), which is the brain's master circadian clock, and can help to synchronize some of the daily rhythms since it couples light-induced neuronal activity to molecular clock gene expression. Outside of just doing that, it can also help to protect neurons from injury by stimulating glial cells to release neurotrophic factors like activity-dependent neurotrophic protein (ADNP) and other things that support neuron survival. We've already talked about its action on cytokines, but it directly inhibits microglial production of cytokines that are neurotoxic, which can reduce neuroinflammation in conditions like Parkinson's or TBI. Multiple animal studies have shown the neuroprotective effects of these actions where VIP or analogs reduced neuronal death in Alzheimer's disease, Parkinson's disease, stroke, and spinal cord injury. It's also part of the neuroendocrine network, so in the pituitary it modulates hormone release like prolactin and circadian hormone release. most of the information in this specific section is linked in the frontiersin.org links in the earlier sections, just didn't want to turn this whole section blue with links
+
+Other Benefits - VIP also does a variety of other things within the body. It can influence glandular secretions and metabolism. Within the pancreas and intestinal tract it can stimulate the secretion of bicarbonate-rich fluids and inhibit gastric acid production which helps with digestion and nutrient absorption. It can also promote glycogenolysis in the liver, which helps to raise blood glucose as needed. It can help to regulate chloride and water transport within respiratory mucosa to regulate mucus hydration (so basically it helps to thin and mobilize mucus, which explains why when starting VIP, some seem to clear or drain out mucus they may have in their system).
+
+
+
+Benefits of VIP
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=2a169d52f79d4c50b5bff9d8e34c80ad
+
+Text saved
+
+Gastrointestinal Motility and Digestion - Since VIP plays a role on the enteric nervous system, it is a strong regulator of digestive function. It induces relaxation of smooth muscle in the GI like the lower esophageal sphincter, stomach, and gallbladder and stimulates fluid and electrolyte secretion within the intestinal lumen. So, what it will do is help to lubricate the gut and coordinate something called peristalsis which basically helps to promote intestinal motility and the movement of contents within it. Loss of VIP signaling can actually lead to sluggish bowel transit. Clinically, this would suggest that VIP or other VPAC agonist might be able to be used to treat certain motility disorders like ileus or constipation be leveraging those smooth muscle relaxant and secretory effects to bring back gastrointestinal flow to where it needs to be. 
+
+Sleep and Circadian Rhythm - Within the suprachiasmatic nucleus (SCN), which is basically the circadian pacemaker within your brain, there are a set of neurons that use VIP as a neurotransmitter to synchronize daily rhythms. VIP that is released within the SCN will bind to VPAC2 receptors, activating cAMP/PKA pathways that help to align the cells clocks with the 24-hour light/dark cycle. This hypothalamic VIP signaling is important for maintaining the circadian rhythm as it ensures proper hormone release, body temperature, and your sleep-wake cycle. Disruption of VIP or the receptors ultimately will result in fragmented, desynchronized circadian patterns. When they looked at mice lacking VIP or VPAC2, they saw chaotic SCN neuronal rhythms and blunted daily behavioral cycles. So, adequate VIP activity can help to support all of this. They also are studying the VIP-VPAC2 pathway for its potential in treating circadian rhythm disorders. So, by enhancing VIP signaling in the SCN, it could improve circadian misalignment or poor sleep by helping to synchronize your internal clock. 
+
+Anti-Inflammatory and Autoimmune Modulation - In the mechanism of action section we discussed a bit how it worked, and because of that, it could be a potential therapeutic anti-inflammatory agent for conditions like inflammatory bowel disease (IBD), rheumatoid arthritis, sepsis, and other autoimmune disorders. To short summarize some of the mechanism, it basically shifts your body from producing the inflammatory cytokines and promoting the anti-inflammatory cytokines so it puts your body in more of a regulatory state. It could potentially be used in situations to try to dampen inflammation in situations where the immune system is overactive. They've looked at this some in experimental models of colitis and arthritis and seen reductions in severity due to the immune-calming effect of VIP. Unfortunately, it's just not made it through with VIP or a VIP-derived compound to be more widely available.
+
+Cardiopulmonary and Vascular Benefits -  There are nerves present within the heart and airways where VIP can cause vasodilation and improve airway caliber. It may improve things like pulmonary hypertension and acute respiratory distress by relaxing the pulmonary vessels and reducing inflammation in the lungs. Synthetic VIP (aviptadil) has actually been trialed in respiratory failure to help enhance oxygenation via broncho- and vasodilation. It's also being looked at some for heart failure management due to its effect on cardiac contractility. 
+
+Mitochondrial Function and Metabolic Disorders - Some research suggests that VIP may help support mitochondrial function (indirectly) by reducing oxidative stress and inflammatory signaling that impair mitochondria. When looking at the models of Parkinson's disease, which does have a component of mitochondrial dysfunction in neurons, VIP seems to improve neuronal survival, potentially by inhibiting NO and ROS that can damage the mitochondria. It also seems to influence metabolic regulation in the hypothalamus by affecting feeding behavior and energy expenditure, and some studies suggest that mice lacking VIP have altered metabolism and VIP treatments can help modulate lipid metabolism and insulin sensitivity, just without full characterization in its action. This is a little more on the experimental side of things, but an interesting potential benefit nonetheless. 
+
+There are many other benefits that can be linked to VIP like neuroendocrine regulation, cognitive function, behavior, mood, learning and memory, etc. The biggest issue with VIP as a treatment however also seems to be the ability to more selectively target these specific benefits. For biohackers and health optimizers, we may be able to utilize it for broad benefits, as well as maybe just one or two, but can't really selectively target just one when using it.
+
+
+
+Dosage and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=7c0ff6d364bc42038799e582d03c08d2
+
+Text saved
+
+Intranasal - This is actually a common method of administration for VIP. It is also pretty commonly used for conditions like CIRS. It allows it to go across the nasal mucosa and reach the brain via olfactory region. 
+
+Subcutaneous Injection - VIP analogues are most commonly used for subcutaneous use as they were designed to be used in this manner, but VIP also can be used subcutaneously. One major difference between the two is that SC injection does seem to give users more of the "flushing" feeling that may be felt with VIP. One difficulty with this method as well is that you may have to use a sterile 10mL vial to transfer it into in order to dilute it enough to easily draw the small dosages. 
+
+Dosages - The most common dosage range is 50 - 100 mcg per administration. In certain cases, 50mcg may even me administered up to 4x daily (200 mcg total/day), especially in the beginning of some treatments, before reducing down to 1-2x daily. From what I've seen, typically 1-2x daily can be sufficient for most cases. Most don't need to go over the 200 - 300 mcg range typically per day. 
+
+The length of time on this peptide can vary. Some stay on for 6+ months straight. It can also be ran in cycles. Ultimately, it depends on what and why someone is deciding to use it. I've seen some who use it continuously and had to lower their dosage due to continuous BP control and a lesser need for VIP to regulate things such as that. 
+
+It has been used IV and via nebulizer, but for our purposes, IN and SC are the most common routes.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=a749e4a4afdc462ea3fd7a738d476df7
+
+Text saved
+
+Overall VIP has a pretty good safety profile and is pretty well tolerated. 
+
+Flushing - This is hands down the most common side effect. People typically experience flushing, warmth, and even some transient low blood pressure after administering a dose. It seems to be mitigated via intranasal administration as well as adaptation to the compound. 
+
+Stomach Issues - In certain rarer cases, some may get stomach cramps or nausea. This makes sense as it stimulates some activity in the digestive tract. 
+
+Pancreatitis - This would be extremely rare, but I at least want to mention it. There are some case reports in VIP therapy. This seems to only be in HIGH AMOUNTS as it may hyperstimulation the pancreas. Understand that in some of the testing they were doing near-constant IV administration and other dosages and methods. There were no major, overt cases reported so far to date, but I want to at least mention it. You likely won't want to overdo / overdose VIP anyways, but just pay attention to that. If you're someone with chronic pancreatitis or something else going on with the pancreas, maybe keep an eye of caution or decide against potential use. 
+
+Low Blood Pressure - VIP can reduce blood pressure. If you already have low blood pressure, VIP may not be a great option for you. It's at least worth monitoring if you use it to make sure you're not crashing or exacerbating low blood pressure.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=ef56821589d74c15b50d2326e1d248b5
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

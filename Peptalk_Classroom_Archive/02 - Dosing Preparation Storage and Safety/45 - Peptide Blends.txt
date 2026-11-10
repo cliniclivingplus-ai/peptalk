@@ -1,0 +1,386 @@
+Peptide Blends
+
+02 - Dosing Preparation Storage and Safety
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=50aa2eedff45486eaea30dd815b754d6
+
+Text saved
+
+Peptide Blends: What They Are and How to Use Them
+
+Peptide blends are just two or more peptides blended into one vial. This allows you to minimize the number of injections needed to take both and often times contain peptides that work synergistically together for a desired outcome. These blends are typically designed to work together for a specific goal, like injury recovery, skin repair, gut health, or inflammation control.
+
+Common blends include BPC-157 + TB-500 in a 5mg/5mg vial, more complex blends like GHK-Cu + BPC + TB4, referred to as "GLOW." These are popular blends because they simplify the process and contain peptides that will work synergistically together for a desired outcome.
+
+Why People Use Blends
+
+They only require one pin as opposed to two or three separate ones
+
+The compounds in these blends can work synergistically together to reach a desired outcome
+
+They’re designed for different outcomes like healing, anti-aging, gut repair, or recovery
+
+They're more efficient for people who are using multiple compounds
+
+What You’ll Learn
+
+How different blends are structured and the ratios
+
+Common blends and what they’re used for
+
+When it makes sense to use a blend as opposed to individual compounds
+
+Understanding how blend dosages work
+
+What to look out for with blends (like underdosed compounds or weird blends)
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=a1fcfbe0c4ca47c4a6ee4a4042de3b54
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Common Peptide Blends
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=35e9a8709f3d473a9c9067e7b9b7755d
+
+Text saved
+
+BPC-157 + TB-500 (5/5 Blend or 10/10 Blend)
+This is probably the most popular healing combo. BPC helps with gut, soft tissue, and inflammation. TB-500 supports systemic repair, especially tendons, ligaments, fascia, and recovery.
+
+GLOW (GHK-Cu + BPC-157 + TB-500) (50/10/10 Blend)
+A skin and healing focused blend that also supports collagen regeneration, wound healing, and recovery. GHK helps with skin texture and elasticity. BPC and TB4 help with inflammation and repair.
+
+KLOW (GHK-Cu + BPC-157 + TB-500 + KPV)(50/10/10/10 Blend)
+Same as GLOW but adds in KPV, which gives it more anti-inflammatory and gut-healing properties. This one is a better version of the GLOW blend for people dealing with skin and gut issues at the same time or layering on top of autoimmune-type problems, or wanting even stronger inflammation reduction.
+
+CJC-1295 + Ipamorelin (5/5 Blend or 10/10 Blend)
+This is a blend that is commonly growth hormone support to increase muscle and decrease body fat. CJC-1295 will help growth hormone, and Ipamorelin can amplify this by providing a fast-acting pulse. When combined together they can work synergistically to improve sleep, recovery, and fat loss.
+
+
+
+How to Read Peptide Blend Labels
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=0394101380f14330aa428f7f975fd300
+
+Text saved
+
+When you look at a peptide blend, the label will usually list each compound and how many mg there are of each one in the vial. For example, BPC-157 5mg / TB-500 (TB-4) 5mg. What messes most people up is knowing how to read those numbers and use them to calculate the concentration of the peptide for the appropriate dosing.
+
+Understanding Ratios
+
+Some labels will show the amounts like this:
+
+BPC-157 5mg/TB-500 5mg
+
+GHK-Cu 50mg/BPC-157 10mg/TB-500 10mg
+
+Usually, it will be written out the way it is above with slashes in between the individual compounds. Regardless of how it's written, those numbers are typically telling you the total amount of mg of each that are in the vial, not the dosage of each.
+
+If you see BPC-157 5mg/TB-500 (TB-4) 5mg, that doesn’t mean each injection is 5mg of each. What this is telling you is that the vial contains 5mg of BPC and 5mg of TB-500 total, and you will need to divide that based on the concentration and how many doses you’re taking.
+
+Don’t Add Them Together
+
+The most common mistake that people make when looking at peptide blends is that they add all of the mg amounts of the individual peptides together and try to calculate based on the total number of mg in the vial. This is incorrect. So a 5/5 blend is not going to be calculated as 10mg for the purposes of reconstitution, it would be calculated as 5mg. 
+
+The next section will walk you through how they would be calculated and dosed through the reconstitution process.
+
+
+
+How to Dose Peptide Blends
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=ab668b8bde1d4d82b86e9fe7adb47581
+
+Text saved
+
+When it comes to blends, you're not adding the amount of each individual peptide in the vial to determine the math. You will pick one peptide in the vial to determine dosage, usually the one with the highest milligram amount, and then figuring out how much of the others you're getting based on those calculations.
+
+Everything else is determined based on how many doses you’re taking from the vial.
+
+You can also watch my TikTok for an explanation on a 50/10/10/10 KLOW blend: https://www.tiktok.com/t/ZTjuJRWtM/
+
+Example: GLOW Blend
+
+Amount of each peptide within this blend:
+
+GHK-Cu 50mg
+
+BPC-157 10mg
+
+TB-500 10mg
+
+You reconstitute it with 3mL of bac water
+
+Typically, people choose to dose 1-2.5mg of GHK-Cu per day. For this example, we are going to use 2mg of GHK-Cu per day. This is how the process of calculating the blend is determined: 
+
+Step 1: Total number of doses in the vial
+You've got 50mg of GHK-Cu total.
+If you’re taking 2mg per injection:
+
+50 ÷ 2 = 25 doses (total amount of mg divided by the amount of mg in each dose)
+
+That vial gives you 25 total doses. Since this is daily, that means it gives you 25 total days worth.
+
+Step 2: Determine the number of units on an insulin syringe for the amount of mg per dose
+
+For this example, we added 3mL of bacteriostatic water to the vial.
+That means that the 50mg of GHK-Cu is divided across 3mL.
+
+50mg ÷ 3mL = 16.67mg per mL
+
+Now we have to determine how many units give us our desired mg amount (you can use a peptide calculator to determine this as opposed to doing the math, but here is the concept behind it).
+1mL = 100 units, so:
+
+16.67mg ÷ 100 units = 166.7mcg per unit
+
+To get a 2mg (2000mcg) dose:
+2000 ÷ 166.7 = ~12 units
+
+So you would have to draw 12 units on an insulin syringe to get 2mg of GHK-Cu.
+
+Step 3: What you’re getting from the other compounds
+
+You’ve got 10mg of BPC-157 and 10mg of TB-500 (TB-4) in the vial.
+You’re taking 25 total injections as we already calculated that it would give you 25 doses.
+
+10 ÷ 25 = 0.4mg per injection (10mg of BPC divided by 25 days/doses)
+
+Based on these calculations, each 12 unit injection gives you:
+
+2mg GHK-Cu
+
+400mcg BPC-157
+
+400mcg TB-500
+
+Final Dosing (per 12-unit injection):
+
+2mg GHK-Cu
+
+400mcg BPC-157
+
+400mcg TB-500
+
+This is the concept and process behind understanding blends. Don't look at it in terms of total milligrams. Instead use the highest mg peptide in the blend and figure out how many doses that gives you, then divide the others across that number. Use your reconstitution volume to figure out how many units that equals on the syringe.
+
+
+
+Blend Reconstitution Cheat Sheet
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=bb538365225d4f8e84a924ffc5e7a794
+
+Text saved
+
+This section will go over common peptide blends and how they can be reconstituted as well as common unit amounts for dosages based on how they are reconstituted. 
+
+BPC-157 + TB-500 (5/5 Blend): 
+
+Add 1ml (100 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+250mcg of each (.25mg)- 5 units
+
+500mcg of each (.5mg)- 10 units
+
+750mcg of each (.75mg)- 15 units
+
+1000mcg of each (1mg)- 20 units
+
+BPC-157 + TB-500 (10/10 Blend): 
+
+Add 2ml (200 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+250mcg of each (.25mg)- 5 units
+
+500mcg of each (.5mg)- 10 units
+
+750mcg of each (.75mg)- 15 units
+
+1000mcg of each (1mg)- 20 units
+
+GLOW (GHK-Cu + BPC-157 + TB-500) (50/10/10 Blend): 
+
+Add 3ml (300 units) of bacteriostatic water to reconstitute.
+
+Common dosages based on this reconstitution amount (listed as GHK-Cu/BPC-157/TB-500):
+
+1000mcg (1mg)/200mcg (.2mg)/200mcg (.2mg)- 6 units
+
+1500mcg (1.5mg)/300mcg (.3mg)/300mcg (.3mg)- 9 units
+
+2000mcg (2mg)/400mcg (.4mg)/400mcg (.4mg)- 12 units
+
+2500mcg (2.5mg)/500mcg (.5mg)/500mcg (.5mg)- 15 units
+
+KLOW (GHK-Cu + BPC-157 + TB-500 + KPV)(50/10/10/10 Blend): 
+
+Add 3ml (300 units) of bacteriostatic water to reconstitute.
+
+Common dosages based on this reconstitution amount (listed as GHK-Cu/BPC-157/TB-500/KPV):
+
+1000mcg (1mg)/200mcg (.2mg)/200mcg (.2mg)/200mcg (.2mg)- 6 units
+
+1500mcg (1.5mg)/300mcg (.3mg)/300mcg (.3mg)/300mcg (.3mg)- 9 units
+
+2000mcg (2mg)/400mcg (.4mg)/400mcg (.4mg)/400mcg (.4mg)- 12 units
+
+2500mcg (2.5mg)/500mcg (.5mg)/500mcg (.5mg)/500mcg (.5mg)- 15 units
+
+CJC-1295 + Ipamorelin (5/5 Blend): 
+
+Add 2ml (200 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+100mcg of each (.1mg)- 4 units
+
+200mcg of each (.2mg)- 8 units
+
+250mcg of each (.25mg)- 10 units
+
+300mcg of each (.3mg)- 12 units
+
+CJC-1295 + Ipamorelin (10/10 Blend):
+
+Add 3ml (300 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+200mcg of each (.2mg)- 6 units
+
+250mcg of each (.25mg)- 7.5 units
+
+300mcg of each (.3mg)- 9 units
+
+Semax + Selank (5/5 Blend): 
+
+Add 2ml (200 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+200mcg of each (.2mg)- 8 units
+
+250mcg of each (.25mg)- 10 units
+
+300mcg of each (.3mg)- 12 units
+
+400mcg of each (.4mg)- 16 units
+
+500mcg of each (.5mg)- 20 units
+
+Tesamorelin + Ipamorelin (12/3 Blend):
+
+Add 1.2mL (120 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+0.5mg/125mcg- 5 units
+
+1mg/250mcg- 10 units
+
+2mg/500mcg- 20 units.
+
+Tirzepatide / Retatrutide Blend (30mg Tirzepatide / 20mg Retatrutide)
+
+Add 3mL (300 units) of bacteriostatic water to reconstitute. 
+
+Common dosages based on this reconstitution amount: 
+
+2.5mg Tirz / ~1.67mg Reta - 25 units
+
+5mg Tirz / ~3.33mg Reta - 50 units
+
+7.5mg Tirz / ~5mg Reta - 75 units
+
+10mg Tirz / ~6.67mg Reta - 100 units
+
+Note: Due to the 3:2 ratio in this blend, Retatrutide doses will not land on perfectly round numbers. Tirzepatide drives the dosing anchor for this protocol.
+
+BPC-157/TB-500/KPV Blend (10mg/10mg/10mg)
+
+Add 2mL (200 units) of bacteriostatic water to reconstitute.
+
+Common dosages (equal across all three compounds):
+
+250mcg each - 5 units
+
+500mcg each - 10 units
+
+750mcg each - 15 units
+
+1000mcg (1mg) each - 20 units
+
+BPC-157/TB-500/Cartalax Blend (10mg/10mg/10mg)
+
+Add 2mL (200 units) of bacteriostatic water to reconstitute.
+
+Common dosages (equal across all three compounds):
+
+250mcg each - 5 units
+
+500mcg each - 10 units
+
+750mcg each - 15 units
+
+1000mcg (1mg) each - 20 units
+
+NAD+/MOTS-C/5-Amino-1MQ Blend (100mg/10mg/10mg)
+
+Add 2mL (200 units) of bacteriostatic water to reconstitute.
+
+Common dosages based on this reconstitution amount (listed as NAD+/MOTS-C/5-Amino-1MQ):
+
+NAD+ 25mg / MOTS-C 2.5mg / 5-Amino-1MQ 2.5mg - 50 units
+
+NAD+ 50mg / MOTS-C 5mg / 5-Amino-1MQ 5mg - 100 units
+
+
+
+Can I Mix Peptides?
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=3ed03b58812a4e5bb19c325b01d23d54
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=02e0954127cc406f97b41b70ba74bf7a
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

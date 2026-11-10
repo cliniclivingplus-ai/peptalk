@@ -1,0 +1,174 @@
+Anecdotes and Clinical Evidence (Blog)
+
+10 - Evidence Testing Community and Resources
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=db44915d784c48c0bdd9c09c9da55410
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Anectodes and Clincal Evidence: A Blog Type Course
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=544d9687197444e68648f18d707e48a6
+
+Text saved
+
+There are a lot of uses for peptides. Of course, because this is my passion, this may come across as biased. But, we can see that many users of peptides have had remarkable benefits from using them, but is not always the case. Sometimes when they are used in animal studies or when we hear personal testimonials, they might seem like almost miracles. But when they go through human trials, the results might be disappointing or inconclusive. 
+
+Why do compounds like SS-31, FOXO4-DRI, MOTS-C, etc. seem to have great anecdotal success but never results in a robust amount of evidence in clinical trials? My goal with this is to take a deep dive into that question specifically. I'll talk about why trials may fail and why negative trial results might not necessarily mean that a peptide is useless. I'm also going to discuss the evidence landscape of peptides in tiers from things that are well-proven to those that are pretty much just experimental. I'll also talk through things like pharmacokinetics/pharmacodynamics (PK/PD), minimal clinically important differences (MCID), the placebo effect, subgroup analysis, and trial design. The goal is to help you understand some of these things and interpret results as well as pitfalls that exist within this space.
+
+
+
+Why Do Clinical Trials of Promising Peptides Fail?
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=a527523fb3c043bdbf9d35031c05884d
+
+Text saved
+
+This part can be a bit frustrating. There are compounds that might show some extraordinary results in pre-clinical studies and animal models, or even a few patients or anecdotal experiences, but the formal clinical trials end up finding little to no benefit. There can be a lot of different reasons that this can happen. I think one point to note though is that potentially up to 90% of drug candidates fail at some stage before they get to approval. So why is that? 
+
+Lack of Efficacy in Humans: This is probably the most obvious reason a peptide would not make it through. It didn't work well enough in people. The therapy might work well in mice but then it doesn't translate to meaningful improvement in outcomes for a human disease. It might improve a biomarker but not actually help a patient feel better or live longer. Or it might have a very observable effect in animals, but the effect was much smaller in humans and a trial might not be able to detect it. 
+
+Differences in Pharmacokinetics/Pharmacodynamics: A really important piece of this is pharmacokinetics (PK) and pharmacodynamics (PD) which is basically how the drug acts in the body and the effect it has. In simple terms, pharmacokinetics is what the body does to the drug, and pharmacodynamics is what the drug does to the body. Peptides might have a short half-life (meaning it breaks down quickly in the body) or poor bioavailability (might not be absorbed or distributed properly). As an example, a lot of peptides wouldn't be given as a pill because the stomach enzymes can destroy them so they may need to be administered through an injection or other method of administration. If a trial doesn't get the dosage or the delivery right, an effective peptide might actually seem to fail because of those reasons (think AOD-9604 via oral administration). PK/PD studies are typically done pretty early to help guide dosing and will look at things like how long it stays in the system and how much and if those levels correlate with the desired effect (can see this in the 43 day observation after single ascending dose in Phase 1 of Retatrutide clinical data in the Retatrutide Deep Dive Course). Some trials might use a dose that was effective in animals but not humans (SLU-PP-332 as a potential example) or a dosing schedule that doesn't match the peptides active window. Sometimes, the design issues of a trial can lead to it failing, even if biologically the drug could work under better conditions. 
+
+Trial Design Flaws: This leads us to trial design flaws. Even if the peptide is potentially effective, a poorly designed trial can mask its benefits. Some design pitfalls include too few participants, improper placebo or control, or choosing the wrong endpoints to measure (SS-31 walk test maybe?). The primary endpoint is the main outcome that a trial is trying to improve like pain level, blood sugar, etc. If a trial picks an endpoint that isn't a true and accurate reflection of patient benefit then the peptide might look ineffective. A trial could also measure lots of things and may find improvement in a lab value that is statistically significant but not noticeable or important to the patients. This is where Minimal Clinically Important Difference (MCID) plays a role. This is the smallest change in an outcome that patients would actually consider meaningful to their daily lives. As an example of this, we could look at something like fatigue. If we scored it on a 100-point scale, a patient might reduce their score by 1 point, but if patients needed at least a 5-point drop to feel any better, the 1-point change is not clinically important, even if the size of the trial is there. On the other hand, if the study is too small, it could miss and the differences may be statistically non-significant if the study has too few patients. This could be a Type 2 error or false negative, where the trial says there is no effect, but the drug actually does help people but the data wasn't strong enough to prove it.  
+
+Placebo Effect: We have to take the placebo effect into consideration when it comes to peptides and clinical trials. The placebo effect can be pretty significant, especially when the outcomes are subjective with metrics like pain, energy, and mood. When someone gets the placebo effect, they're experiencing actual improvements in symptoms while not actually getting the active drug that is being studied because their belief and expectations of the drug itself will trigger changes for their body. So, in an uncontrolled setting where we're looking at anecdotal usage, someone who is taking the peptide might feel better due to the placebo or changes they're making. When it comes to a trial, there's usually a placebo control group that has a certain percentage of patients, without their knowledge, receive a treatment that has no active drug (injecting just BAC water vs Tirzepatide as an example) and it allows them to account for how much of an effect the placebo effect has. Often times in a study, the placebo group and the group receiving the drug will see improvements. The most important thing to look at is the difference between them. A drug that actually works must really outperform the placebo and is why often times in the clinical data you'll see the results compared against the placebo group. If a compound only has a moderate benefit, then a very strong placebo can essentially negate that. 
+
+Patient Population and Selection: Another thing that is pretty important to understand is who you are testing the compound on. Sometimes a trial might fail because a treatment was being tested on the wrong group of people. Sometimes a drug my be thought to help with a severe disease, but the patients that are enrolled have a mild disease which may improve on their own or give them less room for improvement and can make it harder to truly show the benefit. On the flip side, certain drugs may only work if the damage isn't too far gone (think potentially SS-31 in patients with Primary Mitochondrial Myopathy). Sometimes patient selection can actually lead a trial to fail or show less than optimal results even though a subset of the group did show improvement, just not enough to make an effect on the overall average. 
+
+Endpoints and Statistics: Trials can often measure multiple outcomes like pain scores, joint mobility, and inflammatory markers in an arthritis treatment. If one of those improves but the others don't, then the interpretation of the results could be difficult (think AOD-9604 as a monotherapy for weight loss and how that varies from what we see with breaking stalls or losing inches). The approvals for different compounds typically rely on primary endpoints that are decided in advance of the trial. If those aren't met, then then trial might be considered a failure, regardless of the other findings that could be observed in other areas. This could mean that a peptide might be able to legitimately help with one aspect of a person's life, but if it wasn't the primary focus then the official results may be that there was no real evidence of efficacy. So, the choice of the endpoints, the number of endpoints, and the statistical criteria that are associated with a study can potentially cause the trial to fail even if the compound does have a moderate effect. 
+
+The Role of the FDA and Logistics: Sometimes, there may be regulatory hurdles that are faced in the development and testing process. They might have certain trial designs or additional studies that are required which can cause a company to run out of funding. In other scenarios, a trial might show some benefit, but the FDA or other organization feels like the data wasn't truly convincing and can refuse approval of the compound. This actually happened with SS-31 for the treatment of Barth syndrome. The patients and the researchers both reported meaningful improvement in muscle and heart function, but the FDA wasn't convinced by the trial alone. They actually gave the company feedback and told them what they would want to see to get it on the path to approval. This can label something as unproven until this is conducted, even if the previous data was positive.
+
+
+
+Anecdotal and Subgroup Population Benefits
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=85310ffd979249ea84621fefd2d3b917
+
+Text saved
+
+There are a lot of times where we hear about anecdotal experiences where someone uses a peptide or compound that isn't approved for use and have fantastic results. I want to take a moment to address that as well as how subgroup responses may be indicative of actual benefits to the point where we can't dismiss them completely. 
+
+Is It A Placebo or Not: I think it's absolutely reasonable when looking at anecdotal benefits to account for the occurrences of the placebo effect as well as the natural fluctuations that can occur in someone's symptoms. Just the belief that someone is using something that can improve their health can actually allow them to see the benefits and see measurable improvements in different areas. A lot of conditions can also phase in and phase out in terms of severity. Think about something like an autoimmune disease where it can somewhat go into remission on their own, an injury or surgery recovery can happen regardless, and people's mood can fluctuate with the day or season. So because of those factors, if someone starts a peptide and then starts to feel better, it could have just been coincidence or psychology. Because of this, we have controlled trials that allow us to separate those types of factors from the true effects of the compound. Anecdotal reports really cannot PROVE cause and effect. However, if there are a lot of independent anecdotes that can start to tell a similar story to each other, especially in areas where you wouldn't expect random or spontaneous improvement, it's worth keeping an eye on. Think about the phases of taking SS-31. About 2-3 days in you feel extreme fatigue that lasts for 2-3 days, then energy returns and typically stays. That's not something that is documented in clinical trials as the experience, but so many people experience that same thing so it seems indicative of what the compound is doing. In practice, the best thing to do would be to utilize this data and experiences to allow for further digging, rather than definitive proof. Again, it may be difficult and expensive to get this definitive proof. 
+
+Analyzing Subgroups: Another thing in clinical trials that can be observed is subgroups. These are smaller population groups of participants that are grouped by different characteristics like age, gender, disease, genetics, etc. You can look at some of the Phase 2 Clinical Trial Data for Retatrutide in the deep dive course to see how data might be broken down across different subgroups within the population. Sometimes a trial that doesn't have overwhelming data for overall effectiveness is neutral, but a subgroup within that population that was studied had clear and stronger benefits. One of the downfalls of this though is that they can produce false positives and false negatives. This is an interesting discussion about subgroup results being fun to look at, but don't over-trust them. 
+
+There are also cases where the subgroup differences are pretty real and the biology of a compound might mean that it only works under certain conditions. For example, we could look at something that stimulates muscle repair and a trial includes both elderly patients and middle-aged patients. One group is more frail, while the other is more fit. The elderly group may show big improvements in muscle improvement where the younger group doesn't, but the elderly had more to gain from that type of compound. So this could be suggestive that the compound is truly beneficial to those that need it the most, even though the overall average of efficacy might reduce the observed benefits. If you look in the peptide space, a metabolic peptide might only help people with a specific genetic trait, uncontrolled diabetes, etc. but not for others. 
+
+The subgroups are really suggestive evidence that can allow for further studies in the future. If a trial fails overall but a subgroup really stands out within it, then they may actually design a new trial that focuses specifically on that subgroup. There was actually a case where an Alzheimer's disease failed the primary endpoint in the studies, but a subgroup analysis showed a benefit in early-stage patients at a high dosage. This eventually led it to further trials and conditional approval. What does this mean? That the overall trial result can mask the effect that only some patients experience. However, this can become credible if the subgroup difference was hypothesized before the trial begins or if there is a clear rationale behind why it may work that way. It also helps if there is consistency in this space that shows across multiple studies. 
+
+Clinical Relevance: Another thing that is important is the magnitude of benefit that someone may experience in anecdotal experiences vs. a trial that might do it on a small rating scale. This goes back to the MCID that was stated earlier. We might see that some type of treatment or therapy helps a subset a LOT, but others might not have much as all so the average isn't extremely impressive. For those who are big responders, the treatment could be absolutely life-changing. 
+
+Biological Rationale: We should also look at the amount of biology that can support the anecdotal evidence and pay more attention to those. If we know that a peptide acts via a certain receptor or pathway and a specific condition would involve that pathway, then it could make more sense when a patient reports anecdotal data. So if we look at something like BPC-157, we know that in animals it promoted blood vessel growth and tissue healing. Now it's not FDA-approved with studies to show this in humans, but we know that people are using this with pretty incredible success for injuries. So if someone says that it heals something like a tendon injury, it would absolutely make sense because of how it works. But if someone said that it fixed their Alzheimer's, then it would be a little more unbelievable because it's not within the actions of BPC-157. Therefore, when the anecdote matches the science, it's worth looking into more and giving it more credibility. 
+
+Global Differences: We can also look at anecdotal experiences and evidence by looking at how different regulatory bodies respond to them. There are peptides that don't have FDA approval in the U.S. due to lack of trials, but are approved in other countries based on studies or different criterial. A great example of this is Semax which is a neuroprotective peptide that is officially approved in Russia for certain neurological conditions like stroke recovery and cognitive disorders. It's actually on the Russian Ministry of Health's List of Vital and Essential Drugs. So Russian authorities actually found the evidence as compelling enough to authorize it for use. In other countries, they may not have evaluated or approved the compound and there are no published trials for Semax outside of post-Soviet states. Now, just because it is approved in Russia doesn't mean it definitely works. Different countries have different standards and can approve different compounds with different data without taking certain criteria into consideration. But, it can indicate that in a real-world setting, doctors are giving Semax for years and apparently seeing the patients respond well to it. If it was COMPLETELY ineffective, then it's less likely that it would continue to be used as a treatment.
+
+
+
+Creating a Tier-Based Criteria Based on Evidence
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=eb82ce2cb1db4061b7e23e06682ca43e
+
+Text saved
+
+This section is going to look at different peptides by classifying them into tiers based on the evidence that exists to support their efficacy. There are three tiers we can break this down into: 
+
+Tier 1: Therapies that are approved and established in mainstream medicine and that are FDA-approved (or by other similar agencies) with robust data to support efficacy and safety. 
+
+Tier 2: Peptides with mixed evidence or promising results that only exist in specific subgroups or specific conditions where there is some clinical trial support or real-world use, but have either failed trials or aren't universally accepted worldwide. 
+
+Tier 3: Peptides with early human evidence or very strong rationale based on the mechanisms of action. These might be tested in a small study or are supported by the mechanism and animal data. They look promising, but don't have human evidence to support. 
+
+Tier 1: Established Peptide Therapies
+
+These peptides are the ones that have made it through the trials and tribulations of the system and are utilized in standard medical practices. They have clear benefits in placebo-controlled trials and have regulatory approval. 
+
+Insulin: Insulin is the OG peptide hormone that has been used for about a century now to treat diabetes. It was so effective that it never really needed modern RCTs to be accepted since it's literally a life or death situation without it. It is really the base of diabetes management. 
+
+GLP-1 Receptor Agonists: These are things like liraglutide, semaglutide, and tirzepatide that are used for type 2 diabetes and have a significant amount of clinical trials evidence to support it. We have clear and statistically significant data (15% body weight loss with an outperformance over placebo) to show the efficacy of these compounds. It is FDA-approved and was a game-changer for obesity treatments. It also has other data such as the ability to reduce the risk of major cardiac events in obese people without diabetes. 
+
+Bremelanotide (PT-141): This is one that was originally derived from Melanotan 2, which was an experimental peptide that people use for tanning and observed the unexpected side effect of sexual arousal. This anecdotal experience led to the development of bremelanotide which is now FDA-approved for treating hypoactive sexual desire disorder in women and was approved in 2019 (brand name is Vyleesi).
+
+Tier 2: Mixed Evidence or Promising Subgroups
+
+This can be where it gets to be a little more ambiguous. These peptides have shown some evidence of benefits like a positive Phase 2 trial, approval in specific countries, significant improvements in a subgroup of patients, etc. but may have failed larger trials or lack universal acceptance by regulatory groups.  
+
+SS-31: In animal models with heart failure, muscle disease, and aging, S-31 had some impressive results. In humans, the results weren't as good. It didn't mean the primary endpoints in the early trials, but in Barth syndrome, they saw noticeable improvements in secondary measures like muscle strength and some of the aspects of heart function. The patients did report meaningful benefits and they say muscle strength increasing by about 45% and heart pump function by about 40% compared to baseline. As linked earlier, an FDA advisory committee actually voted in favor of the compounds efficacy for Barth syndrome, but because the primary endpoints weren't met, they wanted more data. This supports that there could be strong efficacy in a subset of patients, but the regulatory standards require to get full approval. They're also studying it in other issues like macular degeneration and is a good example of how a compound can seem promising and close to where it needs to be, but hasn't reached full approval. 
+
+Thymosin Alpha-1: Thymosin Alpha-1 is an immune-modulating peptide that boosts T-cell function and modulates cytokine activity. Here's the interesting thing - it's approved in over 35 countries (!!!!!!) for treating hepatitis B and C and as an immune enhancer. In Italy, it was even used in trials for melanoma and showed some promise as an adjuvant therapy (given after the primary treatment). There's even some data to support it being used to reduce mortality in China during the COVID-19 pandemic to reduce mortality and improve immune function. But, even with all of this, TA-1 is not FDA-approved in the U.S. Some of the reasons for this could be that other therapies in the U.S. actually took precedence over the use of TA-1 for treating those issues. Because of this, TA-1 falls into this Tier 2 category. 
+
+Cerebrolysin: This is a blend of peptides that comes from the pig's brain and is used as a nootropic / neurotrophic agent and is approved in Russia for stroke and dementia rehabilitation but isn't approved in the U.S. or Western Europe. The trials were done in Eastern Europe and showed benefits for acute stroke recovery and Alzheimer's, but in Western countries they try to point out issues with trial quality and publication bias. So again, this causes this compound to fall into the Tier 2 category. 
+
+Tier 3: Early Human Evidence or Mechanistic Hypothesis
+
+Tier 3 is going to be the ones that might have gone past mice studies a little or the biological mechanisms seem promising for humans, but we don't really have any proof in patients to show that they work. Examples of these include: 
+
+MOTS-C: MOTS-C is actually a peptide that the mitochondria produce that can act throughout the body. When looking at it in mice, it can enhance insulin sensitivity and potentially mimic some of the effects of exercise on muscle. It even showed that it could reverse obesity-induced insulin resistance in mice. But in humans, we only have observational findings. We can see that circulating MOTS-C levels are lower in people with type 2 diabetes than in healthy control groups, which could suggest a connection between MOTS-C and metabolic health. So with this one, there is some mechanistic appeal to it, but there has been nothing proven on dosages, duration, risks, etc. through formal trials and studies. 
+
+FOXO4-DRI: This one is supposed to trigger apoptosis of senescent cells, which makes those zombie cells that won't die go through a self-destruction process. In 2017, a study was done in mice where it cleared senescent cells and showed some rejuvenation in old mice in some areas. So it was seen as a potential senolytic compound for aging and age-related issues. But again, like MOTS-C, no human clinical trials have been done on FOXO4-DRI. It is still completely experimental for humans. This puts FOXO4-DRI into this Tier 3 category.
+
+
+
+Checklist for Interpreting Data
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=e63cdb526b2740a68f9fb5c1f7ba59d8
+
+Text saved
+
+I think it's important to understand how to appropriately evaluate the data that exists and some things you can keep in mind when assessing data and understand does something or will something potentially work and could it apply to me. 
+
+What is the Source? Is it a peer-reviewed clinical trial, a case report, or gymbro6969's Reddit post? Obviously we're going to give a lot more weight to the controlled trial data that is published in reputable journals vs, anecdotes or self-published data. 
+
+How Big and Well-Designed was the Trial? Sample size and methodology are important. This can go for both sides of the spectrum. If the sample size and methodology are wrong and the outcome seems positive, it could be skewed and actually not be effective. On the other hand, it could have been too small or improper methodology to truly find out the effectiveness of the compound. 
+
+What Endpoints were Measured? You have to look at the outcomes that were examined and measured. Were they clinically meaningful? Something might have changed in bloodwork, but do they feel better? Was the changes big enough that someone would actually notice them? 
+
+Statistical vs. Clinical Significance? Was the result statistically significant (which is usually p<0.05)? Or, if it wasn't statistically significant, was the study too small and underpowered? If it's not statistically significant, it doesn't always mean there is no effect. Also look to see if a trial failed but there were trends or subgroups that did better (remembering that it could also have been a random chance that they did better). 
+
+Subgroup Analyses or Specific Population Response? If a trial has a pretty underwhelming result, look to see if they saw a subgroup that experienced different results. Like people over 60 getting significant improvements or with a certain condition. If there was, is there a potential reason why that group might have responded better? These always should have verification to confirm these results, but it can be somewhat indicative of their potential. 
+
+Has it been Reproduced? Usually, a single study doesn't give us a definitive answer. We want to build confidence by replicating those results. So, are there multiple independent trials that show similar results? This can allow you to aggregate data and results and lead more towards an answer. 
+
+Does the Studies Population Relate to the One I Care About? If you're looking at something that helps Alzheimer's patients but you're a young, healthy adult, the data might not support it's effectiveness for you. It doesn't mean it doesn't, but it's not always guaranteed based on the data. You want to understand the trial demographics like age, disease severity, etc because it might work in severe diseases but not moderate or vice versa. 
+
+Absence of Evidence vs. Evidence of Absence? Just because we don't have evidence yet doesn't mean it isn't going to work. If you don't find any trials or only a couple of inconclusive ones, it doesn't mean it's not going to work. It might or it might not. Don't make assumptions either way. Keep an open mind and continue to do more research and monitor it for more data to come out if or when it does. Science is ever-evolving and constantly changes based on new data, evidence, and understandings. 
+
+This isn't the entire list of things to look at, but it is a good reference to get some ideas you can use to guide your understanding and weed through the things you might see or hear. 
+
+For a lot of these things, we can see through our experiences that they seem to work even with lack of data in certain cases. Peptides are amazing things and I would love to continue to see more studies and data surrounding them. But for some, it may never happen.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=91f0e02fdb8041b5a58bdcb76018938a
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

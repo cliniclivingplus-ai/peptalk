@@ -1,0 +1,110 @@
+Semax Deep Dive
+
+06 - Cognition Mood and Sleep
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=6d3350eb283540d596c1aaa2ff3ebe8c
+
+Text saved
+
+Semax is a peptide that was developed in Russia in the 1980s and is derived from a fragment of adrenocorticotropic hormone (ACTS). It is actually a registered drug in Russia and is on the Russian Ministry of Health's List of Vital and Essential Drugs and is used for things like ischemic stroke recovery, TBIs, cognitive impairment, and more. Outside of Russia though, Semax lacks approval from other regulatory agencies but is explored within the nootropic and peptide communities.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=9b02fad7c4784f37b6dc912f2f4fc51a
+
+Text saved
+
+Semax works mostly through the BDNF/NGF axis as well as other areas to enhance cognition, neuroprotection, mood, and stress resilience. 
+
+BNDF and NGF Upregulation - This is the primary mechanism in which Semax works. It increases something called BDNF (brain-derived neurotrophic factor) which is the primary growth factor that is required for neuronal survival, synaptic plasticity, dendritic growth, and long-term potentiation which is the cellular process that leads to learning and memory formation. When you increase BDNF levels, it helps with better memory, mood, and neurological recovery. 
+
+When you administer Semax, it increases BDNF expression in the areas of the brain that are required for learning, memory, and executive function (goal-directed behavior). This occurs through the activation of something called CREB which controls neurotrophic gene expression. 
+
+Alongside of that, something called NGF (nerve growth factor) is also increased. This is critical for cholinergic neurons that produce acetylcholine which are vulerable in Alzheimer's disease. Acetylcholine is a neurotransmitter that helps with the communication between nerve cells and muscles and can help with new memories, attention, and adaptation in the brain. By increases NGF, it helps support the survival and function of those neurons. 
+
+Inhibition of Enkephalin Degradation - Enkephalins are endogenous opioid peptides that help to modulate pain, stress, and mood. They get broken down by enkephalinase enzymes, which Semax can help to inhibit, resulting in the extended action of enkephalins. This will then result in an anxiolytic effect (reducing anxiety), reducing stress response, and mood stabilization. This isn't going to act like an opioid in the normal sense where it will bind to opioid receptors, but instead can help to preserve the activity by slowing the breakdown of endogenous activity. 
+
+Serotonergic and Dopaminergic Modulation - max can modulate monoamine neurotransmitter systems which results in increases motivation, focus, and drive from the dopaminergic effects it produces. It also results in serotenergic modulation which can help with mood regulation and reducing anxiety which complements the enkephalin mechanism of Semax. So with Semax, people may feel more focused, motivated, and less responsive to stress.
+
+
+
+Benefits of Semax
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=8eefafd1fab64e07919c2d1819a6f398
+
+Text saved
+
+Cognitive Enhancement - This is the primary benefit that most people are going for when using Semax. The increase in BDNF basically helps strengthen synapses and helps with memory consolidation. The dopaminergic component helps with working memory and issues with attention. When the two of these are combined together, people typically have better clarity, focus, recall, and mental stamina. In Russia, they actually did an fMRI study (functional MRI that tracks blood flow) and were able to observe changes within 5-20 minutes after administration of nasal Semax. You're not going to become a genius with Semax. But you will likely have a better ability to focus, stay on task, recall information, and have less mental fatigue as you're doing it. One important thing is to try to use this before completing tasks that require mental demand as that will give you increased results. Without doing that, it's like taking pre-workout and not going to the gym after. You're leaving a little bit on the table. 
+
+Neuroprotection - Russian clinical trials actually used Semax in ischemic stroke patients to improve their recovery and reduce the effects of the negative neurological effects afterward. BDNF upregulation can help the survival of neurons in the ischemic penumbra which is the area that is impaired due to reduced blood flow. For TBI, Semax may reduce cerebral edema, inflammatory markers, and cell death and can help with synaptic remodeling post-injury. 
+
+Mood and Stress - As mentioned in the mechanism section, there are enkephalinase inhibiting and serotonergic modulation components that can contribute to some mood effects alongside of the cognitive benefits like reduced anxiety, more stable mood, and a better ability to tolerate stress. A lot of times, people confuse Semax and Selank here. Semax may give some benefit in this area, but Selank is going to have more of a pronounced effect due to the  GABAergic mechanism that comes with it. If your primary issue is complaint over cognition, then Selank would be the better overall choice. 
+
+Optic Nerve / Retina - Semax can also be used in Russia for optic nerve disease. NGF/BDNF expression can result in significant upregulation in retinal tissue after Semax administration. The retinal cells are dependent on NGF for survival and in things like glaucoma, NGF deficiency can contribute to cell death. There was a study of 36 glaucoma patients that used Semax intranasally over the course of a month and saw improvements in visual function.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=ba81b92ae64d41848cc36042d28f8f3f
+
+Text saved
+
+Administration Routes - Semax can be used both intranasally and subcutaneously. The question often gets asked on which is better. I have asked this question to people numerous times and ultimately it seems to be split down the middle. Both may work, but generally, people are preferential towards one way or the other and they don't know until they try it. 
+
+Here's why nasal can work - when administered nasally, it can be absorbed through the olfactory epithelium and can leverage the olfactory and trigeminal nerve pathways which gives a direct route to increase CNS concentrations. This method would essentially allow for this increase before any type of enzymatic degradation can occur. 
+
+Typically, when people are using Semax, they start around 200mcg and administer it in the morning or before demanding tasks. People have worked up as high as 1mg in a single dose, but if I had worked up that high to get the effects, I would switch to Adamax as people can typically use a lesser amount which can then be more cost effective. 
+
+Personally, I like to use this as needed. If it's a Sunday and all I'm doing is some yard work, I'm not taking Semax. I also like to run it for a few weeks, and take a break for a few weeks before starting again. If I don't feel like I need it as much, I may wait longer before using it again.
+
+
+
+Safety and Side Effects
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=75b46020107c4b28a11af56e97f50f04
+
+Text saved
+
+Generally speaking, the Russian literature shows a clean side effect profile. A few things that may occur: 
+
+Nasal Irritation - This can happen as a side effect of taking nasally administered compounds. Sometimes it may be due to concentration or too much administration. 
+
+Headaches - Some may experience a slight headache especially when they first start out. Often times it resolves itself over time. 
+
+Sleep issues - Some may feel like Semax has a slightly stimulating effect in the brain and have issues sleeping if taking too late in the day. 
+
+Hair Loss - You may encounter a Reddit thread expressing this concern due to the theoretical effect that BDNF can have on hair follicle cycling. I have yet to see people actually experience this in people that I have encountered.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/3f484923?md=665edc2718874b3e8535467a5f9c7f0e
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

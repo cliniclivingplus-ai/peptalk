@@ -1,0 +1,92 @@
+KPV Deep Dive
+
+08 - Immune Support and Health Conditions
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=398ed93331b64384a6c39a562b078901
+
+Text saved
+
+KPV is a tripeptide composed of three amino acids (lysine, proline, valine) which is where it gets its name (lysine is denoted as K). It is primarily used for it's anti-inflammatory action that it gets from being a small sequence of a-MSH.
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=45191186a7cd4b6a952d3ec9dd51995d
+
+Text saved
+
+Anti-Inflammatory (NF-kB Inhibition) - KPV is an incredible anti-inflammatory compound that drives this by suppressing nuclear factor kB (NF-kB) pathway which is a regulator of inflammation. Basically, NF-kB is a protein complex that can move to cells and turn on the pro-inflammatory cytokines and enzymes. It has also been observed to reduce the inflammatory things like TNF-a as a response to the NF-kB inhibition. It will reduce the levels of these inflammatory cytokines in cells and tissues that are exposed to inflammation as well, driving down inflammation that is already present. 
+
+Cytokine Suppression and Immune Modulation - As mentioned, it helps to reduce pro-inflammatory cytokines. They have observed decreases in TNF-a, IL1b, IL-6, and IL-8 levels, but interestingly things like IL-10 were even increased to some extent, showing that it has a specific effect on pro-inflammatory cytokine activity but does not have a suppressive effect on anti-inflammatory cytokine activity. 
+
+Antimicrobial Effects - One very interesting characteristic of KPV is its ability to act as an antimicrobial that can fight against both inflammation and infection. In some invitro studies, they observed KPV's ability to kill certain microbes and that levels of a-MSH peptides (KPV) were able to kill Staphylococcus aureus bacteria and Candida albicans yeast. In one assay, about 90% of the S. aureus cells were dead within 15 minutes of exposure. KPV by itself has an ability to act against Candida albicans, but a specific analog of KPV was able to inhibit C. albicans growth by about 90%. The beauty of KPV is that it is able to get rid of some of these pathogens with suppressing immunity and can be great to fight against things where both infection and inflammation exist (things like IBS and gut dysbiosis).
+
+
+
+Benefits of KPV
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=e216a3e4f63847b3b0250a880f81b4fa
+
+Text saved
+
+Gut Inflammation Issues (IBD, Colitis, Chron's) - KPV has been studied in preclinical trials where it had protective effects on the intestinal lining and oral administration of KPV in mouse models alleviated colon inflammation and promoted mucosal healing quite significantly. In something like colitis, the colon can express something called PepT1 which is the peptide transporter that KPV uses to enter those cells. This link also shows how it may be able to be used for something like colorectal cancer. Alongside of this, KPV seems to also have an effect on restoring the gut barrier and was even tested with hyaluronic-acid coated nanoparticles to reduce inflammation by binding to CD44 receptors. 
+
+Skin Disorders (Psoriasis, Eczema, Acne) - KPV can be incredibly effective for skin issues such as psoriasis, eczema, acne, and rosacea where things like excessive inflammation and immune activity can contribute to redness, itching, and tissue damage. Since KPV has the ability to reduce cytokine release and inflammation, it works well through a variety of methods of administration to target these issues. They studies KPV's effect on skin cells that were exposed to urban fine dust which can cause oxidative stress and inflammation on the skin and observed that KPV treatment was able to protect against reactive oxygen species and blunt the downstream inflammatory effects that result from this exposure. There are some studies contributing further to how this may be used for various skin issues, but the results that people have for these in anecdotal experiences is incredible. 
+
+Wound Healing - KPV also shows some promise for wound healing and tissue repair. Especially with issues where there are chronic wounds like sores or ulcers, typically they come along with excess inflammation or infection which is exactly what KPV can target. They have actually done a study on rabbits where they had abraded corneas and were given KPV eye drops 4x daily and within 60 hours, they had completely re-epithelialized and none of the untreated ones had healed within that time. In a lot of cases for wound treatment, they may attempt to use it topically, but KPV also seems to exhibit similar benefits when used as an injection as well.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=e8f97b9b1aba4a7894d906f201fe176f
+
+Text saved
+
+The dosage for KPV is pretty straight forward and can really be varied as desired. However, I think there is a general effective range and going higher doesn't necessarily yield more results. 
+
+The most common dosages for KPV is going to be 250-500mcg daily whether it's via capsules or injectable. Some may choose to go up to 1-2mg per day and, in my opinion, that can be fine but may not always provide you with more relief or results. Because of this, I think 500mcg is generally the most effective amount to use for most applications. 
+
+The length of time that this can be ran can vary as well. I think that the best approach is 4-8 weeks on and then take a break to assess how the issues that you are targeting are doing. Do you feel joint pain relief? Has inflammation gone down? Have stomach issues resolved? During that break, look to see how long things can stay better. Maybe they stay better for long terms. Maybe only for a few days. But you can at least see how the body is without it before continuing.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=67d225a3e5974c65988675fe778d60ff
+
+Text saved
+
+Overall, the tolerability and side effect/safety profile for KPV is very favorable. There have really been no observed issues with KPV usage outside of the potential for maybe injection site reactions (rare with KPV, but can occur with any injection). The only consideration here is there is not a lot of strong human data, so if studied extensively, may show something otherwise. But based on its mechanism and what has been observed anecdotally, it seems to be pretty safe and well tolerated.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/7078fda3?md=a09f42a9d7594255a7eed87a4e1f4d9a
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

@@ -1,0 +1,188 @@
+Racetam Course
+
+06 - Cognition Mood and Sleep
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=de6be2e4f2c84ae6bb138c66218f1fec
+
+Text saved
+
+The racetams are a family of compounds that all share a similar structure. They are actually the original Nootropics and where they word Nootropic was coined. 
+
+In 1964, there was a Russian chemist named Dr. Cornelius Giurgea that synthesized paracetamol. Originally, his goal was to calm motion sickness by pulling a structurally similar compound similar to GABA which is the primary calming neurotransmitter in the brain. What he instead found was a compound that enhanced learning and memory without sedation, stimulation, or toxicity that may be found in psychoactive drugs. Alongside of this, he defined what nootropics should be which is: 
+
+enhances memory and learning
+
+protects the brain
+
+works with few side effects
+
+low toxicity
+
+And that's how racetams were built. 
+
+This course is going to look a little different than the single compound deep dives because the racetams are a family of compounds. The easiest way to understand them is to learn what they share once by looking at the core mechanisms and the relationship with choline, and then go compound by compound to understand how each one varies from the baseline. Some are significantly more potent or stimulating, or can have some completely different mechanisms.
+
+
+
+Shared Mechanisms
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=a31508ef6c0640a395420e34e58dd65d
+
+Text saved
+
+Before we get into each compound, we need to discuss the shared mechanisms between each of these. These are really the things that make a racetam a racetam, even though not all of these share each of these mechanisms. 
+
+AMPA Receptor Positive Allosteric Modulation - This is the effect that is most commonly associated with the cognitive effects of this class of compounds. AMPA receptors are glutamate receptors that are crucial to synaptic plasticity, specifically long term potentiation which is the process by which synapses strengthen with repeated activation. LTP is really the foundation of learning and memory at the cellular level. Many racetams act as positive Allosteric modulators of AMPA receptors which means that they don't bind to the receptor directly, but instead make it respond more effectively when glutamate binds. The result of this is enhanced synaptic plasticity meaning the brain forms and strengthens connections more readily and therefore results in improved learning and memory. 
+
+Cholinergic System Modulation - This is the mechanism that explains the need to supplement choline. Acetylcholine is the primary neurotransmitter of learning, memory, and attention. Racetams enhance cholinergic function, but most of them do it by not adding any acetylcholine. They do it by increasing the brains utilization of acetylcholine, increasing the turnover rate, and in some cases they upregulate high-affinity choline intake which is the process that pulls choline into neurons to make acetylcholine. 
+
+What this means is that racetams increase the demand for acetylcholine. So if the supply of choline doesn't keep up with that demands, you'll have issues. You'll likely feel WORSE with racetams if you reach that point. 
+
+Not all racetams increase cholinergic demand or interact with acetylcholine signaling the same way, so it may not be universally required for everyone using them. In certain cases, someone may actually feel worse if they use too much choline. 
+
+Cerebral Blood Flow and Membrane - Several racetams can help to improve cerebral Blood Flow and have effects on cell membrane fluidity. Piracetam interacts with the phospholipid head groups in cell membranes which can improve membrane fluidity which affects how receptors function and how cells communicate. This could potentially help with issues involving compromised blood flow and aging where membrane fluidity declines. Improved cerebral function also contributes to neuroprotective benefits as well. 
+
+Safety Profile - The foundational 1994 review covering piracetam, oxiracetam, prammiracetam, aniracetam, nefiracetam, and more showed that they have very low toxicity and no real major side effects. They show negligible affinity for major receptor systems you would worry about like adrenergic, serotonergic, dopaminergic, benzodiazepines, or opioid receptor impacts. This is also why they don't produce dependence, withdrawal, or acute toxicity like many psychoactive drugs.
+
+
+
+Choline Connection
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=fa38e98cdf6d4d1885da2b1bb8284da9
+
+Text saved
+
+This is the most important thing within this course. Bottom line is that you should not run a racetams protocol without a choline sources. This section will explain why. 
+
+Why There is a Choline Demand
+
+As covered in the mechanisms section, racetams increase cholinergic transmission. They can increase acetylcholine turnover and upregulate high-affinity choline uptake which is the mechanism that pulls choline into neurons that synthesize acetylcholine. The brain basically makes that whole system work harder. Acetylcholine is synthesized from choline which your brain typically gets from your diet and your body's stores. But if a racetams cranks up that acetylcholine demand and your choline supply can't keep up, you deplete available acetylcholine. 
+
+They actually did a study on this in 1981 where they say that combining piracetam with choline created better memory improvements in aged rats than either of those compounds by themselves. The racetams drives demand, choline supplies the substrate, and together they get more done through a synergistic relationship than either can do by themselves. 
+
+Racetams Headaches
+
+The most common and recognizable side effect of inadequate choline on a racetams is the "racetam headache." People consistently describe it as a distinct, typically localized headache that might feel like a dull pressure in a specific part of the head. Alongside of that headache, it can also create brain fog, irritability, and feeling like cognition is worse. If you start to experience any of those symptoms, the first guess would be a choline issue that can be resolved through supplementation.
+
+
+
+Choline Sources
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=42a2584145b74a0694ff902c89814a05
+
+Text saved
+
+There are a few different types of common choline sources, with the best options typically being either CDP-Choline or Alpha-GPC. 
+
+CDP-Choline (Citicoline) 
+
+CDP-Choline is my primary choice for racetam pairing. It has high bioavailability, crosses the blood-brain barrier efficiently, and also provides cytidine which converts to uridine which has additional cognitive and neuroprotective benefits like supporting the synthesis of something called phosphatidylcholine which is a brain cell membrane component. CDP-choline is also pretty well tolerated. Typically people will supplement anywhere between 250-500mg per day when using racetams. 
+
+Alpha-GPC
+
+This is another good option overall and can help deliver choline efficiently to the brain and is highly concentrated. It is beneficial for acute cognitive and even physical performance uses with some potential power output benefits. There may be some potential cardiovascular risk associated with Alpha-GPC but isn't fully established as a significant risk overall. This one is typically supplemented at around 300-600mg per day when using racetams. 
+
+Choline Bitartrate
+
+This is the cheapest and least effective version of choline as it doesn't cross the blood-brain barrier quite as effectively. It would be better than no choline at all, but you might as well supplement one of the other two alongside of it as the costs aren't so different that it justifies using this one as the cheaper alternative.
+
+
+
+Piracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=1458f87f897a44ea9c30f3b4424e1f8b
+
+Text saved
+
+Piracetam is really where this all started. This was the original and has six decades of research and meta-analysis to support it. The major benefits are age-related cognitive decline, post-stroke recovery, dyslexia, and dementia. 
+
+Piracetam is going to be relatively subtle. It's not going to have dramatic or stimulating effects when you take it and they will generally build over time as opposed to being an immediate hit. Typically when someone starts taking piracetam, they don't really feel anything at first. But after a couple of week, you may start to notice things like better verbal fluency, some better recall, and some clearer thinking. Again, it's not going to be incredibly strong, but those effects along with the pretty established safety profile makes it a pretty good overall compound, especially when someone is getting into racetams. 
+
+Piracetam has a higher dosage range comparatively to the other racetams. It's the least "potent" of the group. Common dosage ranges are 1.6-4.8g/day, sometimes divided into 2-3 doses.
+
+
+
+Aniracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=6f58d88ff47b4865bfc1d3244a5e3ca4
+
+Text saved
+
+Aniracetam is one that can give cognitive benefits with the potential for reduction in anxiety. The standout with aniracetam is the anxiolytic (anti-anxiety) effects which comes from AMPA modulation and it's downstream effects on dopamine and serotonin signaling. This one is a good fit for social situations, public speaking, and work where anxiety can be a limiting factor vs. strictly raw processing power. 
+
+With aniracetam, people typically report having better creativity, better verbal fluency, and the ability to flow with their thoughts vs. a locked in focus. This one can pair well in a situation where you're writing, making music, or doing more open-ended creative type tasks instead of something like math or logic. 
+
+Aniracetam is fat-soluble so taking it with a meal containing fats allows for best absorption. It also has a short half-life so is sometimes split multiple times throughout the day. The common dosage range for this one is 750-1,500mg/day.
+
+
+
+Oxiracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=3e63d73580a2429fb1acc4fb1a0bac68
+
+Text saved
+
+We already discussed aniracetam being the more creative, holistic racetam option and oxiracetam is going to basically be the complete opposite. This one is going to be the "logic" racetam as people typically experience better attention to detail, better logical reasoning, better technical thinking, and a clean mental state with just a slight amount of stimulation. This is the racetam someone typically uses for studying more technical things like programming or math and work that requires sequential thinking. 
+
+Oxiracetam increases acetylcholine utilization in the cortex and hippocampus and increases choline uptake similarly to piracetam but with more potent and longer-lasting with its effect on acetylcholine turnover. Oxiracetam doesn't seem to have any major effects on GABA, serotonin, or dopamine so it typically doesn't bring about any mood changes. So you're getting all of the cognitive benefit without the emotional components that can sometimes be attached to it. 
+
+The mild stimulation you might get from oxiracetam is less than what phenylpiracetam might give and you're not going to have tolerance issues with it like you will with phenylpiracetam. The common dosage range for oxiracetam is 800-1600mg/day and is sometimes split 2x daily.
+
+
+
+Pramiracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=8d2b981263e14ab1816aab06d714b051
+
+Text saved
+
+Pramiracetam is going to be the most potent of the racetams by weight and is primarily geared towards memory and learning. There are minimal mood effects compared to aniracetam and loss noticeable stimulation than oxiracetam. It is going to give a very intense, narrow focus that has strong benefits toward memory formation and retention. When people use it, typically they say it gives a strong and sustained ability to concentrate that just makes it easier to learn new material. 
+
+The mechanism for pramiracetam is strong for high-affinity choline uptake (HACU) in the hippocampus. It significantly increases the rate at which choline is pulled into the neurons to make acetylcholine. This is why pramiracetam is the most choline-dependent of the group is its entire mechanism revolves around the acceleration of choline utilization so if supply isn't where it needs to be, then it won't work and will likely cause the strong headaches. This is the one out of all the others in the course that has the highest likelihood to cause issues because of this. 
+
+Pramiracetam can have potential benefits to support cognitive deficits after a TBI but has less data to support it than something like piracetam. This one is also fat-soluble so is best taken with food. The common dosage ranges for pramiracetam is around 300-600mg up to two times per day.
+
+
+
+Phenylpiracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=e356c643c03e4ecdb71c4652b1acde56
+
+Text saved
+
+Phenylpiracetam is piracetam with a phenyl group added to the molecule which is a modification that is going to significantly increase the potency as well as add a stimulant component that piracetam doesn't have. This phenyl group also allows it to cross the blood-brain barrier more readily and gives some psychostimulant properties like effects on dopamine, noradrenaline, and serotonin. The result of these effects is something that gives physical stamina, motivation, focus, and a stimulant push that puts it almost into a class of its own compared to the other racetams. 
+
+This stimulant component makes phenylpiracetam the main choice when there are demanding, high-output days like heavy workloads, athletic performance, or things that need sustained energy and drive. It actually has some data supporting performance under physically demanding conditions like cold tolerance and physical stamina (which is why athletes love it and also why it's banned by WADA). 
+
+One important thing to understand with this one is that tolerance builds incredibly fast. If you're using it daily, the effects will diminish quickly. This is best used on demanding days where it's needed to avoid this developing. The common dosage of phenylpiracetam is 100-200mg up to two times per day.
+
+
+
+Nefiracetam
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=bd6ea625b25145c8983dfb6ac657666e
+
+Text saved
+
+Nefiracetam is somewhat similar to aniracetam in it's ability to help with calming and mood. It was developed in Japan for the treatment of cerebrovascular disease and has been studied for cognitive and mood uses. The differentiator between this one is the ability to widely target different receptor effects. 
+
+Nefiracetam actually has documented GABA-A activity and can potentiate presynaptic nicotinic acetylcholine receptors in the hippocampus which can help with glutamate release and long-term potentiation. Combining the cholinergic, GABAergic, glutamatergic, and calcium channel effects give nefiracetam a broader and more complex pharmacological profile. This allows it to help support memory and recall alongside of some anti-anxiety and antidepressant-like benefits. 
+
+The common dosage range for nefiracetam is 100-300mg/day with food as it is fat soluble.
+
+
+
+Comparison Table
+
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=0f6d108a1049409d84ad9687eb84de3d
+
+Images saved; no lesson text
+
+[No lesson text exposed. Open original lesson for media.]
+

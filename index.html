@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F8F9FD">
+  <title>PepTalk — Peptide Knowledge Base, Research & Protocols</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="katex.min.css">
+  <link rel="stylesheet" href="styles.css?v=20261109_v5">
+</head>
+<body>
+
+  <!-- Left Sidebar (Matching Screenshots) -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="#" class="brand-wrapper" onclick="navigateTo('knowledge'); return false;">
+        <div class="brand-logo-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2v7.31"></path>
+            <path d="M14 9.3V2"></path>
+            <path d="M8.5 2h7"></path>
+            <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+            <path d="M5.52 16h12.96"></path>
+          </svg>
+        </div>
+        <span>PepTalk</span>
+      </a>
+      <div class="collapse-icon" title="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+        </svg>
+      </div>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="sidebar-nav-group">
+        <button class="nav-link" id="nav-today" onclick="navigateTo('chat')">
+          <span class="nav-icon">⌂</span>
+          <span>Today</span>
+        </button>
+
+        <div style="margin-top: 0.25rem;">
+          <div class="nav-link active" style="font-weight: 600;">
+            <div class="nav-accordion-header">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span class="nav-icon">📖</span>
+                <span>Library</span>
+              </span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">⌵</span>
+            </div>
+          </div>
+          <div class="sub-nav">
+            <button class="sub-nav-link active" id="subnav-knowledge" onclick="navigateTo('knowledge')">
+              Knowledge base
+            </button>
+            <button class="sub-nav-link" id="subnav-research" onclick="navigateTo('research')">
+              Research
+            </button>
+            <button class="sub-nav-link" id="subnav-protocols" onclick="navigateTo('protocols')">
+              Protocols
+            </button>
+          </div>
+        </div>
+
+        <button class="nav-link" id="nav-classroom" onclick="navigateTo('classroom')">
+          <span class="nav-icon">🎓</span>
+          <span>Classroom</span>
+          <span class="tab-badge-count" style="margin-left: auto;">75</span>
+        </button>
+
+        <button class="nav-link" onclick="navigateTo('calculator')">
+          <span class="nav-icon">🔧</span>
+          <span>Tools</span>
+        </button>
+
+        <button class="nav-link" onclick="navigateTo('knowledge')">
+          <span class="nav-icon">📅</span>
+          <span>Cycles</span>
+        </button>
+
+        <button class="nav-link" onclick="navigateTo('knowledge')">
+          <span class="nav-icon">💎</span>
+          <span>Elite</span>
+        </button>
+
+        <button class="nav-link" onclick="navigateTo('knowledge')">
+          <span class="nav-icon">🤝</span>
+          <span>Affiliate dashboard</span>
+        </button>
+      </div>
+
+      <button class="new-chat-btn" onclick="startNewChat()">
+        <span style="font-size: 1.1rem; line-height: 1;">+</span>
+        <span>New chat</span>
+      </button>
+
+      <div class="sidebar-section-title">Recent Chats</div>
+      <div id="recentChatsList" style="display: flex; flex-direction: column; gap: 0.25rem;">
+        <div style="padding: 0.35rem 0.75rem; color: var(--text-muted); font-size: 0.88rem;">No chats yet</div>
+      </div>
+    </div>
+
+    <!-- User Profile Footer (Matches Screenshot: Karan Singh) -->
+    <div class="sidebar-user">
+      <div class="user-avatar">KS</div>
+      <div class="user-name">Karan Singh</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="mainContainer">
+
+    <!-- =====================================================================
+         1. CHAT VIEW (AI Research Assistant Powered by Gemini + Local RAG)
+         ===================================================================== -->
+    <div class="page-view" id="view-chat" style="display: none; height: calc(100vh - 4.5rem); display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+        <div class="status-pill" style="margin-bottom: 0;">
+          <span class="status-pill-dot"></span>
+          <span>PepTalk intelligence online · Powered by Gemini</span>
+        </div>
+        <button class="btn btn-outline" onclick="openApiKeyModal()" style="padding: 0.35rem 0.8rem; font-size: 0.82rem; border-radius: 8px; border-color: var(--border);">
+          ⚙️ Gemini API Key
+        </button>
+      </div>
+
+      <!-- Messages Stream Window -->
+      <div id="chatMessagesArea" style="flex: 1; overflow-y: auto; padding-right: 0.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+        <!-- Welcome Screen -->
+        <div id="chatWelcomeScreen" style="margin: auto 0; text-align: center; max-width: 680px; align-self: center; padding: 2rem 0;">
+          <div class="welcome-hero-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2v7.31"></path>
+              <path d="M14 9.3V2"></path>
+              <path d="M8.5 2h7"></path>
+              <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+              <path d="M5.52 16h12.96"></path>
+            </svg>
+          </div>
+          <h2 class="editorial-title" style="font-size: 2.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.6rem;">How can PepTalk <span style="color: var(--primary);">help you today?</span></h2>
+          <p style="color: var(--text-secondary); font-size: 0.98rem; margin-bottom: 2.25rem; line-height: 1.6;">
+            Ask questions about mechanisms, titration protocols, reconstitution math, safety profiles, or bloodwork interactions.
+          </p>
+
+          <!-- Prompt Starters -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; text-align: left;">
+            <div class="compound-item-card" onclick="sendPromptFromCard('How much BAC water for Tirzepatide (10mg, 15mg, 20mg)? Provide reconstitution math, syringe tick draw table, 4-step titration ladder, and safety profile.')" style="padding: 1.15rem; cursor: pointer;">
+              <strong style="color: var(--text-main); font-size: 0.92rem; display: flex; align-items: center; gap: 0.4rem;"><span>💉</span> <span>Tirzepatide BAC & Dosing</span></strong>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.45;">Reconstitution volumes, syringe units, titration & decision rules</p>
+            </div>
+            <div class="compound-item-card" onclick="sendPromptFromCard('What is the exact titration schedule, core clinical principle, and 4 decision rules for Retatrutide (GLP-3RT)?')" style="padding: 1.15rem; cursor: pointer;">
+              <strong style="color: var(--text-main); font-size: 0.92rem; display: flex; align-items: center; gap: 0.4rem;"><span>📈</span> <span>Retatrutide Titration</span></strong>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.45;">Titration ladder, decision rules & side effect triage</p>
+            </div>
+            <div class="compound-item-card" onclick="sendPromptFromCard('Explain the mechanism, dosing and tissue repair synergy between BPC-157 and TB-500 Wolverine stack.')" style="padding: 1.15rem; cursor: pointer;">
+              <strong style="color: var(--text-main); font-size: 0.92rem; display: flex; align-items: center; gap: 0.4rem;"><span>🩹</span> <span>Wolverine Stack</span></strong>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.45;">BPC-157 + TB-500 synergy, dosing & reconstitution</p>
+            </div>
+            <div class="compound-item-card" onclick="sendPromptFromCard('What does SANA do, what are its mechanism claims, confidence rating, safety warnings, and expected bloodwork changes?')" style="padding: 1.15rem; cursor: pointer;">
+              <strong style="color: var(--text-main); font-size: 0.92rem; display: flex; align-items: center; gap: 0.4rem;"><span>🔬</span> <span>SANA Vault Monograph</span></strong>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.45;">Salicylate / nitroalkene analysis & bloodwork risk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div style="padding-top: 1rem; border-top: 1px solid var(--border); position: relative;">
+        <div style="display: flex; align-items: flex-end; gap: 0.75rem; background-color: #FFFFFF; border: 1px solid var(--border); border-radius: 16px; padding: 0.75rem 1rem; box-shadow: var(--shadow-sm);">
+          <textarea id="chatInput" rows="1" placeholder="Ask PepTalk anything about peptides, protocols, or mechanisms..." style="flex: 1; background: transparent; border: none; outline: none; color: var(--text-main); font-size: 0.96rem; resize: none; max-height: 140px; font-family: var(--font);" oninput="autoGrowTextarea(this)"></textarea>
+          
+          <select id="chatModelSelect" class="filter-select" style="padding: 0.35rem 0.65rem; font-size: 0.8rem; background: var(--bg-input);">
+            <option value="gemini-3.8-flash" selected>Gemini 3.8 Flash (Fast & Accurate)</option>
+            <option value="gemini-3.1-flash-lite">Gemini 3.1 Flash-Lite (Lowest Latency)</option>
+            <option value="gemini-3.6-flash">Gemini 3.6 Flash (Deep Reasoning)</option>
+          </select>
+
+          <button id="chatSendBtn" onclick="handleSendMessage()" style="background: linear-gradient(135deg, #7F66FF 0%, #6C51F0 100%); border: none; color: #FFFFFF; width: 36px; height: 36px; border-radius: 9999px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 14px rgba(127, 102, 255, 0.4); transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+        <div style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 0.45rem;">
+          PepTalk provides evidence synthesis and clinical research information. Not medical advice.
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         2. RESEARCH VIEW (Screenshot 1 & 2)
+         ===================================================================== -->
+    <div class="page-view" id="view-research" style="display: none;">
+      <div class="status-pill">
+        <span class="status-pill-dot"></span>
+        <span>PepTalk intelligence online</span>
+      </div>
+
+      <h1 class="page-title">Research</h1>
+      <p class="page-subtitle">Plain-language summaries of published papers, with a link to each source.</p>
+
+      <div class="search-container">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="researchSearchInput" class="search-input-field" placeholder="Search by peptide, topic, journal...">
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">Compound</span>
+          <select id="researchCompoundSelect" class="filter-select">
+            <option value="All">All compounds</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Category</span>
+          <div class="filter-chips-list" id="researchCategoryChips">
+            <button class="chip active" data-rcat="All">All</button>
+            <button class="chip" data-rcat="Cognitive / Nootropic">Cognitive / Nootropic</button>
+            <button class="chip" data-rcat="Growth Hormone">Growth Hormone</button>
+            <button class="chip" data-rcat="Healing / Recovery">Healing / Recovery</button>
+            <button class="chip" data-rcat="Immune">Immune</button>
+            <button class="chip" data-rcat="Longevity">Longevity</button>
+            <button class="chip" data-rcat="Metabolic / GLP-1">Metabolic / GLP-1</button>
+            <button class="chip" data-rcat="Sexual Health">Sexual Health</button>
+            <button class="chip" data-rcat="Skin / Hair">Skin / Hair</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Cards Feed -->
+      <div id="researchFeed">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         3. KNOWLEDGE BASE VIEW (Tabs: Core 26, Vault 237, Supps 349, etc.)
+         ===================================================================== -->
+    <div class="page-view" id="view-knowledge">
+      <h1 class="page-title">Knowledge base</h1>
+      <p class="page-subtitle">Profiles for every compound: how it works, what it's studied for, and storage.</p>
+
+      <!-- Library Tabs (Matching Screenshot) -->
+      <div class="library-tabs-bar">
+        <button class="library-tab active" data-tab="core">
+          <span>Core peptides</span>
+          <span class="tab-badge-count" id="count-core">26</span>
+        </button>
+        <button class="library-tab" data-tab="vault_peptide">
+          <span>Vault peptides</span>
+          <span class="tab-badge-count" id="count-vault-peptide">237</span>
+        </button>
+        <button class="library-tab" data-tab="vault_supplement">
+          <span>Vault supplements</span>
+          <span class="tab-badge-count" id="count-vault-supplement">349</span>
+        </button>
+        <button class="library-tab" data-tab="vault_cosmetic">
+          <span>Vault cosmetics</span>
+          <span class="tab-badge-count" id="count-vault-cosmetic">57</span>
+        </button>
+        <button class="library-tab" data-tab="vault_goal">
+          <span>Vault goals</span>
+          <span class="tab-badge-count" id="count-vault-goal">21</span>
+        </button>
+      </div>
+
+      <div class="search-container">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="kbSearchInput" class="search-input-field" placeholder="Search peptides...">
+      </div>
+
+      <div class="filter-chips-list" id="kbCategoryChips" style="margin-bottom: 2rem;">
+        <!-- Dynamic chips -->
+      </div>
+
+      <!-- Compounds Grid -->
+      <div class="compounds-grid" id="kbCardsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         4. PROTOCOLS DIRECTORY VIEW
+         ===================================================================== -->
+    <div class="page-view" id="view-protocols" style="display: none;">
+      <h1 class="page-title">Protocols</h1>
+      <p class="page-subtitle">Official clinical and research dosing protocols, titration schedules, and manuals.</p>
+
+      <div class="compounds-grid" id="protocolsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         5. PROTOCOL DETAIL VIEW (Screenshot 3, 4, 5: e.g. Retatrutide GLP-3RT)
+         ===================================================================== -->
+    <div class="page-view" id="view-protocol-detail" style="display: none;">
+      <div class="protocol-header-area">
+        <div class="back-link" onclick="navigateTo('protocols')">
+          <span>←</span><span>Back to Protocols</span>
+        </div>
+
+        <div class="protocol-title-row">
+          <div>
+            <h1 class="protocol-main-title" id="pDetailName">Retatrutide (GLP-3RT) Protocol</h1>
+            <p class="protocol-subtitle" id="pDetailSubtitle">Individualized titration based on personal tolerance and side effect profile</p>
+            <p class="protocol-cycleInfo" id="pDetailCycleInfo" style="color: var(--text-muted); font-size: 0.9rem;">Weekly subcutaneous — individualized titration</p>
+          </div>
+          <a href="#" id="pDetailPdfBtn" target="_blank" class="pdf-download-btn">
+            <span>⬇</span><span>PDF</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        <span style="font-size: 1.1rem; line-height: 1;">⚠️</span>
+        <div>
+          PepTalk is a research assistant. All information is provided for educational and research purposes only and is not medical advice. Peptides discussed are not approved for human consumption unless prescribed by a licensed medical professional.
+        </div>
+      </div>
+
+      <div id="protocolDetailBlocks">
+        <!-- Reconstitution, Core Principle, Escalation Ladder, Decision Rules, Side Effects, Tips -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         5b. COMPOUND DETAIL VIEW (Full Page Monograph — Exact Peppal Content)
+         ===================================================================== -->
+    <div class="page-view" id="view-compound-detail" style="display: none;">
+      <div class="protocol-header-area" style="margin-bottom: 1.5rem;">
+        <div class="back-link" onclick="navigateTo('knowledge')">
+          <span>←</span><span>Back to Knowledge Base</span>
+        </div>
+
+        <div class="protocol-title-row" style="margin-bottom: 0;">
+          <div>
+            <h1 class="protocol-main-title" id="cDetailName" style="margin-bottom: 0.35rem;">BPC-157</h1>
+            <div style="margin-bottom: 0.35rem;" id="cDetailCategoryWrapper">
+              <span class="badge-tag" id="cDetailCategory">Recovery</span>
+            </div>
+            <p class="protocol-subtitle" id="cDetailSubtitle">Body Protection Compound-157</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer-box" style="margin-bottom: 1.5rem;">
+        PepPal is a research assistant. All information is provided for educational and research purposes only and is not medical advice. Peptides discussed are not approved for human consumption unless prescribed by a licensed medical professional.
+      </div>
+
+      <div id="compoundDetailBlocks">
+        <!-- Rendered dynamically with 100% exact content from Peppal -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         6. RECONSTITUTION CALCULATOR VIEW
+         ===================================================================== -->
+    <div class="page-view" id="view-calculator" style="display: none;">
+      <h1 class="page-title">Reconstitution Calculator</h1>
+      <p class="page-subtitle">Accurate peptide dosing, bac water ratios, and syringe unit calculations.</p>
+
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; max-width: 760px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 600;">Peptide Amount (mg)</label>
+            <input type="number" id="calcMg" class="search-input-field" style="padding-left: 1rem;" value="10">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 600;">Bacteriostatic Water Added (mL)</label>
+            <input type="number" id="calcMl" class="search-input-field" style="padding-left: 1rem;" value="2">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 600;">Target Dose</label>
+            <input type="number" id="calcDoseVal" class="search-input-field" style="padding-left: 1rem;" value="2.5">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 600;">Dose Unit</label>
+            <select id="calcUnitSelect" class="filter-select" style="width: 100%; height: 42px;">
+              <option value="mg" selected>Milligrams (mg)</option>
+              <option value="mcg">Micrograms (mcg)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #7F66FF 0%, #6C51F0 100%); border-radius: 18px; padding: 1.75rem; text-align: center; box-shadow: 0 10px 28px rgba(127, 102, 255, 0.28); color: #FFFFFF;">
+          <div style="font-size: 0.82rem; color: #F1EEFE; font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.06em;">Syringe Draw Result</div>
+          <div id="calcUnitsDisplay" style="font-size: 3.25rem; font-weight: 800; color: #FFFFFF; line-height: 1.1;">50</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: #F1EEFE; margin-top: 0.25rem;">UNITS (100U Insulin Syringe)</div>
+          <div id="calcConcDisplay" style="margin-top: 0.85rem; font-size: 0.92rem; color: #E0DBFD; font-weight: 500;">Concentration: 5.00 mg/mL (5,000 mcg/mL)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         7. CLASSROOM VIEW (75 Courses · 797 Lessons)
+         ===================================================================== -->
+    <div class="page-view" id="view-classroom" style="display: none;">
+      <div class="status-pill">
+        <span class="status-pill-dot"></span>
+        <span>PepTalk Academy · 75 Courses · 797 Lessons</span>
+      </div>
+
+      <h1 class="page-title">Classroom</h1>
+      <p class="page-subtitle">Full masterclass curriculum, deep-dive lessons, protocols, and biohacking archives.</p>
+
+      <div class="search-container">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="classroomSearchInput" class="search-input-field" placeholder="Search across 75 courses and 797 lessons...">
+      </div>
+
+      <div class="filter-chips-list" id="classroomTopicChips" style="margin-bottom: 2rem;">
+        <!-- Dynamically rendered topic chips -->
+      </div>
+
+      <!-- Courses Grid -->
+      <div class="compounds-grid" id="classroomGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         8. COURSE VIEWER (Interactive Lesson Reader)
+         ===================================================================== -->
+    <div class="page-view" id="view-course-viewer" style="display: none;">
+      <div class="protocol-header-area" style="margin-bottom: 1.25rem;">
+        <div class="back-link" onclick="navigateTo('classroom')">
+          <span>←</span><span>Back to Classroom</span>
+        </div>
+
+        <div class="protocol-title-row" style="margin-bottom: 0;">
+          <div>
+            <h1 class="protocol-main-title" id="courseViewerTitle">Course Title</h1>
+            <div style="margin-top: 0.35rem; margin-bottom: 0.35rem;">
+              <span class="badge-tag" id="courseViewerTopic">Topic</span>
+              <span class="compound-pill" id="courseViewerCount" style="margin-left: 0.4rem;">0 lessons</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+            <a href="#" id="courseViewerExternalBtn" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
+              <span>↗</span> <span>Open in New Tab</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Content Iframe Reader -->
+      <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-card);">
+        <iframe id="courseIframe" src="about:blank" style="width: 100%; height: calc(100vh - 15rem); border: none; display: block; background: #FFFFFF;"></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- API Key Modal -->
+  <div class="modal-backdrop" id="apiKeyModal" style="position: fixed; inset: 0; background: rgba(17, 17, 22, 0.45); backdrop-filter: blur(6px); z-index: 110; display: none; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; max-width: 500px; width: 100%; padding: 2rem; position: relative; box-shadow: var(--shadow-hover);">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Google Gemini API Key</h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        Your key stays 100% private in your browser. Get a free API key at <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--primary); font-weight: 600;">Google AI Studio</a>.
+      </p>
+      <input type="password" id="geminiApiKeyInput" class="search-input-field" placeholder="AIzaSy..." style="margin-bottom: 1.25rem; padding-left: 1rem;">
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button class="btn btn-outline" onclick="closeApiKeyModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveApiKey()">Save API Key</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="marked.min.js"></script>
+  <script src="katex.min.js"></script>
+  <script src="data/peppal-library-data.js"></script>
+  <script src="data/peptalk-courses-data.js?v=20261109_v5"></script>
+  <script src="app.js?v=20261109_v5"></script>
+</body>
+</html>

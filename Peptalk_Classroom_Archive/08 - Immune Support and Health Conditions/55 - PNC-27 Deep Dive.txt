@@ -1,0 +1,120 @@
+PNC-27 Deep Dive
+
+08 - Immune Support and Health Conditions
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=f29a55372f2e4e2bae063870d340df62
+
+Text saved
+
+PNC-27 is a peptide that has some potential anti-cancer benefits and is derived from the p53 protein that can be tumor suppressive. If you have looked into FOXO4-DRI, you'll also see that the p53 protein is also what the FOXO4 relationship relies on to help senescent cells survive. Since PNC-27 is so niche, I want to dive a little extra into this here in the overview to give a better understanding. 
+
+So p53 is sometimes known as the "guardian of the genome" as it helps to maintain genomic stability and prevent mutations which can help to protect cells from becoming cancerous. They can also use portions of p53 to target different cancer cells. With PNC-27 (there's also PNC-28 which is a shorter analog of this) they selectively lyse (breaking down a cell by damaging its plasma (outer) membrane) the membranes of cancer cells which results in the necrosis of the cancer cell lines and primary human tumors, but seems to leave the untransformed cells in tact. The way it does this is by binding to the HDM-2 membrane on cancer cells, inserts itself into the membrane, and then creates holes within the cells that cause them to rupture and die. HDM-2 is typically overproduced and is displayed externally on the cancer cells surfaces (which normal cells typically don't have) which is what makes this super interesting as a cancer treatment as it would kill tumors / cells without the typical collateral damage that comes to healthy cells too.
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=a475037012564595b1c53cee0e3ebbcf
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Mechanism of Action
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=392c6cb64d71414c95c76ca424bb6e1c
+
+Text saved
+
+HDM-2/MDM2 Targeting - PNC-27's main mechanism of action revolves around this HDM-2 (MDM2) protein. Basically what this protein does is keeps p53 in check and keeps it from turning on different genes that can cause cell cycle arrest or apoptosis. In some cancers, they overexpress this HDM2 which would keep p53 from being able to do it's anti-cancer job. By exploiting this in cancer therapies, they're basically able to let p53 do it's job since it's no longer being inhibited by HDM2. Those cancer cells are going to display HDM2 on the plasma membrane (or the outer barrier of the cell) which is typically found internally to the cell, which becomes an abnormal flag that can be seen on cancer cells but not on normal cells. The way that they looked at PNC-27 for this was to take advantage of that HDM2 expression and take a small piece of p53 that fits into the structure of HDM2 to bind to it. 
+
+Pore Formation - Once the PNC-27 binds to the HDM-2, they gather together and go through a process called oligomerization which is where they join together to create a complex. Think of it like ants gathering on the food you dropped on the ground during a picnic. Once it does that, it seems to form a hole that breaks open the cell. This pore that it creates basically allows molecules to go in and out of the cell and destroys the cell's permeability layer. 
+
+Once this happens, the cell will very quickly start to lose it's balance and is unable to maintain proper functions. Water can flow into the cell and basically makes it swell up like a water balloon that you forgot to take off the spigot. Eventually, this causes it to tear and explode (like a balloon). When this happens, it causes necrosis which is more of a violent destruction of the cell, where apoptosis is more of a programmed death of the cell where it takes itself apart neatly. Instead of disassembling, the cell basically blows itself up when the intracellular components break out into the surroundings. Necrosis is the primary cell death that is caused by PNC-27 and really relies on this pore formation as it's means of doing so. It's also important to note that the ability for PNC-27 to bind to HDM-2 is crucial and is the way that it will ultimately work to get rid of these cells. Another important thing to note is that it doesn't seem to be reliant on p53 which would normally help regulate this as it skips that and uses the HDM-2 binding affinity to create this necrosis as opposed to using the normal apoptosis pathways.
+
+
+
+Benefits of PNC-27
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=30c76fb89ef84d33bffb3770aac29778
+
+Text saved
+
+The primary benefit of PNC-27 is the ability to target and eliminate cancer cells. This section won't look the same as most benefits sections of deep dives since this is really the benefit that is being had. Instead, we'll talk about how PNC-27 as a whole creates this benefits as well as the benefits of this as a potential cancer therapy based on the mechanism of action. 
+
+The biggest benefit to PNC-27 is its ability to be selective on various cancer cell types (but not all) and basically leaving alone the non-cancerous cells. This is due to the targeting of the HDM-2 that is bound to externally on the cell membranes. Typically, this is going to exist inside the cell in the nucleus or cytoplasm and be pretty tightly regulated. It will not normally be displayed on the outer membrane in normal cells. Because of this, when PNC-27 is around those normal cells, there is no HDM-2 for it to grab onto when it encounters them. Without this ability to bind, there's really no ability for it to insert itself into the membrane and form those pores within normal cells which is the component that is responsible for the cell destruction. They were able to observe this where non-tumor cells that were treated were not seen to be harmed by PNC-27. 
+
+Numerous different cancers have this overexpression of HDM-2, but not all of them. So which ones are commonly going to have this? 
+
+56% of breast cancers
+
+65% of colon cancers
+
+41% of prostate cancers
+
+39% of lung cancers
+
+80% of lymphomas
+
+70% of leukemias
+
+Some of these include things like pancreatic adenocarcinoma, chronic myelogenous leukemia, mantle cell lymphoma, merkel cell carcinoma, ovarian carcinoma, certain ER-positive breast cancer subtypes, more advanced, androgen independent prostate cancers, among others. 
+
+If PNC-27 is used for cancers that don't have the overexpression of HDM-2 on the outside of the cells, then they would likely be ineffective since there is nothing for them to target. Since they are looking for that HDM-2 on the membrane, they're not going to see that and instead look at them as normal cells and, as stated earlier, not target them to create the pores that cause cell death.
+
+
+
+Dosage Strategies and Protocols
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=892569df14d1499ea363a57de60f4706
+
+Text saved
+
+It is important to understand that there have only been cell models and animal models that have been studied with PNC-27, which makes this difficult in terms of what would work for humans. 
+
+There is also very limited data that exists in any sort of "biohacker" protocols online. The most commonly discussed is 500mcg/day. In animal models and testing, it seems like they did go higher than that in terms of how the animal models may translate to human models. This creates the question on whether something like 1-2mg/day may be more effective than 500mcg. It's hard to gauge and this is something that will need to have a better understanding to fully know what the dosage protocols might look like for this. 
+
+The positive aspect of this is that it seems to leave healthy cells untouched, so likely not creating an issue of targeting the wrong cells if using the wrong amount, but potentially having other concerns that will be discussed in the next section.
+
+
+
+Side Effects and Safety
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=6700c8955cf74a268d2ae6f9c9b92cf5
+
+Text saved
+
+Just like dosage protocols, there is really nothing out there to support side effects and safety of PNC-27. On the FDA website, they state that they have not received any reports of illnesses or serious adverse effects related to PNC-27. Could there be issues with immunogenicity where the body has an immune reaction or antibodies? Maybe. Nothing in animal models shows any major concerns, but it's always a consideration. Unfortunately, I don't have much more information to provide here due to the limited data and usage of PNC-27.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=49c4affde6f04e11bfd069cf7c5a7740
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

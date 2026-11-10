@@ -1,0 +1,256 @@
+Helpful AI Prompts
+
+01 - Start Here and Foundations
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Comprehensive Exercise / Training Plan Prompt
+
+https://www.skool.com/hacksmithspeptalk/classroom/6d6ea65c?md=adf6caedc1414e7ea9db67686606f802
+
+Text saved
+
+There are 2 prompts in this section. One that is better for beginners to use and one that is better for more advanced folks that have been training longer. You can copy and paste these prompts directly into ChatGPT and in the bracketed sections put the answers to the questions. 
+
+Ex: My main goal: [build muscle and tone up a bit]
+
+Beginner Friendly: 
+
+PROMPT: I want a full training plan that I can follow without needing anything else. Here’s my info: 
+1. My main goal: [build muscle, lose fat, get stronger, tone up, improve endurance, other] 
+2. My fitness level: [beginner, some experience, advanced] 
+3. How many days a week I can train: [number] 
+4. How much time I have for each workout: [minutes] 
+5. Where I’ll train & equipment I have: [gym, home, dumbbells, resistance bands, machines, etc.] 
+6. Any injuries or things I can’t do: [list or none] 
+7. My cardio preference: [walking, running, cycling, rowing, none] 
+8. Anything I really like or don’t like in workouts: [list] 
+9. How long I want the plan to last: [e.g., 8 weeks, 12 weeks] 
+
+Please include: 
+- Weekly schedule with workouts/rest days 
+- Exact exercises with sets, reps, and rest times 
+- Cardio plan that matches my goal 
+- Warm-up and cool-down routines 
+- How to progress over time 
+- Tips to track progress
+
+Advanced Version: 
+
+PROMPT: Create a comprehensive, periodized training program for me based on the following details. Make the plan detailed enough so I can follow it without needing more information. 
+GOALS: [e.g., fat loss, muscle gain, strength, endurance, recomposition] 
+EXPERIENCE LEVEL: [beginner / intermediate / advanced] 
+TRAINING DAYS PER WEEK: [number] 
+WORKOUT LENGTH: [minutes per session] 
+PREFERRED SPLIT OR STYLE: [push/pull/legs, upper/lower, full body, functional, hybrid] 
+EQUIPMENT AVAILABLE: [gym setup, home gym list, bodyweight only, CrossFit setup] 
+INJURIES / LIMITATIONS: [list] 
+CURRENT FITNESS LEVEL / BENCHMARKS: [optional] 
+PREFERRED TRAINING ENVIRONMENT: [gym, home, outdoors] 
+CARDIO PREFERENCE & LIMITATIONS: [LISS, HIIT, machine preference] 
+TIMEFRAME: [e.g., 12 weeks] 
+OTHER PREFERENCES: [training style, sport-specific drills] 
+
+Please include: 
+1. Program phases & progression plan 
+2. Weekly schedule (split & rest days) 
+3. Exercises with sets, reps, rest, tempo 
+4. Cardio & conditioning 
+5. Warm-up & mobility plan 
+6. Cool-down & recovery 
+7. Progression & overload plan 
+8. Tracking & adjustment tips 
+9. Form & safety notes
+
+
+
+Comprehensive Meal Plan Prompt
+
+https://www.skool.com/hacksmithspeptalk/classroom/6d6ea65c?md=18b491cd8819442abf46ba86f43ff077
+
+Text saved
+
+There are 2 prompts in this section. One that is better for beginners to use and one that is better for more advanced folks that are more in tune with different ways of eating, etc. You can copy and paste these prompts directly into ChatGPT and in the bracketed sections put the answers to the questions. 
+
+Ex: GOALS: [eat in a slight caloric deficit and lose weight at a sustainable pace]
+
+Beginner Prompt: 
+
+PROMPT: I want a full meal plan that I can follow without needing anything else. Please calculate my TDEE first so my calories are accurate, then make my plan. Here’s my info: 
+1. My main goal: [lose fat, build muscle, maintain weight, improve health, boost energy] 
+2. Age / Sex: [age, male/female/other] 
+3. Height & weight: [height] / [weight] 
+4. How active I am: [rarely active, light activity, moderate activity, very active] 
+5. Any food allergies or things I avoid: [list] 
+6. Foods I enjoy most: [list] 
+7. Foods I dislike: [list] 
+8. How many meals/snacks I want each day: [number] 
+9. How much time I can spend cooking: [quick meals, 30+ minutes, love to cook] 
+10. My budget for groceries: [low, medium, high] 
+
+Please include: 
+- My TDEE and daily calories/macros based on my goal 
+- 7-day plan with all meals/snacks 
+- Simple recipes with steps 
+- Grocery list for the week 
+- Prep-ahead tips 
+- Substitutions list 
+- Hydration & supplement ideas
+
+Advanced Prompt: 
+
+PROMPT: Create a comprehensive meal plan for me and first calculate my TDEE using the Mifflin-St Jeor equation. Base my calorie target and macros on my goal. Here’s my info: 
+GOALS: [fat loss, muscle gain, maintenance, recomposition, performance] 
+AGE: [number] 
+SEX: [male / female / other] 
+HEIGHT: [inches or cm] 
+WEIGHT: [lbs or kg] 
+ACTIVITY LEVEL: [sedentary, lightly active, moderately active, very active] 
+BODY FAT % (if known): [optional] 
+DIETARY PREFERENCES / RESTRICTIONS: [vegan, vegetarian, gluten-free, dairy-free, keto, paleo, halal, kosher, allergies] 
+NUMBER OF MEALS/SNACKS PER DAY: [number] 
+COOKING SKILL & TIME AVAILABLE: [beginner, intermediate, advanced; quick meals or fine with long prep] 
+FOODS I LIKE: [list] 
+FOODS I DISLIKE: [list] 
+BUDGET RANGE: [low, moderate, high] 
+EATING WINDOW (if fasting): [optional] 
+SUPPLEMENTS AVAILABLE: [list or none] 
+OTHER CONSIDERATIONS: [gut health, anti-inflammatory, low sodium, etc.] 
+
+Please include: 
+1. TDEE calculation & explanation 
+2. Daily calorie target & macros 
+3. Full 7-day meal plan with exact portions 
+4. Recipes & cooking instructions 
+5. Grocery list by category 
+6. Prep & storage tips 
+7. Substitution list 
+8. Meal timing guidance 
+9. Hydration & supplement suggestions
+
+
+
+ChatGPT Progress Tracker
+
+https://www.skool.com/hacksmithspeptalk/classroom/6d6ea65c?md=bf7865b50f984349ae8c5422426422d3
+
+Text saved
+
+There are 2 prompts in this section. One that is better for beginners to use and one that is better for more advanced folks that might be tracking more data and typically tracking more things. You can copy and paste these prompts directly into ChatGPT and in the bracketed sections put the answers to the questions. 
+
+Ex: My current stats: [63, Male, 5'1, 325lbs, 6% body fat]
+
+Beginner Prompt:
+
+PROMPT:
+I want you to help me track and review my health, workouts, nutrition, and supplements over time. Here’s my info so we can get started:
+
+1. My main goals: [e.g., lose fat, build muscle, improve endurance, better energy, recover from injury]
+2. My current stats: Age, sex, height, weight, and body fat % (if known)
+3. My workout plan: [brief description or link]
+4. My meal plan or nutrition style: [brief description or link]
+5. My supplements/peptides: [list with dosages]
+6. Any health conditions or limitations: [list or none]
+7. My preferred tracking frequency: [daily, weekly, monthly]
+
+When we track, please log:
+
+Weight, measurements, body fat (if provided)
+
+Training performance (sets, reps, weights, cardio)
+
+Nutrition (calories, macros, notes on how I felt)
+
+Supplement/peptide use and any side effects
+
+Sleep quality, energy, mood
+
+When we review, please give me:
+
+Trends and changes since last check-in
+
+Progress toward goals
+
+Adjustments to training, nutrition, or supplements
+
+Any red flags I should be aware of
+
+Advanced Prompt: 
+
+PROMPT:
+I want you to act as my comprehensive health, fitness, and supplementation tracker and analyst. Store my baseline, log my updates, and give me insights over time.
+
+BASELINE DATA:
+
+Goals: [specific]
+
+Age / Sex: [age / male/female/other]
+
+Height / Weight / Body Fat %: [data]
+
+Training Program Details: [split, sets/reps, cardio specifics]
+
+Nutrition Plan Details: [calories, macros, meal timing, diet type]
+
+Supplements / Peptides: [compound, dosage, frequency]
+
+Medical / Health Factors: [conditions, medications, injuries]
+
+Current Lifestyle Notes: [sleep schedule, work activity level, stress levels]
+
+TRACKING FREQUENCY: [daily, weekly, monthly]
+
+TRACKING FORMAT:
+
+Body Metrics: weight, BF%, measurements (waist, hips, chest, arms, legs)
+
+Performance Data: workout logs, strength/endurance changes
+
+Nutrition Intake: calories, macros, hydration, notes on digestion/energy
+
+Supplementation: peptides, vitamins, other, with timing and notes
+
+Recovery Metrics: sleep hours/quality, HRV, resting heart rate
+
+Wellness Check: mood, focus, stress
+
+ANALYSIS REQUIREMENTS:
+
+Detect and highlight positive/negative trends
+
+Compare progress to goal timeline
+
+Recommend training/nutrition adjustments
+
+Flag possible recovery or health issues early
+
+Suggest supplement/peptide protocol tweaks
+
+At every check-in, provide a summary table of metrics, trend notes, and action steps.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/6d6ea65c?md=2f9c88b9c90f46c79d1c95e39f6a988e
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

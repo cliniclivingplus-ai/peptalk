@@ -1,0 +1,129 @@
+Peptalk Classroom Archive — Coverage Report
+Saved: 4 November 2026
+
+Captured all 797 accessible lesson links found across all 75 classroom courses.
+Saved lesson HTML and plain text, source URLs, original headings/tables/links, and all 80 embedded lesson image references as offline images inside the HTML course files.
+
+LIMITATIONS
+- Embedded videos were not downloaded or transcribed. A supported player download attempt failed; all lesson source links are preserved.
+- External webpages, research articles, vendor pages and cited PDFs remain links. Their full contents have not been downloaded.
+- Some classroom sidebar items were displayed as text without an accessible lesson link. These were not extracted. An example is “Side Effects and Red Flags” in Beginner Peptide Information.
+- Pages with no exposed text may contain a video, image, or other resource. They are explicitly flagged in Lesson_Index.csv and listed below.
+- Course content is archived as written, including its disclaimers; claims have not been independently verified.
+
+HOW TO USE
+Open START_HERE.html after downloading the folder or ZIP. Topic folders contain one HTML file and one searchable TXT file per original course. HTML course files include their images and work independently offline. Lesson_Index.csv lists every accessible lesson and its capture status. Resource_Links.csv lists additional resource links.
+
+PAGES WITHOUT TEXT
+🌳 Level 2 — Community Video Overview
+https://www.skool.com/hacksmithspeptalk/classroom/5bc8906c?md=672f3b47b4da4417aaeebf80c97f04ec
+FAQ — Vial Pressurization Issues
+https://www.skool.com/hacksmithspeptalk/classroom/1201c9da?md=50821cf051d843998c84f62946ce89a4
+FAQ — What Should I Do?
+https://www.skool.com/hacksmithspeptalk/classroom/1201c9da?md=71c0c6c67576465b8c778f27a495b60d
+Beginner Peptide Information — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=3198dbbce21a4276b5bb81bf14de97c2
+Beginner Peptide Information — Milligrams (mg) vs Micrograms (mcg)
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=eb96f11e86d44cafb64cbfb7628c1624
+Slowing Aging: Everything to Fight Aging — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/d8b5bb64?md=4f3b21ec6b2c446ba2b3caedd52acf08
+All Things Growth Hormone — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=88cd3898508e4730975dc5d35e8b9492
+All Things Growth Hormone — Growth Hormone Peptides 101 Post
+https://www.skool.com/hacksmithspeptalk/classroom/8296f1eb?md=89e779a37a674e05b22a4f46578681e5
+Anecdotes and Clinical Evidence (Blog) — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/2e50c673?md=db44915d784c48c0bdd9c09c9da55410
+ARA-290 Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=97f72a2f98194c09b9b595289e0931cb
+ARA-290 Deep Dive — The Innate Repair Receptors
+https://www.skool.com/hacksmithspeptalk/classroom/1a504ff2?md=6c44a91f29f04cb3ac4755ed89d4e631
+Breaking a Stall — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/eb4fa6ab?md=c15be1e64f8a41c6b6f959d0686bc332
+The Science of Building Muscle — Supplements and Enhancers
+https://www.skool.com/hacksmithspeptalk/classroom/aa8c9a91?md=152fa6d5347943598a523681ccb1c40d
+GHK-Cu Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/b2aa0c77?md=7cf6c53e29b64212a525e03c3579e712
+GLP-1 Maintenance — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/9a1bbaca?md=1c5edaa4a3a942d4b7466af18d99a109
+Hackie's Videos — Flat Feeling in the Gym on GLPs
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=969a9aa7d4034125ae930dc6899cdc7d
+Hackie's Videos — How to Break Your Stall
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=edd7228d9280406bb80c99b4a4e03da5
+Hackie's Videos — Tesa Cancer and Water Weight Concerns
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=9892df34a53d4a19a6e717bd8eb1d1ea
+Hackie's Videos — Clinical Data and Peptides
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=4be53e5cd212438f89b80dcf362608c6
+Hackie's Videos — Don't Switch from Tirz to Reta if Impatient
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=7983df21fa2048e698e6bbeea6f47c24
+Hackie's Videos — Flintstone Vitamins (sarcasm)
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=9b0d77d2bd56419399791568e3eeb179
+Hackie's Videos — Reta and Glucagon Receptors
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=9a221d3515c74a44baf3ef2067689955
+Hackie's Videos — Retatrutide Phase 2 Data
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=6d9af86d10164856a810bf5353e6e541
+Hackie's Videos — Bioregulators
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=7fdd4c642fac4bfeaeb07b73915513a3
+Hackie's Videos — SS-31
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=0d03bd474f01412a80b4b9b8d69404a4
+Hackie's Videos — AOD-9604 and L-Carnitine
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=31727a2e16974f6cb3bed8830fc99012
+Hackie's Videos — Peptides for Hair Loss
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=68bf3e796747453e8a05c4a752a3ed4d
+Hackie's Videos — New page
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=807456931c984424a64ae923d73f95c0
+Hackie's Videos — New page
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=a426d4802b194b70afb2ef8577dc61e5
+Hackie's Videos — New page
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=11fffcd26a7b4bc19f3d4e4dd9cf0081
+Hackie's Videos — New page
+https://www.skool.com/hacksmithspeptalk/classroom/af5ae226?md=0bba577250c44407b241376496b996fc
+Energy — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/14a74a9c?md=dc121aa37e8e4573bcc251b37194f5b7
+How Much is Needed for a Cycle — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/fc2754d5?md=1437427273014a5fb15a5cd74fa0f4da
+The Immune System — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/d4dcf558?md=6ffca0f799064d6b902d9cd9132603c5
+Live Q&As — Video Recording
+https://www.skool.com/hacksmithspeptalk/classroom/b1b0619b?md=2c02e721a4f74b9bbb6e361f60bf869f
+Melanotan Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/3f582b20?md=afebcb852cc3404cae30b28eb7532359
+Nasal Peptides — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/6bd3b93a?md=8c2871ebcd444dafadb3371c530609a6
+Nasal Peptides — Reconstitution Video
+https://www.skool.com/hacksmithspeptalk/classroom/6bd3b93a?md=8f490362c51a438b832521be02e2e254
+Nutrition — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/92eb8b20?md=6f9225b20978480db3a225924af433a6
+Peptide Blends — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=a1fcfbe0c4ca47c4a6ee4a4042de3b54
+Peptide Blends — Can I Mix Peptides?
+https://www.skool.com/hacksmithspeptalk/classroom/52d26d05?md=3ed03b58812a4e5bb19c325b01d23d54
+Peptide Calculator How-To — How-To Video
+https://www.skool.com/hacksmithspeptalk/classroom/25f0a1fb?md=666a30fba1ac464e8410a5c7245a2003
+Peptide Half-Lives — Peptide Half-Life Cheat Sheet
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=1035b7da9c7a4159ae97c5636db21700
+Peptide Stacking — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/d8d21a26?md=23ea0d7a509f4c2eab7e675cabb5b487
+Peptide Storage — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/5e965cbd?md=35f3b31037cf43be8de27c943701948b
+Peptide Struggles — Video 1
+https://www.skool.com/hacksmithspeptalk/classroom/aecbde95?md=45e560d10f564f2d9c7541d795a23a0a
+Peptide Struggles — Video 2
+https://www.skool.com/hacksmithspeptalk/classroom/aecbde95?md=dd4ac3d6b60e48719bada7011ca4ef75
+PNC-27 Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/2a916626?md=a475037012564595b1c53cee0e3ebbcf
+Racetam Course — Comparison Table
+https://www.skool.com/hacksmithspeptalk/classroom/cd35cce5?md=0f6d108a1049409d84ad9687eb84de3d
+Skincare — Product Discussion
+https://www.skool.com/hacksmithspeptalk/classroom/1f44cdf4?md=4dd57ac21ebb4f8abdcfd44c99881869
+Skincare — How to Mix Topical Peptides
+https://www.skool.com/hacksmithspeptalk/classroom/1f44cdf4?md=2d87043992184e7698fe764a057dd076
+Sleep. — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/a9e5c824?md=1b15f99bc2994207a87432f9426cd176
+Thymosin Alpha-1 (TA-1) Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/8bb98e26?md=1a121023bafe4b5dac608e81ac01dc96
+Transitioning GLPs — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/a32aa17d?md=1fee263350b84afeb5c4e9521eb0ed98
+Understanding Mitochondria — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/2f97254b?md=c7766db53aa9475e830b34b104ca35b0
+VIP Deep Dive — Course Video
+https://www.skool.com/hacksmithspeptalk/classroom/0303bad9?md=67b2234a4bbb4a9a9a8f8304aa0d7e6e

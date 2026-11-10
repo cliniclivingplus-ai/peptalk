@@ -1,0 +1,679 @@
+Beginner Peptide Information
+
+01 - Start Here and Foundations
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=f9de688cc5004e36ac49fd3e3abbfeb6
+
+Text saved
+
+This course is designed to walk you through everything you need to know if you're new to peptides. 
+
+This covers the basics without overcomplicating anything. You’ll learn what peptides are, how to mix them, understanding dosages and units, and what tools you'll need. 
+
+What You'll Learn
+
+What Are Peptides
+
+A straightforward explanation of what peptides are and how they work
+
+What makes them different from supplements or hormones
+
+Why they’re used for recovery, fat loss, injury healing, and more
+
+How to Reconstitute Peptides
+
+What reconstitution means and why it’s important
+
+How to mix peptides with bacteriostatic water
+
+What to avoid so you don’t damage the peptide during the process
+
+Supplies and Tools You’ll Need
+
+What type of syringes to use for injections vs. reconstitution
+
+What size needles to use for subcutaneous vs. intramuscular
+
+How much bac water to use when mixing
+
+How to store everything properly and keep it sterile
+
+Understanding Dosages and Units
+
+How to calculate your dose based on how much water you added
+
+What “units” mean on an insulin syringe
+
+Example walkthroughs of how to measure out a proper dose
+
+Building a simple dosing schedule that works
+
+Injection Techniques
+
+Subcutaneous vs intramuscular injections and when to use each
+
+Where to inject and how to rotate sites
+
+How to inject properly with minimal pain or irritation
+
+
+
+Course Video
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=3198dbbce21a4276b5bb81bf14de97c2
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+What Are Peptides?
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=42312148521b456e916101453ba7a2cd
+
+Text saved
+
+Peptides are essentially just short chains of amino acids. You can think of them like little messengers in the body. They will travel to different places to tell your cells to do specific things like repair tissue, reduce inflammation, release growth hormone, or improve insulin sensitivity. Your body already produces peptides naturally, but supplementing with them gives you more control over what’s happening and the benefits and responses that are associated with them.
+
+They're not the same things as exogenous hormones, and they’re definitely not the same thing as TRT or steroids. Most peptides don’t replace anything in your body, they just signal your body to do something it already knows how to do and should be doing in a fully optimized state.
+
+Different peptides do different things depending on how they’re structured. Some help with joint healing, some support gut repair, some help burn fat more efficiently, and some improve cognitive function or sleep.
+
+Peptides typically come in powdered form and often times will need to be mixed with bacteriostatic water before you are able to use them. 
+
+Most of them are injected under the skin via subcutaneous injection (most common) or intramuscular injection. 
+
+Not all peptides will be felt immediately. Some might take days or weeks to build up the effects.
+
+
+
+Milligrams (mg) vs Micrograms (mcg)
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=eb96f11e86d44cafb64cbfb7628c1624
+
+No lesson text exposed; open source lesson for media
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+How to Reconstitute Peptides
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=c933e5f94063412da268ac62ffa0885d
+
+Text saved
+
+Most peptides are going to come in powder form in a small glass vial that may seem like it won't hold much liquid at all. These are 3mL (milliliter) vials, meaning they can hold up to 3mL of liquid (typically bacteriostatic water). Sometimes, you may find something that comes in a 5mL, 10mL, or 20mL vial. 
+
+A lot of people overcomplicate the reconstitution process. It may seem daunting, but all you are really doing is adding the right amount of liquid into a vial so the peptide dissolves and can be drawn into the syringe for use. 
+
+Reconstitution is the process of adding liquid to the freeze-dried powder in your peptide vial to create an injectable solution. The powder form is how peptides are shipped because it's stable at room temperature during transit. The reconstituted solution is what you inject.
+
+What you need:
+
+Your peptide vial
+
+Bacteriostatic water (or other liquid solution that may be required)
+
+A 1cc or 3cc syringe with a 25-30g needle
+
+Alcohol swabs
+
+A stable surface
+
+The process:
+
+Step 1: Let both vials come to room temperature. Cold BAC water injected into a cold peptide vial can shock the powder. Give both about 10-15 minutes out of the refrigerator. I personally do not store BAC in the fridge and I think it is best to store in a cool dark place, but some do. 
+
+Step 2: Wipe the rubber stopper of both vials with a fresh alcohol swab. Let it dry for 30 seconds.
+
+Step 3: Draw your BAC water into the syringe. The amount of BAC water you add determines the concentration of your final solution. Refer to the Reconstitution Cheat Sheet at in the classroom or use the Peptide Calculator to determine the right volume for your desired concentration.
+
+Step 4: Insert the needle into the peptide vial and slowly let the BAC water in. There is a good chance that there will be negative pressure that will basically suck the liquid into the vial. 
+
+Step 5: Remove the needle and gently swirl the vial. Most peptides dissolve within a minute or two. Some take longer. Gently rolling the vial between your palms can help.
+
+Step 6: The reconstituted solution should be clear and colorless. If it's cloudy, stringy, or won't dissolve something is wrong like wrong solvent, damaged peptide, or contamination. Do not inject it.
+
+Step 7: Store reconstituted peptides in the refrigerator. Label the vial with the date of reconstitution.
+
+How much BAC water to add:
+
+This is where the Reconstitution Cheat Sheet and the Peptide Calculator are essential. The amount you add determines your concentration and therefore how many units you draw per dose.
+
+Use the Peptide Calculator and enter your vial size and desired dose and it does all of this for you.
+
+Shelf life:
+
+Unreconstituted lyophilized peptide refrigerated or frozen: typically stable for 12-24 months, if not more depending on the compound.
+
+Bacteriostatic water after opening: typically 28 days at room temperature per the label. I personally use for 60 days at a time. There are some who run the same bottle of BAC until it's empty. Personally, I don't like allowing it to run that long. 
+
+Reconstituted peptide refrigerated: most compounds are stable for 30-60 days. Some degrade faster. 
+
+What bad reconstitution looks like:
+
+Clear and colorless = correct.
+
+Cloudy or milky = possible contamination or damaged peptide. Stringy or gel-like = wrong solvent and this compound likely needs something to buffer the pH. Won't dissolve after several minutes = possibly wrong solvent or damaged peptide. Unusual color (brown, pink, orange) = degradation or contamination.
+
+If in doubt do not inject it. The cost of a replacement vial is significantly lower than the risk of injecting something compromised.
+
+
+
+Supplies and Tools Needed
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=5dc10e56fbc747079783a08534e0cec8
+
+Text saved
+
+This part trips people up because there are a bunch of syringe sizes, needle gauges, and random terms thrown around online. Here’s what supplies you'll need and what each thing is actually used for.
+
+Syringes
+
+You’ll commonly find two types of syringes:
+
+3cc syringe – This can be used for for reconstituting peptides, or for injections that require more than 1mL (100 units) for a dose. 
+
+1cc (insulin) syringe – This is for reconstituting or injecting the peptide. It has a super thin needle and shows dosing in "units" instead of mL, which makes it easy to measure small doses.
+
+Pro tip: Get U100 1cc insulin syringes with a 29–31 gauge needle, either 1/2” or 5/16” length. That’s what you’ll use for subcutaneous injections.
+
+Needles
+
+Needle gauge = thickness. Lower number = thicker needle.
+
+25G–27G needles for reconstitution (mixing bac water into your peptide vial)
+
+29G–31G needles for subcutaneous injections (less pain, small volume)
+
+You can also get combo packs where the needle is removable and swappable between drawing and injecting. This are commonly referred to as Luer Lock.
+
+Needle Lengths
+
+1/2" or 5/16” is perfect for subcutaneous (belly fat, love handle, etc)
+
+1”+ is usually only for intramuscular, which most peptides don’t require
+
+Stick with 5/16" or 1/2” 30G insulin syringes if you’re injecting under the skin. That’ll work for 99% of things.
+
+Other Supplies
+
+Bacteriostatic water – What you’ll use to reconstitute the peptide
+
+Acetic Acid solution - Only used for AOD-9604
+
+Phosphate Buffered Saline - Only used for ARA-290
+
+Alcohol wipes – Wipe vial tops and skin to keep everything clean
+
+Sterile vials (if needed) – For blends, custom stacks, or transferring reconstituted peptides
+
+Sharps container – Or anything puncture-proof to safely toss used syringes
+
+Links for Various Supplies
+
+
+
+Understanding Dosages and Units
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=7678df394ece4aee9e504fc74fa088c9
+
+Text saved
+
+This is the part that confuses a lot of people and it’s honestly where most dosing mistakes happen.
+
+This section is going to show you how to understand the math and make it simple.
+
+
+
+
+What the Units Actually Mean
+
+If you’re using a 1cc insulin syringe (which is most common), there are 100 units total on the syringe.
+
+100 units = 1mL
+
+50 units = 0.5mL
+
+10 units = 0.1mL
+
+
+That’s it. All the units on the syringe are just a fraction or percentage of 1mL.
+
+Your peptide vial is reconstituted with a certain amount of bac water, typically somewhere between 1mL and 3mL, and that determines how concentrated it is.
+
+So when someone says “take 10 units,” that doesn’t tell you much unless you know how many mg or mcg of peptide are in each mL of liquid.
+
+
+
+
+Reconstitution Determines the Math
+
+Let’s say you’ve got a 5mg vial of a peptide. That means there’s 5,000 micrograms (mcg) of peptide in the vial. You choose how much bac water to add, and that’s what determines how strong each unit will be.
+
+Here are some examples:
+
+Example 1: You add 1mL of bac water to a 5mg peptide
+
+5mg (5,000mcg) divided by 1mL = 5,000mcg per mL
+
+Each unit on the syringe = 50mcg (.05mg)
+
+10 units = 500mcg (.5mg)
+
+20 units = 1,000mcg (1mg)
+
+This is a more concentrated mix. You’ll be injecting a smaller volume to get your dose.
+
+Example 2: You add 2.5mL of bac water to a 5mg peptide
+
+5,000mcg / 2.5mL = 2,000mcg per mL
+
+Each unit = 20mcg (.02mg)
+
+25 units = 500mcg (.5mg)
+
+50 units = 1,000mcg (1mg)
+
+This gives you more flexibility, especially if you want to start at a lower dose due to adding a higher volume of bac water. The math is cleaner, and it’s a lot harder to accidentally overdose yourself.
+
+How to Pick How Much Bac Water to Use
+
+Here’s the easiest way to think about it:
+
+You want to reconstitute your peptide in a way that makes the math clean, easy to scale, and gives you at least a 5-unit dose so you’re not messing around with tiny, hard-to-measure amounts.
+
+So instead of using a standard amount like 2 or 2.5mL, do this:
+
+Match the volume of bac water to the vial amount using decimal-based ratios.
+
+Example:
+
+If it’s a 15mg vial, add 1.5mL or 3mL
+
+If it’s a 12mg vial, add 1.2mL or 2.4mL
+
+If it’s a 10mg vial, add 1mL or 2mL
+
+If it’s a 5mg vial, add 0.5mL, 1mL, or 2mL
+
+This helps the numbers stay clean and easy to divide, and the mcg per unit always comes out to something manageable and even.
+
+Why the 5-Unit Minimum Matters
+
+When you’re dosing with an insulin syringe (which shows 100 units = 1mL), you want your dose to be at least 5 units, ideally more if possible. Anything under 5 units is hard to measure accurately, and you’re more likely to either underdose or overshoot it.
+
+So when you’re deciding how much water to add:
+
+Think about the dose you’re going to be using
+
+Make sure the math gives you at least 5 units per dose
+
+This way, no matter what vial you’re working with, your math stays easy and you can draw accurate dosages
+
+Dosing Example
+
+Let’s say your dose of BPC-157 is 250mcg.
+
+If you mixed 2mL of bac water into a 5mg vial, each unit = 25mcg
+
+250mcg ÷ 25mcg/unit = 10 units
+
+You’d draw10 units on your insulin syringe
+
+
+
+Injection Techniques and Locations
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=7570c1b9ea7c48c9966c037857bddac6
+
+Text saved
+
+Injecting yourself for the first time feels more intimidating than it is. For most people, once they do it for the first time, they realize it's not that difficult and are pretty confident. 
+
+Subcutaneous injection (the most common method):
+
+SubQ injection goes into the fat layer just below the skin, not into muscle.
+
+Best sites for SubQ:
+
+Lower abdomen (most commonly used). Pinch an inch of skin and fat away from the belly button. 
+
+Outer thigh is good alternative.
+
+Back of upper arm is another spot, but personally this one is quite difficult for me to access.
+
+Love handle area.
+
+Rotate your sites. Using the same spot repeatedly may cause scar tissue to form which affects absorption and becomes uncomfortable. You have a lot of space on the abdomen and other sites where you can rotate quite easily to various spots. 
+
+How to inject SubQ:
+
+Step 1: Wipe the injection site with an alcohol swab. Let it dry.
+
+Step 2: Draw your dose into the syringe.
+
+Step 3: Pinch a fold of skin and fat at your chosen site.
+
+Step 4: Insert the needle at a 45-degree angle (or 90 degrees if you have enough fat depth — 5/16" needle length at 90 degrees typically stays SubQ for most people).
+
+Step 5: Release the pinch. Push the plunger slowly and steadily.
+
+Step 6: Remove the needle at the same angle it entered. Apply gentle pressure with a clean swab if needed. 
+
+Step 7: Dispose of the needle in your sharps container immediately. For information on how to dispose of sharps in your state, visit safeneedledisposal.org. 
+
+What's normal after a SubQ injection:
+
+Mild redness, warmth, or a small raised welt that resolves within 30-60 minutes.
+
+A small painless lump under the skin that disappears within a few hours.
+
+Occasional mild bruising may be normal, especially on thinner skin.
+
+What's not normal:
+
+Significant swelling and increasing pain after 24 hours. Seek medical attention.
+
+Streaking redness spreading from the site. Seek medical attention immediately.
+
+If you see blood in the syringe:
+
+You've nicked a small blood vessel. Remove the needle, apply gentle pressure, discard that syringe and draw a fresh dose. Do not inject into a vein. This is rare with SubQ injections but technically could happen.
+
+Intramuscular injection:
+
+IM injection goes into muscle and is used less commonly for peptides but relevant for various aminos and for larger volumes.
+
+Common IM sites: glute (ventrogluteal preferred), outer thigh (vastus lateralis), shoulder (deltoid).
+
+Use a longer needle for IM, typically 1" at 25G for most sites. Inject at 90 degrees. No pinch needed. Some use the Z-track method for IM injections. 
+
+Intranasal administration:
+
+For peptides like Semax and Selank that are administered intranasally you'll need a nasal spray bottle. Draw the reconstituted peptide into a syringe and transfer it into the nasal spray bottle. Tilt your head slightly forward, spray into one nostril while blocking the other, and breathe gently through your nose.
+
+GLP-1 pens:
+
+If you're using pharmaceutical Semaglutide or Tirzepatide via pen the injection process is handled by the pen mechanism. Prime the pen per the instructions, select your dose, insert the pen needle into SubQ tissue at the abdomen or thigh, press the button, and hold for 10 seconds before removing. Rotate sites. 
+
+Refillable pens: 
+
+These are similar to the GLP-1 pens. You're going to insert into the skin, press the back, and hold for 10 seconds before removing. 
+
+Intramuscular Injections (IM)
+
+Most peptides don’t require this, but some blends or other compounds might be best administered this way. Intramuscular just means you’re going deeper into the muscle instead of the fat layer.
+
+Common spots for IM:
+
+Upper outer part of the glute
+
+Side of the shoulder
+
+Side of the thigh
+
+You’d use a longer needle here, usually one inch or more, and go straight in at a 90-degree angle. Inject slowly, and don’t do more than about 1 mL in one spot unless you’ve done it before.
+
+
+
+Peptide Cycles
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=605aaf0967fb4abb9f8c6c302457263e
+
+Text saved
+
+Most peptides are going to be ran in a cycle of various lengths. If you can understand why cycling is important, it can help you plan protocols correctly. 
+
+Why compounds are cycled: 
+
+Receptor desensitization: Some compounds may cause the receptor to become less responsive over time with continuous use. So taking a break can allow the receptor sensitivity to recover. 
+
+Important to note: GLP-1 compounds do not cycle for this reason. GLP-1 receptors do not significantly desensitize with continuous use. Things might "feel" different, but they still seem to respond in other ways. 
+
+Assessing response: If you had a few days of headaches, would you continue to take Tylenol or Ibuprofen daily after that? You wouldn't. With peptides, taking a break after a cycle can allow you to see if the issue was addressed and determine if additional cycles are even needed. 
+
+Cost and sustainability: Ultimately, you're going to save money when you cycle off. There are exactly zero people who wouldn't benefit from that. 
+
+For compound-specific cycle lengths, refer to the Consolidated Reconstitution, Dosage, and Cycle Lengths course in the classroom.
+
+
+
+Your First Peptide - Where to Start
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=042f28a004bd4758808a3d561fb9d28e
+
+Text saved
+
+When people do things the right, they are spending weeks and sometimes even months before making a decision and ordering things. That is the smartest way to do it but at some point your research will have to turn into a decision. 
+
+This section is going to give you a starting point based on your goal. It's not going to be an exhaustive list but it's a place to start to look into some things with one or two compounds that make sense for where you are right now, with realistic expectations for what you might experience and when. 
+
+The number one rule before anything else is to start with just one compound. You're not starting with a stack or three things at once. You're going to start with one compound and run it correctly for long enough to actually be able to assess it. This is how you learn what works for your body. It's going to keep costs manageable and know what is responsible if something goes wrong. 
+
+Once you have a baseline with one singular compound, then you can make an intelligent and informed decision in the future about what you might want or need to add later on. Until that point you're just guessing and hoping that the two things that you stack will work together or that you even still need a second or third thing. 
+
+Examples by Goal: 
+
+Healing - BPC-157
+
+Appetite-driven weight loss - GLPs
+
+Metabolic fat loss - MOTS-C
+
+Sleep and Recovery - Growth Hormone Secretagogues
+
+Cognitive / Anxiety - Selank
+
+Cognitive / No Anxiety - Semax
+
+Gut health - KPV
+
+Understand that in certain scenarios some things will have multiple areas in which they overlap and so you may be able to resolve multiple problems with just one thing.
+
+
+
+How to Tell If It's Working
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=5c3c604c5cc0467bb1fd347d51098f6b
+
+Text saved
+
+This is something that I think people really struggle with and often times will continue using various compounds even when they're clearly not working. Usually it's because people don't understand what to even look for. 
+
+The most important thing to understand first:
+
+Most peptides do not produce dramatic, immediately noticeable effects. If the first one you try is a GLP, you will likely be very disappointed in future peptides at first as you'll probably expect them to "hit" the way that the GLP did and give you very measurable results. But ultimately they work by enhancing the body's own processes which generally are more gradual. If you are expecting to feel something the first week the way you'd feel caffeine or a pre-workout you will more than likely think that nothing is happening even if something is. 
+
+The timeline depends on the compound and the goal. Here is a realistic expectation framework:
+
+BPC-157 and healing compounds: Week 1-2 - Possibly nothing noticeable. Week 3-4 - Reduced soreness, faster recovery between sessions, potential reduction in localized pain. Week 6-8 - Primary healing benefit should be clearly apparent if the compound is working.
+
+GH peptides (Ipamorelin, CJC-1295): Week 1-2 - Improved sleep quality and dream vividness often the first things you'll notice. Week 3-4 - Improved recovery, reduced muscle soreness. Week 8-12 - Body composition changes start becoming visible. Week 12-16 - Full body composition effect apparent.
+
+GLP-1 compounds: Week 1-2 - Appetite suppression usually noticeable, sometimes significant. Week 4-6 - Meaningful weight change should be visible on the scale. Week 8-12 - Full metabolic effect established.
+
+Cognitive peptides: Things like Semax and Selank may be noticeable Week 1, for other compounds it may take longer. Week 4 - Full cognitive benefit usually apparent.
+
+Longevity compounds (Epitalon, SS-31, MOTS-C): These are the hardest to assess subjectively. Effects are often only measurable via bloodwork or biomarkers over longer time periods. Subjective energy and sleep improvements are the most commonly reported. 
+
+What to track:
+
+The best way to know if something is working is to establish a baseline system before you start. Many people say something "isn't working" but they're not actually giving themselves a proper unit of measurement. 
+
+For healing protocols track:
+
+Pain level on a 1-10 scale at the same time each day
+
+Range of motion and how far you can take certain movements
+
+How are you performing with tasks at work, in the gym, etc?
+
+Recovery time between sessions
+
+For fat loss protocols track:
+
+Weekly weight at the same time and conditions (morning, fasted, after bathroom)
+
+Weekly waist measurement
+
+Progress photos every 2-4 weeks
+
+Appetite on a 1-10 scale
+
+Energy levels
+
+For GH peptide protocols track:
+
+Sleep quality either with a subjective 1-10 and/or sleep tracker data
+
+Recovery between sessions as subjective 1-10
+
+Body weight and measurements monthly
+
+Training performance in the gym. are your numbers moving?
+
+For cognitive protocols track:
+
+Focus and productivity with subjective daily rating
+
+Anxiety level ranked 1-10
+
+Mood stability
+
+Sleep quality
+
+Bloodwork as a verification tool:
+
+For GH peptides: an IGF-1 test before and after 8-12 weeks of running a GH secretagogue stack will tell you definitively whether GH output has increased. This is the most objective way to confirm the compound is working.
+
+For GLP-1 compounds: fasting insulin, HbA1C, and fasting glucose before and after 12-16 weeks show things the scale won't. 
+
+What to do if nothing seems to be happening after 8 weeks:
+
+Before concluding a compound doesn't work for you check these in order:
+
+Was the dose correct? 
+
+Was the cycle long enough? Some compounds need 8-12 weeks to show full effect. Have you actually given it enough time?
+
+Was timing and frequency correct? GH peptides should be fasted. Twice daily dosing may make a difference for some compounds. Did you follow the protocol correctly?
+
+Was the source reliable? A COA with accurate results rules this out. If you didn't verify the source and the compound isn't working this could be an issue.
+
+
+
+Common Mistakes
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=fac80b0e57f9481b854d93ef05e016b9
+
+Text saved
+
+These are mistakes that I see come up over and over again. Most of them are avoidable. 
+
+Dosing in units without knowing mg/mcg: 
+
+"I'm taking 10 units of BPC-157" tells you nothing without knowing the concentration of your solution. 10 units at a 1mg/mL concentration =100mcg. 10 units at a 5mg/mL concentration = 500mcg. That's a 5x difference in dosage, even though it reads the same on a syringe. There is an entire course in the classroom on understanding dose, units, and concentration. 
+
+Starting multiple compounds at once: 
+
+If you start four compounds at once and feel great a few weeks in, what's doing it for you? There are many times where people don't even know what's responsible for what's happening to them. Start with one.
+
+Along with this, people think they HAVE to stack to get results, but you don't. 
+
+Expecting immediate results: 
+
+People either expect to see results the day they start or they expect to "feel" something immediately. Peptides don't work like stimulants. Most of them are going to take weeks to show meaningful effects / results. 
+
+Not knowing how a peptide works: 
+
+Somewhat in line with the previous point, people are expecting results that a specific compound won't do. If you don't take time to address the cause of your issue, figure out the mechanisms that can influence it, and directly tie a peptides mechanism of action to that, then you will likely not see results. Learn the peptides. 
+
+Not tracking anything: 
+
+People will have nothing written down or documented as a way to measure progress so they can't truly assess if things have changed. Write things down and take pictures. You'll be surprised the changes you see when you start doing that.
+
+
+
+What's Next? Your Learning Path
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=babc0c7674fe47e3b5bf0e73dc1d7267
+
+Text saved
+
+You've covered the fundamentals. Here's where to go from here.
+
+Use these tools immediately:
+
+Peptide Calculator: https://hacksmithspeptalk.com/tools/peptide-calculator - Calculate your exact draw volume for any dose. Use this every time. 
+
+The Reconstitution Cheat Sheet which gives compound-specific BAC water volumes and solvent requirements for all compounds on the site.
+
+The Price Tool: https://hacksmithspeptalk.com/products - current pricing from vetted vendors.
+
+The Compound Pages (premium members): hacksmithspeptalk.com/compounds -mechanism, dosing, half-life, side effects, stacking, and reconstitution for every compound.
+
+Read these next in the classroom:
+
+Peptide Cycle Lengths - how long to run each compound and how long to take off. Read before you start your first cycle.
+
+Peptide Storage - storage conditions and shelf life in detail.
+
+Understanding COAs - how to read a COA and what to look for before ordering.
+
+Keywords and Concepts - essential vocabulary for understanding research and community discussions.
+
+Then go deep on your specific compound:
+
+Find the deep dive course for the compound you're starting with. These go significantly further on mechanism, evidence, dosing nuance, stacking, and what to expect. Eventually, every compound will have a deep dive in the classroom. 
+
+Learn the science behind why it works:
+
+The Peptide Academy (for Premium Members) at hacksmithspeptalk.com/learn teaches the pathways and mechanisms behind these compounds like what AMPK activation actually means, how the GH/IGF-1 axis works, what your lab markers are telling you. Daily lessons, quizzes, and a reverse lookup tool that maps compounds to pathways and lab markers. It's worth spending time there once you have the practical foundation from this course.
+
+Your 30-day path:
+
+Days 1-6: This course → Keywords and Concepts → Peptide Uses Cheat Sheet
+
+Days 7-10: Reconstitution Cheat Sheet → Peptide Calculator How-To → Peptide Storage
+
+Days 11-14: Peptide Cycle Lengths → Dosage and Timing → Peptide Stacking
+
+Days 15-18: Understanding COAs → Peptide Reactions and Pain → Bloodwork and Labs
+
+Days 19-24: Your goal-specific compound deep dive course
+
+Days 25-30: Nutrition → Sleep → Training → Start your first protocol
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/33b673ea?md=50376af91ed94f89969c78355ffabf9b
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

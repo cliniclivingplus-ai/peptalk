@@ -1,0 +1,132 @@
+Understanding Units and Concentration
+
+02 - Dosing Preparation Storage and Safety
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/822b8778?md=d89f7b239dfd4079842cc636bc3daeeb
+
+Text saved
+
+This course will break down what a unit is, what concentration is, and how to understand that as it relates to dosages.
+
+
+
+What Is a Unit?
+
+https://www.skool.com/hacksmithspeptalk/classroom/822b8778?md=fb65025e261e47ecbf99782549bec8d9
+
+Text saved
+
+When people are referring to units in regards to peptides, they are not referring to milligrams or micrograms (or they're mistakenly referring to them that way due to lack of understanding). They're talking about the volume of liquid that is being drawn up into the syringe. 
+
+So what exactly is one unit? 
+
+If you are using a standard 1ml insulin syringe, it will typically be marked with little dashes like on a ruler from 0-100. A .3ml insulin syringe will have 0-30. A .5ml insulin syringe will have 0-50. 
+
+100 units = 1mL
+
+1 unit = 0.01mL
+
+10 units = .1mL
+
+Let's just assume you have a peptide vial that you have already reconstituted. If you draw up 10 units on the syringe, you are drawing out .1mL of the liquid. How much actual peptide that's in that .1mL is going to depend on the concentration of that liquid in the vial.
+
+
+
+What Is Concentration?
+
+https://www.skool.com/hacksmithspeptalk/classroom/822b8778?md=0033d1b8cfb844a6994a2f14d88001e8
+
+Text saved
+
+Concentration basically tells you how much peptide is in each mL of liquid once it is mixed. 
+
+I like to compare this to adding sugar to tea:
+
+The more sugar you add to the tea, the sweeter it will be. 
+
+The same with peptides. The more mg per mL, the stronger the dose will be per spray or injection in the same volume of liquid. 
+
+How do you calculate this concentration? 
+
+Peptide amount (in mg) / bac water (in mL) = Concentration (mg/mL)
+
+For example: 
+
+You add 2ml of bac water to a 5mg vial. 
+
+5mg / 2mL = 2.5 mg/mL. 
+
+Every 1mL of liquid contains 2.5mg of the peptide.
+
+How does this correlate to units? 
+
+If your concentration is 2.5 mg/mL and your injection is .1 mL: 
+
+0.1 mL x 2.5 mg/mL = .25mg or 250 mcg
+
+
+
+Understanding Dose Based on Concentration
+
+https://www.skool.com/hacksmithspeptalk/classroom/822b8778?md=e4d37e08fdc94b8bb35c00ef3fa896b6
+
+Text saved
+
+Once you know the concentration, you are then able to calculate the units based on the dosage. 
+
+Lets say that you reconstituted a 5mg vial with 2.5mL of liquid. That is going to give you a concentration of 2 mg per mL. You need to determine how much liquid is going to give you .5 mg (your dosage). 
+
+.5mg / 2 mg / mL = 0.25 mL
+
+Since 1 mL = 100 units, then: 
+
+0.25 mL = 25 units
+
+You can also use a peptide calculator to assist with this, but this is explaining the concept behind it.
+
+The most important formula to remember: 
+
+Volume to inject = Desired dose / Concentration
+
+To determine the units based on volume, you need to remember this: 
+
+Since 100 units = 1 mL, multiple the mL amount by 100 to determine the units
+
+0.1 mL = 10 units
+
+0.2 mL = 20 units
+
+0.25 mL = 25 units
+
+0.5 mL = 50 units
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/822b8778?md=84fc9bedf79e47c3a895814c81306d8d
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

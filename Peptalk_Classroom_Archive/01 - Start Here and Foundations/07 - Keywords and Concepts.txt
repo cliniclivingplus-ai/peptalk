@@ -1,0 +1,1406 @@
+Keywords and Concepts
+
+01 - Start Here and Foundations
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=9d88d4a7c8844bbd8056cc3d9ac651e8
+
+Text saved
+
+This course will outline a list of key terms and concepts that are frequently used in the peptide spaces. Below are the categories and terms: 
+
+Mechanisms and Metabolic Pathways
+
+Lipolysis
+
+Lipogenesis
+
+AMPK Pathway (AMP-activated protein kinase)
+
+mTOR Pathway (Mechanistic Target of Rapamycin)
+
+Autophagy
+
+Insulin Sensitivity / Resistance
+
+Glucagon Signaling
+
+Leptin Signaling
+
+Adiponectin
+
+Ghrelin Pathway
+
+GLP-1 (Glucagon-like Peptide 1)
+
+GIP (Glucose-dependent Insulinotropic Polypeptide)
+
+FGF21 (Fibroblast Growth Factor 21)
+
+PGC-1a (Peroxisome proliferator-activated receptor gamma coactivator 1-alpha)
+
+SIRT1 Pathway
+
+Akt/PKB Pathway
+
+ERK/MAPK Pathway
+
+POMC Neurons (Pro-opiomelanocortin)
+
+NPT/AgRP Neurons
+
+Neuroendocrine and Brain Related Terms
+
+BDNF (Brain-Derived Neurotrophic Factor)
+
+NGF (Nerve Growth Factor)
+
+Neuroplasticity
+
+Neurogenesis
+
+Synaptogenesis
+
+Dopaminergic Signaling
+
+Serotonin
+
+Oxytocin
+
+HPA Axis (Hypothalamic-Pituitary-Adrenal Axis)
+
+HPG Axis (Hypothalamic-Pituitary-Gonadal Axis)
+
+GABA
+
+Melatonin
+
+Hormones, Growth Factors, and Peptides
+
+IGF-1 (Insulin-like Growth Factor 1)
+
+GH (Growth Hormone)
+
+GHRH (Growth Hormone-Releasing Hormone)
+
+GHRP (Growth Hormone-Releasing Peptide)
+
+GnRH (Gonadotropin-Releasing Hormone)
+
+LH (Luteinizing Hormone)
+
+FSH (Follicle Stimulating Hormone)
+
+TSH (Thyroid Stimulating Hormone)
+
+ACTH (Adrenocorticotropic Hormone)
+
+Cellular Function and Healing
+
+Fibroblast Activity
+
+Collagen Synthesis
+
+Angiogenesis
+
+Cytokines (e.g., IL-6, TNF-a)
+
+Senescence
+
+Telomeres / Telomerase
+
+Oxidative Stress
+
+Mitochondrial Biogenesis
+
+Nitric Oxide (NO)
+
+Reactive Oxygen Species (ROS)
+
+Fat Loss and Muscle Building Concepts
+
+Thermogenesis
+
+Brown Fat / Beige Fat Activation
+
+Adipose Tissue Remodeling
+
+Muscle Protein Synthesis
+
+Myostatin Inhibition
+
+Hypertrophy
+
+Sarcopenia
+
+Anabolism / Catabolism
+
+Nutrient Partitioning
+
+Cognitive and Mood-Related Biomarkers
+
+CRH (Corticotropin-releasing Hormone)
+
+Cortisol
+
+Dopamine
+
+Serotonin
+
+Norepinephrine
+
+Acetylcholine
+
+Beta-Endorphins
+
+Histamine (CNS vs Periphery)
+
+Immune Function and Autoimmune Markers
+
+Th1 / Th2 Immune Balance
+
+Regulatory T Cells (Tregs)
+
+Toll-Like Receptors (TLRs)
+
+Macrophage Activation
+
+Inflammasome
+
+Mast Cell Activation
+
+Cytokine Storm
+
+Copyright © Hacksmith’s Peptalk, 2025.  
+
+All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+
+
+Mechanisms and Metabolic Pathways
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=7196d34c24924e2086243933166aac82
+
+Text saved
+
+Lipolysis
+
+What is it: 
+
+Lipolysis is the breakdown of stored fat (triglycerides) from the fat cells into free fatty acids and glycerol, which your body is then able to use for energy. 
+
+Why does it matter: 
+
+This is essentially the process that allows your body to "burn fat." It releases the fatty acids from the cells where your body can then burn them off. 
+
+Where this is used: 
+
+AOD-9604
+
+Growth Hormone Secretagogues
+
+Lipogenesis
+
+What is it: 
+
+Lipogenesis is the creation of new fat and can be due to excess carbohydrates, proteins, or alcohol. 
+
+Why does it matter: 
+
+It's basically the opposite of lipolysis. Things that can reduce insulin levels or improve insulin sensitivity can inhibit this process and potentially help prevent weight gain or things like fatty liver. 
+
+Where this is used: 
+
+5-Amino-1MQ
+
+MOTS-C
+
+GLPs
+
+AMPK Pathway (AMP-activated protein kinase)
+
+What is it: 
+
+AMPK is kind of like fuel gauge in your body. If your energy is low, it turns on fat burning and turns off fat storage. 
+
+Why does it matter: 
+
+It can help with weight loss, blood sugar control, and longevity. It's really one of the major pathways that gets targeted through some of the metabolic peptides. 
+
+Where this is used: 
+
+MOTS-C
+
+5-Amino-1MQ
+
+mTOR Pathway (Mechanistic Target of Rapamycin)
+
+What is it: 
+
+mTOR is a growth and repair signal in the body that can be triggered by things like protein, insulin, and IGF-1. It tells your body to build muscle and regenerate tissue. 
+
+Why does it matter: 
+
+Ideally, we're activating mTOR after workouts to help grow muscle. On the flipside, constantly elevating this can lead to faster aging and inflammation. 
+
+Where this is used: 
+
+IGF-1 LR3
+
+Growth Hormone Secretagogues
+
+Autophagy
+
+What is it: 
+
+Autophagy can be described as the body's clean-up system and will break down and recycle damaged cells, protein, and parts of the mitochondria.  
+
+Why does it matter: 
+
+This process helps keep the healthy cells in the body, can help prevent diseases, and can be a pretty big piece in slowing aging. 
+
+Where this is used: 
+
+Epitalon
+
+FOXO4-DRI
+
+Insulin Sensitivity / Resistance
+
+What is it: 
+
+Insulin sensitivity is how well your body responds to insulin, which is the hormone that helps to get the glucose out of your blood and into your cells. 
+
+Insulin resistance is when your cells aren't responding well to insulin and your body then has to make more of it to accomplish the same goal.  
+
+Why does it matter: 
+
+When you're insulin resistance, your fat loss is going to slow down, your blood sugar is going to stay high, and your energy levels are going to be in the dumpster. Peptides that improve insulin sensitivity can help lower blood sugar, reduce fat storage, and make it easier to achieve better body composition (less fat, more muscle). 
+
+Where this is used: 
+
+GLPs
+
+Glucagon Signaling
+
+What is it: 
+
+Glucagon is a hormone that raises blood sugar when levels are too low and causes fat to breakdown in the body.  
+
+Why does it matter: 
+
+Peptides that target the glucagon receptor (Retatrutide, Mazdutide, Survodutide) help to burn fat by boosting energy expenditure and increasing lipolysis. 
+
+Where this is used: 
+
+Retatrutide
+
+Survodutide, Mazdutide
+
+Leptin Signaling
+
+What is it: 
+
+Leptin is a hormone that is made by fat cells that tell your brain that you have enough energy stored (which acts like a satiety signal for the body).  
+
+Why does it matter: 
+
+Leptin signaling can tell your brain when it's time to stop eating. A lot of times, people are leptin resistance so their body is ignoring the signal causing them to overeat. 
+
+Where this is used: 
+
+GLPs
+
+Adiponectin
+
+What is it: 
+
+Adiponectin is a hormone made by fat cells that will improve insulin sensitivity and increase fat oxidation.  
+
+Why does it matter: 
+
+Higher levels of this hormone can help with easier fat loss, better blood sugar control, and reduced inflammation in the body. 
+
+Where this is used: 
+
+MOTS-C
+
+GLPs
+
+Ghrelin Pathway
+
+What is it: 
+
+Ghrelin is your body's hunger hormone that tells you when to eat. It can also stimulate growth hormone release in the body.  
+
+Why does it matter: 
+
+Ghrelin agonists like the GHRPs or MK-677 will leverage this pathway as a means to boost growth hormone production in the body by directly targeting this. It will also increase hunger as a result. 
+
+Where this is used: 
+
+GHRP-2, GHRP-6
+
+MK-677
+
+GLP-1 (Glucagon-like Peptide 1)
+
+What is it: 
+
+GLP-1 is a gut hormone that helps your body regulate blood sugar, increase satiety (feeling of fullness), and slow digestion.  
+
+Why does it matter: 
+
+It helps to lower blood sugar, reduce appetite, and support weight loss. This is where it comes into play in things like Semaglutide, Tirzepatide, and Retatrutide. 
+
+Where this is used: 
+
+GLPs
+
+GIP (Glucose-dependent Insulinotropic Polypeptide)
+
+What is it: 
+
+GIP helps your body release insulin as a response to eating food, especially when that food is carbohydrates (mmmm donuts).  
+
+Why does it matter: 
+
+When you combine this with a GLP-1, it can improve blood sugar control and support fat loss more effectively than GLP-1 by itself. 
+
+Where this is used: 
+
+GLPs
+
+FGF21 (Fibroblast Growth Factor 21)
+
+What is it: 
+
+FGF21 is a hormone that helps regulate metabolism, especially alongside of fasting or low-carb diets and can promote fat burning and improve insulin sensitivity.  
+
+Why does it matter: 
+
+Some peptides may increase these levels, helping with weight loss. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+PGC-1a (Peroxisome proliferator-activated receptor gamma coactivator 1-alpha)
+
+What is it: 
+
+This regulates mitochondrial function and fat metabolism and is turned on by the body during exercise, cold exposure, and fasting.  
+
+Why does it matter: 
+
+More of this means that your body is using energy better, oxidizing fat better, and gives better endurance. 
+
+Where this is used: 
+
+MOTS-C
+
+SIRT1 Pathway
+
+What is it: 
+
+SIRT1 is a gene that can help with stress resistance, fat metabolism, and aging and gets activated during fasting and calorie restriction.  
+
+Why does it matter: 
+
+It's an important piece when we consider longevity and can promote autophagy, metabolic flexibility, and inflammation control. 
+
+Where this is used: 
+
+MOTS-C
+
+Epitalon
+
+Akt/PKB Pathway
+
+What is it: 
+
+Akt (also known as Protein Kinase B), is a signal that promotes growth and glucose uptake in cells.  
+
+Why does it matter: 
+
+This can help cells absorb nutrients and grow and has an important role in muscle growth, anti-aging, and insulin sensitivity. 
+
+Where this is used: 
+
+IGF-1 LR3
+
+Growth Hormone Secretagogues
+
+ERK/MAPK Pathway
+
+What is it: 
+
+This is a pathway that can control cell division, growth, and repair and is a piece of how cells respond to external signals like growth factors.  
+
+Why does it matter: 
+
+Some peptides can trigger this pathway to support tissue regeneration, cognitive performance, and anti-aging. 
+
+Where this is used: 
+
+P-21
+
+POMC Neurons (Pro-opiomelanocortin)
+
+What is it: 
+
+POMC neurons are appetite-suppressing neurons in the hypothalamus and can reduce hunger and increase energy use when active.  
+
+Why does it matter: 
+
+GLP-s and other satiety peptides can activate POMC neurons to help reduce food intake and put you into a caloric deficit without feeling insanely hungry. 
+
+Where this is used: 
+
+GLPs
+
+Cagrilintide
+
+NPY/AgRP Neurons
+
+What is it: 
+
+These do the opposite of POMC and will increase hunger and reduce energy usage and can be activated during fasting or calorie restriction.  
+
+Why does it matter: 
+
+Peptides that suppress these hunger neurons can help to reduce cravings and hunger. 
+
+Where this is used: 
+
+GLPs
+
+Cagrilintide
+
+
+
+Neuroendocrine and Brain-Related Terms
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=6b528ccfce64454ea691703ebddc581a
+
+Text saved
+
+BDNF (Brain-Derived Neurotrophic Factor)
+
+What is it: 
+
+BDNF is a protein that helps the brain grow new neurons and stronger connections and is important for memory and learning. 
+
+Why does it matter: 
+
+Low BDNF can lead to things like depression, anxiety, difficult focus, and cognitive decline. Some peptides can increase BDNF in the brain to help with these issues. 
+
+Where this is used: 
+
+Semax
+
+Selank
+
+Adamax
+
+NGF (Nerve Growth Factor)
+
+What is it: 
+
+This helps to grow, protect, and repair nerve cells, particularly in peripheral nervous system (outside of the brain and spinal cord). 
+
+Why does it matter: 
+
+NGF can help with nerve regeneration and healing. It may help with things like neuropathy, pain reduction, and neurodegenerative diseases. 
+
+Where this is used: 
+
+P-21
+
+BPC-157
+
+Cerebrolysin
+
+Neuroplasticity
+
+What is it: 
+
+This is basically your brain's ability to rewire itself and do things like create new connections, learn, and adapt after stress and injury. 
+
+Why does it matter: 
+
+Some peptides can boost neuroplasticity and help with memory, focus, and mental recovery. 
+
+Where this is used: 
+
+Semax
+
+Cerebrolysin
+
+Selank
+
+Neurogenesis
+
+What is it: 
+
+Neurogenesis is the creation of new neurons, typically in the hippocampus (memory center of the brain). 
+
+Why does it matter: 
+
+The more neurogenesis, the better the memory, mood, and cognitive health and is important in depression and brain aging. 
+
+Where this is used: 
+
+Semax
+
+Cerebrolysin
+
+Synaptogenesis
+
+What is it: 
+
+This is the formation of new synapses which are the places between brain cells where they communicate with each other. 
+
+Why does it matter: 
+
+The more synapses you have, the better the brain function. 
+
+Where this is used: 
+
+Cerebrolysin
+
+Semax
+
+Dopaminergic Signaling
+
+What is it: 
+
+This is how your brain uses dopamine for motivation, reward, and drive. 
+
+Why does it matter: 
+
+If you have too little dopamine, you're going to have low motivation, brain fog, and cravings. If  you have too much dopamine, you're going to have anxiety. 
+
+Where this is used: 
+
+Selank
+
+Semax
+
+Cerebrolysin
+
+Serotonin
+
+What is it: 
+
+Serotonin regulates mood, sleep, digestion, and overall emotion. 
+
+Why does it matter: 
+
+Low serotonin is tied to depression, irritability, and sleep issues, so peptides that can support serotonin levels can reduce anxiety and improve mood. 
+
+Where this is used: 
+
+Selank
+
+DSIP
+
+Oxytocin
+
+What is it: 
+
+Oxytocin is the love hormone and is released during bonding, trust building, and physical touch. 
+
+Why does it matter: 
+
+It helps with mood, emotional regulation, and social connection and can help with PTSD and anxiety. 
+
+Where this is used: 
+
+Oxytocin peptide
+
+HPA Axis (Hypothalamic-Pituitary-Adrenal Axis)
+
+What is it: 
+
+This is your body's main stress-response system that links your brain and adrenal glands to help control cortisol release. 
+
+Why does it matter: 
+
+Issues within the HPA axis can lead to chronic fatigue, anxiety, and hormonal balance. 
+
+Where this is used: 
+
+GH Secretagoguges
+
+DSIP
+
+HPG Axis (Hypothalamic-Pituitary-Gonadal Axis)
+
+What is it: 
+
+This is the axis that controls sex hormone production such as testosterone, estrogen, and LH/FSH through signaling between the brain and the gonads. 
+
+Why does it matter: 
+
+This is what is targeted to help boost testosterone, improve fertility, and restore hormonal balance. 
+
+Where this is used: 
+
+Kisspeptin
+
+Testoluten
+
+GABA
+
+What is it: 
+
+GABA is the brain's calming neurotransmitter that can slow nerve activity, help with relaxation and anxiety, and help you sleep. 
+
+Why does it matter: 
+
+If GABA is low, the nervous system can get overstimulated and cause anxiety, restlessness, and sleep issues. 
+
+Where this is used: 
+
+DSIP
+
+Melatonin
+
+What is it: 
+
+Melatonin is a hormone that is released by the brain at night to help regulate the sleep-wake cycle. Often times, darkness can help to trigger this and signal your body to wind down (so don't have the TV on in the bedroom at night!!). 
+
+Why does it matter: 
+
+Melatonin actually supports a lot of things outside of sleep and when using peptides that help with melatonin activity it can improve sleep and recovery. 
+
+Where this is used: 
+
+DSIP
+
+Epitalon
+
+
+
+Hormones and Growth Factors
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=eab5258fb670477ea9d1e0c8c52abbf5
+
+Text saved
+
+IGF-1 (Insulin-like Growth Factor 1)
+
+What is it: 
+
+IGF-1 is a hormone that is made mostly in the liver as a response to growth hormone (GH) in the body and can help with things like cell growth, tissue repair, and muscle building. 
+
+Why does it matter: 
+
+IGF-1 is a critical driver of muscle growth and recover and can also help with fat metabolism and supporting insulin sensitivity. 
+
+Where this is used: 
+
+IGF-1 LR3
+
+Growth Hormone Secretagoguges
+
+GH (Growth Hormone)
+
+What is it: 
+
+Growth hormone is made by the pituitary gland and can control growth, fat metabolism, and cellular repair. 
+
+Why does it matter: 
+
+It can promote fat loss, increase muscle, help with sleep and recovery, and help with collagen and skin. These levels will naturally decline with age, which is where supporting this as you age can be pretty beneficial. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+GHRH (Growth Hormone-Releasing Hormone)
+
+What is it: 
+
+This is a hormone that is released by the hypothalamus and tells your pituitary gland to release growth hormone. 
+
+Why does it matter: 
+
+Sermorelin, CJC-1295, and Tesamorelin can all mimic this hormone to naturally increase the release of growth hormone in the body. Essentially, they trigger this effect to cause your body to release more growth hormone.
+
+Where this is used: 
+
+Growth Hormone Secretagogues 
+
+GHRP (Growth Hormone-Releasing Peptide)
+
+What is it: 
+
+GHRPs mimic ghrelin to stimulate the release of growth hormone from the pituitary gland. 
+
+Why does it matter: 
+
+These can boost GH, but also support appetite and recovery. 
+
+Where this is used: 
+
+GHRP-2 and GHRP-6
+
+Ipamorelin
+
+GnRH (Gonadotropin-Releasing Hormone)
+
+What is it: 
+
+GnRH is a hormone that comes from the hypothalamus and tells the pituitary gland to release LH and FSH which are the hormones that control testosterone, sperm, and fertility. 
+
+Why does it matter: 
+
+Using peptides that stimulate this can help to restore hormone production without TRT and can be used for fertility, PCT, and HRT alternatives. 
+
+Where this is used: 
+
+Kisspeptin
+
+Testoluten
+
+LH (Luteinizing Hormone)
+
+What is it: 
+
+LH is released by the pituitary gland and tells the testes or ovaries to produce testosterone or estrogen/progesterone. In men, it signals the testes, in women it signals the ovaries. 
+
+Why does it matter: 
+
+This is important for natural hormone production and can help with libido, energy, and fertility. 
+
+Where this is used: 
+
+Kisspeptin
+
+Fertility peptides
+
+FSH (Follicle Stimulating Hormone)
+
+What is it: 
+
+FSH works in conjunction with LH to help with fertility and helps sperm production in men and egg development in women. 
+
+Why does it matter: 
+
+FSH is very important for fertility and helps with overall hormone rhythm and reproductive health. 
+
+Where this is used: 
+
+Fertility peptides
+
+TSH (Thyroid Stimulating Hormone)
+
+What is it: 
+
+TSH is released by the pituitary gland and tells the thyroid to produce T3 and T4, which are very important metabolic hormones in the body. 
+
+Why does it matter: 
+
+Some peptides can help to improve or regulate TSH levels and can help with overall thyroid function. 
+
+Where this is used: 
+
+Thyreogen
+
+ACTH (Adrenocorticotropic Hormone)
+
+What is it: 
+
+ACTH tells the adrenal glands to release cortisol which is the body's main stress hormone. 
+
+Why does it matter: 
+
+This plays a role within the HPA axis and can effect energy, inflammation, and mood. Too much and you can have burnout and adrenal issues. 
+
+Where this is used: 
+
+Glandokort
+
+
+
+Cellular Function and Healing
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=dfd5ab61e57b438dbc7b5efa7a0a57b1
+
+Text saved
+
+Fibroblast Activity
+
+What is it: 
+
+Fibroblasts are cells that build and maintain connective tissue in skin, joints, and organs. 
+
+Why does it matter: 
+
+Peptides that increase fibroblast activity can speed up wound healing, skin elasticity, and tissue repair. 
+
+Where this is used: 
+
+BPC-157
+
+TB-500
+
+Collagen Synthesis
+
+What is it: 
+
+This is how your body makes collagen which is the protein that supports skin, ligaments, and tendons. 
+
+Why does it matter: 
+
+More collagen can lead to better skin and joints and will decline with age :(. 
+
+Where this is used: 
+
+GHK-Cu
+
+Growth Hormone Secretagoguges
+
+Angiogenesis
+
+What is it: 
+
+Angiogenesis is the formation of new blood vessels and can help with blood flow to tissues and organs. 
+
+Why does it matter: 
+
+When peptides promote angiogenesis, they can speed up healing, support muscle growth, and help with oxygen delivery. 
+
+Where this is used: 
+
+BPC-157
+
+TB-500
+
+Cytokines (e.g., IL-6, TNF-α)
+
+What is it: 
+
+Cytokines are molecules that signal the immune system to manage inflammation. Some of them might increase it, while other decrease it. 
+
+Why does it matter: 
+
+Too many inflammatory cytokines can cause chronic inflammation, pain, and autoimmune issues, so some peptides will help modulate this to correct issues. 
+
+Where this is used: 
+
+Thymosin Alpha-1
+
+Thymalin
+
+LL-37
+
+Senescence
+
+What is it: 
+
+Senescent cells are old, damaged cells that still exist in the body but won't die and can release harmful inflammatory signals in the body. 
+
+Why does it matter: 
+
+Getting rid of senescent cells can help to slow aging, improve tissue health, and help with regeneration. 
+
+Where this is used: 
+
+FOXO4-DRI
+
+Telomeres / Telomerase
+
+What is it: 
+
+Telomeres are the protective caps on the ends of DNA (think of them like shoelaces). Telomerase is the enzyme that helps rebuild them. Shorter telomeres can lead to accelerated aging. 
+
+Why does it matter: 
+
+Preserving or lengthening telomeres can help with longevity and cellular function. 
+
+Where this is used: 
+
+Epitalon
+
+Oxidative Stress
+
+What is it: 
+
+Oxidative stress occurs when there is an imbalance between free radicals and antioxidants that can damage cells and accelerate aging. 
+
+Why does it matter: 
+
+High oxidative stress can cause fatigue, disease, and slower recovery. 
+
+Where this is used: 
+
+SS-31
+
+NAD+
+
+Glutathione
+
+Mitochondrial Biogenesis
+
+What is it: 
+
+This is the body's process of creating new mitochondria (remember, those are the powerhouse of the cells!). 
+
+Why does it matter: 
+
+The more mitochondria the better your energy, endurance, recovery, and brain function will be. 
+
+Where this is used: 
+
+MOTS-C
+
+SS-31
+
+5-Amino-1MQ
+
+Nitric Oxide (NO)
+
+What is it: 
+
+Nitric oxide helps to relax blood vessels, increase circulation, and improve oxygen delivery to tissues within the body. 
+
+Why does it matter: 
+
+More nitric oxide means that your body will have better blood flow, better pumps in the gym, and better recovery. 
+
+Where this is used: 
+
+BPC-157
+
+Reactive Oxygen Species (ROS)
+
+What is it: 
+
+ROS are unstable molecules in the body that can damage cells if they build up. A good way to think about these is like rust on metal, but instead it's at the cellular level. 
+
+Why does it matter: 
+
+Some ROS is normal, but if you have chronic buildup, then it can lead to aging and inflammation. 
+
+Where this is used: 
+
+Glutathione
+
+SS-31
+
+
+
+Fat Loss and Muscle Building
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=0d5e78698ee74df5bee0cebbeb7576f3
+
+Text saved
+
+Thermogenesis
+
+What is it: 
+
+Thermogenesis is where your body is generating heat by burning calories.
+
+Why does it matter: 
+
+You will burn more calories when there is more thermogenesis, contributing to more fat loss. 
+
+Where this is used: 
+
+MOTS-C
+
+Brown Fat / Beige Fat Activation
+
+What is it: 
+
+Brown fat and beige fat are two different types of fat tissue that burn energy instead of storing it. They help the body regulate heat and can help with insulin sensitivity.  
+
+Why does it matter: 
+
+If you can activate brown/beige fat it can help to increase fat burning and energy expenditure. 
+
+Where this is used: 
+
+Retatrutide
+
+Adipose Tissue Remodeling
+
+What is it: 
+
+Adipose tissue remodeling is the changing of the structure and the behavior of fat tissue. Things like reducing inflammation, shrinking fat cells, or converting white fat to beige. 
+
+Why does it matter: 
+
+Healthy fat tissue stores less energy, cause less inflammation, and respond better to insulin. So, by remodeling adipose tissue, it can help to fix those things. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+GLPs
+
+Muscle Protein Synthesis
+
+What is it: 
+
+This is how your body recovers and grows after training through the process of building new muscle proteins. 
+
+Why does it matter: 
+
+This is the process where your body is growing muscles after breaking them down. Ideally, you're doing more synthesis than breakdown in order to grow muscles. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+Myostatin Inhibition
+
+What is it: 
+
+Myostatin is a protein that limits muscle growth in the body, mostly as a safety mechanism to prevent serious injuries. By inhibiting this, it basically is like removing the governor from a golf cart. You're no longer limited to 15mph and can go as fast as you want.  
+
+Why does it matter: 
+
+If you're able to inhibit myostatin, you should be able to grow significantly more muscle. 
+
+Where this is used: 
+
+Follistatin-344 (lots of hope, not a lot of results though)
+
+Hypertrophy
+
+What is it: 
+
+Hypertrophy is the increase in muscle size, which is typically accomplished through resistance training and recovery. 
+
+Why does it matter: 
+
+This is what most people strive for when it comes to training. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+Sarcopenia
+
+What is it: 
+
+Sarcopenia is the loss of muscle mass and strength as we age, and really is what leads to a lot of issues as people age that make them more frail and give them a worse quality of life. 
+
+Why does it matter: 
+
+If you can rebuild or preserve muscle, it can slow this process which is important as we age. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+Anabolism / Catabolism
+
+What is it: 
+
+Anabolism is building muscle tissue and catabolism is breaking it down. 
+
+Why does it matter: 
+
+Helping to balance the two of these things will ultimately result in whether you are going to gain or lose muscle. 
+
+Where this is used: 
+
+Growth Hormone Secretagogues
+
+IGF-1 LR3
+
+Nutrient Partitioning
+
+What is it: 
+
+Nutrient partitioning is how your body is processing and managing the calories that it has. Is it going to send them to muscle or is it going to send them to fat?  
+
+Why does it matter: 
+
+If your body is able to partition nutrients better, then more nutrients are going to go to muscle and less are going to go to fat. 
+
+Where this is used: 
+
+GLPs
+
+Growth Hormone Secretagogues
+
+
+
+Cognitive and Mood
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=1baf19850e124ea4bede4f53b60d46a4
+
+Text saved
+
+CRH (Corticotropin-releasing Hormone)
+
+What is it: 
+
+CRH is something that is released by the hypothalamus during stress and tells the pituitary gland to release ACTH, which then results in cortisol production.
+
+Why does it matter: 
+
+CRH is part of the HPA axis and gets overactivated when the body has chronic stress. 
+
+Where this is used: 
+
+Selank
+
+DSIP
+
+Cortisol
+
+What is it: 
+
+Cortisol is the body's main stress hormone and can have an effect on all kinds of things in the body.
+
+Why does it matter: 
+
+Cortisol is important for the body, but too much cortisol for too long can cause fatigue, belly fat, and poor sleep. 
+
+Where this is used: 
+
+DSIP
+
+Selank
+
+Dopamine
+
+What is it: 
+
+Dopamine is the motivation, reward, and drive neurotransmitter that helps with focus, ambition, and mood.
+
+Why does it matter: 
+
+If you have low dopamine, you're going to be fatigued, have brain fog, and have low motivation. 
+
+Where this is used: 
+
+Selank
+
+Semax
+
+Oxytocin
+
+Serotonin
+
+What is it: 
+
+Serotonin is the emotional stability neurotransmitter that helps to regulate mood, calmness, and sleep.
+
+Why does it matter: 
+
+If you have low serotonin, you can have anxiety, irritability, and poor sleep. 
+
+Where this is used: 
+
+Selank
+
+DSIP
+
+Norepinephrine
+
+What is it: 
+
+This is the alertness and energy signal in the brain that is released in response to stress in order to increase focus, heart rate, and blood flow.
+
+Why does it matter: 
+
+If you can increase norepinephrine, you can have better focus and fast reactions. However, too much of this can cause anxiety, irritability, and sleep issues. 
+
+Where this is used: 
+
+Selank
+
+DSIP
+
+Acetylcholine
+
+What is it: 
+
+Acetylcholine is the primary neurotransmitter in the body for learning, memory, and muscle activation.
+
+Why does it matter: 
+
+If you can boost this, it can help with cognitive performance and motor control. This can also help with the mind-muscle connection. 
+
+Where this is used: 
+
+Semax
+
+Cerebrolysin
+
+Beta-Endorphins
+
+What is it: 
+
+Beta-endorphins are natural painkillers and feel-good chemicals in the body that can reduce pain and provide you with a sense of well-being.
+
+Why does it matter: 
+
+These can help with mood, pain tolerance, and recovery. 
+
+Where this is used: 
+
+PT-141
+
+Oxytocin
+
+
+
+Immune Function and Autoimmune
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=e1260ca696424570bfac04ebddef5e21
+
+Text saved
+
+Th1 / Th2 Immune Balance
+
+What is it: 
+
+Th1 and Th2 are two pieces of your immune system. Th1 will help with cellular defense and take care of things like viruses and bacteria. Th2 will help with the humoral response and take care of things like allergies and parasites.
+
+Why does it matter: 
+
+If Th2 is overactive and Th1 is underactive, then you can have issues like allergies, autoimmune issues, and weak defenses against infections. 
+
+Where this is used: 
+
+Thymosin Alpha-1
+
+KPV
+
+Regulatory T Cells (Tregs)
+
+What is it: 
+
+Tregs keep your body from attacking your own tissues and help to shut off inflammation after an immune response is over. Think of these like peacekeepers within the immune system to prevent unnecessary fighting.
+
+Why does it matter: 
+
+Low or lack of functional Tregs can lead to autoimmune disease and chronic inflammation. 
+
+Where this is used: 
+
+Thymosin Alpha-1
+
+Thymalin
+
+Toll-Like Receptors (TLRs)
+
+What is it: 
+
+TLRs are sensors that exist on immune cells to identify danger with things like viruses or bacterial toxins. They essentially alert the immune system to those issues.
+
+Why does it matter: 
+
+If the TLRs are too sensitive or are constantly being triggered unnecessarily, then it can lead to chronic inflammation and autoimmunity. 
+
+Where this is used: 
+
+Thymosin Alpha-1
+
+VIP
+
+LL-37
+
+Macrophage Activation
+
+What is it: 
+
+Macrophages are immune cells that will go clean up damage, destroy pathogens, and give off signals to recruit more immune help from the body.
+
+Why does it matter: 
+
+Microphages are good during an infection or injury, but if there is overactivation, it can cause tissue damage and inflammation. 
+
+Where this is used: 
+
+Thymosin Alpha-1
+
+KPV
+
+Inflammasome
+
+What is it: 
+
+Inflammasomes are a protein complex inside of immune cells that can trigger the release of inflammatory cytokines.
+
+Why does it matter: 
+
+Overactive inflammasomes can cause autoimmune, chronic inflammation, and neurodegeneration. 
+
+Where this is used: 
+
+KPV
+
+Thymosin Alpha-1
+
+Mast Cell Activation
+
+What is it: 
+
+Mast cells release histamine and other inflammatory chemicals in response to different triggers like allergens, infections, and stress.
+
+Why does it matter: 
+
+If mast cells are overactive, they can cause different symptoms like fatigue, gut issues, itching, and brain fog. 
+
+Where this is used: 
+
+KPV
+
+LL-37
+
+Cytokine Storm
+
+What is it: 
+
+A cytokine storm is when the immune system has an overreaction and release way too many inflammatory signals at once and can cause severe tissue damage.
+
+Why does it matter: 
+
+This can cause dangerous inflammation when it comes to things like long-COVID and autoimmune flares. The goal is to regulate the cytokines before they can do damage. 
+
+Where this is used: 
+
+Thymalin
+
+Thymosin Alpha-1
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/d8b780ca?md=adb6cfd3e42f47b0b806b847d1293da2
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+

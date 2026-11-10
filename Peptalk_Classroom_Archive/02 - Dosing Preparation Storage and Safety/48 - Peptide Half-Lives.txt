@@ -1,0 +1,181 @@
+Peptide Half-Lives
+
+02 - Dosing Preparation Storage and Safety
+
+Saved 4 November 2026. Embedded videos and external webpages remain online.
+
+
+
+Overview
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=e67546441aed4ed8b79a73653fb1b43f
+
+Text saved
+
+This course will break down what half-lives are, why they are important, and the half-lives for different peptides.
+
+
+
+What is a half-life?
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=86c61c8f41c54de7928e46853784cef1
+
+Text saved
+
+A half-life is the amount of time it takes for half of a compound to break down and clear from your system. The active concentration of the compound is being cut in half, hence half-life. 
+
+This is important, because the half-life can play into the following: 
+
+How often it needs to be dosed
+
+Stability of the compound in your body (levels in the blood, etc)
+
+How long the compound will stay in your body
+
+If you're dosing something with a really short half-life once per week, it's basically pointless. If you're dosing a full dose of something with a long half-life, you may increase the risk of side effects. 
+
+This is also important to understand when looking at something like Tirzepatide, and can explain why around days 4, 5, and 6, people start to feel the hunger return as you are getting to half of the active level in your system.
+
+
+
+Peptide Half-Life Cheat Sheet
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=1035b7da9c7a4159ae97c5636db21700
+
+Images saved; no lesson text
+
+[No lesson text exposed. Open original lesson for media.]
+
+
+
+Peptide Half-Life List
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=9ec7586a9e084821a1fd0505b3a63b91
+
+Text saved
+
+5-Amino-1MQ - 6 hours
+Adamax - Unknown (probably short)
+AOD-9604 - 2-3 hours depending on method of administration, could be shorter
+ARA-290 - 20 minutes
+BPC-157 - 30 minutes
+Bremelanotide (PT-141) - 2.7 hours
+Cagrilintide - 8 days
+CJC-1295 (with DAC) - 5–8 days
+CJC-1295 (no DAC / Mod-GRF 1-29) - 30 minutes
+DSIP - 8-15 minutes
+Epitalon - 2-3 hours
+GHK-Cu - 2  hours
+GHRP-2 - 15-30 minutes
+GHRP-6 - 15-30 minutes
+Glutathione - 10-60 minutes depending on method of administration
+Hexarelin - 60 minutes
+Humanin - 30 minutes
+IGF-1 LR3 - 20-30 hours
+Ipamorelin - 2 hours
+Kisspeptin - 30 minutes
+
+KPV - Up to 2 hours
+L-Carnitine - 17 hours
+Liraglutide - 13 hours
+LL-37 - 1 hour
+Mazdutide - 7 days
+Melanotan 1 - 1 hour
+Melanotan 2 - 2 hours
+MK-677 - 5 hours
+MOTS-C - 30-60 minutes
+NAD+ - 1-2 hours
+Oxytocin - ~ 5 minutes
+P-21 - 30 minutes
+
+PE-22-28 - 24 hours
+Retatrutide - 6 days
+Selank - 2-5 minutes
+Semaglutide - 7 days
+Sermorelin - 10-20 minutes
+Semax - 2-5 minutes
+SS-31 - 2 hours
+Survodutide - 6 days
+
+TB-4 - 2-3 hours
+TB-500 - around 7 days
+Tesamorelin - 30 minutes
+Tesofensine - 8 days
+Thymosin Alpha-1 - 2 hours
+Tirzepatide - 5 days
+VIP - 2 minutes
+
+
+
+Half-Life Example (Retatrutide)
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=7f96586a8bc64ec09665a9a75822ea26
+
+Text saved
+
+For this example, we're going to assume a dose of 8mg per week. 
+
+The half-life of Retatrutide is 6 days, meaning every 6 days you will half 50% less of the active compound in your system. 
+
+The example below shows how that 8mg of Retatrutide will break down in your system over time and how long it would take for it to be completely out of your system based on the half-life period. 
+
+Day 0 (Injection Day) - 8mg
+
+Day 6 - 4mg
+
+Day 12 - 2mg
+
+Day 18 - 1mg
+
+Day 24 - .5mg
+
+Day 30 - .25mg 
+
+Day 36 - .125mg
+
+Day 42 - .0625mg
+
+So, looking at this, after 6 days half of the amount you were at will be left in your system. After 12 days, 75% of the amount in your system will have gone away, and after 24 days, 93% of the original 8mg will be out of your system. All of this is if you do not administer another dose.
+
+
+
+My Thoughts
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=e6839721432f49828d1ff3714b6e606b
+
+Text saved
+
+One thing I think is critically important when understanding half-lives, is understanding what might make the most sense when determining injection frequency for something like a GLOW blend vs. 5 on 2 off, as well as how long you might need to take a break from something like a GLP to reset your system. 
+
+If you are using the GLOW blend, everything in that blend typically has a short half-life, and would likely be best administered 2x daily to maintain inflammation reduction benefits, etc. Doing a 5 on 2 off method for this would limit the amount of healing that you are doing because of those 2 days off, and you're not doing anything to mitigate receptor sensitivity with that 2 day break. Therefore, it makes the most sense to use something like that at a higher and more continuous frequency to maximize the benefits that you are receiving from it. 
+
+For something like a GLP, if you're pushing almost week-long half-lives, then it is taking an incredibly long amount of time to process out of your system. Coming from something like 5mg of Tirzepatide, it will take quite a while to get down to low amounts in your system. Because of this, a 2-week break might not be long enough. Especially in a transition to something like Retatrutide. Coming off for 4-weeks, in my opinion, is even better to really let your body get closer to resetting and "feel" the effects of the Retatrutide. 
+
+The other thing that is important to take into consideration is how something may build up in your system over time. I am going to put a picture below of Retatrutide dosed 2mg weekly to show how they will build up over the first 4-weeks. Therefore, you might not really feel the effects / benefits of Retatrutide "hit" until you get to that Week 4, 5, 6 point. That is why I always preach patience for any GLPs until that point has been reached to allow it to fully saturate in the system and get to maximum levels before trying to jump higher in dosing. 
+
+The website for this is glp1plotter.com.
+
+
+
+Legal & Disclaimer
+
+https://www.skool.com/hacksmithspeptalk/classroom/a80f9c3e?md=f348ce634d53484f80b2a0058de349f8
+
+Text saved
+
+Copyright © Hacksmith's Peptalk, 2025. All rights reserved. This course content may not be copied, reproduced, or distributed without express written permission. Unauthorized reproduction will be reported under the DMCA.
+
+Not Medical Advice — Disclaimer
+
+The information provided in this course and throughout Hacksmith's Peptalk and its classroom, community, and all associated materials is for general informational and educational purposes only. It is not, and should not be construed as, medical, healthcare, diagnostic, or treatment advice, and it is not a substitute for professional medical guidance.
+
+Nothing in this content establishes a doctor-patient, provider-client, or any other professional relationship. No statements here have been evaluated by the FDA or any equivalent regulatory body, and nothing here is intended to diagnose, treat, cure, or prevent any disease or health condition.
+
+Always seek the advice of a licensed physician or other qualified healthcare provider with any questions you may have regarding a medical condition, medication, supplement, peptide, or treatment protocol. Never disregard, avoid, or delay seeking professional medical advice because of something you have read or seen here.
+
+Many substances discussed may be regulated, restricted, prescription-only, or not approved for human use in your jurisdiction. You are solely responsible for understanding and complying with all applicable laws and regulations. References to any substance, dose, protocol, or product do not constitute a recommendation or endorsement to use it.
+
+Individual results vary, and any anecdotes or testimonials are personal experiences that are not guarantees of outcomes and may not be typical. Use of any information here is entirely at your own risk.
+
+To the fullest extent permitted by law, Hacksmith's Peptalk, its owners, authors, moderators, and affiliates disclaim all liability for any loss, injury, damage, or adverse outcome arising directly or indirectly from the use of, or reliance on, any information provided. By using this content you acknowledge and accept these terms.
+
