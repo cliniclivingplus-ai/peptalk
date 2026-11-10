@@ -1,0 +1,10 @@
+# GitHub Linguist language overrides
+# Tell GitHub that the public classroom archive is static documentation/vendored data
+public/Peptalk_Classroom_Archive/** linguist-documentation
+public/** linguist-documentation
+*.html linguist-detectable=false
+*.txt linguist-detectable=false
+
+# Ensure TypeScript is recognized as the core language
+*.ts linguist-detectable=true
+*.tsx linguist-detectable=true
