@@ -177,7 +177,7 @@ RELEVANT CLINICAL SOURCES:
 ${contextStr || 'No direct matching source found in database. Answer with standard clinical peptide and pharmacology literature knowledge.'}`;
 
       // 1. Dynamic model discovery with robust fallbacks
-      const defaultModels = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-pro'];
+      const defaultModels = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-pro', 'gemini-pro'];
       let modelsToTry = [...defaultModels];
 
       try {
@@ -185,11 +185,17 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
         const listData = await listRes.json();
         if (listData.models && Array.isArray(listData.models)) {
           const discovered = listData.models
-            .filter((m: any) => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+            .filter((m: any) => {
+              if (!m.supportedGenerationMethods?.includes('generateContent')) return false;
+              const name = (m.name || '').toLowerCase();
+              // Exclude audio, tts, embedding, vision-only, or image generation models
+              if (name.includes('tts') || name.includes('audio') || name.includes('embed') || name.includes('image')) return false;
+              return true;
+            })
             .map((m: any) => m.name.replace(/^models\//, ''));
 
           if (discovered.length > 0) {
-            const priority = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-8b', 'gemini-2.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
+            const priority = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-pro', 'gemini-pro'];
             modelsToTry = discovered.sort((a: string, b: string) => {
               const idxA = priority.indexOf(a);
               const idxB = priority.indexOf(b);
@@ -201,7 +207,11 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
           }
         } else if (listData.error) {
           const errMsg = listData.error.message || 'Key verification failed';
-          if (listData.error.status === 'INVALID_ARGUMENT' || errMsg.toLowerCase().includes('api key not valid')) {
+          if (
+            errMsg.toLowerCase().includes('api key not valid') ||
+            errMsg.toLowerCase().includes('api_key_invalid') ||
+            errMsg.toLowerCase().includes('key not found')
+          ) {
             throw new Error(`Invalid Gemini API Key: ${errMsg}. Please click "Gemini API Key" in the menu to verify or generate a free key at https://aistudio.google.com/app/apikey.`);
           }
         }
@@ -211,7 +221,7 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
         }
       }
 
-      // Limit execution to top 3 candidate models
+      // Limit execution to top 3 candidate text models
       const modelsToExecute = modelsToTry.slice(0, 3);
       const errorsCollected: string[] = [];
       let reply = '';
@@ -252,12 +262,14 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
 
             if (!res.ok || json.error) {
               const errMsg = json.error?.message || `HTTP ${res.status}`;
-              if (
-                json.error?.status === 'INVALID_ARGUMENT' ||
+              const isKeyError =
                 errMsg.toLowerCase().includes('api key not valid') ||
-                errMsg.toLowerCase().includes('api_key_invalid')
-              ) {
-                throw new Error(`Google Gemini Error: API key is invalid or unrecognized (${errMsg}). Please click "Gemini API Key" in the menu to verify your key or obtain a free key at https://aistudio.google.com/app/apikey.`);
+                errMsg.toLowerCase().includes('api_key_invalid') ||
+                errMsg.toLowerCase().includes('key not found') ||
+                errMsg.toLowerCase().includes('forbidden');
+
+              if (isKeyError) {
+                throw new Error(`Google Gemini Error: API key issue (${errMsg}). Please click "Gemini API Key" in the menu to verify your key or obtain a free key at https://aistudio.google.com/app/apikey.`);
               }
               if (json.error?.status === 'RESOURCE_EXHAUSTED' || res.status === 429) {
                 errorsCollected.push(`[${model} (${apiVer})]: Rate limit exceeded (${errMsg})`);
