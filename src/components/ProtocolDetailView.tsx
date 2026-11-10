@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Protocol } from '@/types';
-import { ArrowLeft, FileText, Droplet } from 'lucide-react';
+import { ArrowLeft, FileText, Droplet, Lightbulb, FlaskConical, Table as TableIcon, Clock } from 'lucide-react';
 
 interface ProtocolDetailViewProps {
   protocol: Protocol;
@@ -39,8 +39,9 @@ export default function ProtocolDetailView({
 
       {protocol.corePrinciple && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem' }}>
-            💡 Core Clinical Principle
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+            <Lightbulb size={18} style={{ color: 'var(--primary)' }} />
+            <span>Core Clinical Principle</span>
           </h3>
           <p style={{ color: '#3A3D4D', lineHeight: 1.7, fontSize: '0.96rem' }}>
             {protocol.corePrinciple}
@@ -50,8 +51,9 @@ export default function ProtocolDetailView({
 
       {protocol.instructions && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem' }}>
-            🧪 Reconstitution & Dosing Instructions
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+            <FlaskConical size={18} style={{ color: 'var(--primary)' }} />
+            <span>Reconstitution & Dosing Instructions</span>
           </h3>
           <p style={{ color: '#3A3D4D', lineHeight: 1.7, fontSize: '0.96rem' }}>
             {protocol.instructions}
@@ -61,8 +63,9 @@ export default function ProtocolDetailView({
 
       {protocol.tableRows && protocol.tableRows.length > 0 && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem' }}>
-            📊 Dosing & Reconstitution Reference Table
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+            <TableIcon size={18} style={{ color: 'var(--primary)' }} />
+            <span>Dosing & Reconstitution Reference Table</span>
           </h3>
           <div style={{ overflowX: 'auto', margin: '1rem 0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.92rem' }}>
@@ -91,8 +94,9 @@ export default function ProtocolDetailView({
 
       {protocol.cycleInfo && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem' }}>
-            🔄 Cycle & Titration Protocol
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+            <Clock size={18} style={{ color: 'var(--primary)' }} />
+            <span>Cycle & Titration Protocol</span>
           </h3>
           <p style={{ color: '#3A3D4D', lineHeight: 1.7, fontSize: '0.96rem' }}>
             {protocol.cycleInfo}

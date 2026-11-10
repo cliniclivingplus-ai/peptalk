@@ -18,7 +18,13 @@ import {
   Clock, 
   Sparkles,
   Layers,
-  ThermometerSnowflake
+  ThermometerSnowflake,
+  Dna,
+  Target,
+  BarChart3,
+  Syringe,
+  Lightbulb,
+  BookOpen
 } from 'lucide-react';
 
 interface CompoundDetailViewProps {
@@ -290,7 +296,8 @@ export default function CompoundDetailView({
       {/* ========================================================================= */}
       <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
         <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-          <span>🧬</span> <span>1 · What It Is & Where It Sits</span>
+          <Dna size={18} style={{ color: 'var(--primary)' }} />
+          <span>1 · What It Is & Where It Sits</span>
         </h3>
         
         {parsed?.whatItIs ? (
@@ -310,7 +317,8 @@ export default function CompoundDetailView({
       {(compound.mechanismOfAction || parsed?.mechanism || compound.mechanism) && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>🔬</span> <span>2 · Function & Mechanism of Action</span>
+            <Activity size={18} style={{ color: 'var(--primary)' }} />
+            <span>2 · Function & Mechanism of Action</span>
           </h3>
           <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.75, fontSize: '0.96rem' }}>
             {parsed?.mechanism || compound.mechanismOfAction || compound.mechanism}
@@ -322,7 +330,8 @@ export default function CompoundDetailView({
       {(compound.researchContexts || compound.contexts) && (compound.researchContexts || compound.contexts)!.length > 0 && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>🎯</span> <span>Primary Research Contexts</span>
+            <Target size={18} style={{ color: 'var(--primary)' }} />
+            <span>Primary Research Contexts</span>
           </h3>
           <div style={{ display: 'flex', gap: '0.55rem', flexWrap: 'wrap' }}>
             {(compound.researchContexts || compound.contexts)!.map((ctx, i) => (
@@ -338,7 +347,8 @@ export default function CompoundDetailView({
       {parsed?.evidence?.fullText && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>📊</span> <span>3 · Evidence & Clinical Trial Context</span>
+            <BarChart3 size={18} style={{ color: 'var(--primary)' }} />
+            <span>3 · Evidence & Clinical Trial Context</span>
           </h3>
 
           {parsed.evidence.clinicalTrial && (
@@ -377,7 +387,8 @@ export default function CompoundDetailView({
       {(compound.dosageRanges || compound.dosing || parsed?.dosing?.fullText) && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>💉</span> <span>4 · Dosing & Protocol Guidelines</span>
+            <Syringe size={18} style={{ color: 'var(--primary)' }} />
+            <span>4 · Dosing & Protocol Guidelines</span>
           </h3>
 
           {/* Dosing metric pill bar */}
@@ -416,7 +427,8 @@ export default function CompoundDetailView({
       {(recon || typeof compound.reconstitution === 'string') && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>💧</span> <span>5 · Reconstitution & Mixing Guidelines</span>
+            <Droplet size={18} style={{ color: 'var(--primary)' }} />
+            <span>5 · Reconstitution & Mixing Guidelines</span>
           </h3>
 
           {recon ? (
@@ -503,7 +515,8 @@ export default function CompoundDetailView({
           }}
         >
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: '#4C1D95', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>💡</span> <span>6 · The Practical Take</span>
+            <Lightbulb size={18} style={{ color: '#6D28D9' }} />
+            <span>6 · The Practical Take</span>
           </h3>
           <div style={{ whiteSpace: 'pre-line', color: '#3730A3', lineHeight: 1.75, fontSize: '0.96rem', fontWeight: 500 }}>
             {parsed.practicalTake}
@@ -771,7 +784,8 @@ export default function CompoundDetailView({
       {linkedPapers.length > 0 && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '2rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <span>📚</span> <span>Published Clinical Research ({linkedPapers.length} Papers)</span>
+            <BookOpen size={18} style={{ color: 'var(--primary)' }} />
+            <span>Published Clinical Research ({linkedPapers.length} Papers)</span>
           </h3>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

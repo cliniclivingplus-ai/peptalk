@@ -36,7 +36,7 @@ export default function Sidebar({
           className="brand-logo"
         >
           <div className="brand-icon-box">
-            <span style={{ fontSize: '1.2rem' }}>💬</span>
+            <MessageSquare size={18} color="#FFFFFF" strokeWidth={2.5} />
           </div>
           <span className="brand-text">PepTalk</span>
         </a>

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage, Compound, Protocol, Course } from '@/types';
-import { Send, Sparkles, Bot, User, ArrowRight } from 'lucide-react';
+import { Send, Sparkles, Bot, User, ArrowRight, Syringe, Dna, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface ChatViewProps {
   apiKey: string;
@@ -114,7 +114,7 @@ export default function ChatView({
             id: 'msg_' + Date.now(),
             role: 'assistant',
             content:
-              '⚠️ A Google Gemini API key is required to answer clinical inquiries with the AI model. Click the button below to add your free Gemini API key.',
+              'A Google Gemini API key is required to answer clinical inquiries with the AI model. Click the button below to add your free Gemini API key.',
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           },
         ]);
@@ -204,7 +204,8 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               onClick={() => handleSendPrompt('How much BAC water for Tirzepatide (10mg)? Provide reconstitution math, syringe tick draw table, and titration schedule.')}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <span>💉</span> <span>Tirzepatide BAC & Dosing</span>
+                <Syringe size={16} style={{ color: 'var(--primary)' }} />
+                <span>Tirzepatide BAC & Dosing</span>
               </div>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
                 Reconstitution volumes, syringe units, and 4-step titration ladder.
@@ -217,7 +218,8 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               onClick={() => handleSendPrompt('Explain the tissue repair synergy and dosing protocol for the BPC-157 and TB-500 Wolverine stack.')}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <span>🧬</span> <span>Wolverine Stack Synergy</span>
+                <Dna size={16} style={{ color: 'var(--primary)' }} />
+                <span>Wolverine Stack Synergy</span>
               </div>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
                 BPC-157 + TB-500 repair mechanisms and joint healing timelines.
@@ -230,7 +232,8 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               onClick={() => handleSendPrompt('What is the optimal dosing, reconstitution, and cycling schedule for GHK-Cu in skin and tissue remodeling?')}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <span>✨</span> <span>GHK-Cu Copper Peptide</span>
+                <Sparkles size={16} style={{ color: 'var(--primary)' }} />
+                <span>GHK-Cu Copper Peptide</span>
               </div>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
                 Dosing guidelines, injection dilution, and sting minimization tips.
@@ -243,7 +246,8 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               onClick={() => handleSendPrompt('Provide a clinical breakdown of Retatrutide: triple receptor mechanism (GLP-1/GIP/GCGR) and optimal starting doses.')}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <span>📈</span> <span>Retatrutide (GLP-3RT)</span>
+                <TrendingUp size={16} style={{ color: 'var(--primary)' }} />
+                <span>Retatrutide (GLP-3RT)</span>
               </div>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
                 Triple receptor activation profile and metabolic escalation rules.
