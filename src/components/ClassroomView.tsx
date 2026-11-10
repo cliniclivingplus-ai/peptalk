@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Course } from '@/types';
-import { Search, GraduationCap, ArrowRight } from 'lucide-react';
+import { Search, GraduationCap, ArrowRight, Video, ExternalLink } from 'lucide-react';
 
 interface ClassroomViewProps {
   courses: Course[];
@@ -59,6 +59,47 @@ export default function ClassroomView({
             Full masterclass curriculum, deep-dive lessons, video tutorials, protocols, and biohacking archives.
           </p>
         </div>
+      </div>
+
+      {/* Google Drive Video Cloud Archive Banner */}
+      <div 
+        style={{ 
+          background: 'linear-gradient(135deg, #F0F4FF 0%, #E8EDFF 100%)', 
+          border: '1.5px solid #C7D7FE', 
+          borderRadius: '16px', 
+          padding: '1.15rem 1.4rem', 
+          marginBottom: '1.5rem', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'var(--primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Video size={20} />
+          </div>
+          <div>
+            <strong style={{ fontSize: '0.98rem', color: '#1E293B', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <span>Masterclass Video Drive Archive</span>
+              <span className="compound-pill" style={{ fontSize: '0.72rem', background: '#DBEAFE', color: '#1E40AF', borderColor: '#BFDBFE' }}>Cloud Hosted</span>
+            </strong>
+            <p style={{ fontSize: '0.86rem', color: '#475569', marginTop: '0.2rem' }}>
+              All course videos, webinars, and live Q&A recordings are hosted in Google Drive for fast, high-definition streaming.
+            </p>
+          </div>
+        </div>
+        <a
+          href="https://drive.google.com/drive/u/0/folders/16TzxRatyp4iK4iNzBvEEx-wzHAxcgAXB"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+          style={{ fontSize: '0.86rem', padding: '0.5rem 1.15rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+        >
+          <span>Open Video Drive Folder</span>
+          <ExternalLink size={14} />
+        </a>
       </div>
 
       {/* Search Input */}
