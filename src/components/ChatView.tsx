@@ -176,79 +176,122 @@ Format responses cleanly using markdown headings, bullet points, and clinical cl
 RELEVANT CLINICAL SOURCES:
 ${contextStr || 'No direct matching source found in database. Answer with standard clinical peptide and pharmacology literature knowledge.'}`;
 
-      // Resilience strategy: try current Gemini models
-      const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
-      let lastError = '';
-      let reply = '';
+      // 1. Dynamic model discovery with robust fallbacks
+      const defaultModels = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-pro'];
+      let modelsToTry = [...defaultModels];
 
-      for (const model of modelsToTry) {
-        try {
-          const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${cleanKey}`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents: [
-                  {
-                    role: 'user',
-                    parts: [{ text: `${systemPrompt}\n\nUSER QUESTION:\n${text}` }],
-                  },
-                ],
-                safetySettings: [
-                  { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_ONLY_HIGH' },
-                  { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_ONLY_HIGH' },
-                  { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
-                  { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
-                ],
-                generationConfig: {
-                  temperature: 0.2,
-                  maxOutputTokens: 1500,
-                },
-              }),
-            }
-          );
+      try {
+        const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${cleanKey}`);
+        const listData = await listRes.json();
+        if (listData.models && Array.isArray(listData.models)) {
+          const discovered = listData.models
+            .filter((m: any) => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+            .map((m: any) => m.name.replace(/^models\//, ''));
 
-          const json = await res.json();
-
-          if (!res.ok || json.error) {
-            const errMsg = json.error?.message || `HTTP ${res.status}`;
-            if (
-              json.error?.status === 'INVALID_ARGUMENT' ||
-              errMsg.toLowerCase().includes('api key not valid') ||
-              errMsg.toLowerCase().includes('api_key_invalid')
-            ) {
-              lastError = `Google Gemini Error: The provided API key is invalid or unrecognized (${errMsg}). Please click "Gemini API Key" in the menu to verify your key or obtain a free key at https://aistudio.google.com/app/apikey.`;
-              break;
-            }
-            if (json.error?.status === 'RESOURCE_EXHAUSTED' || res.status === 429) {
-              lastError = `Google Gemini Rate Limit: Free tier quota exceeded (${errMsg}). Please wait a minute and try again.`;
-              continue;
-            }
-            lastError = `Google Gemini Error (${model}): ${errMsg}`;
-            continue;
+          if (discovered.length > 0) {
+            const priority = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-8b', 'gemini-2.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
+            modelsToTry = discovered.sort((a: string, b: string) => {
+              const idxA = priority.indexOf(a);
+              const idxB = priority.indexOf(b);
+              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+              if (idxA !== -1) return -1;
+              if (idxB !== -1) return 1;
+              return 0;
+            });
           }
-
-          if (
-            json.candidates?.[0]?.finishReason === 'SAFETY' ||
-            json.promptFeedback?.blockReason === 'SAFETY'
-          ) {
-            lastError = `Google AI safety filter flagged this query as potential personal prescribing advice. Please ask in general educational terms, such as "What is the standard clinical trial titration schedule for Semaglutide/Ozempic?".`;
-            continue;
+        } else if (listData.error) {
+          const errMsg = listData.error.message || 'Key verification failed';
+          if (listData.error.status === 'INVALID_ARGUMENT' || errMsg.toLowerCase().includes('api key not valid')) {
+            throw new Error(`Invalid Gemini API Key: ${errMsg}. Please click "Gemini API Key" in the menu to verify or generate a free key at https://aistudio.google.com/app/apikey.`);
           }
-
-          const candidateText = json.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (candidateText) {
-            reply = candidateText;
-            break;
-          }
-        } catch (fetchErr: any) {
-          lastError = `Network connection error: ${fetchErr.message || 'Unable to reach Google Gemini API'}`;
+        }
+      } catch (listErr: any) {
+        if (listErr.message?.startsWith('Invalid Gemini API Key:')) {
+          throw listErr;
         }
       }
 
+      // Limit execution to top 3 candidate models
+      const modelsToExecute = modelsToTry.slice(0, 3);
+      const errorsCollected: string[] = [];
+      let reply = '';
+
+      for (const model of modelsToExecute) {
+        const apiVersions = ['v1beta', 'v1'];
+        let modelSuccess = false;
+
+        for (const apiVer of apiVersions) {
+          try {
+            const res = await fetch(
+              `https://generativelanguage.googleapis.com/${apiVer}/models/${model}:generateContent?key=${cleanKey}`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  contents: [
+                    {
+                      role: 'user',
+                      parts: [{ text: `${systemPrompt}\n\nUSER QUESTION:\n${text}` }],
+                    },
+                  ],
+                  safetySettings: [
+                    { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_ONLY_HIGH' },
+                    { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_ONLY_HIGH' },
+                    { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
+                    { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
+                  ],
+                  generationConfig: {
+                    temperature: 0.2,
+                    maxOutputTokens: 1500,
+                  },
+                }),
+              }
+            );
+
+            const json = await res.json();
+
+            if (!res.ok || json.error) {
+              const errMsg = json.error?.message || `HTTP ${res.status}`;
+              if (
+                json.error?.status === 'INVALID_ARGUMENT' ||
+                errMsg.toLowerCase().includes('api key not valid') ||
+                errMsg.toLowerCase().includes('api_key_invalid')
+              ) {
+                throw new Error(`Google Gemini Error: API key is invalid or unrecognized (${errMsg}). Please click "Gemini API Key" in the menu to verify your key or obtain a free key at https://aistudio.google.com/app/apikey.`);
+              }
+              if (json.error?.status === 'RESOURCE_EXHAUSTED' || res.status === 429) {
+                errorsCollected.push(`[${model} (${apiVer})]: Rate limit exceeded (${errMsg})`);
+                break;
+              }
+              errorsCollected.push(`[${model} (${apiVer})]: ${errMsg}`);
+              continue;
+            }
+
+            if (
+              json.candidates?.[0]?.finishReason === 'SAFETY' ||
+              json.promptFeedback?.blockReason === 'SAFETY'
+            ) {
+              errorsCollected.push(`[${model}]: Response restricted by Google safety filters. Please ask in educational terms.`);
+              break;
+            }
+
+            const candidateText = json.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (candidateText) {
+              reply = candidateText;
+              modelSuccess = true;
+              break;
+            }
+          } catch (fetchErr: any) {
+            if (fetchErr.message?.startsWith('Google Gemini Error:')) throw fetchErr;
+            errorsCollected.push(`[${model} (${apiVer})]: ${fetchErr.message}`);
+          }
+        }
+
+        if (modelSuccess) break;
+      }
+
       if (!reply) {
-        reply = lastError || 'Unable to generate an answer at this time. Please check your Gemini API key and network connection.';
+        reply = `Google Gemini Error: Unable to complete request across candidate models (${modelsToExecute.join(', ')}).\n\nDetails:\n` + errorsCollected.map((e) => `• ${e}`).join('\n');
       }
 
       setMessages((prev) => [
