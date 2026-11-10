@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage, Compound, Protocol, Course } from '@/types';
-import { Send, Sparkles, Bot, User, ArrowRight, Syringe, Dna, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Send, Sparkles, Bot, User, ArrowRight, Syringe, Dna, TrendingUp, AlertTriangle, Key } from 'lucide-react';
 
 interface ChatViewProps {
   apiKey: string;
@@ -13,6 +13,14 @@ interface ChatViewProps {
   initialPrompt?: string;
   onClearInitialPrompt?: () => void;
 }
+
+const COMMON_ALIASES: Record<string, string> = {
+  ozempic: 'semaglutide',
+  wegovy: 'semaglutide',
+  rybelsus: 'semaglutide',
+  mounjaro: 'tirzepatide',
+  zepbound: 'tirzepatide',
+};
 
 export default function ChatView({
   apiKey,
@@ -39,17 +47,34 @@ export default function ChatView({
     }
   }, [initialPrompt]);
 
-  // Client-side RAG search
+  // Client-side RAG search with multi-word tokenization and alias expansion
   const performRAGSearch = (query: string) => {
-    const q = query.toLowerCase();
+    const rawTokens = query.toLowerCase().split(/\s+/).filter((t) => t.length > 2);
+    const stopWords = new Set(['what', 'will', 'the', 'dose', 'dosing', 'for', 'with', 'and', 'how', 'much', 'about', 'from', 'this', 'that', 'yrs', 'old', 'dose', 'tell']);
+    const meaningfulTokens = rawTokens.filter((t) => !stopWords.has(t));
+
+    const expandedTokens = [...meaningfulTokens];
+    meaningfulTokens.forEach((t) => {
+      if (COMMON_ALIASES[t]) expandedTokens.push(COMMON_ALIASES[t]);
+    });
+
     const scoredDocs: { score: number; text: string; title: string }[] = [];
 
     // Search Compounds
     compounds.forEach((c) => {
       let score = 0;
-      if (c.name.toLowerCase().includes(q)) score += 10;
-      if (c.fullName && c.fullName.toLowerCase().includes(q)) score += 6;
-      if (c.overview && c.overview.toLowerCase().includes(q)) score += 3;
+      const cName = c.name.toLowerCase();
+      const cFull = (c.fullName || '').toLowerCase();
+      const cBody = (c.overview || c.mechanism || c.dosing || '').toLowerCase();
+
+      if (cName.includes(query.toLowerCase())) score += 20;
+
+      expandedTokens.forEach((token) => {
+        if (cName.includes(token)) score += 10;
+        else if (cFull.includes(token)) score += 6;
+        else if (cBody.includes(token)) score += 2;
+      });
+
       if (score > 0) {
         scoredDocs.push({
           score,
@@ -62,8 +87,16 @@ export default function ChatView({
     // Search Protocols
     protocols.forEach((p) => {
       let score = 0;
-      if (p.name.toLowerCase().includes(q)) score += 9;
-      if (p.instructions && p.instructions.toLowerCase().includes(q)) score += 4;
+      const pName = p.name.toLowerCase();
+      const pBody = (p.instructions || p.corePrinciple || '').toLowerCase();
+
+      if (pName.includes(query.toLowerCase())) score += 15;
+
+      expandedTokens.forEach((token) => {
+        if (pName.includes(token)) score += 8;
+        else if (pBody.includes(token)) score += 3;
+      });
+
       if (score > 0) {
         scoredDocs.push({
           score,
@@ -76,8 +109,13 @@ export default function ChatView({
     // Search Courses
     courses.forEach((c) => {
       let score = 0;
-      if (c.title.toLowerCase().includes(q)) score += 7;
-      if (c.category.toLowerCase().includes(q)) score += 3;
+      const title = (c.clean_title || c.title || '').toLowerCase();
+      if (title.includes(query.toLowerCase())) score += 10;
+
+      expandedTokens.forEach((token) => {
+        if (title.includes(token)) score += 5;
+      });
+
       if (score > 0) {
         scoredDocs.push({
           score,
@@ -106,7 +144,9 @@ export default function ChatView({
     setInput('');
     setIsLoading(true);
 
-    if (!apiKey) {
+    const cleanKey = apiKey.trim().replace(/^['"]|['"]$/g, '');
+
+    if (!cleanKey) {
       setTimeout(() => {
         setMessages((prev) => [
           ...prev,
@@ -114,7 +154,7 @@ export default function ChatView({
             id: 'msg_' + Date.now(),
             role: 'assistant',
             content:
-              'A Google Gemini API key is required to answer clinical inquiries with the AI model. Click the button below to add your free Gemini API key.',
+              'A Google Gemini API key is required to query the clinical peptide intelligence assistant. Click the button below to add or verify your free Gemini API key.',
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           },
         ]);
@@ -127,36 +167,89 @@ export default function ChatView({
       const relevantDocs = performRAGSearch(text);
       const contextStr = relevantDocs.map((d) => `### Source: ${d.title}\n${d.text}`).join('\n\n');
 
-      const systemPrompt = `You are PepTalk, a high-precision clinical peptide intelligence assistant.
-Answer the user's question accurately using the clinical knowledge base provided below. Always format responses clearly with markdown headings, bullet points, and clinical clarity. Maintain strict educational orientation.
+      const systemPrompt = `You are PepTalk, a high-precision educational clinical peptide and pharmacology intelligence assistant.
+Answer the user's question accurately using clinical pharmacology literature, published clinical trials, and the PepTalk knowledge base provided below.
+Provide clear clinical pharmacology explanations, published titration schedules (e.g. for GLP-1 receptor agonists like Semaglutide/Ozempic or Tirzepatide, cite standard clinical literature protocols: starting at 0.25 mg subcutaneously once weekly for 4 weeks to assess GI tolerability, escalating to 0.5 mg weekly, with maintenance increments up to 1.0 mg or 2.0 mg as documented in prescribing references), reconstitution math, and safety monitoring markers.
+Maintain strict educational orientation and note that all dosing is educational reference derived from published clinical literature.
+Format responses cleanly using markdown headings, bullet points, and clinical clarity.
 
 RELEVANT CLINICAL SOURCES:
-${contextStr || 'No direct matching source found in database. Answer with standard clinical peptide literature knowledge.'}`;
+${contextStr || 'No direct matching source found in database. Answer with standard clinical peptide and pharmacology literature knowledge.'}`;
 
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: 'user',
-                parts: [{ text: `${systemPrompt}\n\nUSER QUESTION:\n${text}` }],
-              },
-            ],
-            generationConfig: {
-              temperature: 0.2,
-              maxOutputTokens: 1200,
-            },
-          }),
+      // Resilience strategy: try current Gemini models
+      const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
+      let lastError = '';
+      let reply = '';
+
+      for (const model of modelsToTry) {
+        try {
+          const res = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${cleanKey}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [
+                  {
+                    role: 'user',
+                    parts: [{ text: `${systemPrompt}\n\nUSER QUESTION:\n${text}` }],
+                  },
+                ],
+                safetySettings: [
+                  { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_ONLY_HIGH' },
+                  { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_ONLY_HIGH' },
+                  { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
+                  { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
+                ],
+                generationConfig: {
+                  temperature: 0.2,
+                  maxOutputTokens: 1500,
+                },
+              }),
+            }
+          );
+
+          const json = await res.json();
+
+          if (!res.ok || json.error) {
+            const errMsg = json.error?.message || `HTTP ${res.status}`;
+            if (
+              json.error?.status === 'INVALID_ARGUMENT' ||
+              errMsg.toLowerCase().includes('api key not valid') ||
+              errMsg.toLowerCase().includes('api_key_invalid')
+            ) {
+              lastError = `Google Gemini Error: The provided API key is invalid or unrecognized (${errMsg}). Please click "Gemini API Key" in the menu to verify your key or obtain a free key at https://aistudio.google.com/app/apikey.`;
+              break;
+            }
+            if (json.error?.status === 'RESOURCE_EXHAUSTED' || res.status === 429) {
+              lastError = `Google Gemini Rate Limit: Free tier quota exceeded (${errMsg}). Please wait a minute and try again.`;
+              continue;
+            }
+            lastError = `Google Gemini Error (${model}): ${errMsg}`;
+            continue;
+          }
+
+          if (
+            json.candidates?.[0]?.finishReason === 'SAFETY' ||
+            json.promptFeedback?.blockReason === 'SAFETY'
+          ) {
+            lastError = `Google AI safety filter flagged this query as potential personal prescribing advice. Please ask in general educational terms, such as "What is the standard clinical trial titration schedule for Semaglutide/Ozempic?".`;
+            continue;
+          }
+
+          const candidateText = json.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (candidateText) {
+            reply = candidateText;
+            break;
+          }
+        } catch (fetchErr: any) {
+          lastError = `Network connection error: ${fetchErr.message || 'Unable to reach Google Gemini API'}`;
         }
-      );
+      }
 
-      const json = await res.json();
-      const reply =
-        json.candidates?.[0]?.content?.parts?.[0]?.text ||
-        'I was unable to generate an answer at this time. Please try again.';
+      if (!reply) {
+        reply = lastError || 'Unable to generate an answer at this time. Please check your Gemini API key and network connection.';
+      }
 
       setMessages((prev) => [
         ...prev,
@@ -190,39 +283,34 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
           <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.25rem' }}>
             <Sparkles size={32} />
           </div>
-          <h1 className="editorial-title" style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>
-            How can PepTalk <span style={{ color: 'var(--primary)' }}>help your research?</span>
-          </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '580px', lineHeight: 1.6, marginBottom: '2.5rem' }}>
-            Evidence-based clinical intelligence across peptides, protocols, reconstitution ratios, and masterclass archives.
+          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.65rem' }}>
+            What would you like to research?
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '540px', fontSize: '0.94rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+            Search across 690 monographs, 75 masterclasses, and vetted clinical protocols with AI-powered synthesis.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', width: '100%', maxWidth: '780px' }}>
+          {!apiKey && (
+            <div style={{ marginBottom: '2rem' }}>
+              <button onClick={onOpenApiKey} className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#FFFFFF' }}>
+                <Key size={16} />
+                <span>Configure Free Gemini API Key</span>
+              </button>
+            </div>
+          )}
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', width: '100%', maxWidth: '780px' }}>
             <div
               className="compound-item-card"
               style={{ padding: '1.25rem', textAlign: 'left' }}
-              onClick={() => handleSendPrompt('How much BAC water for Tirzepatide (10mg)? Provide reconstitution math, syringe tick draw table, and titration schedule.')}
+              onClick={() => handleSendPrompt('What is the standard clinical titration schedule and administration protocol for Semaglutide (Ozempic)?')}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
                 <Syringe size={16} style={{ color: 'var(--primary)' }} />
-                <span>Tirzepatide BAC & Dosing</span>
+                <span>Semaglutide / Ozempic</span>
               </div>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
-                Reconstitution volumes, syringe units, and 4-step titration ladder.
-              </p>
-            </div>
-
-            <div
-              className="compound-item-card"
-              style={{ padding: '1.25rem', textAlign: 'left' }}
-              onClick={() => handleSendPrompt('Explain the tissue repair synergy and dosing protocol for the BPC-157 and TB-500 Wolverine stack.')}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <Dna size={16} style={{ color: 'var(--primary)' }} />
-                <span>Wolverine Stack Synergy</span>
-              </div>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
-                BPC-157 + TB-500 repair mechanisms and joint healing timelines.
+                Standard clinical trial titration schedule, GI tolerance rules, and dosing steps.
               </p>
             </div>
 
@@ -308,12 +396,12 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
 
           {isLoading && (
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Bot size={18} />
               </div>
-              <div style={{ background: '#FFFFFF', padding: '0.85rem 1.25rem', borderRadius: '16px', border: '1px solid var(--border)', color: 'var(--text-secondary)', fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span className="status-pill-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)' }}></span>
-                <span>Consulting clinical peptide database...</span>
+              <div style={{ background: '#FFFFFF', padding: '0.85rem 1.25rem', borderRadius: '16px', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span className="animate-pulse" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)' }} />
+                <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>Consulting clinical monograph library...</span>
               </div>
             </div>
           )}
@@ -321,48 +409,52 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
         </div>
       )}
 
-      {/* Input row */}
-      <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
-        {!apiKey && (
-          <div style={{ padding: '0.55rem 1rem', background: '#FFFBEB', border: '1px solid #FEF3C7', borderRadius: '12px', fontSize: '0.84rem', color: '#92400E', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span>Add a Google Gemini API Key to enable AI responses.</span>
-            <button onClick={onOpenApiKey} style={{ color: 'var(--primary)', fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer' }}>Set Key →</button>
-          </div>
-        )}
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSendPrompt(input);
-          }}
-          style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}
-        >
+      {/* Input Form */}
+      <form onSubmit={(e) => { e.preventDefault(); handleSendPrompt(input); }} style={{ padding: '1rem 0' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', position: 'relative' }}>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask PepTalk about compounds, dosing, reconstitution math, or protocols..."
+            disabled={isLoading}
             style={{
               flex: 1,
-              padding: '0.95rem 1.25rem',
+              padding: '1rem 1.25rem',
+              paddingRight: '3.5rem',
               borderRadius: '16px',
               border: '1px solid var(--border)',
-              background: '#FFFFFF',
-              fontSize: '0.94rem',
               outline: 'none',
-              boxShadow: 'var(--shadow-sm)',
+              fontSize: '0.94rem',
+              background: '#FFFFFF',
+              boxShadow: 'var(--shadow-card)',
             }}
           />
           <button
             type="submit"
-            disabled={!input.trim() || isLoading}
-            className="btn btn-primary"
-            style={{ borderRadius: '16px', padding: '0.95rem 1.4rem' }}
+            disabled={isLoading || !input.trim()}
+            style={{
+              position: 'absolute',
+              right: '8px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              background: input.trim() ? 'var(--primary)' : '#EAEAF2',
+              color: input.trim() ? '#FFFFFF' : 'var(--text-muted)',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: input.trim() ? 'pointer' : 'default',
+              transition: 'all 0.2s ease',
+            }}
           >
             <Send size={18} />
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

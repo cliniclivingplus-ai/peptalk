@@ -31,14 +31,16 @@ export default function Home() {
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('peptalk_gemini_api_key') || localStorage.getItem('peppal_gemini_api_key') || '';
-    if (saved) setApiKey(saved);
+    const raw = localStorage.getItem('peptalk_gemini_api_key') || localStorage.getItem('peppal_gemini_api_key') || '';
+    const cleaned = raw.trim().replace(/^['"]|['"]$/g, '');
+    if (cleaned) setApiKey(cleaned);
   }, []);
 
   const handleSaveApiKey = (key: string) => {
-    setApiKey(key);
-    localStorage.setItem('peptalk_gemini_api_key', key);
-    localStorage.setItem('peppal_gemini_api_key', key);
+    const cleaned = key.trim().replace(/^['"]|['"]$/g, '');
+    setApiKey(cleaned);
+    localStorage.setItem('peptalk_gemini_api_key', cleaned);
+    localStorage.setItem('peppal_gemini_api_key', cleaned);
   };
 
   const handleNavigate = (view: ViewMode) => {
