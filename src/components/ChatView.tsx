@@ -168,8 +168,9 @@ export default function ChatView({
       const contextStr = relevantDocs.map((d) => `### Source: ${d.title}\n${d.text}`).join('\n\n');
 
       const systemPrompt = `You are PepTalk, a high-precision educational clinical peptide and pharmacology intelligence assistant.
-Answer the user's question accurately using clinical pharmacology literature, published clinical trials, and the PepTalk knowledge base provided below.
-Provide clear clinical pharmacology explanations, published titration schedules (e.g. for GLP-1 receptor agonists like Semaglutide/Ozempic or Tirzepatide, cite standard clinical literature protocols: starting at 0.25 mg subcutaneously once weekly for 4 weeks to assess GI tolerability, escalating to 0.5 mg weekly, with maintenance increments up to 1.0 mg or 2.0 mg as documented in prescribing references), reconstitution math, and safety monitoring markers.
+Answer the user's question directly with an educational, factual clinical response.
+Do NOT output self-planning, scratchpads, meta-analysis, internal checklists, or role analysis bullets. Immediately output the final well-structured answer.
+Provide factual educational information, standard published clinical trial titration guidelines (e.g. for GLP-1 receptor agonists like Semaglutide/Ozempic or Tirzepatide, cite standard clinical literature protocols: starting at 0.25 mg subcutaneously once weekly for 4 weeks to assess GI tolerability, escalating to 0.5 mg weekly, with maintenance increments up to 1.0 mg or 2.0 mg as documented in prescribing references), reconstitution math, and safety monitoring markers.
 Maintain strict educational orientation and note that all dosing is educational reference derived from published clinical literature.
 Format responses cleanly using markdown headings, bullet points, and clinical clarity.
 
@@ -238,10 +239,13 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                  systemInstruction: {
+                    parts: [{ text: systemPrompt }],
+                  },
                   contents: [
                     {
                       role: 'user',
-                      parts: [{ text: `${systemPrompt}\n\nUSER QUESTION:\n${text}` }],
+                      parts: [{ text: text }],
                     },
                   ],
                   safetySettings: [
@@ -252,7 +256,10 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
                   ],
                   generationConfig: {
                     temperature: 0.2,
-                    maxOutputTokens: 1500,
+                    maxOutputTokens: 3500,
+                    thinkingConfig: {
+                      thinkingBudget: 0,
+                    },
                   },
                 }),
               }
@@ -287,7 +294,16 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               break;
             }
 
-            const candidateText = json.candidates?.[0]?.content?.parts?.[0]?.text;
+            const allParts = json.candidates?.[0]?.content?.parts || [];
+            const nonThoughtParts = allParts.filter((p: any) => !p.thought);
+            const finalParts = nonThoughtParts.length > 0 ? nonThoughtParts : allParts;
+            const candidateText = finalParts
+              .map((p: any) => p.text)
+              .filter(Boolean)
+              .join('\n\n')
+              .replace(/<thought>[\s\S]*?<\/thought>/gi, '')
+              .trim();
+
             if (candidateText) {
               reply = candidateText;
               modelSuccess = true;
