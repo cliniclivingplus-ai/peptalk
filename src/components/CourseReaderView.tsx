@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Course } from '@/types';
-import { ArrowLeft, ExternalLink, GraduationCap, Video } from 'lucide-react';
+import { ArrowLeft, ExternalLink, GraduationCap } from 'lucide-react';
 
 interface CourseReaderViewProps {
   course: Course;
@@ -44,30 +44,16 @@ export default function CourseReaderView({
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            <a
-              href="https://drive.google.com/drive/u/0/folders/16TzxRatyp4iK4iNzBvEEx-wzHAxcgAXB"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
-              style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', borderColor: '#C7D7FE', color: '#3B82F6', background: '#F0F4FF' }}
-            >
-              <Video size={14} />
-              <span>Video Drive</span>
-              <ExternalLink size={13} />
-            </a>
-
-            <a
-              href={fileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
-              style={{ fontSize: '0.85rem', padding: '0.45rem 1rem' }}
-            >
-              <span>Open in New Tab</span>
-              <ExternalLink size={14} />
-            </a>
-          </div>
+          <a
+            href={fileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+            style={{ fontSize: '0.85rem', padding: '0.45rem 1rem' }}
+          >
+            <span>Open in New Tab</span>
+            <ExternalLink size={14} />
+          </a>
         </div>
       </div>
 
