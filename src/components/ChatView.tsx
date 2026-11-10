@@ -178,7 +178,7 @@ RELEVANT CLINICAL SOURCES:
 ${contextStr || 'No direct matching source found in database. Answer with standard clinical peptide and pharmacology literature knowledge.'}`;
 
       // 1. Dynamic model discovery with robust fallbacks
-      const defaultModels = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-pro', 'gemini-pro'];
+      const defaultModels = ['gemini-3.8-flash', 'gemini-3.1-pro-preview', 'gemini-2.0-flash', 'gemini-1.5-flash'];
       let modelsToTry = [...defaultModels];
 
       try {
@@ -191,12 +191,22 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
               const name = (m.name || '').toLowerCase();
               // Exclude audio, tts, embedding, vision-only, or image generation models
               if (name.includes('tts') || name.includes('audio') || name.includes('embed') || name.includes('image')) return false;
+              // Exclude discontinued 2.5 preview models
+              if (name.includes('2.5-flash') || name.includes('2.5-pro')) return false;
               return true;
             })
             .map((m: any) => m.name.replace(/^models\//, ''));
 
           if (discovered.length > 0) {
-            const priority = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-pro', 'gemini-pro'];
+            const priority = [
+              'gemini-3.8-flash',
+              'gemini-3.1-pro-preview',
+              'gemini-2.0-flash',
+              'gemini-1.5-flash',
+              'gemini-1.5-flash-8b',
+              'gemini-1.5-pro',
+              'gemini-pro',
+            ];
             modelsToTry = discovered.sort((a: string, b: string) => {
               const idxA = priority.indexOf(a);
               const idxB = priority.indexOf(b);
@@ -257,9 +267,6 @@ ${contextStr || 'No direct matching source found in database. Answer with standa
                   generationConfig: {
                     temperature: 0.2,
                     maxOutputTokens: 3500,
-                    thinkingConfig: {
-                      thinkingBudget: 0,
-                    },
                   },
                 }),
               }
