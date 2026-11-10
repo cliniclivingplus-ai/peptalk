@@ -1,3 +1,10 @@
+# Dependencies and build outputs
+node_modules/
+.next/
+out/
+build/
+dist/
+
 # Heavy local media (3.5 GB MP4 videos exceeding GitHub 100MB limit)
 Classroom - Course Folders/
 

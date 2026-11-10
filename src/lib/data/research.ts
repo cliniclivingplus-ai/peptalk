@@ -1,0 +1,386 @@
+import { ResearchPaperRef } from "@/types";
+
+export const researchPapers: ResearchPaperRef[] = [
+  {
+    "id": "fda-503b-bulks-2026",
+    "title": "FDA proposes excluding semaglutide, tirzepatide & liraglutide from the 503B bulks list",
+    "peptides": [
+      "Semaglutide",
+      "Tirzepatide"
+    ],
+    "source": "U.S. Food & Drug Administration",
+    "year": 2026,
+    "url": "https://www.fda.gov/news-events/press-announcements/fda-proposes-exclude-semaglutide-tirzepatide-and-liraglutide-503b-bulks-list",
+    "summary": "The FDA's official press announcement formally proposing that semaglutide, tirzepatide and liraglutide be EXCLUDED from the 503B bulks list \u2014 the legal pathway that has allowed outsourcing facilities to compound these GLP-1s in bulk. If finalized, 503B facilities would no longer be permitted to mass-compound these molecules, ending the 'compounded GLP-1' era that emerged during the brand-name shortage.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "statnews-fda-glp1-rule-2026",
+    "title": "FDA's new rule would end GLP-1 compound pharmacy",
+    "peptides": [
+      "Semaglutide",
+      "Tirzepatide"
+    ],
+    "source": "STAT News (Pharmalot)",
+    "year": 2026,
+    "url": "https://www.statnews.com/pharmalot/2026/04/30/fda-weight-loss-drugs-new-rule-would-end-glp-1-compound-pharmacy/",
+    "summary": "STAT reports on the proposed federal rule that would functionally shut down large-scale compounding of GLP-1 weight-loss drugs. The piece walks through the regulatory mechanics, the political pressure from Novo Nordisk and Eli Lilly, and the patient-access fallout \u2014 millions of Americans currently rely on compounded versions priced a fraction of brand-name Wegovy and Zepbound.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "medscape-fda-mass-compound-2026",
+    "title": "FDA proposes end to mass GLP-1 compounding",
+    "peptides": [
+      "Semaglutide",
+      "Tirzepatide"
+    ],
+    "source": "Medscape",
+    "year": 2026,
+    "url": "https://www.medscape.com/viewarticle/fda-proposes-end-mass-glp-1-compounding-2026a1000e06",
+    "summary": "Medscape's clinical breakdown of the FDA proposal targeting 503B outsourcing facilities. Coverage focuses on what the rule means for prescribers \u2014 including patients currently stabilized on compounded semaglutide or tirzepatide who may face supply disruption, sudden cost spikes, or forced switches back to brand-name products.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "becker-fda-restrict-glp1-2026",
+    "title": "FDA seeks to restrict compounding of key GLP-1s",
+    "peptides": [
+      "Semaglutide",
+      "Tirzepatide"
+    ],
+    "source": "Becker's Hospital Review",
+    "year": 2026,
+    "url": "https://www.beckershospitalreview.com/glp-1s/fda-seeks-to-restrict-compounding-of-key-glp-1s/",
+    "summary": "Becker's reports on the FDA's move to restrict 503B outsourcing facilities from compounding the leading GLP-1 molecules. The article frames the decision as the agency closing the door that opened during the official shortage period and details the implications for hospital pharmacies, telehealth platforms, and weight-loss clinics.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "pharmacytimes-fda-close-door-2026",
+    "title": "FDA moves to permanently close the door on compounded GLP-1s",
+    "peptides": [
+      "Semaglutide",
+      "Tirzepatide"
+    ],
+    "source": "Pharmacy Times",
+    "year": 2026,
+    "url": "https://www.pharmacytimes.com/view/fda-moves-to-permanently-close-the-door-on-compounded-glp-1s",
+    "summary": "Pharmacy Times details the FDA's proposal to permanently bar 503B outsourcing facilities from compounding semaglutide, tirzepatide and liraglutide. Once finalized, the rule would end large-scale compounding of these GLP-1s regardless of future shortages \u2014 a structural shift in access driven by safety, quality, and intellectual-property pressures.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "reta-quintuple-2026",
+    "title": "GLP-1/GIP/PPAR quintuple agonist enters the obesity and diabetes race",
+    "peptides": [
+      "Retatrutide",
+      "Tirzepatide",
+      "Semaglutide"
+    ],
+    "source": "Chemical & Engineering News (C&EN)",
+    "year": 2026,
+    "url": "https://cen.acs.org/pharmaceuticals/drug-discovery/glp1-gip-ppar-quintuple-agonist-obesity-diabetes/104/web/2026/04",
+    "summary": "C&EN profiles a next-generation incretin candidate stacking GLP-1, GIP, glucagon and PPAR activity into a single molecule, framed against retatrutide's triple-agonist results that already pushed mean weight loss past 24% at 48 weeks. The piece argues the quintuple-agonist class could outperform current GLP-1/GIP duals on both fat mass and lipid handling, while raising open questions about lean-mass loss, GI tolerability and long-term cardiovascular safety.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "reta-triple-nejm-2023",
+    "title": "Triple\u2013Hormone-Receptor Agonist Retatrutide for Obesity \u2014 NEJM Phase 2",
+    "peptides": [
+      "Retatrutide"
+    ],
+    "source": "New England Journal of Medicine",
+    "year": 2023,
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2301972",
+    "summary": "48-week phase 2 trial in 338 adults with obesity. Retatrutide produced placebo-adjusted weight loss up to ~22.1% at the 12 mg dose, with dose-dependent improvements in waist circumference, blood pressure and lipids. GI adverse events were the dominant tolerability signal and were largely mitigated by slow titration.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "reta-t2d-lancet-2023",
+    "title": "Retatrutide in adults with type 2 diabetes \u2014 Phase 2 randomized trial",
+    "peptides": [
+      "Retatrutide"
+    ],
+    "source": "The Lancet",
+    "year": 2023,
+    "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)01053-X/fulltext",
+    "summary": "36-week study showing retatrutide reduced HbA1c by up to 2.16% and body weight by up to 16.94% in T2D patients, outperforming dulaglutide on both endpoints. Authors highlight the unique role of glucagon-receptor agonism in driving energy expenditure alongside appetite suppression.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "tirz-surmount1-2022",
+    "title": "Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1)",
+    "peptides": [
+      "Tirzepatide"
+    ],
+    "source": "New England Journal of Medicine",
+    "year": 2022,
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038",
+    "summary": "Pivotal 72-week trial in 2,539 adults without diabetes. Tirzepatide produced mean weight reductions of 15\u201320.9% across doses vs 3.1% on placebo. Established the GLP-1/GIP dual-agonist class as a new benchmark for pharmacologic weight management.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "sema-step1-2021",
+    "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity (STEP 1)",
+    "peptides": [
+      "Semaglutide"
+    ],
+    "source": "New England Journal of Medicine",
+    "year": 2021,
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183",
+    "summary": "68-week phase 3 trial: semaglutide 2.4 mg weekly produced 14.9% mean weight loss vs 2.4% placebo, with broad cardiometabolic improvements. The data set the regulatory foundation for semaglutide's obesity indication and reframed clinical expectations for incretin therapy.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "selank-anxiolytic-2008",
+    "title": "Anxiolytic activity of the synthetic heptapeptide Selank",
+    "peptides": [
+      "Selank"
+    ],
+    "source": "Bulletin of Experimental Biology and Medicine",
+    "year": 2008,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19240853/",
+    "summary": "Preclinical work characterizing Selank's anxiolytic profile via modulation of GABA-ergic and serotonergic systems, with effects comparable to benzodiazepines in animal models but without sedation or dependence liability.",
+    "category": "Cognitive / Nootropic"
+  },
+  {
+    "id": "selank-gad-2008",
+    "title": "Selank in generalized anxiety disorder and neurasthenia",
+    "peptides": [
+      "Selank"
+    ],
+    "source": "Zh Nevrol Psikhiatr Im S.S. Korsakova",
+    "year": 2008,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18454096/",
+    "summary": "Russian clinical study comparing intranasal Selank to medazepam in GAD patients. Selank showed comparable anxiolytic efficacy with an additional pro-cognitive effect and no withdrawal phenomena, supporting its profile as a non-sedating anxiolytic.",
+    "category": "Cognitive / Nootropic"
+  },
+  {
+    "id": "semax-bdnf-2008",
+    "title": "Semax, an analogue of ACTH(4\u201310), regulates BDNF and trkB expression",
+    "peptides": [
+      "Semax"
+    ],
+    "source": "Neuroscience Letters",
+    "year": 2008,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18621098/",
+    "summary": "Demonstrates that Semax rapidly upregulates BDNF and its receptor trkB in the rat hippocampus \u2014 a leading mechanistic explanation for its reported nootropic and neuroprotective effects.",
+    "category": "Cognitive / Nootropic"
+  },
+  {
+    "id": "semax-stroke-2011",
+    "title": "Semax in acute ischemic stroke: a multicenter clinical study",
+    "peptides": [
+      "Semax"
+    ],
+    "source": "Zh Nevrol Psikhiatr Im S.S. Korsakova",
+    "year": 2011,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21626809/",
+    "summary": "Multicenter study reporting improved neurological recovery scores in ischemic stroke patients receiving intranasal Semax adjunctively within the first hours of stroke onset, attributed to neurotrophic and antioxidant effects.",
+    "category": "Cognitive / Nootropic"
+  },
+  {
+    "id": "ghkcu-review-2015",
+    "title": "GHK-Cu peptide in skin remodeling, wound healing and anti-aging",
+    "peptides": [
+      "GHK-Cu"
+    ],
+    "source": "Oxidative Medicine and Cellular Longevity",
+    "year": 2015,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26221416/",
+    "summary": "Comprehensive review of GHK-Cu's pleiotropic effects: stimulating collagen, glycosaminoglycan and decorin synthesis, modulating gene expression linked to DNA repair, and accelerating wound closure. Frames GHK-Cu as a model 'signal peptide' for regenerative cosmeceuticals.",
+    "category": "Skin / Hair"
+  },
+  {
+    "id": "ghkcu-gene-2012",
+    "title": "GHK and DNA: resetting the human genome to health",
+    "peptides": [
+      "GHK-Cu"
+    ],
+    "source": "BioMed Research International",
+    "year": 2012,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24024190/",
+    "summary": "Bioinformatic analysis showing GHK modulates expression of ~31% of human genes toward a 'younger' transcriptomic signature, with downstream effects on tissue repair, anti-inflammatory pathways and cancer-suppressor activity.",
+    "category": "Longevity"
+  },
+  {
+    "id": "bpc157-tendon-2011",
+    "title": "BPC 157 accelerates tendon-to-bone healing and ligament repair",
+    "peptides": [
+      "BPC-157"
+    ],
+    "source": "Journal of Orthopaedic Research",
+    "year": 2011,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21748781/",
+    "summary": "Rat model showing BPC-157 dramatically improves biomechanical strength of healing tendons and ligaments versus controls, via outgrowth of tendon fibroblasts and angiogenic effects.",
+    "category": "Healing / Recovery"
+  },
+  {
+    "id": "bpc157-gut-2018",
+    "title": "Stable gastric pentadecapeptide BPC 157: cytoprotection and the gut-brain axis",
+    "peptides": [
+      "BPC-157"
+    ],
+    "source": "Current Pharmaceutical Design",
+    "year": 2018,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/29345579/",
+    "summary": "Reviews BPC-157's cytoprotective effects across GI mucosa, vascular endothelium and the CNS, with emphasis on NO-system modulation and rescue of dopaminergic and serotonergic dysfunction in animal models.",
+    "category": "Healing / Recovery"
+  },
+  {
+    "id": "tb500-cardiac-2004",
+    "title": "Thymosin \u03b24 promotes cardiac repair after myocardial infarction",
+    "peptides": [
+      "TB-500",
+      "Thymosin Beta-4"
+    ],
+    "source": "Nature",
+    "year": 2004,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15457259/",
+    "summary": "Landmark Nature paper showing systemic Thymosin \u03b24 (the parent of TB-500) reactivates epicardial progenitors and improves cardiac function after MI in mice \u2014 foundational evidence for its regenerative claims.",
+    "category": "Healing / Recovery"
+  },
+  {
+    "id": "ipamorelin-1998",
+    "title": "Ipamorelin, the first selective growth hormone secretagogue",
+    "peptides": [
+      "Ipamorelin"
+    ],
+    "source": "European Journal of Endocrinology",
+    "year": 1998,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/",
+    "summary": "Original characterization of ipamorelin as a pentapeptide GH secretagogue with potent, selective GH release and minimal effect on cortisol or prolactin \u2014 establishing the safety profile that drives its modern use.",
+    "category": "Growth Hormone"
+  },
+  {
+    "id": "cjc1295-pharmacology-2006",
+    "title": "Long-acting GHRH analog CJC-1295: pharmacokinetics and GH/IGF-1 effects",
+    "peptides": [
+      "CJC-1295"
+    ],
+    "source": "Journal of Clinical Endocrinology & Metabolism",
+    "year": 2006,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16352683/",
+    "summary": "Phase 1 study showing single doses of CJC-1295 sustain elevated GH and IGF-1 for 1\u20132 weeks via albumin binding, supporting its use as a long-acting GHRH analog.",
+    "category": "Growth Hormone"
+  },
+  {
+    "id": "tesamorelin-hiv-2010",
+    "title": "Tesamorelin reduces visceral adipose tissue in HIV-associated lipodystrophy",
+    "peptides": [
+      "Tesamorelin"
+    ],
+    "source": "New England Journal of Medicine",
+    "year": 2010,
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa0810818",
+    "summary": "Phase 3 trial demonstrating tesamorelin produces a ~15% reduction in visceral adipose tissue with concurrent triglyceride improvements \u2014 the FDA-approval basis and a useful reference for visceral-fat targeting.",
+    "category": "Growth Hormone"
+  },
+  {
+    "id": "epitalon-melatonin-2003",
+    "title": "Epitalon (Epithalon) increases melatonin secretion and lifespan in animal models",
+    "peptides": [
+      "Epitalon"
+    ],
+    "source": "Neuroendocrinology Letters",
+    "year": 2003,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/14523363/",
+    "summary": "Reports that the synthetic tetrapeptide Epitalon restores pineal melatonin rhythm in aged animals and extends mean lifespan, the central data point underlying longevity-focused use.",
+    "category": "Longevity"
+  },
+  {
+    "id": "pt141-fsd-2016",
+    "title": "Bremelanotide (PT-141) for hypoactive sexual desire disorder",
+    "peptides": [
+      "PT-141",
+      "Bremelanotide"
+    ],
+    "source": "Obstetrics & Gynecology",
+    "year": 2016,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27500332/",
+    "summary": "Phase 3 RECONNECT trial data supporting bremelanotide for HSDD in premenopausal women \u2014 a melanocortin-4 receptor agonist acting centrally rather than vasodilator-mediated.",
+    "category": "Sexual Health"
+  },
+  {
+    "id": "thymosin-alpha-immune-2019",
+    "title": "Thymosin \u03b11 in immune modulation and infection",
+    "peptides": [
+      "Thymosin Alpha-1"
+    ],
+    "source": "Annals of the New York Academy of Sciences",
+    "year": 2019,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30924938/",
+    "summary": "Reviews Thymosin \u03b11's role in T-cell maturation, NK activity and clinical use in viral hepatitis, sepsis and oncology adjunctive care \u2014 the immunomodulatory rationale frequently cited in modern protocols.",
+    "category": "Immune"
+  },
+  {
+    "id": "kpv-inflammation-2013",
+    "title": "KPV tripeptide attenuates intestinal inflammation",
+    "peptides": [
+      "KPV"
+    ],
+    "source": "Inflammatory Bowel Diseases",
+    "year": 2013,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23429465/",
+    "summary": "KPV (Lys-Pro-Val), the C-terminal fragment of \u03b1-MSH, reduced colonic inflammation in murine colitis models via NF-\u03baB suppression \u2014 supporting interest in oral/mucosal anti-inflammatory peptide therapy.",
+    "category": "Immune"
+  },
+  {
+    "id": "mots-c-mitochondria-2015",
+    "title": "MOTS-c: a mitochondrial-derived peptide regulating metabolic homeostasis",
+    "peptides": [
+      "MOTS-c"
+    ],
+    "source": "Cell Metabolism",
+    "year": 2015,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25738459/",
+    "summary": "Identifies MOTS-c as a mitochondrially encoded peptide that improves insulin sensitivity, prevents diet-induced obesity in mice and links mitochondrial signaling to systemic metabolism.",
+    "category": "Metabolic / GLP-1"
+  },
+  {
+    "id": "ss31-mitochondria-2014",
+    "title": "SS-31 (elamipretide) targets cardiolipin to restore mitochondrial function",
+    "peptides": [
+      "SS-31",
+      "Elamipretide"
+    ],
+    "source": "Journal of the American Society of Nephrology",
+    "year": 2014,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24652797/",
+    "summary": "Demonstrates SS-31's selective binding to cardiolipin on the inner mitochondrial membrane, preserving cristae structure and ATP production in models of ischemia-reperfusion injury.",
+    "category": "Longevity"
+  },
+  {
+    "id": "hexarelin-cardio-2003",
+    "title": "Cardiotropic effects of Hexarelin independent of GH release",
+    "peptides": [
+      "Hexarelin"
+    ],
+    "source": "Endocrine",
+    "year": 2003,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/14501006/",
+    "summary": "Shows hexarelin exerts direct cardioprotective effects via CD36 receptors in cardiac tissue, distinct from its GH-secretagogue activity \u2014 relevant to recovery and cardiovascular research applications.",
+    "category": "Growth Hormone"
+  },
+  {
+    "id": "melanotan-ii-2008",
+    "title": "Melanotan II: melanocortin agonism, pigmentation and sexual function",
+    "peptides": [
+      "Melanotan II"
+    ],
+    "source": "Peptides",
+    "year": 2008,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18573562/",
+    "summary": "Reviews the pharmacology of MT-II as a non-selective melanocortin agonist, its skin-darkening mechanism via MC1R and erectogenic activity through MC4R, alongside known off-target risks.",
+    "category": "Skin / Hair"
+  },
+  {
+    "id": "ghkcu-hair-2007",
+    "title": "Copper peptide complexes promote hair follicle growth",
+    "peptides": [
+      "GHK-Cu"
+    ],
+    "source": "Journal of Investigative Dermatology Symposium Proceedings",
+    "year": 2007,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17993641/",
+    "summary": "Evidence that GHK-Cu enlarges hair follicle size and prolongs anagen phase in cultured human follicles, positioning copper peptides as adjuncts to standard androgenetic alopecia therapy.",
+    "category": "Skin / Hair"
+  }
+];
