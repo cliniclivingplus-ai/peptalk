@@ -24,7 +24,14 @@ import {
   BarChart3,
   Syringe,
   Lightbulb,
-  BookOpen
+  BookOpen,
+  TrendingUp,
+  TrendingDown,
+  Eye,
+  MinusCircle,
+  AlertCircle,
+  ShieldAlert,
+  Info
 } from 'lucide-react';
 
 interface CompoundDetailViewProps {
@@ -415,9 +422,41 @@ export default function CompoundDetailView({
             </div>
           )}
 
-          <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.75, fontSize: '0.96rem' }}>
-            {parsed?.dosing?.fullText || compound.dosageRanges || compound.dosing}
-          </div>
+          {parsed?.dosing?.tableRows && parsed.dosing.tableRows.length > 0 ? (
+            <div style={{ marginBottom: '1.25rem' }}>
+              <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.65rem' }}>
+                Dosing By Administration Form
+              </div>
+              <div style={{ overflowX: 'auto', borderRadius: '10px', border: '1px solid var(--border)', background: '#FFFFFF' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.88rem' }}>
+                  <thead>
+                    <tr style={{ background: '#F8F9FD', borderBottom: '1px solid var(--border)' }}>
+                      <th style={{ padding: '0.75rem 1rem', fontWeight: 700, color: 'var(--text-main)', width: '22%' }}>Administration Form</th>
+                      <th style={{ padding: '0.75rem 1rem', fontWeight: 700, color: 'var(--text-main)' }}>Dosing & Schedule Parameters</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {parsed.dosing.tableRows.map((tr, idx) => (
+                      <tr key={idx} style={{ borderBottom: idx < parsed.dosing.tableRows!.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                        <td style={{ padding: '0.85rem 1rem', verticalAlign: 'top' }}>
+                          <span style={{ fontWeight: 700, color: 'var(--primary)', background: 'var(--primary-light)', padding: '0.2rem 0.6rem', borderRadius: '6px', fontSize: '0.82rem' }}>
+                            {tr.form}
+                          </span>
+                        </td>
+                        <td style={{ padding: '0.85rem 1rem', verticalAlign: 'top', color: '#2B2D3A', lineHeight: 1.6 }}>
+                          {tr.text}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+            <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.75, fontSize: '0.96rem' }}>
+              {parsed?.dosing?.fullText || compound.dosageRanges || compound.dosing}
+            </div>
+          )}
         </div>
       )}
 
@@ -619,56 +658,172 @@ export default function CompoundDetailView({
       {/* ========================================================================= */}
       {/* SECTION 8: BLOODWORK & INTERACTIONS */}
       {/* ========================================================================= */}
-      {parsed?.bloodwork?.fullText && (
+      {parsed?.bloodwork && (parsed.bloodwork.tableRows?.length > 0 || parsed.bloodwork.stacksSameAxis || parsed.bloodwork.bluntsCompound || parsed.bloodwork.addsToEffects || parsed.bloodwork.fullText) && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-            <Activity size={20} style={{ color: '#EF4444' }} />
+            <Activity size={20} style={{ color: 'var(--primary)' }} />
             <span>8 · Bloodwork Markers & Compound Interactions</span>
           </h3>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {parsed.bloodwork.stacksSameAxis && (
-              <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '12px', padding: '1.15rem' }}>
-                <strong style={{ fontSize: '0.84rem', color: '#166534', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Stacks On The Same Axis (Synergies & Additive Load)
-                </strong>
-                <p style={{ fontSize: '0.93rem', color: '#14532D', lineHeight: 1.65, marginTop: '0.35rem', whiteSpace: 'pre-line' }}>
-                  {parsed.bloodwork.stacksSameAxis}
-                </p>
-              </div>
-            )}
+          {/* Clinical rationale intro */}
+          {parsed.bloodwork.intro && (
+            <div style={{ background: '#F8F9FD', border: '1px solid var(--border)', borderRadius: '10px', padding: '1rem 1.15rem', marginBottom: '1.25rem', fontSize: '0.93rem', color: '#3A3D4D', lineHeight: 1.65 }}>
+              {parsed.bloodwork.intro}
+            </div>
+          )}
 
-            {parsed.bloodwork.bluntsCompound && (
-              <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '12px', padding: '1.15rem' }}>
-                <strong style={{ fontSize: '0.84rem', color: '#92400E', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  What Blunts This Compound
-                </strong>
-                <p style={{ fontSize: '0.93rem', color: '#78350F', lineHeight: 1.65, marginTop: '0.35rem', whiteSpace: 'pre-line' }}>
-                  {parsed.bloodwork.bluntsCompound}
-                </p>
+          {/* Structured Biomarker Table */}
+          {parsed.bloodwork.tableRows && parsed.bloodwork.tableRows.length > 0 && (
+            <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Bloodwork — What This Compound Is Expected To Move
+                </span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                  {parsed.bloodwork.tableRows.length} Clinical Markers
+                </span>
               </div>
-            )}
 
-            {parsed.bloodwork.addsToEffects && (
-              <div style={{ background: '#FFF1F2', border: '1px solid #FECDD3', borderRadius: '12px', padding: '1.15rem' }}>
-                <strong style={{ fontSize: '0.84rem', color: '#9F1239', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  What Adds To Its Effects & Side-Effect Burden
-                </strong>
-                <p style={{ fontSize: '0.93rem', color: '#881337', lineHeight: 1.65, marginTop: '0.35rem', whiteSpace: 'pre-line' }}>
-                  {parsed.bloodwork.addsToEffects}
-                </p>
-              </div>
-            )}
+              <div style={{ overflowX: 'auto', borderRadius: '12px', border: '1px solid var(--border)', background: '#FFFFFF' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+                  <thead>
+                    <tr style={{ background: '#F8F9FD', borderBottom: '1px solid var(--border)' }}>
+                      <th style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)', width: '22%' }}>Marker</th>
+                      <th style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)', width: '20%' }}>Expected Direction</th>
+                      <th style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)', width: '30%' }}>Why (Biological Mechanism)</th>
+                      <th style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)', width: '28%' }}>What To Do About It</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {parsed.bloodwork.tableRows.map((row, idx) => {
+                      const isRise = row.direction.toLowerCase().includes('rise');
+                      const isFall = row.direction.toLowerCase().includes('fall');
+                      const isWorsen = row.direction.toLowerCase().includes('worsen');
+                      const isWatch = row.direction.toLowerCase().includes('watch');
+                      const isDoNotDraw = row.direction.toLowerCase().includes('draw');
 
-            <div style={{ background: '#F8F9FD', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.25rem' }}>
-              <strong style={{ fontSize: '0.84rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Biomarker Movements & Panel Schedule
-              </strong>
-              <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.7, fontSize: '0.92rem', marginTop: '0.5rem' }}>
-                {parsed.bloodwork.fullText}
+                      const badgeBg = isRise ? '#ECFDF5' : isFall ? '#EEF2FF' : isWorsen ? '#FEF2F2' : isDoNotDraw ? '#FFF1F2' : '#F1F5F9';
+                      const badgeColor = isRise ? '#065F46' : isFall ? '#3730A3' : isWorsen ? '#991B1B' : isDoNotDraw ? '#9F1239' : '#334155';
+                      const badgeBorder = isRise ? '#A7F3D0' : isFall ? '#C7D2FE' : isWorsen ? '#FECACA' : isDoNotDraw ? '#FECDD3' : '#CBD5E1';
+
+                      return (
+                        <tr key={idx} style={{ borderBottom: idx < parsed.bloodwork.tableRows.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                          <td style={{ padding: '0.95rem 1rem', verticalAlign: 'top' }}>
+                            <strong style={{ color: 'var(--text-main)', fontSize: '0.92rem' }}>{row.marker}</strong>
+                          </td>
+                          <td style={{ padding: '0.95rem 1rem', verticalAlign: 'top' }}>
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.35rem',
+                              padding: '0.25rem 0.65rem',
+                              borderRadius: '6px',
+                              fontSize: '0.78rem',
+                              fontWeight: 700,
+                              background: badgeBg,
+                              color: badgeColor,
+                              border: `1px solid ${badgeBorder}`
+                            }}>
+                              {isRise && <TrendingUp size={13} />}
+                              {isFall && <TrendingDown size={13} />}
+                              {isWorsen && <AlertTriangle size={13} />}
+                              {isWatch && <Eye size={13} />}
+                              {isDoNotDraw && <MinusCircle size={13} />}
+                              {row.direction}
+                            </span>
+                          </td>
+                          <td style={{ padding: '0.95rem 1rem', verticalAlign: 'top', color: '#3A3D4D', lineHeight: 1.6 }}>
+                            {row.why || '—'}
+                          </td>
+                          <td style={{ padding: '0.95rem 1rem', verticalAlign: 'top', color: '#1E293B', lineHeight: 1.6, fontSize: '0.88rem' }}>
+                            {row.whatToDo || '—'}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
+          )}
+
+          {/* Fallback if no table rows parsed but fullText exists */}
+          {(!parsed.bloodwork.tableRows || parsed.bloodwork.tableRows.length === 0) && parsed.bloodwork.fullText && !parsed.bloodwork.stacksSameAxis && (
+            <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.7, fontSize: '0.92rem', marginBottom: '1.25rem' }}>
+              {parsed.bloodwork.fullText}
+            </div>
+          )}
+
+          {/* Interaction Disclaimer Note */}
+          {parsed.bloodwork.disclaimer && (
+            <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '10px', padding: '0.9rem 1.15rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+              <AlertCircle size={16} style={{ color: '#D97706', marginTop: '0.2rem', flexShrink: 0 }} />
+              <span style={{ fontSize: '0.86rem', color: '#92400E', lineHeight: 1.6 }}>
+                {parsed.bloodwork.disclaimer}
+              </span>
+            </div>
+          )}
+
+          {/* Interaction Cards Grid */}
+          {(parsed.bloodwork.stacksSameAxis || parsed.bloodwork.bluntsCompound || parsed.bloodwork.addsToEffects || parsed.bloodwork.clinicalNote) && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '0.5rem' }}>
+              {parsed.bloodwork.stacksSameAxis && (
+                <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '12px', padding: '1.15rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                    <Layers size={16} style={{ color: '#166534' }} />
+                    <strong style={{ fontSize: '0.84rem', color: '#166534', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Stacks On The Same Axis (Synergies & Additive Load)
+                    </strong>
+                  </div>
+                  <p style={{ fontSize: '0.93rem', color: '#14532D', lineHeight: 1.65, whiteSpace: 'pre-line' }}>
+                    {parsed.bloodwork.stacksSameAxis}
+                  </p>
+                </div>
+              )}
+
+              {parsed.bloodwork.bluntsCompound && (
+                <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '12px', padding: '1.15rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                    <ShieldAlert size={16} style={{ color: '#92400E' }} />
+                    <strong style={{ fontSize: '0.84rem', color: '#92400E', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      What Blunts This Compound
+                    </strong>
+                  </div>
+                  <p style={{ fontSize: '0.93rem', color: '#78350F', lineHeight: 1.65, whiteSpace: 'pre-line' }}>
+                    {parsed.bloodwork.bluntsCompound}
+                  </p>
+                </div>
+              )}
+
+              {parsed.bloodwork.addsToEffects && (
+                <div style={{ background: '#FFF1F2', border: '1px solid #FECDD3', borderRadius: '12px', padding: '1.15rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                    <AlertTriangle size={16} style={{ color: '#9F1239' }} />
+                    <strong style={{ fontSize: '0.84rem', color: '#9F1239', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      What Adds To Its Effects & Side-Effect Burden
+                    </strong>
+                  </div>
+                  <p style={{ fontSize: '0.93rem', color: '#881337', lineHeight: 1.65, whiteSpace: 'pre-line' }}>
+                    {parsed.bloodwork.addsToEffects}
+                  </p>
+                </div>
+              )}
+
+              {parsed.bloodwork.clinicalNote && (
+                <div style={{ background: '#F8F9FD', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.15rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                    <Info size={16} style={{ color: 'var(--primary)' }} />
+                    <strong style={{ fontSize: '0.84rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Clinical Class Perspective
+                    </strong>
+                  </div>
+                  <p style={{ fontSize: '0.93rem', color: '#3A3D4D', lineHeight: 1.65, whiteSpace: 'pre-line' }}>
+                    {parsed.bloodwork.clinicalNote}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 

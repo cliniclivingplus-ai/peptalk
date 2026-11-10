@@ -19,11 +19,17 @@ export interface MonographEvidence {
   fullText: string;
 }
 
+export interface DosingTableRow {
+  form: string;
+  text: string;
+}
+
 export interface MonographDosing {
   dose?: string;
   frequency?: string;
   weeklyPattern?: string;
   route?: string;
+  tableRows?: DosingTableRow[];
   fullText: string;
 }
 
@@ -37,11 +43,22 @@ export interface MonographSafety {
   fullText: string;
 }
 
+export interface BloodworkTableRow {
+  marker: string;
+  symbol: string;
+  direction: string;
+  why: string;
+  whatToDo: string;
+}
+
 export interface MonographBloodwork {
-  summary?: string;
+  intro?: string;
+  tableRows: BloodworkTableRow[];
+  disclaimer?: string;
   stacksSameAxis?: string;
   bluntsCompound?: string;
   addsToEffects?: string;
+  clinicalNote?: string;
   fullText: string;
 }
 
@@ -58,6 +75,183 @@ export interface ParsedMonograph {
   rawSections: Array<{ title: string; content: string }>;
 }
 
+export function cleanSpacedDirectionText(str?: string): string {
+  if (!str) return '';
+  return str
+    .replace(/(?:E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+(?:r\s*i\s*s\s*e|f\s*a\s*l\s*l|w\s*o\s*r\s*s\s*e\s*n)|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w)[\s\n]*/gi, '')
+    .trim();
+}
+
+export function parseBloodworkSection(text: string): MonographBloodwork {
+  const result: MonographBloodwork = {
+    tableRows: [],
+    fullText: text,
+  };
+
+  if (!text) return result;
+
+  // 1. Intro guidance
+  const introMatch = text.match(/8\s*·\s*BLOODWORK[^\n]*\n([\s\S]*?)(?=BLOODWORK\s*—\s*WHAT THIS COMPOUND IS EXPECTED TO MOVE|Marker\s+Direction|$)/i);
+  if (introMatch) {
+    result.intro = introMatch[1].trim();
+  }
+
+  // 2. Extract direction tokens list if present in text
+  const dirTokensMatch = text.match(/(?:(?:E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+(?:r\s*i\s*s\s*e|f\s*a\s*l\s*l|w\s*o\s*r\s*s\s*e\s*n)|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w)[\s\n]*)+/gi);
+  const foundDirections: string[] = [];
+  if (dirTokensMatch) {
+    for (const block of dirTokensMatch) {
+      const tokens = block.match(/E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+r\s*i\s*s\s*e|E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+f\s*a\s*l\s*l|E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+w\s*o\s*r\s*s\s*e\s*n|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w/gi);
+      if (tokens) {
+        tokens.forEach(t => {
+          const norm = t.replace(/\s+/g, ' ').toLowerCase();
+          if (norm.includes('rise')) foundDirections.push('Expected to rise');
+          else if (norm.includes('fall')) foundDirections.push('Expected to fall');
+          else if (norm.includes('worsen')) foundDirections.push('Expected to worsen');
+          else if (norm.includes('watch')) foundDirections.push('Watch it');
+          else if (norm.includes('draw')) foundDirections.push('Do not draw');
+        });
+      }
+    }
+  }
+
+  // 3. Extract table portion
+  const tableMatch = text.match(/BLOODWORK\s*—\s*WHAT THIS COMPOUND IS EXPECTED TO MOVE[\s\S]*?Marker\s+Direction\s+Why\s+What to do about it\s*\n([\s\S]*?)(?=Predicted from mechanism|Stacks on the same axis|Blunts this compound|Adds to its|SOURCING|$)/i);
+
+  if (tableMatch) {
+    const tableRaw = cleanSpacedDirectionText(tableMatch[1].trim());
+
+    const symbolRegex = /([▲▼●✕])/g;
+    const symMatches: Array<{ symbol: string; index: number }> = [];
+    let m: RegExpExecArray | null;
+    while ((m = symbolRegex.exec(tableRaw)) !== null) {
+      symMatches.push({ symbol: m[1], index: m.index });
+    }
+
+    if (symMatches.length > 0) {
+      let marker0 = tableRaw.substring(0, symMatches[0].index).trim();
+
+      for (let i = 0; i < symMatches.length; i++) {
+        const curSym = symMatches[i].symbol;
+        const curSymIdx = symMatches[i].index;
+
+        const nextSymIdx = (i + 1 < symMatches.length) ? symMatches[i + 1].index : tableRaw.length;
+        const chunk = tableRaw.substring(curSymIdx + 1, nextSymIdx).trim();
+
+        let bodyText = chunk;
+        let nextMarker = '';
+
+        if (i + 1 < symMatches.length) {
+          const lastDotMatch = chunk.match(/([\s\S]*\.)(?:\s*\n+)([\s\S]+)$/);
+          if (lastDotMatch) {
+            bodyText = lastDotMatch[1].trim();
+            nextMarker = lastDotMatch[2].trim();
+          } else {
+            const lastPeriod = chunk.lastIndexOf('.');
+            if (lastPeriod !== -1 && lastPeriod < chunk.length - 1) {
+              bodyText = chunk.substring(0, lastPeriod + 1).trim();
+              nextMarker = chunk.substring(lastPeriod + 1).trim();
+            }
+          }
+        }
+
+        const curMarker = marker0;
+        marker0 = nextMarker;
+
+        let direction = '';
+        if (i < foundDirections.length) {
+          direction = foundDirections[i];
+        } else {
+          if (curSym === '▲') direction = curMarker.toLowerCase().includes('lipid') ? 'Expected to worsen' : 'Expected to rise';
+          else if (curSym === '▼') direction = 'Expected to fall';
+          else if (curSym === '●') direction = 'Watch it';
+          else if (curSym === '✕') direction = 'Do not draw';
+        }
+
+        // Split bodyText into Why and What to do about it
+        let why = bodyText;
+        let whatToDo = '';
+
+        const actionRegex = /(Relevant if fertility|This is the number that decides|Baseline (?:and|before|liver|panel|is)|Draw at the same point|If you are reading|Read total and|Twice a year|Annual is fine|Take a resting|Do not use|Pair it with|Run a full thyroid|Worth a baseline|Worth knowing|The honest use of these markers|Check fasting insulin|Test (?:it|don't)|Dehydration on the draw|Separate by four hours)/i;
+        const splitMatch = bodyText.search(actionRegex);
+        if (splitMatch !== -1 && splitMatch > 10) {
+          why = bodyText.substring(0, splitMatch).trim();
+          whatToDo = bodyText.substring(splitMatch).trim();
+        }
+
+        result.tableRows.push({
+          marker: curMarker.replace(/\n+/g, ' ').trim(),
+          symbol: curSym,
+          direction: direction || (curSym === '▲' ? 'Expected to rise' : curSym === '▼' ? 'Expected to fall' : 'Watch it'),
+          why: why.replace(/\n+/g, ' ').trim(),
+          whatToDo: whatToDo.replace(/\n+/g, ' ').trim(),
+        });
+      }
+    }
+  }
+
+  // 4. Disclaimer note
+  const discMatch = text.match(/Predicted from mechanism, not from an interaction study[\s\S]*?(?=Stacks on the same axis|Blunts this compound|Adds to its|SOURCING|$)/i);
+  if (discMatch) {
+    result.disclaimer = discMatch[0].trim().replace(/\n+/g, ' ');
+  }
+
+  // 5. Interactions
+  const stackMatch = text.match(/Stacks on the same axis\s+([\s\S]*?)(?=Blunts this compound|Adds to its|SOURCING|$)/i);
+  if (stackMatch) result.stacksSameAxis = cleanSpacedDirectionText(stackMatch[1]);
+
+  const bluntMatch = text.match(/Blunts this compound\s+([\s\S]*?)(?=Adds to its|SOURCING|$)/i);
+  if (bluntMatch) result.bluntsCompound = cleanSpacedDirectionText(bluntMatch[1]);
+
+  const addsMatch = text.match(/Adds to its e[fﬀ]+ects\s+([\s\S]*?)(?=The honest position|SOURCING|$)/i);
+  if (addsMatch) result.addsToEffects = cleanSpacedDirectionText(addsMatch[1]);
+
+  const noteMatch = text.match(/The honest position on this class[\s\S]*?(?=SOURCING|$)/i);
+  if (noteMatch) result.clinicalNote = cleanSpacedDirectionText(noteMatch[0]);
+
+  return result;
+}
+
+export function parseDosingSection(text: string): { fullText: string; tableRows?: DosingTableRow[] } {
+  if (!text) return { fullText: '' };
+
+  const tableHeaderMatch = text.match(/DOSING BY ADMINISTRATION FORM\s*\n([\s\S]*?)(?=5 ·|6 ·|7 ·|THE PRACTICAL TAKE|$)/i);
+  if (!tableHeaderMatch) {
+    return { fullText: text };
+  }
+
+  const tableRaw = tableHeaderMatch[1].trim();
+  const lines = tableRaw.split('\n').map(l => l.trim()).filter(Boolean);
+
+  const formRegex = /^(Injectable|Oral|Topical|Nasal|Sublingual|Transdermal|Subcutaneous)\b/i;
+  const rows: DosingTableRow[] = [];
+  let currentForm: string | null = null;
+  let currentChunks: string[] = [];
+
+  for (const line of lines) {
+    if (/^Form\s+Dose\s+Route/i.test(line)) continue;
+
+    const m = line.match(formRegex);
+    if (m) {
+      if (currentForm) {
+        rows.push({ form: currentForm, text: currentChunks.join(' ') });
+      }
+      currentForm = m[1];
+      currentChunks = [line.substring(m[0].length).trim()];
+    } else if (currentForm) {
+      currentChunks.push(line);
+    }
+  }
+  if (currentForm) {
+    rows.push({ form: currentForm, text: currentChunks.join(' ') });
+  }
+
+  return {
+    fullText: text,
+    tableRows: rows.length > 0 ? rows : undefined
+  };
+}
+
 export function parseVaultMonograph(body: string): ParsedMonograph {
   const result: ParsedMonograph = {
     whatItIs: '',
@@ -67,7 +261,7 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
     dosing: { fullText: '' },
     practicalTake: '',
     safetyProfile: { fullText: '' },
-    bloodwork: { fullText: '' },
+    bloodwork: { tableRows: [], fullText: '' },
     sourcing: '',
     rawSections: [],
   };
@@ -172,6 +366,11 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
 
       const routeMatch = text.match(/ROUTE\s+([^\n]+)/i);
       if (routeMatch) result.dosing.route = routeMatch[1].trim();
+
+      const parsedDosing = parseDosingSection(text);
+      if (parsedDosing.tableRows) {
+        result.dosing.tableRows = parsedDosing.tableRows;
+      }
     } else if (key === 'practicalTake') {
       result.practicalTake = (result.practicalTake ? result.practicalTake + '\n\n' : '') + text;
     } else if (key === 'safetyProfile') {
@@ -195,16 +394,7 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
       const howJudgeMatch = text.match(/How to judge it\s+([\s\S]*?)$/i);
       if (howJudgeMatch) result.safetyProfile.howToJudgeIt = howJudgeMatch[1].trim();
     } else if (key === 'bloodwork') {
-      result.bloodwork.fullText = (result.bloodwork.fullText ? result.bloodwork.fullText + '\n\n' : '') + text;
-
-      const stackMatch = text.match(/Stacks on the same axis\s+([\s\S]*?)(?=Blunts this compound|Adds to its|$)/i);
-      if (stackMatch) result.bloodwork.stacksSameAxis = stackMatch[1].trim();
-
-      const bluntMatch = text.match(/Blunts this compound\s+([\s\S]*?)(?=Adds to its|$)/i);
-      if (bluntMatch) result.bloodwork.bluntsCompound = bluntMatch[1].trim();
-
-      const addsMatch = text.match(/Adds to its e[fﬀ]+ects\s+([\s\S]*?)$/i);
-      if (addsMatch) result.bloodwork.addsToEffects = addsMatch[1].trim();
+      result.bloodwork = parseBloodworkSection(text);
     } else if (key === 'sourcing') {
       result.sourcing = (result.sourcing ? result.sourcing + '\n\n' : '') + text;
     }
