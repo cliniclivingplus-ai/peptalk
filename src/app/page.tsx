@@ -137,6 +137,9 @@ export default function Home() {
               onBack={() => setCurrentView('knowledge')}
               onAskAi={handleAskAiAboutCompound}
               onOpenCalculator={handleOpenCalculator}
+              allPapers={researchPapers}
+              allProtocols={protocols}
+              onSelectProtocol={handleSelectProtocol}
             />
           )}
 

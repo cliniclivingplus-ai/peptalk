@@ -63,12 +63,20 @@ export interface Compound {
   overview?: string;
   body?: string;
   mechanism?: string;
+  mechanismOfAction?: string;
   contexts?: string[];
+  researchContexts?: string[];
   dosing?: string;
+  dosageRanges?: string;
   reconstitution?: ReconstitutionGuide | string | any;
   storage?: StorageGuidelines | any;
+  halfLife?: string;
+  stability?: string;
   papers?: ResearchPaperRef[];
   publishedPapers?: ResearchPaperRef[];
+  confidence?: number;
+  evidence?: string;
+  source?: string;
   [key: string]: any;
 }
 
