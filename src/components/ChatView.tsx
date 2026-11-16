@@ -42,7 +42,17 @@ export default function ChatView({
   const [loadingSeconds, setLoadingSeconds] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-resize textarea to fit multi-line paragraphs up to max-height
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      const newHeight = Math.min(textareaRef.current.scrollHeight, 220);
+      textareaRef.current.style.height = `${Math.max(newHeight, 52)}px`;
+    }
+  }, [input]);
 
   // Restore saved chats from localStorage on load
   useEffect(() => {
@@ -370,24 +380,48 @@ export default function ChatView({
 
       {/* Sticky Bottom Input Bar: Always pinned at bottom, never scrolls out of view */}
       <footer className="chat-input-sticky-footer">
-        <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(input); }} className="chat-input-inner">
-          <input
-            type="text"
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSendMessage(input);
+          }}
+          className="chat-input-inner"
+          style={{ position: 'relative' }}
+        >
+          <textarea
+            ref={textareaRef}
+            rows={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={apiKey ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math..." : "Enter your Gemini API key in the sidebar to start research..."}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSendMessage(input);
+              }
+            }}
+            placeholder={
+              apiKey
+                ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math... (Shift + Enter for new line)"
+                : "Enter your Gemini API key in the sidebar to start research..."
+            }
             disabled={isLoading}
             style={{
               width: '100%',
-              padding: '1.05rem 1.35rem',
-              paddingRight: '3.75rem',
+              minHeight: '52px',
+              maxHeight: '220px',
+              padding: '0.95rem 3.6rem 0.95rem 1.25rem',
               borderRadius: '16px',
               border: '1px solid #CBD5E1',
               outline: 'none',
               fontSize: '0.95rem',
+              lineHeight: 1.55,
               background: '#FFFFFF',
               boxShadow: 'var(--shadow-card)',
               color: '#0F172A',
+              resize: 'none',
+              fontFamily: 'inherit',
+              overflowY: 'auto',
+              display: 'block',
             }}
           />
           <button
@@ -395,11 +429,10 @@ export default function ChatView({
             disabled={isLoading || !input.trim()}
             style={{
               position: 'absolute',
-              right: '8px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '42px',
-              height: '42px',
+              right: '9px',
+              bottom: '8px',
+              width: '38px',
+              height: '38px',
               borderRadius: '12px',
               background: input.trim() ? 'var(--primary)' : '#E2E8F0',
               color: input.trim() ? '#FFFFFF' : '#94A3B8',
@@ -410,6 +443,7 @@ export default function ChatView({
               cursor: input.trim() ? 'pointer' : 'default',
               transition: 'all 0.2s ease',
             }}
+            title="Send prompt (Enter)"
           >
             <Send size={18} />
           </button>

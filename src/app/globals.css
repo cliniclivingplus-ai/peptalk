@@ -561,6 +561,11 @@ body {
   position: relative;
 }
 
+.chat-input-inner textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(127, 102, 255, 0.15), var(--shadow-card) !important;
+}
+
 @keyframes messagePopUp {
   0% {
     opacity: 0;
