@@ -147,13 +147,6 @@ export default function Sidebar({
             }}
           />
         </button>
-
-        <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#F8F9FD', borderRadius: '12px', border: '1px solid var(--border)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.76rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)' }}></span>
-            <span>Clinical Library Active</span>
-          </div>
-        </div>
       </div>
     </aside>
   );

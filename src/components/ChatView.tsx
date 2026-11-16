@@ -194,48 +194,6 @@ export default function ChatView({
 
   return (
     <div className="chat-layout-root">
-      {/* Pinned Top Bar: Always visible, never scrolls away */}
-      <div className="chat-top-session-bar">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-          <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0F172A' }}>
-            {messages.length > 0 ? `Clinical Consultation (${messages.length} messages)` : 'Clinical Consultation Session'}
-          </span>
-          {apiKey ? (
-            <span className="badge-tag" style={{ background: '#ECFDF5', color: '#065F46', borderColor: '#A7F3D0', fontSize: '0.74rem' }}>
-              <CheckCircle2 size={12} style={{ marginRight: '4px', display: 'inline' }} />
-              API Key Active
-            </span>
-          ) : (
-            <button
-              onClick={onOpenApiKey}
-              className="badge-tag"
-              style={{ background: '#FEF3C7', color: '#92400E', borderColor: '#FCD34D', fontSize: '0.74rem', cursor: 'pointer' }}
-            >
-              <Key size={12} style={{ marginRight: '4px', display: 'inline' }} />
-              Add Gemini Key
-            </button>
-          )}
-        </div>
-
-        {/* New Chat Button */}
-        <button
-          onClick={handleClearChat}
-          className="btn btn-outline"
-          style={{
-            fontSize: '0.82rem',
-            padding: '0.35rem 0.85rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            fontWeight: 700,
-            background: '#FFFFFF',
-          }}
-        >
-          <RotateCcw size={14} />
-          <span>+ New Chat</span>
-        </button>
-      </div>
-
       {/* Smooth Scrollable Message Stream */}
       <div className="chat-messages-scroll" ref={scrollContainerRef}>
         <div className="chat-messages-inner">
