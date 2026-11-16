@@ -9,13 +9,18 @@ import {
   GraduationCap, 
   Droplet, 
   BookOpen, 
-  KeyRound 
+  Plus,
+  Sparkles,
+  CheckCircle2
 } from 'lucide-react';
 
 interface SidebarProps {
   currentView: ViewMode;
   onNavigate: (view: ViewMode) => void;
   onOpenApiKey: () => void;
+  onNewChat?: () => void;
+  hasServerKey?: boolean;
+  apiKey?: string;
   compoundCount: number;
   courseCount: number;
 }
@@ -24,9 +29,14 @@ export default function Sidebar({
   currentView,
   onNavigate,
   onOpenApiKey,
+  onNewChat,
+  hasServerKey = false,
+  apiKey = '',
   compoundCount,
   courseCount,
 }: SidebarProps) {
+  const isKeyActive = hasServerKey || !!apiKey.trim();
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -49,6 +59,32 @@ export default function Sidebar({
         >
           <MessageSquare size={18} />
           <span>AI Chat</span>
+        </button>
+
+        {/* Dedicated "+ New Chat" Button in Sidebar */}
+        <button
+          onClick={() => {
+            onNavigate('chat');
+            if (onNewChat) onNewChat();
+          }}
+          className="btn btn-primary"
+          style={{
+            margin: '0.4rem 0.25rem 0.85rem 0.25rem',
+            padding: '0.65rem 0.9rem',
+            fontSize: '0.86rem',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.45rem',
+            borderRadius: '12px',
+            background: 'var(--primary)',
+            color: '#FFFFFF',
+            boxShadow: '0 2px 8px rgba(45, 91, 230, 0.25)',
+          }}
+        >
+          <Plus size={16} strokeWidth={2.5} />
+          <span>New Chat</span>
         </button>
 
         <button
@@ -98,16 +134,26 @@ export default function Sidebar({
         <button
           onClick={onOpenApiKey}
           className="nav-link-btn"
-          style={{ padding: '0.65rem 0.85rem' }}
+          style={{ padding: '0.65rem 0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
-          <KeyRound size={17} style={{ color: 'var(--primary)' }} />
-          <span style={{ fontSize: '0.88rem' }}>Gemini API Key</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={16} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.86rem' }}>AI Engine Settings</span>
+          </div>
+          <span
+            style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: isKeyActive ? 'var(--accent-teal)' : '#F59E0B',
+            }}
+          />
         </button>
 
-        <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#F8F9FD', borderRadius: '12px', border: '1px solid var(--border)' }}>
+        <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#F8F9FD', borderRadius: '12px', border: '1px solid var(--border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.76rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)' }}></span>
-            <span>Local Clinical DB Active</span>
+            <span>Clinical RAG Active</span>
           </div>
         </div>
       </div>

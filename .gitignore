@@ -17,6 +17,7 @@ Classroom - Course Folders/
 # Logs and error outputs
 *.log
 *.err
+*.tsbuildinfo
 
 # Browser downloads & incomplete files
 *.crdownload

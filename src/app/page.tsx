@@ -26,14 +26,24 @@ export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [calcCompoundName, setCalcCompoundName] = useState<string>('');
   const [chatPrompt, setChatPrompt] = useState<string>('');
+  const [resetChatTrigger, setResetChatTrigger] = useState<number>(0);
 
   const [apiKey, setApiKey] = useState<string>('');
+  const [hasServerKey, setHasServerKey] = useState<boolean>(false);
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const raw = localStorage.getItem('peptalk_gemini_api_key') || localStorage.getItem('peppal_gemini_api_key') || '';
     const cleaned = raw.trim().replace(/^['"]|['"]$/g, '');
     if (cleaned) setApiKey(cleaned);
+
+    // Check if permanent key is present in server environment
+    fetch('/api/chat')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.hasServerKey) setHasServerKey(true);
+      })
+      .catch((e) => console.warn('Could not check server API key status:', e));
   }, []);
 
   const handleSaveApiKey = (key: string) => {
@@ -78,6 +88,12 @@ export default function Home() {
         currentView={currentView}
         onNavigate={handleNavigate}
         onOpenApiKey={() => setIsApiKeyOpen(true)}
+        onNewChat={() => {
+          setCurrentView('chat');
+          setResetChatTrigger((prev) => prev + 1);
+        }}
+        hasServerKey={hasServerKey}
+        apiKey={apiKey}
         compoundCount={allCompounds.length}
         courseCount={courses.length}
       />
@@ -100,13 +116,36 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {currentView === 'chat' && (
+              <button
+                onClick={() => setResetChatTrigger((p) => p + 1)}
+                className="btn btn-outline"
+                style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
+              >
+                + New Chat
+              </button>
+            )}
+
             <button
               onClick={() => setIsApiKeyOpen(true)}
               className="btn btn-outline"
               style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
             >
-              <span>{apiKey ? 'API Key Active' : 'Set Gemini API Key'}</span>
-              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: apiKey ? 'var(--accent-teal)' : '#F59E0B' }}></span>
+              <span>
+                {hasServerKey
+                  ? 'AI Engine (Vercel Active)'
+                  : apiKey
+                  ? 'AI Engine (Active)'
+                  : 'AI Engine Settings'}
+              </span>
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: (hasServerKey || apiKey) ? 'var(--accent-teal)' : '#F59E0B',
+                }}
+              ></span>
             </button>
           </div>
         </header>
@@ -116,12 +155,14 @@ export default function Home() {
           {currentView === 'chat' && (
             <ChatView
               apiKey={apiKey}
+              hasServerKey={hasServerKey}
               onOpenApiKey={() => setIsApiKeyOpen(true)}
               compounds={allCompounds}
               protocols={protocols}
               courses={courses}
               initialPrompt={chatPrompt}
               onClearInitialPrompt={() => setChatPrompt('')}
+              resetTrigger={resetChatTrigger}
             />
           )}
 
@@ -188,6 +229,7 @@ export default function Home() {
         isOpen={isApiKeyOpen}
         onClose={() => setIsApiKeyOpen(false)}
         apiKey={apiKey}
+        hasServerKey={hasServerKey}
         onSave={handleSaveApiKey}
       />
     </div>
