@@ -12,12 +12,12 @@ export interface RAGDocument {
 }
 
 const COMMON_ALIASES: Record<string, string[]> = {
-  ozempic: ['semaglutide', 'glp-1'],
-  wegovy: ['semaglutide', 'glp-1'],
+  ozempic: ['semaglutide', 'glp-1', 'wegovy'],
+  wegovy: ['semaglutide', 'glp-1', 'ozempic'],
   rybelsus: ['semaglutide', 'glp-1'],
   semaglutide: ['ozempic', 'wegovy', 'glp-1'],
-  mounjaro: ['tirzepatide', 'gip', 'glp-1'],
-  zepbound: ['tirzepatide', 'gip', 'glp-1'],
+  mounjaro: ['tirzepatide', 'gip', 'glp-1', 'zepbound'],
+  zepbound: ['tirzepatide', 'gip', 'glp-1', 'mounjaro'],
   tirzepatide: ['mounjaro', 'zepbound', 'glp-1', 'gip'],
   retatrutide: ['glp-3rt', 'ggg', 'triple agonist', 'glucagon'],
   'glp-3rt': ['retatrutide', 'triple agonist'],
@@ -46,7 +46,7 @@ const COMMON_ALIASES: Record<string, string[]> = {
 const STOP_WORDS = new Set([
   'what', 'will', 'the', 'dose', 'dosing', 'for', 'with', 'and', 'how', 'much',
   'about', 'from', 'this', 'that', 'yrs', 'old', 'tell', 'give', 'can', 'you',
-  'best', 'good', 'should', 'use', 'take', 'need', 'when', 'which', 'where',
+  'best', 'good', 'should', 'use', 'take', 'need', 'when', 'which', 'where', 'does',
 ]);
 
 export function searchInternalKnowledge(query: string, maxResults: number = 6): RAGDocument[] {
@@ -68,7 +68,17 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
   const tokenList = Array.from(expandedTokens);
   const matchedDocs: RAGDocument[] = [];
 
-  // 1. Search Compounds (690 Monographs)
+  // Check if user specifically asks about legal/FDA/compounding
+  const isRegulatoryQuery =
+    cleanQuery.includes('fda') ||
+    cleanQuery.includes('503b') ||
+    cleanQuery.includes('compound') ||
+    cleanQuery.includes('legal') ||
+    cleanQuery.includes('shortage') ||
+    cleanQuery.includes('ban') ||
+    cleanQuery.includes('law');
+
+  // 1. Search Compounds (690 Monographs) - High Priority
   for (const c of allCompounds) {
     let score = 0;
     const cName = c.name.toLowerCase();
@@ -77,50 +87,56 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
     const cOverview = (c.overview || '').toLowerCase();
     const cMech = (c.mechanismOfAction || c.mechanism || '').toLowerCase();
     const cDose = (c.dosageRanges || c.dosing || '').toLowerCase();
+    const cBody = (c.body || '').toLowerCase();
     const cRecon = (typeof c.reconstitution === 'string' ? c.reconstitution : c.reconstitution?.instructions || '').toLowerCase();
     const cStorage = (typeof c.storage === 'string' ? c.storage : `${c.storage?.beforeReconstitution || ''} ${c.storage?.afterReconstitution || ''}`).toLowerCase();
     const cSafety = (c.safetyWarnings || c.contraindications || '').toLowerCase();
     const cResearch = (Array.isArray(c.researchContexts) ? c.researchContexts.join(' ') : '').toLowerCase();
 
-    // Direct query hit
-    if (cName === cleanQuery) score += 60;
-    else if (cName.includes(cleanQuery)) score += 35;
-    else if (cFull.includes(cleanQuery)) score += 25;
+    // Direct query hit on compound name
+    if (cName === cleanQuery) score += 100;
+    else if (cName.includes(cleanQuery)) score += 60;
+    else if (cFull.includes(cleanQuery)) score += 40;
 
     // Token scoring
     for (const token of tokenList) {
-      if (cName === token) score += 30;
-      else if (cName.includes(token)) score += 18;
-      else if (cFull.includes(token)) score += 12;
-      else if (cCat.includes(token)) score += 8;
-      else if (cDose.includes(token)) score += 6;
-      else if (cMech.includes(token)) score += 5;
-      else if (cRecon.includes(token)) score += 4;
-      else if (cResearch.includes(token)) score += 3;
-      else if (cOverview.includes(token)) score += 2;
+      if (cName === token) score += 50;
+      else if (cName.includes(token)) score += 30;
+      else if (cFull.includes(token)) score += 20;
+      else if (cCat.includes(token)) score += 12;
+      else if (cDose.includes(token)) score += 10;
+      else if (cMech.includes(token)) score += 8;
+      else if (cBody.includes(token)) score += 6;
+      else if (cRecon.includes(token)) score += 5;
+      else if (cResearch.includes(token)) score += 4;
+      else if (cOverview.includes(token)) score += 3;
     }
 
     if (score > 0) {
+      // Build comprehensive monograph text
+      const monographParts = [
+        `Compound: ${c.name} [Category: ${c.category}]`,
+        c.fullName ? `Full Name: ${c.fullName}` : '',
+        c.overview ? `Overview: ${c.overview}` : '',
+        cMech ? `Mechanism of Action: ${c.mechanismOfAction || c.mechanism}` : '',
+        cDose ? `Dosage & Titration: ${c.dosageRanges || c.dosing}` : '',
+        cBody ? `Clinical Masterclass Monograph Body:\n${c.body.slice(0, 2200)}` : '',
+        cRecon ? `Reconstitution: ${cRecon}` : '',
+        cStorage ? `Storage & Stability: ${cStorage}` : '',
+        cSafety ? `Safety & Contraindications: ${cSafety}` : '',
+        cResearch ? `Research Contexts: ${cResearch}` : '',
+      ].filter(Boolean);
+
       matchedDocs.push({
         title: `${c.name}${c.fullName ? ` (${c.fullName})` : ''}`,
         category: 'Knowledge Base',
         score,
-        text: [
-          `Compound: ${c.name} [Category: ${c.category}]`,
-          c.fullName ? `Full Name: ${c.fullName}` : '',
-          c.overview ? `Overview: ${c.overview}` : '',
-          cMech ? `Mechanism of Action: ${c.mechanismOfAction || c.mechanism}` : '',
-          cDose ? `Dosage & Titration: ${c.dosageRanges || c.dosing}` : '',
-          cRecon ? `Reconstitution: ${cRecon}` : '',
-          cStorage ? `Storage & Stability: ${cStorage}` : '',
-          cSafety ? `Safety & Contraindications: ${cSafety}` : '',
-          cResearch ? `Research Contexts: ${cResearch}` : '',
-        ].filter(Boolean).join('\n'),
+        text: monographParts.join('\n\n'),
       });
     }
   }
 
-  // 2. Search Vetted Protocols
+  // 2. Search Vetted Protocols - High Priority
   for (const p of protocols) {
     let score = 0;
     const pName = p.name.toLowerCase();
@@ -130,15 +146,15 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
     const pCycle = (p.cycleInfo || '').toLowerCase();
     const pDoseSteps = (p.doseSteps || []).map((s) => `${s.step}: ${s.dose} (${s.notes || ''})`).join(' ').toLowerCase();
 
-    if (pName.includes(cleanQuery)) score += 35;
+    if (pName.includes(cleanQuery)) score += 50;
 
     for (const token of tokenList) {
-      if (pName.includes(token)) score += 20;
-      else if (pSub.includes(token)) score += 10;
-      else if (pDoseSteps.includes(token)) score += 8;
-      else if (pPrinciple.includes(token)) score += 6;
-      else if (pCycle.includes(token)) score += 5;
-      else if (pInst.includes(token)) score += 4;
+      if (pName.includes(token)) score += 35;
+      else if (pSub.includes(token)) score += 18;
+      else if (pDoseSteps.includes(token)) score += 14;
+      else if (pPrinciple.includes(token)) score += 10;
+      else if (pCycle.includes(token)) score += 8;
+      else if (pInst.includes(token)) score += 6;
     }
 
     if (score > 0) {
@@ -175,12 +191,12 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
     const lCourse = l.course.toLowerCase();
     const lText = l.text.toLowerCase();
 
-    if (lTitle.includes(cleanQuery)) score += 30;
+    if (lTitle.includes(cleanQuery)) score += 35;
 
     for (const token of tokenList) {
-      if (lTitle.includes(token)) score += 15;
-      else if (lCourse.includes(token)) score += 8;
-      else if (lText.includes(token)) score += 2;
+      if (lTitle.includes(token)) score += 20;
+      else if (lCourse.includes(token)) score += 10;
+      else if (lText.includes(token)) score += 3;
     }
 
     if (score > 0) {
@@ -189,36 +205,38 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
         category: 'Classroom Masterclass',
         score,
         url: l.url,
-        text: `Classroom Lesson: "${l.title}"\nCourse / Module: ${l.course}\nCurriculum Content:\n${l.text.slice(0, 1200)}`,
+        text: `Classroom Lesson: "${l.title}"\nCourse / Module: ${l.course}\nCurriculum Content:\n${l.text.slice(0, 1400)}`,
       });
     }
   }
 
-  // 4. Search Published Research & Regulatory Papers
-  for (const r of researchPapers) {
-    let score = 0;
-    const rTitle = (r.title || '').toLowerCase();
-    const rSummary = (r.summary || '').toLowerCase();
-    const rSource = (r.source || '').toLowerCase();
-    const rPeptides = (Array.isArray(r.peptides) ? r.peptides.join(' ') : '').toLowerCase();
+  // 4. Search Published Research & Regulatory Papers (Only if regulatory query OR if clinical score is modest)
+  if (isRegulatoryQuery) {
+    for (const r of researchPapers) {
+      let score = 0;
+      const rTitle = (r.title || '').toLowerCase();
+      const rSummary = (r.summary || '').toLowerCase();
+      const rSource = (r.source || '').toLowerCase();
+      const rPeptides = (Array.isArray(r.peptides) ? r.peptides.join(' ') : '').toLowerCase();
 
-    if (rTitle.includes(cleanQuery)) score += 25;
+      if (rTitle.includes(cleanQuery)) score += 30;
 
-    for (const token of tokenList) {
-      if (rTitle.includes(token)) score += 12;
-      else if (rPeptides.includes(token)) score += 10;
-      else if (rSource.includes(token)) score += 6;
-      else if (rSummary.includes(token)) score += 3;
-    }
+      for (const token of tokenList) {
+        if (rTitle.includes(token)) score += 15;
+        else if (rPeptides.includes(token)) score += 10;
+        else if (rSource.includes(token)) score += 6;
+        else if (rSummary.includes(token)) score += 3;
+      }
 
-    if (score > 0) {
-      matchedDocs.push({
-        title: `Study/Paper: ${r.title} (${r.year || 'Ref'})`,
-        category: 'Published Study',
-        score,
-        url: r.url || '',
-        text: `Published Paper: "${r.title}"\nSource: ${r.source} (${r.year || 'N/A'})\nTarget Peptides: ${(r.peptides || []).join(', ')}\nCategory: ${r.category || 'Clinical'}\nSummary: ${(r.summary || '').slice(0, 800)}`,
-      });
+      if (score > 0) {
+        matchedDocs.push({
+          title: `Study/Paper: ${r.title} (${r.year || 'Ref'})`,
+          category: 'Published Study',
+          score,
+          url: r.url || '',
+          text: `Published Paper: "${r.title}"\nSource: ${r.source} (${r.year || 'N/A'})\nTarget Peptides: ${(r.peptides || []).join(', ')}\nCategory: ${r.category || 'Clinical'}\nSummary: ${(r.summary || '').slice(0, 800)}`,
+        });
+      }
     }
   }
 
