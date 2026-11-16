@@ -18,7 +18,6 @@ import ClinicalMarkdown from './ClinicalMarkdown';
 
 interface ChatViewProps {
   apiKey: string;
-  hasServerKey?: boolean;
   onOpenApiKey: () => void;
   compounds: Compound[];
   protocols: Protocol[];
@@ -32,7 +31,6 @@ const CHAT_STORAGE_KEY = 'peptalk_ai_chat_history_v2';
 
 export default function ChatView({
   apiKey,
-  hasServerKey = false,
   onOpenApiKey,
   initialPrompt,
   onClearInitialPrompt,
@@ -42,6 +40,7 @@ export default function ChatView({
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [loadingSeconds, setLoadingSeconds] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -94,9 +93,17 @@ export default function ChatView({
     };
   }, [isLoading]);
 
-  // Auto-scroll to bottom of messages
+  // Smooth scroll down whenever messages change or loading state toggles
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const scrollToBottom = () => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    };
+    // Immediate scroll + slight timeout to accommodate layout expansion
+    scrollToBottom();
+    const t = setTimeout(scrollToBottom, 80);
+    return () => clearTimeout(t);
   }, [messages, isLoading]);
 
   // Handle incoming initialPrompt from outside views (e.g. "Ask AI About Compound")
@@ -115,6 +122,11 @@ export default function ChatView({
   const handleSendMessage = async (textToSend: string) => {
     const text = textToSend.trim();
     if (!text || isLoading) return;
+
+    if (!apiKey) {
+      onOpenApiKey();
+      return;
+    }
 
     const userMsg: ChatMessage = {
       id: 'msg_' + Date.now(),
@@ -140,7 +152,7 @@ export default function ChatView({
         body: JSON.stringify({
           message: text,
           history: historyPayload,
-          apiKey: apiKey || undefined,
+          apiKey: apiKey.trim(),
         }),
       });
 
@@ -148,16 +160,7 @@ export default function ChatView({
 
       if (!response.ok || data.error) {
         if (data.error === 'MISSING_API_KEY') {
-          setMessages((prev) => [
-            ...prev,
-            {
-              id: 'msg_' + Date.now(),
-              role: 'assistant',
-              content:
-                '### Google Gemini API Key Required\n\nA Google Gemini API key is needed to query the clinical peptide intelligence assistant.\n\n- **Permanent Backend Key (Recommended):** Add `GEMINI_API_KEY=your_key` in `.env.local` or your Vercel Environment Variables.\n- **Or Enter Key in Browser:** Click **AI Engine Settings** in the menu to paste your key.',
-              timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            },
-          ]);
+          onOpenApiKey();
           return;
         }
 
@@ -190,27 +193,31 @@ export default function ChatView({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', maxWidth: '940px', margin: '0 auto', width: '100%' }}>
-      {/* Persistent Header Bar (Always visible at start and during chat) */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.65rem 0', borderBottom: '1px solid var(--border-light)', marginBottom: '0.5rem' }}>
+    <div className="chat-layout-root">
+      {/* Pinned Top Bar: Always visible, never scrolls away */}
+      <div className="chat-top-session-bar">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-          <span style={{ fontSize: '0.88rem', fontWeight: 800, color: '#0F172A' }}>
+          <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0F172A' }}>
             {messages.length > 0 ? `Clinical Consultation (${messages.length} messages)` : 'Clinical Consultation Session'}
           </span>
-          {hasServerKey ? (
-            <span className="badge-tag" style={{ background: '#ECFDF5', color: '#065F46', borderColor: '#A7F3D0', fontSize: '0.74rem' }}>
-              <CheckCircle2 size={12} style={{ marginRight: '4px', display: 'inline' }} />
-              Permanent Key Active
-            </span>
-          ) : apiKey ? (
+          {apiKey ? (
             <span className="badge-tag" style={{ background: '#ECFDF5', color: '#065F46', borderColor: '#A7F3D0', fontSize: '0.74rem' }}>
               <CheckCircle2 size={12} style={{ marginRight: '4px', display: 'inline' }} />
               API Key Active
             </span>
-          ) : null}
+          ) : (
+            <button
+              onClick={onOpenApiKey}
+              className="badge-tag"
+              style={{ background: '#FEF3C7', color: '#92400E', borderColor: '#FCD34D', fontSize: '0.74rem', cursor: 'pointer' }}
+            >
+              <Key size={12} style={{ marginRight: '4px', display: 'inline' }} />
+              Add Gemini Key
+            </button>
+          )}
         </div>
 
-        {/* Prominent New Chat Button (Always available at the start and throughout) */}
+        {/* New Chat Button */}
         <button
           onClick={handleClearChat}
           className="btn btn-outline"
@@ -229,157 +236,164 @@ export default function ChatView({
         </button>
       </div>
 
-      {/* Empty State Welcome Screen */}
-      {messages.length === 0 ? (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '2rem 1rem' }}>
-          <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.25rem' }}>
-            <Sparkles size={32} />
-          </div>
-          <h2 style={{ fontSize: '1.85rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.65rem', letterSpacing: '-0.02em' }}>
-            PepTalk Clinical Intelligence
-          </h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-            Instant RAG synthesis across <strong>690 monographs</strong>, <strong>vetted protocols</strong>, <strong>75 masterclasses</strong>, and published pharmacology research.
-          </p>
-
-          {!apiKey && !hasServerKey && (
-            <div style={{ marginBottom: '1.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '0.45rem 1rem', borderRadius: '20px', color: '#64748B', fontSize: '0.82rem' }}>
-              <Key size={14} style={{ color: 'var(--primary)' }} />
-              <span>Permanent Key: Set in <code>.env.local</code> or Vercel &bull; <button onClick={onOpenApiKey} style={{ background: 'none', border: 'none', color: 'var(--primary)', fontWeight: 700, cursor: 'pointer', padding: 0 }}>Open Settings</button></span>
-            </div>
-          )}
-
-          {hasServerKey && (
-            <div style={{ marginBottom: '1.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '0.4rem 0.9rem', borderRadius: '20px', color: '#166534', fontSize: '0.84rem', fontWeight: 600 }}>
-              <CheckCircle2 size={16} />
-              <span>Permanent Backend AI Key Active (Vercel Environment)</span>
-            </div>
-          )}
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', width: '100%', maxWidth: '820px' }}>
-            <div
-              className="compound-item-card"
-              style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-              onClick={() => handleSendMessage('What is the standard clinical titration schedule, GI tolerance rules, and administration guidelines for Semaglutide (Ozempic)?')}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                <Syringe size={16} style={{ color: 'var(--primary)' }} />
-                <span>Semaglutide / Ozempic Protocol</span>
+      {/* Smooth Scrollable Message Stream */}
+      <div className="chat-messages-scroll" ref={scrollContainerRef}>
+        <div className="chat-messages-inner">
+          {/* Welcome Screen when no messages */}
+          {messages.length === 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '3rem 1rem 2rem 1rem' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.25rem' }}>
+                <Sparkles size={32} />
               </div>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                Exact 4-week titration ladder, GI tolerability increments, and maintenance targets from clinical literature.
+              <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.65rem', letterSpacing: '-0.025em' }}>
+                PepTalk Clinical Intelligence
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+                Instant RAG synthesis across <strong>690 monographs</strong>, <strong>vetted protocols</strong>, <strong>75 masterclasses</strong>, and published pharmacology research.
               </p>
-            </div>
 
-            <div
-              className="compound-item-card"
-              style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-              onClick={() => handleSendMessage('Explain the Retatrutide (GLP-3RT) protocol: triple agonist mechanism, starting dosage, and titration rules.')}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                <TrendingUp size={16} style={{ color: 'var(--primary)' }} />
-                <span>Retatrutide (GLP-3RT) Triple Agonist</span>
-              </div>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                GLP-1/GIP/GCGR mechanism, step-by-step titration ladder, and reconstitution matrix from the vetted protocol.
-              </p>
-            </div>
-
-            <div
-              className="compound-item-card"
-              style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-              onClick={() => handleSendMessage('What is the clinical breakdown for BPC-157 and TB-500 in tissue healing, tendon repair, and Wolverine Stack cycling?')}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                <Sparkles size={16} style={{ color: 'var(--primary)' }} />
-                <span>BPC-157 & TB-500 Tissue Repair</span>
-              </div>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                Cell migration mechanisms, angiogenesis, synergistic recovery protocols, and masterclass insights.
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem 0 2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {messages.map((m) => (
-            <div
-              key={m.id}
-              style={{
-                display: 'flex',
-                gap: '1rem',
-                alignItems: 'flex-start',
-                alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
-                maxWidth: m.role === 'user' ? '82%' : '100%',
-              }}
-            >
-              {m.role === 'assistant' && (
-                <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-                  <Bot size={20} />
+              {!apiKey && (
+                <div style={{ marginBottom: '2rem' }}>
+                  <button
+                    onClick={onOpenApiKey}
+                    className="btn btn-primary"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.55rem', padding: '0.75rem 1.4rem' }}
+                  >
+                    <Key size={16} />
+                    <span>Enter Free Gemini API Key to Start</span>
+                  </button>
                 </div>
               )}
 
+              {/* Starter Prompt Cards */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', width: '100%', marginTop: '0.5rem' }}>
+                <div
+                  className="compound-item-card"
+                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
+                  onClick={() => handleSendMessage('What is the standard clinical titration schedule, GI tolerance rules, and administration guidelines for Semaglutide (Ozempic)?')}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
+                    <Syringe size={16} style={{ color: 'var(--primary)' }} />
+                    <span>Semaglutide / Ozempic Protocol</span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
+                    Exact 4-week titration ladder, GI tolerability increments, and maintenance targets from clinical literature.
+                  </p>
+                </div>
+
+                <div
+                  className="compound-item-card"
+                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
+                  onClick={() => handleSendMessage('Explain the Retatrutide (GLP-3RT) protocol: triple agonist mechanism, starting dosage, and titration rules.')}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
+                    <TrendingUp size={16} style={{ color: 'var(--primary)' }} />
+                    <span>Retatrutide (GLP-3RT) Triple Agonist</span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
+                    GLP-1/GIP/GCGR mechanism, step-by-step titration ladder, and reconstitution matrix from the vetted protocol.
+                  </p>
+                </div>
+
+                <div
+                  className="compound-item-card"
+                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
+                  onClick={() => handleSendMessage('What is the clinical breakdown for BPC-157 and TB-500 in tissue healing, tendon repair, and Wolverine Stack cycling?')}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
+                    <Sparkles size={16} style={{ color: 'var(--primary)' }} />
+                    <span>BPC-157 & TB-500 Tissue Repair</span>
+                  </div>
+                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
+                    Cell migration mechanisms, angiogenesis, synergistic recovery protocols, and masterclass insights.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Chat Message Stream
+            messages.map((m) => (
               <div
+                key={m.id}
+                className="chat-bubble-animated"
                 style={{
-                  background: m.role === 'user' ? 'var(--primary)' : '#FFFFFF',
-                  color: m.role === 'user' ? '#FFFFFF' : '#1E293B',
-                  padding: m.role === 'user' ? '0.95rem 1.35rem' : '1.35rem 1.6rem',
-                  borderRadius: '16px',
-                  boxShadow: 'var(--shadow-card)',
-                  border: m.role === 'user' ? 'none' : '1px solid #E2E8F0',
-                  lineHeight: 1.65,
-                  fontSize: '0.94rem',
+                  display: 'flex',
+                  gap: '1rem',
+                  alignItems: 'flex-start',
+                  alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
+                  maxWidth: m.role === 'user' ? '82%' : '100%',
                   width: m.role === 'user' ? 'auto' : '100%',
                 }}
               >
-                {m.role === 'user' ? (
-                  <div style={{ whiteSpace: 'pre-wrap', fontWeight: 500 }}>{m.content}</div>
-                ) : (
-                  <div>
-                    <ClinicalMarkdown content={m.content} />
-
-                    {m.sources && m.sources.length > 0 && (
-                      <div style={{ marginTop: '1.25rem', paddingTop: '0.9rem', borderTop: '1px solid #E2E8F0' }}>
-                        <div style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 800, marginBottom: '0.45rem', letterSpacing: '0.04em' }}>
-                          GROUNDED INTERNAL SOURCES:
-                        </div>
-                        <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
-                          {m.sources.map((s, idx) => (
-                            <span
-                              key={idx}
-                              className="badge-tag"
-                              style={{
-                                fontSize: '0.74rem',
-                                padding: '0.2rem 0.6rem',
-                                background: '#F8FAFC',
-                                borderColor: '#CBD5E1',
-                                color: '#1E293B',
-                                fontWeight: 600,
-                              }}
-                            >
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                {m.role === 'assistant' && (
+                  <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <Bot size={20} />
                   </div>
                 )}
-                <div style={{ fontSize: '0.7rem', color: m.role === 'user' ? 'rgba(255,255,255,0.75)' : '#94A3B8', marginTop: '0.6rem', textAlign: 'right' }}>
-                  {m.timestamp}
+
+                <div
+                  style={{
+                    background: m.role === 'user' ? 'var(--primary)' : '#FFFFFF',
+                    color: m.role === 'user' ? '#FFFFFF' : '#1E293B',
+                    padding: m.role === 'user' ? '0.95rem 1.35rem' : '1.35rem 1.65rem',
+                    borderRadius: '16px',
+                    boxShadow: 'var(--shadow-card)',
+                    border: m.role === 'user' ? 'none' : '1px solid #E2E8F0',
+                    lineHeight: 1.65,
+                    fontSize: '0.94rem',
+                    flex: 1,
+                  }}
+                >
+                  {m.role === 'user' ? (
+                    <div style={{ whiteSpace: 'pre-wrap', fontWeight: 500 }}>{m.content}</div>
+                  ) : (
+                    <div>
+                      <ClinicalMarkdown content={m.content} />
+
+                      {m.sources && m.sources.length > 0 && (
+                        <div style={{ marginTop: '1.25rem', paddingTop: '0.9rem', borderTop: '1px solid #E2E8F0' }}>
+                          <div style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 800, marginBottom: '0.45rem', letterSpacing: '0.04em' }}>
+                            GROUNDED INTERNAL SOURCES:
+                          </div>
+                          <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
+                            {m.sources.map((s, idx) => (
+                              <span
+                                key={idx}
+                                className="badge-tag"
+                                style={{
+                                  fontSize: '0.74rem',
+                                  padding: '0.2rem 0.6rem',
+                                  background: '#F8FAFC',
+                                  borderColor: '#CBD5E1',
+                                  color: '#1E293B',
+                                  fontWeight: 600,
+                                }}
+                              >
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  <div style={{ fontSize: '0.7rem', color: m.role === 'user' ? 'rgba(255,255,255,0.75)' : '#94A3B8', marginTop: '0.6rem', textAlign: 'right' }}>
+                    {m.timestamp}
+                  </div>
                 </div>
+
+                {m.role === 'user' && (
+                  <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: '#EAEAF2', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <User size={20} />
+                  </div>
+                )}
               </div>
+            ))
+          )}
 
-              {m.role === 'user' && (
-                <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: '#EAEAF2', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-                  <User size={20} />
-                </div>
-              )}
-            </div>
-          ))}
-
+          {/* Thinking / Streaming Indicator */}
           {isLoading && (
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div className="chat-bubble-animated" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Bot size={20} />
               </div>
@@ -391,21 +405,22 @@ export default function ChatView({
               </div>
             </div>
           )}
-          <div ref={messagesEndRef} />
-        </div>
-      )}
 
-      {/* Input Form */}
-      <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(input); }} style={{ padding: '1rem 0' }}>
-        <div style={{ display: 'flex', gap: '0.75rem', position: 'relative' }}>
+          <div ref={messagesEndRef} style={{ height: '8px' }} />
+        </div>
+      </div>
+
+      {/* Sticky Bottom Input Bar: Always pinned at bottom, never scrolls out of view */}
+      <footer className="chat-input-sticky-footer">
+        <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(input); }} className="chat-input-inner">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math..."
+            placeholder={apiKey ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math..." : "Please enter your Gemini API key above to start research..."}
             disabled={isLoading}
             style={{
-              flex: 1,
+              width: '100%',
               padding: '1.05rem 1.35rem',
               paddingRight: '3.75rem',
               borderRadius: '16px',
@@ -440,8 +455,8 @@ export default function ChatView({
           >
             <Send size={18} />
           </button>
-        </div>
-      </form>
+        </form>
+      </footer>
     </div>
   );
 }

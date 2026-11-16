@@ -7,7 +7,6 @@ interface ApiKeyModalProps {
   isOpen: boolean;
   onClose: () => void;
   apiKey: string;
-  hasServerKey?: boolean;
   onSave: (key: string) => void;
 }
 
@@ -15,7 +14,6 @@ export default function ApiKeyModal({
   isOpen,
   onClose,
   apiKey,
-  hasServerKey = false,
   onSave,
 }: ApiKeyModalProps) {
   const [val, setVal] = useState(apiKey);
@@ -78,7 +76,7 @@ export default function ApiKeyModal({
       <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '520px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
+            <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
               <Key size={18} />
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Google Gemini API Key</h2>
@@ -91,29 +89,8 @@ export default function ApiKeyModal({
           </button>
         </div>
 
-        {hasServerKey && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.75rem 1rem',
-            borderRadius: '10px',
-            marginBottom: '1rem',
-            fontSize: '0.84rem',
-            lineHeight: 1.5,
-            background: '#ECFDF5',
-            color: '#065F46',
-            border: '1px solid #A7F3D0',
-          }}>
-            <CheckCircle2 size={16} style={{ color: '#059669', flexShrink: 0 }} />
-            <span>Permanent API Key is configured in your server environment (Vercel / .env.local). You do not need to enter one unless you want a personal override.</span>
-          </div>
-        )}
-
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.55, marginBottom: '1.25rem' }}>
-          {hasServerKey
-            ? 'Optional: enter a custom personal Gemini key to override the permanent backend server key.'
-            : 'Configure your free Google Gemini API key to activate AI chat and live RAG querying across the clinical library and 75 masterclasses.'}
+          Enter your personal Google Gemini API key to activate AI chat and live RAG search across the 690 monographs, vetted protocols, and 75 masterclasses. Your key is stored securely in your browser.
         </p>
 
         <div style={{ marginBottom: '1rem' }}>
@@ -124,7 +101,7 @@ export default function ApiKeyModal({
               setVal(e.target.value);
               if (status) setStatus(null);
             }}
-            placeholder={hasServerKey ? 'Using server permanent key (or enter custom key)' : 'AIzaSy...'}
+            placeholder="AIzaSy..."
             style={{
               width: '100%',
               padding: '0.85rem 1rem',
@@ -176,7 +153,7 @@ export default function ApiKeyModal({
               fontWeight: 600,
             }}
           >
-            <span>Get free key at Google AI Studio</span>
+            <span>Get a free key at Google AI Studio</span>
             <ExternalLink size={13} />
           </a>
 

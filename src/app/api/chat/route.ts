@@ -42,8 +42,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: 'MISSING_API_KEY',
-          message:
-            'A Google Gemini API key was not found. Please set GEMINI_API_KEY in your Vercel Environment Variables or .env.local file, or enter one in the UI.',
+          message: 'A Google Gemini API key is required. Please enter your key in settings to continue.',
         },
         { status: 400 }
       );

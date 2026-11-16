@@ -10,7 +10,7 @@ import {
   Droplet, 
   BookOpen, 
   Plus,
-  Sparkles,
+  KeyRound,
   CheckCircle2
 } from 'lucide-react';
 
@@ -19,7 +19,6 @@ interface SidebarProps {
   onNavigate: (view: ViewMode) => void;
   onOpenApiKey: () => void;
   onNewChat?: () => void;
-  hasServerKey?: boolean;
   apiKey?: string;
   compoundCount: number;
   courseCount: number;
@@ -30,12 +29,11 @@ export default function Sidebar({
   onNavigate,
   onOpenApiKey,
   onNewChat,
-  hasServerKey = false,
   apiKey = '',
   compoundCount,
   courseCount,
 }: SidebarProps) {
-  const isKeyActive = hasServerKey || !!apiKey.trim();
+  const isKeyActive = !!apiKey.trim();
 
   return (
     <aside className="sidebar">
@@ -80,7 +78,7 @@ export default function Sidebar({
             borderRadius: '12px',
             background: 'var(--primary)',
             color: '#FFFFFF',
-            boxShadow: '0 2px 8px rgba(45, 91, 230, 0.25)',
+            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.25)',
           }}
         >
           <Plus size={16} strokeWidth={2.5} />
@@ -137,8 +135,8 @@ export default function Sidebar({
           style={{ padding: '0.65rem 0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sparkles size={16} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontSize: '0.86rem' }}>AI Engine Settings</span>
+            <KeyRound size={16} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.86rem' }}>Gemini API Key</span>
           </div>
           <span
             style={{
@@ -153,7 +151,7 @@ export default function Sidebar({
         <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#F8F9FD', borderRadius: '12px', border: '1px solid var(--border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.76rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-teal)' }}></span>
-            <span>Clinical RAG Active</span>
+            <span>Clinical Library Active</span>
           </div>
         </div>
       </div>
