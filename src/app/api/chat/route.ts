@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     const systemPrompt = `You are PepTalk, the premier clinical peptide intelligence and masterclass pharmacology assistant.
 
 === CRITICAL GROUNDING & SOURCE INSTRUCTIONS ===
-1. PRIMARY GROUND TRUTH: You must strictly prioritize and ground your core answer in the INTERNAL PEP TALK DATABASE provided below (Knowledge Base monographs, Vetted Protocols with exact titration ladders and reconstitution matrices, and 75 Classroom Masterclasses).
+1. PRIMARY GROUND TRUTH: You must strictly prioritize and ground your core answer in the INTERNAL PEPTALK DATABASE provided below (Knowledge Base monographs, Vetted Protocols with exact titration ladders and reconstitution matrices, and 75 Classroom Masterclasses).
 2. SUPPLEMENTARY KNOWLEDGE & INTERNET REFERENCES: If the user's question requires broader biochemical context, pharmacokinetics, or published medical studies, you may supplement using peer-reviewed scientific literature and the broader internet. Whenever doing so, provide specific literature citations and study references at the end under a clear "References & Clinical Citations" section.
 3. OUTPUT FORMATTING RULES:
    - Provide clean, dark-font structured typography.
@@ -78,12 +78,11 @@ export async function POST(req: NextRequest) {
 ${internalContext}
 ==========================================`;
 
-    // 3. Fast candidate models in order of speed and capability
-    const candidateModels = [
-      'gemini-2.5-flash',
-      'gemini-2.0-flash',
-      'gemini-1.5-flash',
-      'gemini-2.5-pro',
+    // 3. Current active Gemini models (models/gemini-3.8-flash is the primary active model)
+    let candidateModels = [
+      'gemini-3.8-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-3.1-pro-preview',
     ];
 
     // Build chat contents from history (last 6 turns max for speed and relevance)
@@ -144,7 +143,7 @@ ${internalContext}
       return { res, json: await res.json() };
     };
 
-    // Try primary models quickly
+    // Try candidate models
     for (const model of candidateModels) {
       try {
         // Attempt with Google Search grounding first
@@ -199,6 +198,46 @@ ${internalContext}
         }
       } catch (err: any) {
         executionErrors.push(`[${model}]: ${err.message}`);
+      }
+    }
+
+    // Dynamic fallback: If fixed candidate models all failed, query active models on the key
+    if (!reply) {
+      try {
+        const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+        const listJson = await listRes.json();
+        if (listJson.models && Array.isArray(listJson.models)) {
+          const activeModels = listJson.models
+            .filter((m: any) => {
+              if (!m.supportedGenerationMethods?.includes('generateContent')) return false;
+              const name = (m.name || '').toLowerCase();
+              return !name.includes('tts') && !name.includes('audio') && !name.includes('embed') && !name.includes('image');
+            })
+            .map((m: any) => m.name.replace(/^models\//, ''))
+            .filter((m: string) => !candidateModels.includes(m));
+
+          for (const fallbackModel of activeModels.slice(0, 2)) {
+            try {
+              const resFallback = await callGemini(fallbackModel, false);
+              if (resFallback.res.ok && !resFallback.json.error) {
+                const parts = resFallback.json.candidates?.[0]?.content?.parts || [];
+                const fullText = parts
+                  .filter((p: any) => !p.thought && p.text)
+                  .map((p: any) => p.text)
+                  .join('\n\n')
+                  .trim();
+                if (fullText) {
+                  reply = fullText;
+                  break;
+                }
+              }
+            } catch (fbErr: any) {
+              executionErrors.push(`[${fallbackModel}]: ${fbErr.message}`);
+            }
+          }
+        }
+      } catch (discoveryErr: any) {
+        executionErrors.push(`[discovery]: ${discoveryErr.message}`);
       }
     }
 
