@@ -78,8 +78,8 @@ export async function POST(req: NextRequest) {
 ${internalContext}
 ==========================================`;
 
-    // 3. Current active Gemini models (models/gemini-3.8-flash is the primary active model)
-    let candidateModels = [
+    // 3. Current active Gemini models in order of priority
+    const candidateModels = [
       'gemini-3.8-flash',
       'gemini-3.5-flash-lite',
       'gemini-3.1-pro-preview',
@@ -107,11 +107,10 @@ ${internalContext}
     });
 
     let reply = '';
-    let webReferences: Array<{ title: string; uri: string }> = [];
     const executionErrors: string[] = [];
 
-    // Helper to call Gemini API
-    const callGemini = async (model: string, withSearch: boolean) => {
+    // Helper to call Gemini generateContent (pure generation for maximum speed and zero external tool quota consumption)
+    const callGemini = async (model: string) => {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
       const payload: any = {
         systemInstruction: {
@@ -130,10 +129,6 @@ ${internalContext}
         ],
       };
 
-      if (withSearch) {
-        payload.tools = [{ googleSearch: {} }];
-      }
-
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -146,16 +141,7 @@ ${internalContext}
     // Try candidate models
     for (const model of candidateModels) {
       try {
-        // Attempt with Google Search grounding first
-        let result = await callGemini(model, true);
-
-        // If tools failed or gave 400, retry immediately without tools
-        if (!result.res.ok || result.json.error) {
-          const errText = result.json.error?.message || '';
-          if (errText.toLowerCase().includes('tool') || result.res.status === 400) {
-            result = await callGemini(model, false);
-          }
-        }
+        const result = await callGemini(model);
 
         if (result.res.ok && !result.json.error) {
           const candidate = result.json.candidates?.[0];
@@ -166,15 +152,6 @@ ${internalContext}
 
           const fullText = textParts.join('\n\n').trim();
 
-          // Extract grounding web search metadata if present
-          const grounding = candidate?.groundingMetadata;
-          if (grounding?.groundingChunks) {
-            webReferences = grounding.groundingChunks
-              .map((c: any) => c.web)
-              .filter((w: any) => w && w.uri)
-              .map((w: any) => ({ title: w.title || w.uri, uri: w.uri }));
-          }
-
           if (fullText) {
             reply = fullText;
             break;
@@ -182,6 +159,7 @@ ${internalContext}
         } else {
           const errMsg = result.json.error?.message || `HTTP ${result.res.status}`;
           executionErrors.push(`[${model}]: ${errMsg}`);
+
           if (
             errMsg.toLowerCase().includes('api key not valid') ||
             errMsg.toLowerCase().includes('api_key_invalid') ||
@@ -216,9 +194,9 @@ ${internalContext}
             .map((m: any) => m.name.replace(/^models\//, ''))
             .filter((m: string) => !candidateModels.includes(m));
 
-          for (const fallbackModel of activeModels.slice(0, 2)) {
+          for (const fallbackModel of activeModels.slice(0, 3)) {
             try {
-              const resFallback = await callGemini(fallbackModel, false);
+              const resFallback = await callGemini(fallbackModel);
               if (resFallback.res.ok && !resFallback.json.error) {
                 const parts = resFallback.json.candidates?.[0]?.content?.parts || [];
                 const fullText = parts
@@ -242,14 +220,20 @@ ${internalContext}
     }
 
     if (!reply) {
+      const isQuotaError = executionErrors.some((e) =>
+        e.toLowerCase().includes('quota') || e.toLowerCase().includes('resource_exhausted')
+      );
+
+      const friendlyMessage = isQuotaError
+        ? 'Your Google Gemini API Key has reached its daily Free Tier quota limit. Google resets free tier limits daily, or you can create a fresh free API key at https://aistudio.google.com/app/apikey (or enable pay-as-you-go billing on that project for unlimited requests).'
+        : 'Unable to generate response from Gemini API. Details: ' + executionErrors.join(' | ');
+
       return NextResponse.json(
         {
-          error: 'GENERATION_FAILED',
-          message:
-            'Unable to generate response from Gemini API. Details: ' +
-            executionErrors.join(' | '),
+          error: isQuotaError ? 'QUOTA_EXCEEDED' : 'GENERATION_FAILED',
+          message: friendlyMessage,
         },
-        { status: 502 }
+        { status: isQuotaError ? 429 : 502 }
       );
     }
 
@@ -260,7 +244,6 @@ ${internalContext}
         category: d.category,
         url: d.url,
       })),
-      webReferences,
     });
   } catch (error: any) {
     return NextResponse.json(
