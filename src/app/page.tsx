@@ -89,50 +89,41 @@ export default function Home() {
       />
 
       <main className="main-viewport">
-        {/* Top Navbar */}
-        <header className="top-navbar">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
-              {currentView === 'chat' && 'AI Clinical Chat'}
-              {currentView === 'knowledge' && 'Peptide & Vault Monograph Library'}
-              {currentView === 'compound_detail' && (selectedCompound?.name || 'Compound Monograph')}
-              {currentView === 'protocols' && 'Vetted Clinical Protocols'}
-              {currentView === 'protocol_detail' && (selectedProtocol?.name || 'Protocol Guidelines')}
-              {currentView === 'classroom' && 'Masterclass Classroom'}
-              {currentView === 'course_viewer' && (selectedCourse?.clean_title || selectedCourse?.title || 'Course Reader')}
-              {currentView === 'calculator' && 'Reconstitution Syringe Calculator'}
-              {currentView === 'research' && 'PubMed & Pharmacology Studies'}
-            </span>
-          </div>
+        {/* Top Navbar: only displayed in reference/library views to keep AI Chat 100% immersive and distraction-free */}
+        {currentView !== 'chat' && (
+          <header className="top-navbar">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
+                {currentView === 'knowledge' && 'Peptide & Vault Monograph Library'}
+                {currentView === 'compound_detail' && (selectedCompound?.name || 'Compound Monograph')}
+                {currentView === 'protocols' && 'Vetted Clinical Protocols'}
+                {currentView === 'protocol_detail' && (selectedProtocol?.name || 'Protocol Guidelines')}
+                {currentView === 'classroom' && 'Masterclass Classroom'}
+                {currentView === 'course_viewer' && (selectedCourse?.clean_title || selectedCourse?.title || 'Course Reader')}
+                {currentView === 'calculator' && 'Reconstitution Syringe Calculator'}
+                {currentView === 'research' && 'PubMed & Pharmacology Studies'}
+              </span>
+            </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            {currentView === 'chat' && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <button
-                onClick={() => setResetChatTrigger((p) => p + 1)}
+                onClick={() => setIsApiKeyOpen(true)}
                 className="btn btn-outline"
                 style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
               >
-                + New Chat
+                <span>{apiKey ? 'Gemini Key Ready' : 'Add Gemini Key'}</span>
+                <span
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: apiKey ? 'var(--accent-teal)' : '#F59E0B',
+                  }}
+                ></span>
               </button>
-            )}
-
-            <button
-              onClick={() => setIsApiKeyOpen(true)}
-              className="btn btn-outline"
-              style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
-            >
-              <span>{apiKey ? 'Gemini Key Ready' : 'Add Gemini Key'}</span>
-              <span
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: apiKey ? 'var(--accent-teal)' : '#F59E0B',
-                }}
-              ></span>
-            </button>
-          </div>
-        </header>
+            </div>
+          </header>
+        )}
 
         {/* Dynamic View Body - Custom isolated viewport for chat with zero outer scroll */}
         <div className={currentView === 'chat' ? 'chat-viewport-container' : 'content-scrollable'}>

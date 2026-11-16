@@ -375,7 +375,7 @@ export default function ChatView({
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={apiKey ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math..." : "Please enter your Gemini API key above to start research..."}
+            placeholder={apiKey ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math..." : "Enter your Gemini API key in the sidebar to start research..."}
             disabled={isLoading}
             style={{
               width: '100%',
