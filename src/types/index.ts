@@ -128,6 +128,7 @@ export interface ChatMessage {
   content: string;
   timestamp: string;
   sources?: string[];
+  thoughts?: string;
 }
 
 export interface CalculatorState {

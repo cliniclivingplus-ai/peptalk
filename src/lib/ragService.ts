@@ -26,9 +26,10 @@ const COMMON_ALIASES: Record<string, string[]> = {
   'tb-500': ['thymosin beta 4', 'tb500', 'wolverine stack'],
   tb500: ['tb-500', 'thymosin beta 4'],
   'ghk-cu': ['copper peptide', 'ghk', 'cosmetic', 'collagen'],
-  cjc: ['cjc-1295', 'dac', 'growth hormone'],
+  cjc: ['cjc-1295', 'dac', 'growth hormone', 'ipamorelin'],
   'cjc-1295': ['cjc', 'dac', 'ipamorelin'],
-  ipamorelin: ['ghrp', 'growth hormone'],
+  ipa: ['ipamorelin', 'ghrp', 'growth hormone'],
+  ipamorelin: ['ghrp', 'growth hormone', 'cjc-1295', 'ipa'],
   sermorelin: ['growth hormone', 'ghrh'],
   tesamorelin: ['egrifta', 'visceral fat', 'growth hormone'],
   aod: ['aod-9604', 'fat loss'],
@@ -41,15 +42,27 @@ const COMMON_ALIASES: Record<string, string[]> = {
   'mots-c': ['motsc', 'mitochondrial peptide', 'exercise mimetic'],
   selank: ['anxiolytic', 'nootropic', 'semax'],
   semax: ['nootropic', 'bdnf', 'neuroprotection'],
+  pylori: ['h pylori', 'helicobacter pylori', 'll-37', 'thymosin alpha-1', 'bpc-157'],
+  'h pylori': ['helicobacter pylori', 'll-37', 'thymosin alpha-1', 'bpc-157'],
+  'll-37': ['cathelicidin', 'll37', 'antimicrobial'],
+  ll37: ['ll-37', 'cathelicidin'],
+  ta1: ['thymosin alpha-1', 'thymosin alpha 1', 'tα1'],
+  tests: ['bloodwork', 'labs', 'testing', 'biomarkers', 'panel', 'igf-1'],
+  test: ['bloodwork', 'labs', 'testing', 'biomarkers', 'panel', 'igf-1'],
+  testing: ['bloodwork', 'labs', 'tests', 'baseline', 'biomarkers', 'panel'],
+  bloodwork: ['labs', 'tests', 'baseline', 'biomarkers', 'panel', 'blood panel'],
+  labs: ['bloodwork', 'tests', 'baseline', 'biomarkers', 'panel'],
+  protocol: ['dosing', 'cycle', 'titration', 'schedule', 'reconstitution'],
+  protocols: ['dosing', 'cycle', 'titration', 'schedule', 'reconstitution'],
 };
 
 const STOP_WORDS = new Set([
-  'what', 'will', 'the', 'dose', 'dosing', 'for', 'with', 'and', 'how', 'much',
+  'what', 'will', 'the', 'for', 'with', 'and', 'how', 'much',
   'about', 'from', 'this', 'that', 'yrs', 'old', 'tell', 'give', 'can', 'you',
-  'best', 'good', 'should', 'use', 'take', 'need', 'when', 'which', 'where', 'does',
+  'should', 'use', 'take', 'need', 'when', 'which', 'where', 'does',
 ]);
 
-export function searchInternalKnowledge(query: string, maxResults: number = 6): RAGDocument[] {
+export function searchInternalKnowledge(query: string, maxResults: number = 8): RAGDocument[] {
   const cleanQuery = query.toLowerCase().trim();
   const rawTokens = cleanQuery
     .replace(/[^\w\s-]/g, ' ')
@@ -191,12 +204,13 @@ export function searchInternalKnowledge(query: string, maxResults: number = 6): 
     const lCourse = l.course.toLowerCase();
     const lText = l.text.toLowerCase();
 
-    if (lTitle.includes(cleanQuery)) score += 35;
+    if (lTitle.includes(cleanQuery)) score += 60;
 
     for (const token of tokenList) {
-      if (lTitle.includes(token)) score += 20;
-      else if (lCourse.includes(token)) score += 10;
-      else if (lText.includes(token)) score += 3;
+      if (lTitle === token) score += 45;
+      else if (lTitle.includes(token)) score += 30;
+      else if (lCourse.includes(token)) score += 15;
+      else if (lText.includes(token)) score += 6;
     }
 
     if (score > 0) {

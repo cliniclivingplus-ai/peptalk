@@ -184,6 +184,7 @@ export default function ChatView({
         content: data.reply,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         sources: Array.isArray(data.sources) ? data.sources.map((s: any) => s.title || s) : [],
+        thoughts: data.thoughts,
       };
 
       setMessages((prev) => [...prev, assistantMsg]);
@@ -316,6 +317,50 @@ export default function ChatView({
                     <div style={{ whiteSpace: 'pre-wrap', fontWeight: 500 }}>{m.content}</div>
                   ) : (
                     <div>
+                      {m.thoughts && (
+                        <details
+                          style={{
+                            marginBottom: '1rem',
+                            padding: '0.65rem 0.95rem',
+                            borderRadius: '10px',
+                            background: '#F8FAFC',
+                            border: '1px solid #E2E8F0',
+                            fontSize: '0.84rem',
+                          }}
+                        >
+                          <summary
+                            style={{
+                              cursor: 'pointer',
+                              fontWeight: 700,
+                              color: '#334155',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.45rem',
+                              userSelect: 'none',
+                            }}
+                          >
+                            <span>🧠 Clinical Reasoning & Intent Analysis</span>
+                            <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>(Click to view)</span>
+                          </summary>
+                          <div
+                            style={{
+                              marginTop: '0.65rem',
+                              paddingTop: '0.65rem',
+                              borderTop: '1px solid #E2E8F0',
+                              whiteSpace: 'pre-wrap',
+                              lineHeight: 1.55,
+                              fontFamily: 'monospace',
+                              fontSize: '0.8rem',
+                              color: '#475569',
+                              maxHeight: '260px',
+                              overflowY: 'auto',
+                            }}
+                          >
+                            {m.thoughts}
+                          </div>
+                        </details>
+                      )}
+
                       <ClinicalMarkdown content={m.content} />
 
                       {m.sources && m.sources.length > 0 && (
