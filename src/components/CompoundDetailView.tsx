@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Compound, Protocol, ResearchPaperRef, ReconstitutionGuide } from '@/types';
 import { parseVaultMonograph } from '@/lib/monographParser';
+import ClinicalMarkdown from '@/components/ClinicalMarkdown';
 import { 
   ArrowLeft, 
   MessageSquare, 
@@ -112,6 +113,121 @@ export default function CompoundDetailView({
   const primaryRoute = parsed?.metadata.primaryRoute || parsed?.dosing.route || (compound.body && compound.body.match(/PRIMARY ROUTE\s+([^\n]+)/i)?.[1]);
   const formsAvailable = parsed?.metadata.availableForms || (compound.body && compound.body.match(/AVAILABLE FORMS\s+([^\n]+)/i)?.[1]);
   const halfLifeVal = compound.halfLife || storage.halfLife || parsed?.metadata.halfLife || (compound.body && compound.body.match(/HALF-LIFE\s+([^\n]+)/i)?.[1]);
+
+  if (compound.kind === 'guide') {
+    return (
+      <div style={{ maxWidth: '960px', margin: '0 auto', paddingBottom: '3rem' }}>
+        <div 
+          onClick={onBack}
+          style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '0.45rem', 
+            cursor: 'pointer', 
+            color: 'var(--text-secondary)', 
+            fontWeight: 600, 
+            fontSize: '0.92rem', 
+            marginBottom: '1.25rem' 
+          }}
+        >
+          <ArrowLeft size={16} />
+          <span>Back to Knowledge Base</span>
+        </div>
+
+        <div className="compound-item-card" style={{ padding: '2rem', marginBottom: '1.5rem', cursor: 'default' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.65rem' }}>
+            <span className="badge-tag">{compound.category}</span>
+            <span className="compound-pill" style={{ background: 'var(--primary-light)', color: 'var(--primary)', fontWeight: 600 }}>
+              Educational Guide & Deep Dive
+            </span>
+          </div>
+          <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
+            {compound.name}
+          </h1>
+          {compound.overview && (
+            <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 500, marginTop: '0.4rem' }}>
+              {compound.overview}
+            </p>
+          )}
+          {compound.source && (
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.45rem' }}>
+              Source: <code>{compound.source}</code>
+            </p>
+          )}
+
+          <div style={{ marginTop: '1.25rem', display: 'flex', gap: '0.65rem' }}>
+            <button
+              onClick={() => onAskAi(compound.name)}
+              className="btn btn-primary"
+              style={{ fontSize: '0.88rem', padding: '0.55rem 1.15rem' }}
+            >
+              <MessageSquare size={16} />
+              <span>Ask PepTalk About This Guide</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="compound-item-card" style={{ padding: '2.25rem', cursor: 'default' }}>
+          <ClinicalMarkdown content={compound.body || ''} />
+        </div>
+      </div>
+    );
+  }
+
+  if (compound.kind === 'goal') {
+    return (
+      <div style={{ maxWidth: '960px', margin: '0 auto', paddingBottom: '3rem' }}>
+        <div 
+          onClick={onBack}
+          style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '0.45rem', 
+            cursor: 'pointer', 
+            color: 'var(--text-secondary)', 
+            fontWeight: 600, 
+            fontSize: '0.92rem', 
+            marginBottom: '1.25rem' 
+          }}
+        >
+          <ArrowLeft size={16} />
+          <span>Back to Knowledge Base</span>
+        </div>
+
+        <div className="compound-item-card" style={{ padding: '2rem', marginBottom: '1.5rem', cursor: 'default' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.65rem' }}>
+            <span className="badge-tag">Goal Stacks & Strategies</span>
+            <span className="compound-pill" style={{ background: '#ECFDF5', color: '#065F46', fontWeight: 600 }}>
+              Clinical Pathway Architecture
+            </span>
+          </div>
+          <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.025em', lineHeight: 1.2 }}>
+            {compound.name}
+          </h1>
+          {compound.overview && (
+            <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 500, marginTop: '0.4rem' }}>
+              {compound.overview}
+            </p>
+          )}
+
+          <div style={{ marginTop: '1.25rem', display: 'flex', gap: '0.65rem' }}>
+            <button
+              onClick={() => onAskAi(compound.name)}
+              className="btn btn-primary"
+              style={{ fontSize: '0.88rem', padding: '0.55rem 1.15rem' }}
+            >
+              <MessageSquare size={16} />
+              <span>Ask PepTalk About This Goal</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="compound-item-card" style={{ padding: '2.25rem', cursor: 'default' }}>
+          <ClinicalMarkdown content={compound.body || ''} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ maxWidth: '960px', margin: '0 auto', paddingBottom: '3rem' }}>

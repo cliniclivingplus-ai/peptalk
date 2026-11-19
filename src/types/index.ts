@@ -9,7 +9,7 @@ export type ViewMode =
   | 'calculator'
   | 'research';
 
-export type KbTabType = 'core' | 'vault_peptide' | 'vault_supplement' | 'vault_cosmetic' | 'vault_goal';
+export type KbTabType = 'core' | 'vault_peptide' | 'vault_supplement' | 'vault_cosmetic' | 'vault_goal' | 'guides';
 
 export interface ResearchPaperRef {
   title: string;

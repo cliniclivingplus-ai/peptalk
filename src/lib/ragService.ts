@@ -224,33 +224,36 @@ export function searchInternalKnowledge(query: string, maxResults: number = 8): 
     }
   }
 
-  // 4. Search Published Research & Regulatory Papers (Only if regulatory query OR if clinical score is modest)
-  if (isRegulatoryQuery) {
-    for (const r of researchPapers) {
-      let score = 0;
-      const rTitle = (r.title || '').toLowerCase();
-      const rSummary = (r.summary || '').toLowerCase();
-      const rSource = (r.source || '').toLowerCase();
-      const rPeptides = (Array.isArray(r.peptides) ? r.peptides.join(' ') : '').toLowerCase();
+  // 4. Search Published Research & Regulatory Papers (31 Studies from PepPal Research Library)
+  for (const r of researchPapers) {
+    let score = 0;
+    const rTitle = (r.title || '').toLowerCase();
+    const rSummary = (r.summary || '').toLowerCase();
+    const rSource = (r.source || '').toLowerCase();
+    const rPeptides = (Array.isArray(r.peptides) ? r.peptides.join(' ') : '').toLowerCase();
 
-      if (rTitle.includes(cleanQuery)) score += 30;
+    // If regulatory query, boost FDA/503B regulatory papers
+    if (isRegulatoryQuery && (rTitle.includes('fda') || rTitle.includes('503b') || rSummary.includes('503b'))) {
+      score += 25;
+    }
 
-      for (const token of tokenList) {
-        if (rTitle.includes(token)) score += 15;
-        else if (rPeptides.includes(token)) score += 10;
-        else if (rSource.includes(token)) score += 6;
-        else if (rSummary.includes(token)) score += 3;
-      }
+    if (rTitle.includes(cleanQuery)) score += 35;
 
-      if (score > 0) {
-        matchedDocs.push({
-          title: `Study/Paper: ${r.title} (${r.year || 'Ref'})`,
-          category: 'Published Study',
-          score,
-          url: r.url || '',
-          text: `Published Paper: "${r.title}"\nSource: ${r.source} (${r.year || 'N/A'})\nTarget Peptides: ${(r.peptides || []).join(', ')}\nCategory: ${r.category || 'Clinical'}\nSummary: ${(r.summary || '').slice(0, 800)}`,
-        });
-      }
+    for (const token of tokenList) {
+      if (rTitle.includes(token)) score += 20;
+      else if (rPeptides.includes(token)) score += 25; // Strongly match when target peptide is named
+      else if (rSource.includes(token)) score += 8;
+      else if (rSummary.includes(token)) score += 5;
+    }
+
+    if (score > 0) {
+      matchedDocs.push({
+        title: `Study/Paper: ${r.title} (${r.year || 'Ref'})`,
+        category: 'Published Study',
+        score,
+        url: r.url || '',
+        text: `Published Paper: "${r.title}"\nSource: ${r.source} (${r.year || 'N/A'})\nTarget Peptides: ${(r.peptides || []).join(', ')}\nCategory: ${r.category || 'Clinical'}\nSummary: ${(r.summary || '').slice(0, 800)}`,
+      });
     }
   }
 

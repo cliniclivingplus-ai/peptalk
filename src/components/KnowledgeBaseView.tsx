@@ -7,12 +7,14 @@ import { Search } from 'lucide-react';
 interface KnowledgeBaseViewProps {
   corePeptides: Compound[];
   vaultItems: Compound[];
+  clinicalGuides?: Compound[];
   onSelectCompound: (c: Compound) => void;
 }
 
 export default function KnowledgeBaseView({
   corePeptides,
   vaultItems,
+  clinicalGuides = [],
   onSelectCompound,
 }: KnowledgeBaseViewProps) {
   const [activeTab, setActiveTab] = useState<KbTabType>('core');
@@ -25,15 +27,16 @@ export default function KnowledgeBaseView({
     if (activeTab === 'vault_supplement') return vaultItems.filter((i) => i.kind === 'supplement');
     if (activeTab === 'vault_cosmetic') return vaultItems.filter((i) => i.kind === 'cosmetic');
     if (activeTab === 'vault_goal') return vaultItems.filter((i) => i.kind === 'goal');
+    if (activeTab === 'guides') return clinicalGuides;
     return [];
-  }, [activeTab, corePeptides, vaultItems]);
+  }, [activeTab, corePeptides, vaultItems, clinicalGuides]);
 
   const categories = useMemo(() => {
     const set = new Set<string>(['All']);
     activeDataset.forEach((c) => {
       if (c.category) set.add(c.category);
     });
-    return Array.from(set).slice(0, 10);
+    return Array.from(set).slice(0, 12);
   }, [activeDataset]);
 
   const filteredCompounds = useMemo(() => {
@@ -58,7 +61,7 @@ export default function KnowledgeBaseView({
         <div>
           <h1 className="page-title">Knowledge Base</h1>
           <p className="page-subtitle">
-            Curated peptide monographs, full clinical mechanisms, reconstitution guidelines, and research papers.
+            Curated peptide monographs, full clinical mechanisms, reconstitution guidelines, and research papers extracted from PepPal.
           </p>
         </div>
       </div>
@@ -104,6 +107,14 @@ export default function KnowledgeBaseView({
           <span>Goal Stacks</span>
           <span className="tab-badge-count">{vaultItems.filter((i) => i.kind === 'goal').length}</span>
         </button>
+
+        <button
+          className={`library-tab ${activeTab === 'guides' ? 'active' : ''}`}
+          onClick={() => { setActiveTab('guides'); setCategory('All'); }}
+        >
+          <span>Guides & Deep Dives</span>
+          <span className="tab-badge-count">{clinicalGuides.length}</span>
+        </button>
       </div>
 
       {/* Search Input */}
@@ -113,7 +124,7 @@ export default function KnowledgeBaseView({
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder={`Search across ${activeDataset.length} compounds...`}
+          placeholder={`Search across ${activeDataset.length} entries...`}
           className="search-input-field"
         />
       </div>
@@ -157,7 +168,7 @@ export default function KnowledgeBaseView({
               <div className="compound-item-footer">
                 <span className="badge-tag">{item.category}</span>
                 <span style={{ marginLeft: 'auto', color: 'var(--primary)', fontWeight: 700, fontSize: '0.88rem' }}>
-                  View Monograph →
+                  {item.kind === 'guide' ? 'Read Full Guide →' : item.kind === 'goal' ? 'View Goal Stack →' : 'View Monograph →'}
                 </span>
               </div>
             </div>
@@ -166,7 +177,7 @@ export default function KnowledgeBaseView({
 
         {filteredCompounds.length === 0 && (
           <div style={{ gridColumn: '1 / -1', padding: '3.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-            No compounds found matching your search.
+            No entries found matching your search.
           </div>
         )}
       </div>

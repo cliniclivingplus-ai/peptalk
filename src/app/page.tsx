@@ -6,6 +6,7 @@ import { corePeptides, vaultItems, allCompounds } from '@/lib/data/compounds';
 import { protocols } from '@/lib/data/protocols';
 import { courses } from '@/lib/data/courses';
 import { researchPapers } from '@/lib/data/research';
+import { clinicalGuides } from '@/lib/data/guides';
 
 import Sidebar from '@/components/Sidebar';
 import ApiKeyModal from '@/components/ApiKeyModal';
@@ -144,6 +145,7 @@ export default function Home() {
             <KnowledgeBaseView
               corePeptides={corePeptides}
               vaultItems={vaultItems}
+              clinicalGuides={clinicalGuides}
               onSelectCompound={handleSelectCompound}
             />
           )}

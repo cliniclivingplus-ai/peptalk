@@ -128,7 +128,7 @@ export const protocols: Protocol[] = [
     ]
   },
   {
-    "id": "",
+    "id": "glow-blend",
     "name": "GLOW Blend Dosing Protocol",
     "subtitle": "GHK-Cu 50mg | BPC-157 10mg | TB-500 10mg",
     "tagline": "Skin Regeneration & Tissue Repair Blend",
@@ -1329,7 +1329,7 @@ export const protocols: Protocol[] = [
     "tagline": "Anti-Inflammatory & Gut Health Tripeptide",
     "cycleInfo": "Once or twice daily subcutaneous \u2014 flexible cycle duration \u2014 goal-directed use",
     "whatIsIt": "KPV (Lysine-Proline-Valine) is a tripeptide fragment derived from the C-terminus of Alpha-MSH (Alpha-Melanocyte-Stimulating Hormone) \u2014 the body's own potent anti-inflammatory signalling molecule. KPV retains Alpha-MSH's anti-inflammatory activity in a smaller, more targeted form. KPV works primarily by directly inhibiting NF-\u03baB \u2014 the master regulator of inflammatory gene expression. By suppressing NF-\u03baB, KPV prevents the production of pro-inflammatory cytokines including TNF-\u03b1, IL-1\u03b2, and IL-6, while preserving beneficial immune responses. This targeted mechanism makes it significantly more selective than broad-spectrum anti-inflammatories. KPV's effects are systemic \u2014 it reduces inflammation throughout the body \u2014 but it has particularly well-documented efficacy in the gastrointestinal tract, where it has been studied for inflammatory bowel disease (IBD), Crohn's disease, and ulcerative colitis. It also demonstrates meaningful effects on skin inflammatory conditions and systemic immune dysregulation.",
-    "pdfUrl": "/protocols/KPV_Dosing_Protocol.pdf",
+    "pdfUrl": "",
     "reconstitution": {
       "instructions": "Use 1ml of bacteriostatic water (bac water) per 10mg of peptide. Both vial sizes reconstitute to the same concentration \u2014 0.1mg per unit \u2014 making dose measurement identical regardless of which vial you use. Draw up slowly along the vial wall \u2014 do not shake or agitate.",
       "table": [
