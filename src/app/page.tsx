@@ -36,14 +36,27 @@ export default function Home() {
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
 
   const [apiKey, setApiKey] = useState<string>('');
+  const [hasServerKey, setHasServerKey] = useState<boolean>(false);
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
 
-  // Restore API key
+  // Restore client-side API key from localStorage and check if server environment has GEMINI_API_KEY
   useEffect(() => {
     const raw = localStorage.getItem('peptalk_gemini_api_key') || localStorage.getItem('peppal_gemini_api_key') || '';
     const cleaned = raw.trim().replace(/^['"]|['"]$/g, '');
     if (cleaned) setApiKey(cleaned);
+
+    fetch('/api/chat')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.hasServerKey) {
+          setHasServerKey(true);
+        }
+      })
+      .catch((err) => console.warn('Could not verify server API key status:', err));
   }, []);
+
+  const isKeyActive = !!apiKey.trim() || hasServerKey;
+  const effectiveApiKey = apiKey || (hasServerKey ? 'server_configured' : '');
 
   // Restore & initialize saved chat sessions from localStorage
   useEffect(() => {
@@ -214,7 +227,7 @@ export default function Home() {
         onNavigate={handleNavigate}
         onOpenApiKey={() => setIsApiKeyOpen(true)}
         onNewChat={handleNewChat}
-        apiKey={apiKey}
+        apiKey={effectiveApiKey}
         compoundCount={allCompounds.length}
         courseCount={courses.length}
         chatSessions={chatSessions}
@@ -246,13 +259,13 @@ export default function Home() {
                 className="btn btn-outline"
                 style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
               >
-                <span>{apiKey ? 'Gemini Key Ready' : 'Add Gemini Key'}</span>
+                <span>{isKeyActive ? 'Gemini Key Ready' : 'Add Gemini Key'}</span>
                 <span
                   style={{
                     width: '8px',
                     height: '8px',
                     borderRadius: '50%',
-                    background: apiKey ? 'var(--accent-teal)' : '#F59E0B',
+                    background: isKeyActive ? 'var(--accent-teal)' : '#F59E0B',
                   }}
                 ></span>
               </button>
@@ -264,7 +277,7 @@ export default function Home() {
         <div className={currentView === 'chat' ? 'chat-viewport-container' : 'content-scrollable'}>
           {currentView === 'chat' && (
             <ChatView
-              apiKey={apiKey}
+              apiKey={effectiveApiKey}
               onOpenApiKey={() => setIsApiKeyOpen(true)}
               compounds={allCompounds}
               protocols={protocols}
