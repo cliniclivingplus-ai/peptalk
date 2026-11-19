@@ -137,10 +137,10 @@ ${internalContext}
     // 3. Current active Gemini models in order of priority (tested live with active key)
     const candidateModels = [
       'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
       'gemini-flash-lite-latest',
-      'gemini-3.8-flash',
       'gemini-3.5-flash-lite',
-      'gemini-flash-latest',
+      'gemini-3.1-flash-lite',
     ];
 
     // Build chat contents from history (last 6 turns max for speed and relevance)
