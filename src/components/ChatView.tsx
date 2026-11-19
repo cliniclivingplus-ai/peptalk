@@ -15,6 +15,11 @@ import {
   Plus,
   MessageSquare,
   Clock,
+  Brain,
+  Calculator,
+  RefreshCw,
+  FileText,
+  Search,
 } from 'lucide-react';
 import ClinicalMarkdown from './ClinicalMarkdown';
 
@@ -30,6 +35,47 @@ interface ChatViewProps {
   onUpdateSession: (session: ChatSession) => void;
   onNewChat?: () => void;
 }
+
+const LOADING_STAGES = [
+  {
+    phase: 'Thinking',
+    detail: 'Analyzing query intent & peptide pharmacodynamics...',
+    icon: Brain,
+    color: '#7F66FF',
+  },
+  {
+    phase: 'Retrieving',
+    detail: 'Cross-referencing 699 monographs, protocols & masterclasses...',
+    icon: Search,
+    color: '#3B82F6',
+  },
+  {
+    phase: 'Calculating',
+    detail: 'Calculating dosing titration, half-lives & reconstitution math...',
+    icon: Calculator,
+    color: '#10B981',
+  },
+  {
+    phase: 'Rethinking',
+    detail: 'Auditing contraindications, lab biomarkers & safety rules...',
+    icon: RefreshCw,
+    color: '#F59E0B',
+  },
+  {
+    phase: 'Writing',
+    detail: 'Synthesizing evidence-grounded clinical response...',
+    icon: FileText,
+    color: '#8B5CF6',
+  },
+];
+
+const getLoadingStage = (seconds: number) => {
+  if (seconds < 2) return LOADING_STAGES[0]; // Thinking (0-1s)
+  if (seconds < 4) return LOADING_STAGES[1]; // Retrieving (2-3s)
+  if (seconds < 6) return LOADING_STAGES[2]; // Calculating (4-5s)
+  if (seconds < 8) return LOADING_STAGES[3]; // Rethinking (6-7s)
+  return LOADING_STAGES[4]; // Writing (8s+)
+};
 
 export default function ChatView({
   apiKey,
@@ -480,24 +526,101 @@ export default function ChatView({
             </div>
           )}
 
-          {/* Real-time Loading Indicator with live timer */}
-          {isLoading && (
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginTop: '1rem' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary)', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Bot size={20} />
-              </div>
-              <div style={{ padding: '1rem 1.4rem', borderRadius: '4px 18px 18px 18px', background: '#FFFFFF', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                <div style={{ display: 'flex', gap: '0.35rem' }}>
-                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite' }} />
-                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite 0.2s' }} />
-                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite 0.4s' }} />
+          {/* Real-time Multi-Stage Intelligence Loading Card */}
+          {isLoading && (() => {
+            const currentStage = getLoadingStage(loadingSeconds);
+            const StageIcon = currentStage.icon;
+
+            return (
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginTop: '1rem' }}>
+                <div
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '12px',
+                    background: 'var(--primary)',
+                    color: '#FFFFFF',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    marginTop: '2px',
+                    boxShadow: '0 2px 8px rgba(127, 102, 255, 0.3)',
+                  }}
+                >
+                  <Bot size={20} />
                 </div>
-                <span style={{ fontSize: '0.88rem', color: '#64748B', fontWeight: 600 }}>
-                  Synthesizing clinical monographs & protocols... ({loadingSeconds}s)
-                </span>
+
+                <div
+                  style={{
+                    padding: '0.95rem 1.35rem',
+                    borderRadius: '4px 20px 20px 20px',
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.55rem',
+                    minWidth: '320px',
+                    maxWidth: '480px',
+                  }}
+                >
+                  {/* Top Header: Current Action Stage + Timer */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <div
+                        style={{
+                          width: '26px',
+                          height: '26px',
+                          borderRadius: '8px',
+                          background: `${currentStage.color}15`,
+                          color: currentStage.color,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <StageIcon size={14} className={currentStage.phase === 'Rethinking' ? 'spin-slow' : ''} />
+                      </div>
+                      <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0F172A' }}>
+                        {currentStage.phase}...
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                      <div style={{ display: 'flex', gap: '0.25rem' }}>
+                        <span className="typing-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: currentStage.color, animation: 'pulse 1.2s infinite' }} />
+                        <span className="typing-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: currentStage.color, animation: 'pulse 1.2s infinite 0.2s' }} />
+                        <span className="typing-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: currentStage.color, animation: 'pulse 1.2s infinite 0.4s' }} />
+                      </div>
+                      <span style={{ fontSize: '0.74rem', color: '#94A3B8', fontWeight: 600, minWidth: '22px', textAlign: 'right' }}>
+                        {loadingSeconds}s
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Animated Dynamic Progress Bar */}
+                  <div style={{ width: '100%', height: '3px', background: '#F1F5F9', borderRadius: '999px', overflow: 'hidden' }}>
+                    <div
+                      className="loading-progress-bar"
+                      style={{
+                        height: '100%',
+                        width: `${Math.min(25 + loadingSeconds * 12, 95)}%`,
+                        borderRadius: '999px',
+                        transition: 'width 0.8s ease',
+                      }}
+                    />
+                  </div>
+
+                  {/* Dynamic Detail Text with keyframe transition */}
+                  <div key={currentStage.phase} className="stage-fade-in" style={{ fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+                    {currentStage.detail}
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           <div ref={messagesEndRef} style={{ height: '4px' }} />
         </div>
