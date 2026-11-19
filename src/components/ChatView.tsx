@@ -228,6 +228,13 @@ export default function ChatView({
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (input.trim() && !isLoading) {
+      handleSendMessage(input);
+    }
+  };
+
   return (
     <div className="chat-layout-root">
       {/* Top Session Header Bar */}
@@ -497,8 +504,8 @@ export default function ChatView({
       </div>
 
       {/* Floating Prompt Input Box */}
-      <div className="chat-input-sticky">
-        <div className="chat-input-pill">
+      <footer className="chat-input-sticky-footer">
+        <form onSubmit={handleSubmit} className="chat-input-inner">
           <textarea
             ref={textareaRef}
             rows={1}
@@ -506,31 +513,51 @@ export default function ChatView({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math... (Shift + Enter for new line)"
-            className="chat-textarea-field"
+            style={{
+              width: '100%',
+              minHeight: '52px',
+              maxHeight: '180px',
+              padding: '0.95rem 3.6rem 0.95rem 1.25rem',
+              borderRadius: '16px',
+              border: '1px solid #CBD5E1',
+              outline: 'none',
+              fontSize: '0.95rem',
+              lineHeight: 1.55,
+              background: '#FFFFFF',
+              boxShadow: 'var(--shadow-card)',
+              color: '#0F172A',
+              resize: 'none',
+              fontFamily: 'inherit',
+              overflowY: input.length > 120 ? 'auto' : 'hidden',
+              display: 'block',
+            }}
             disabled={isLoading}
           />
           <button
-            onClick={() => handleSendMessage(input)}
-            disabled={!input.trim() || isLoading}
-            className="btn btn-primary"
+            type="submit"
+            disabled={isLoading || !input.trim()}
             style={{
-              padding: '0.65rem',
+              position: 'absolute',
+              right: '9px',
+              bottom: '8px',
+              width: '38px',
+              height: '38px',
               borderRadius: '12px',
-              width: '42px',
-              height: '42px',
+              background: input.trim() && !isLoading ? 'var(--primary)' : '#E2E8F0',
+              color: input.trim() && !isLoading ? '#FFFFFF' : '#94A3B8',
+              border: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              flexShrink: 0,
-              opacity: !input.trim() || isLoading ? 0.4 : 1,
-              cursor: !input.trim() || isLoading ? 'not-allowed' : 'pointer',
-              marginBottom: '4px',
+              cursor: input.trim() && !isLoading ? 'pointer' : 'default',
+              transition: 'all 0.2s ease',
             }}
+            title="Send prompt (Enter)"
           >
             <Send size={18} />
           </button>
-        </div>
-      </div>
+        </form>
+      </footer>
     </div>
   );
 }
