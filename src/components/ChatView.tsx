@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { ChatMessage, Compound, Protocol, Course } from '@/types';
+import { ChatMessage, Compound, Protocol, Course, ChatSession } from '@/types';
 import {
   Send,
   Sparkles,
@@ -13,6 +13,8 @@ import {
   RotateCcw,
   CheckCircle2,
   Plus,
+  MessageSquare,
+  Clock,
 } from 'lucide-react';
 import ClinicalMarkdown from './ClinicalMarkdown';
 
@@ -24,19 +26,21 @@ interface ChatViewProps {
   courses: Course[];
   initialPrompt?: string;
   onClearInitialPrompt?: () => void;
-  resetTrigger?: number;
+  activeSession: ChatSession | null;
+  onUpdateSession: (session: ChatSession) => void;
+  onNewChat?: () => void;
 }
-
-const CHAT_STORAGE_KEY = 'peptalk_ai_chat_history_v2';
 
 export default function ChatView({
   apiKey,
   onOpenApiKey,
   initialPrompt,
   onClearInitialPrompt,
-  resetTrigger = 0,
+  activeSession,
+  onUpdateSession,
+  onNewChat,
 }: ChatViewProps) {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>(activeSession?.messages || []);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [loadingSeconds, setLoadingSeconds] = useState(0);
@@ -44,6 +48,11 @@ export default function ChatView({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Sync messages whenever activeSession switches
+  useEffect(() => {
+    setMessages(activeSession?.messages || []);
+  }, [activeSession?.id]);
 
   // Auto-resize textarea to fit multi-line paragraphs up to max-height
   useEffect(() => {
@@ -53,40 +62,6 @@ export default function ChatView({
       textareaRef.current.style.height = `${Math.max(newHeight, 52)}px`;
     }
   }, [input]);
-
-  // Restore saved chats from localStorage on load
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(CHAT_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setMessages(parsed);
-        }
-      }
-    } catch (e) {
-      console.warn('Failed to parse saved chat history:', e);
-    }
-  }, []);
-
-  // Save chat history to localStorage whenever messages change
-  useEffect(() => {
-    if (messages.length > 0) {
-      try {
-        localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
-      } catch (e) {
-        console.warn('Failed to save chat history:', e);
-      }
-    }
-  }, [messages]);
-
-  // Handle external reset trigger (e.g. from Sidebar New Chat button)
-  useEffect(() => {
-    if (resetTrigger && resetTrigger > 0) {
-      setMessages([]);
-      localStorage.removeItem(CHAT_STORAGE_KEY);
-    }
-  }, [resetTrigger]);
 
   // Loading seconds timer for visibility and speed awareness
   useEffect(() => {
@@ -110,7 +85,6 @@ export default function ChatView({
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }
     };
-    // Immediate scroll + slight timeout to accommodate layout expansion
     scrollToBottom();
     const t = setTimeout(scrollToBottom, 80);
     return () => clearTimeout(t);
@@ -124,9 +98,16 @@ export default function ChatView({
     }
   }, [initialPrompt]);
 
-  const handleClearChat = () => {
+  const handleClearCurrentChat = () => {
+    if (!activeSession) return;
+    const clearedSession: ChatSession = {
+      ...activeSession,
+      title: 'New Conversation',
+      messages: [],
+      updatedAt: Date.now(),
+    };
     setMessages([]);
-    localStorage.removeItem(CHAT_STORAGE_KEY);
+    onUpdateSession(clearedSession);
   };
 
   const handleSendMessage = async (textToSend: string) => {
@@ -145,13 +126,31 @@ export default function ChatView({
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput('');
     setIsLoading(true);
 
+    // Auto-title session if it was previously untitled or default
+    let sessionTitle = activeSession?.title || 'New Conversation';
+    if (!activeSession?.messages || activeSession.messages.length === 0 || sessionTitle === 'New Conversation') {
+      sessionTitle = text.slice(0, 36).replace(/\n/g, ' ').trim();
+      if (text.length > 36) sessionTitle += '...';
+    }
+
+    // Persist user turn immediately into session
+    if (activeSession) {
+      onUpdateSession({
+        ...activeSession,
+        title: sessionTitle,
+        messages: nextMessages,
+        updatedAt: Date.now(),
+      });
+    }
+
     try {
-      // Build history for backend route
-      const historyPayload = messages.slice(-6).map((m) => ({
+      // Build history payload for backend route
+      const historyPayload = nextMessages.slice(-6).map((m) => ({
         role: m.role,
         content: m.content,
       }));
@@ -187,28 +186,94 @@ export default function ChatView({
         thoughts: data.thoughts,
       };
 
-      setMessages((prev) => [...prev, assistantMsg]);
+      const finalMessages = [...nextMessages, assistantMsg];
+      setMessages(finalMessages);
+
+      if (activeSession) {
+        onUpdateSession({
+          ...activeSession,
+          title: sessionTitle,
+          messages: finalMessages,
+          updatedAt: Date.now(),
+        });
+      }
     } catch (err: any) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: 'msg_' + Date.now(),
-          role: 'assistant',
-          content: `### Clinical Engine Communication Error\n\n${err.message || 'Network connection failed.'}\n\nPlease check your internet connection or verify your Gemini API key in settings.`,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        },
-      ]);
+      const errorMsg: ChatMessage = {
+        id: 'msg_' + Date.now(),
+        role: 'assistant',
+        content: `### Clinical Engine Communication Error\n\n${err.message || 'Network connection failed.'}\n\nPlease check your internet connection or verify your Gemini API key in settings.`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      };
+
+      const withErrorMessages = [...nextMessages, errorMsg];
+      setMessages(withErrorMessages);
+
+      if (activeSession) {
+        onUpdateSession({
+          ...activeSession,
+          title: sessionTitle,
+          messages: withErrorMessages,
+          updatedAt: Date.now(),
+        });
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(input);
+    }
+  };
+
   return (
     <div className="chat-layout-root">
+      {/* Top Session Header Bar */}
+      <header className="chat-top-header">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', overflow: 'hidden' }}>
+          <MessageSquare size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+          <span style={{ fontSize: '0.92rem', fontWeight: 700, color: '#0F172A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {activeSession?.title || 'New Conversation'}
+          </span>
+          {messages.length > 0 && (
+            <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+              ({messages.length} messages)
+            </span>
+          )}
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0 }}>
+          {messages.length > 0 && (
+            <button
+              onClick={handleClearCurrentChat}
+              className="btn btn-outline"
+              style={{ fontSize: '0.78rem', padding: '0.35rem 0.65rem' }}
+              title="Clear messages in this conversation"
+            >
+              <RotateCcw size={13} />
+              <span>Clear</span>
+            </button>
+          )}
+
+          {onNewChat && (
+            <button
+              onClick={onNewChat}
+              className="btn btn-primary"
+              style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+            >
+              <Plus size={14} strokeWidth={2.5} />
+              <span>New Chat</span>
+            </button>
+          )}
+        </div>
+      </header>
+
       {/* Smooth Scrollable Message Stream */}
       <div className="chat-messages-scroll" ref={scrollContainerRef}>
         <div className="chat-messages-inner">
-          {/* Welcome Screen when no messages */}
+          {/* Welcome Screen when no messages in active conversation */}
           {messages.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '3rem 1rem 2rem 1rem' }}>
               <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.25rem' }}>
@@ -218,282 +283,254 @@ export default function ChatView({
                 PepTalk Clinical Intelligence
               </h2>
               <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                Instant RAG synthesis across <strong>690 monographs</strong>, <strong>vetted protocols</strong>, <strong>75 masterclasses</strong>, and published pharmacology research.
+                Instant RAG synthesis across <strong>699 monographs</strong>, <strong>17 vetted protocols</strong>, <strong>75 masterclasses</strong>, and published pharmacology research.
               </p>
 
               {!apiKey && (
                 <div style={{ marginBottom: '2rem' }}>
-                  <button
-                    onClick={onOpenApiKey}
-                    className="btn btn-primary"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.55rem', padding: '0.75rem 1.4rem' }}
-                  >
-                    <Key size={16} />
-                    <span>Enter Free Gemini API Key to Start</span>
+                  <button onClick={onOpenApiKey} className="btn btn-primary" style={{ padding: '0.8rem 1.6rem', fontSize: '0.94rem' }}>
+                    <Key size={18} />
+                    <span>Connect Gemini API Key</span>
                   </button>
                 </div>
               )}
 
-              {/* Starter Prompt Cards */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', width: '100%', marginTop: '0.5rem' }}>
-                <div
-                  className="compound-item-card"
-                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-                  onClick={() => handleSendMessage('What is the standard clinical titration schedule, GI tolerance rules, and administration guidelines for Semaglutide (Ozempic)?')}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                    <Syringe size={16} style={{ color: 'var(--primary)' }} />
-                    <span>Semaglutide / Ozempic Protocol</span>
+              {/* Clinical Quick Starters */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.85rem', width: '100%', maxWidth: '780px' }}>
+                {[
+                  {
+                    title: 'Retatrutide Protocol',
+                    desc: 'Dosing titration, GI mitigation & cycle schedule',
+                    prompt: 'What is the exact clinical titration schedule and cycle protocol for Retatrutide (GLP-3RT)?',
+                    icon: <Syringe size={18} color="var(--primary)" />,
+                  },
+                  {
+                    title: 'Wolverine Stack Guidance',
+                    desc: 'BPC-157 + TB-500 synergy & reconstitution ratios',
+                    prompt: 'How do you reconstitute and dose the Wolverine Stack (BPC-157 + TB-500) for tendon and tissue repair?',
+                    icon: <TrendingUp size={18} color="#10B981" />,
+                  },
+                  {
+                    title: 'H. Pylori Eradication Protocol',
+                    desc: 'Antimicrobial peptides & mucosal restoration',
+                    prompt: 'What peptides are studied for H. Pylori and gut mucosal restoration, and how are they phased?',
+                    icon: <CheckCircle2 size={18} color="#F59E0B" />,
+                  },
+                  {
+                    title: 'CJC & Ipamorelin Pre-Labs',
+                    desc: 'Essential baseline blood panel & off-cycle rules',
+                    prompt: 'What bloodwork and lab tests should you do before starting CJC-1295 and Ipamorelin, and how long to wait before retesting?',
+                    icon: <Clock size={18} color="#8B5CF6" />,
+                  },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => handleSendMessage(item.prompt)}
+                    className="compound-item-card"
+                    style={{
+                      padding: '1.15rem 1.25rem',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.35rem',
+                      transition: 'all 0.16s ease',
+                      border: '1px solid #E2E8F0',
+                      background: '#FFFFFF',
+                      borderRadius: '14px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.15rem' }}>
+                      {item.icon}
+                      <strong style={{ fontSize: '0.94rem', color: '#0F172A' }}>{item.title}</strong>
+                    </div>
+                    <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{item.desc}</span>
                   </div>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                    Exact 4-week titration ladder, GI tolerability increments, and maintenance targets from clinical literature.
-                  </p>
-                </div>
-
-                <div
-                  className="compound-item-card"
-                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-                  onClick={() => handleSendMessage('Explain the Retatrutide (GLP-3RT) protocol: triple agonist mechanism, starting dosage, and titration rules.')}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                    <TrendingUp size={16} style={{ color: 'var(--primary)' }} />
-                    <span>Retatrutide (GLP-3RT) Triple Agonist</span>
-                  </div>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                    GLP-1/GIP/GCGR mechanism, step-by-step titration ladder, and reconstitution matrix from the vetted protocol.
-                  </p>
-                </div>
-
-                <div
-                  className="compound-item-card"
-                  style={{ padding: '1.25rem', textAlign: 'left', cursor: 'pointer' }}
-                  onClick={() => handleSendMessage('What is the clinical breakdown for BPC-157 and TB-500 in tissue healing, tendon repair, and Wolverine Stack cycling?')}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: '#0F172A', fontSize: '0.95rem' }}>
-                    <Sparkles size={16} style={{ color: 'var(--primary)' }} />
-                    <span>BPC-157 & TB-500 Tissue Repair</span>
-                  </div>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.45rem', lineHeight: 1.5 }}>
-                    Cell migration mechanisms, angiogenesis, synergistic recovery protocols, and masterclass insights.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           ) : (
-            // Chat Message Stream
-            messages.map((m) => (
-              <div
-                key={m.id}
-                className="chat-bubble-animated"
-                style={{
-                  display: 'flex',
-                  gap: '1rem',
-                  alignItems: 'flex-start',
-                  alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
-                  maxWidth: m.role === 'user' ? '82%' : '100%',
-                  width: m.role === 'user' ? 'auto' : '100%',
-                }}
-              >
-                {m.role === 'assistant' && (
-                  <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-                    <Bot size={20} />
-                  </div>
-                )}
-
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBottom: '1rem' }}>
+              {messages.map((m) => (
                 <div
+                  key={m.id}
                   style={{
-                    background: m.role === 'user' ? 'var(--primary)' : '#FFFFFF',
-                    color: m.role === 'user' ? '#FFFFFF' : '#1E293B',
-                    padding: m.role === 'user' ? '0.95rem 1.35rem' : '1.35rem 1.65rem',
-                    borderRadius: '16px',
-                    boxShadow: 'var(--shadow-card)',
-                    border: m.role === 'user' ? 'none' : '1px solid #E2E8F0',
-                    lineHeight: 1.65,
-                    fontSize: '0.94rem',
-                    flex: 1,
+                    display: 'flex',
+                    gap: '1rem',
+                    alignItems: 'flex-start',
+                    justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start',
                   }}
                 >
-                  {m.role === 'user' ? (
-                    <div style={{ whiteSpace: 'pre-wrap', fontWeight: 500 }}>{m.content}</div>
-                  ) : (
-                    <div>
-                      {m.thoughts && (
-                        <details
-                          style={{
-                            marginBottom: '1rem',
-                            padding: '0.65rem 0.95rem',
-                            borderRadius: '10px',
-                            background: '#F8FAFC',
-                            border: '1px solid #E2E8F0',
-                            fontSize: '0.84rem',
-                          }}
-                        >
-                          <summary
-                            style={{
-                              cursor: 'pointer',
-                              fontWeight: 700,
-                              color: '#334155',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '0.45rem',
-                              userSelect: 'none',
-                            }}
-                          >
-                            <span>🧠 Clinical Reasoning & Intent Analysis</span>
-                            <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>(Click to view)</span>
-                          </summary>
-                          <div
-                            style={{
-                              marginTop: '0.65rem',
-                              paddingTop: '0.65rem',
-                              borderTop: '1px solid #E2E8F0',
-                              whiteSpace: 'pre-wrap',
-                              lineHeight: 1.55,
-                              fontFamily: 'monospace',
-                              fontSize: '0.8rem',
-                              color: '#475569',
-                              maxHeight: '260px',
-                              overflowY: 'auto',
-                            }}
-                          >
-                            {m.thoughts}
-                          </div>
-                        </details>
-                      )}
-
-                      <ClinicalMarkdown content={m.content} />
-
-                      {m.sources && m.sources.length > 0 && (
-                        <div style={{ marginTop: '1.25rem', paddingTop: '0.9rem', borderTop: '1px solid #E2E8F0' }}>
-                          <div style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 800, marginBottom: '0.45rem', letterSpacing: '0.04em' }}>
-                            GROUNDED INTERNAL SOURCES:
-                          </div>
-                          <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
-                            {m.sources.map((s, idx) => (
-                              <span
-                                key={idx}
-                                className="badge-tag"
-                                style={{
-                                  fontSize: '0.74rem',
-                                  padding: '0.2rem 0.6rem',
-                                  background: '#F8FAFC',
-                                  borderColor: '#CBD5E1',
-                                  color: '#1E293B',
-                                  fontWeight: 600,
-                                }}
-                              >
-                                {s}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                  {m.role === 'assistant' && (
+                    <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary)', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px', boxShadow: '0 2px 8px rgba(127, 102, 255, 0.3)' }}>
+                      <Bot size={20} />
                     </div>
                   )}
-                  <div style={{ fontSize: '0.7rem', color: m.role === 'user' ? 'rgba(255,255,255,0.75)' : '#94A3B8', marginTop: '0.6rem', textAlign: 'right' }}>
-                    {m.timestamp}
-                  </div>
-                </div>
 
-                {m.role === 'user' && (
-                  <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: '#EAEAF2', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-                    <User size={20} />
+                  <div
+                    style={{
+                      maxWidth: '82%',
+                      padding: m.role === 'user' ? '0.95rem 1.35rem' : '1.45rem 1.65rem',
+                      borderRadius: m.role === 'user' ? '18px 18px 4px 18px' : '4px 18px 18px 18px',
+                      background: m.role === 'user' ? 'var(--primary)' : '#FFFFFF',
+                      color: m.role === 'user' ? '#FFFFFF' : '#0F172A',
+                      boxShadow: m.role === 'user' ? '0 2px 10px rgba(127, 102, 255, 0.22)' : '0 2px 12px rgba(0, 0, 0, 0.04)',
+                      border: m.role === 'user' ? 'none' : '1px solid #E2E8F0',
+                    }}
+                  >
+                    {m.role === 'user' ? (
+                      <div style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                        {m.content}
+                      </div>
+                    ) : (
+                      <div>
+                        {/* Thinking accordion if model thoughts were captured */}
+                        {m.thoughts && (
+                          <details
+                            style={{
+                              marginBottom: '1rem',
+                              background: '#F8FAFC',
+                              border: '1px solid #E2E8F0',
+                              borderRadius: '8px',
+                              padding: '0.6rem 0.85rem',
+                            }}
+                          >
+                            <summary
+                              style={{
+                                cursor: 'pointer',
+                                fontSize: '0.82rem',
+                                fontWeight: 700,
+                                color: '#475569',
+                                userSelect: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                              }}
+                            >
+                              <span>🧠 Clinical Reasoning & Intent Analysis</span>
+                              <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>(Click to view)</span>
+                            </summary>
+                            <div
+                              style={{
+                                marginTop: '0.65rem',
+                                paddingTop: '0.65rem',
+                                borderTop: '1px solid #E2E8F0',
+                                whiteSpace: 'pre-wrap',
+                                lineHeight: 1.55,
+                                fontFamily: 'monospace',
+                                fontSize: '0.8rem',
+                                color: '#475569',
+                                maxHeight: '260px',
+                                overflowY: 'auto',
+                              }}
+                            >
+                              {m.thoughts}
+                            </div>
+                          </details>
+                        )}
+
+                        <ClinicalMarkdown content={m.content} />
+
+                        {m.sources && m.sources.length > 0 && (
+                          <div style={{ marginTop: '1.25rem', paddingTop: '0.9rem', borderTop: '1px solid #E2E8F0' }}>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 800, marginBottom: '0.45rem', letterSpacing: '0.04em' }}>
+                              GROUNDED INTERNAL SOURCES:
+                            </div>
+                            <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
+                              {m.sources.map((s, idx) => (
+                                <span
+                                  key={idx}
+                                  className="badge-tag"
+                                  style={{
+                                    fontSize: '0.74rem',
+                                    padding: '0.2rem 0.6rem',
+                                    background: '#F8FAFC',
+                                    borderColor: '#CBD5E1',
+                                    color: '#1E293B',
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  {s}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    <div style={{ fontSize: '0.7rem', color: m.role === 'user' ? 'rgba(255,255,255,0.75)' : '#94A3B8', marginTop: '0.6rem', textAlign: 'right' }}>
+                      {m.timestamp}
+                    </div>
                   </div>
-                )}
-              </div>
-            ))
+
+                  {m.role === 'user' && (
+                    <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: '#EAEAF2', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                      <User size={20} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           )}
 
-          {/* Thinking / Streaming Indicator */}
+          {/* Real-time Loading Indicator with live timer */}
           {isLoading && (
-            <div className="chat-bubble-animated" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginTop: '1rem' }}>
+              <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--primary)', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Bot size={20} />
               </div>
-              <div style={{ background: '#FFFFFF', padding: '0.95rem 1.4rem', borderRadius: '16px', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', gap: '0.75rem', boxShadow: 'var(--shadow-card)' }}>
-                <span className="animate-pulse" style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--primary)' }} />
-                <span style={{ fontSize: '0.9rem', color: '#334155', fontWeight: 600 }}>
-                  Synthesizing clinical monograph data & protocols ({loadingSeconds}s)...
+              <div style={{ padding: '1rem 1.4rem', borderRadius: '4px 18px 18px 18px', background: '#FFFFFF', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                <div style={{ display: 'flex', gap: '0.35rem' }}>
+                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite' }} />
+                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite 0.2s' }} />
+                  <span className="typing-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 1.2s infinite 0.4s' }} />
+                </div>
+                <span style={{ fontSize: '0.88rem', color: '#64748B', fontWeight: 600 }}>
+                  Synthesizing clinical monographs & protocols... ({loadingSeconds}s)
                 </span>
               </div>
             </div>
           )}
 
-          <div ref={messagesEndRef} style={{ height: '8px' }} />
+          <div ref={messagesEndRef} style={{ height: '4px' }} />
         </div>
       </div>
 
-      {/* Sticky Bottom Input Bar: Always pinned at bottom, never scrolls out of view */}
-      <footer className="chat-input-sticky-footer">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSendMessage(input);
-          }}
-          className="chat-input-inner"
-          style={{ position: 'relative' }}
-        >
+      {/* Floating Prompt Input Box */}
+      <div className="chat-input-sticky">
+        <div className="chat-input-pill">
           <textarea
             ref={textareaRef}
             rows={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSendMessage(input);
-              }
-            }}
-            placeholder={
-              apiKey
-                ? "Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math... (Shift + Enter for new line)"
-                : "Enter your Gemini API key in the sidebar to start research..."
-            }
+            onKeyDown={handleKeyDown}
+            placeholder="Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math... (Shift + Enter for new line)"
+            className="chat-textarea-field"
             disabled={isLoading}
-            style={{
-              width: '100%',
-              minHeight: '52px',
-              maxHeight: '220px',
-              padding: '0.95rem 3.6rem 0.95rem 1.25rem',
-              borderRadius: '16px',
-              border: '1px solid #CBD5E1',
-              outline: 'none',
-              fontSize: '0.95rem',
-              lineHeight: 1.55,
-              background: '#FFFFFF',
-              boxShadow: 'var(--shadow-card)',
-              color: '#0F172A',
-              resize: 'none',
-              fontFamily: 'inherit',
-              overflowY: 'auto',
-              display: 'block',
-            }}
           />
           <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
+            onClick={() => handleSendMessage(input)}
+            disabled={!input.trim() || isLoading}
+            className="btn btn-primary"
             style={{
-              position: 'absolute',
-              right: '9px',
-              bottom: '8px',
-              width: '38px',
-              height: '38px',
+              padding: '0.65rem',
               borderRadius: '12px',
-              background: input.trim() ? 'var(--primary)' : '#E2E8F0',
-              color: input.trim() ? '#FFFFFF' : '#94A3B8',
-              border: 'none',
+              width: '42px',
+              height: '42px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: input.trim() ? 'pointer' : 'default',
-              transition: 'all 0.2s ease',
+              flexShrink: 0,
+              opacity: !input.trim() || isLoading ? 0.4 : 1,
+              cursor: !input.trim() || isLoading ? 'not-allowed' : 'pointer',
+              marginBottom: '4px',
             }}
-            title="Send prompt (Enter)"
           >
             <Send size={18} />
           </button>
-        </form>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 }

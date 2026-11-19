@@ -131,6 +131,14 @@ export interface ChatMessage {
   thoughts?: string;
 }
 
+export interface ChatSession {
+  id: string;
+  title: string;
+  messages: ChatMessage[];
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface CalculatorState {
   mg: number;
   ml: number;
