@@ -45,6 +45,7 @@ export default function Sidebar({
 
   return (
     <aside className="sidebar">
+      {/* Brand Header */}
       <div className="sidebar-header">
         <a 
           href="#" 
@@ -58,7 +59,8 @@ export default function Sidebar({
         </a>
       </div>
 
-      <nav className="sidebar-nav">
+      {/* 1. FIXED TOP NAVIGATION: Always stays at the top of the sidebar */}
+      <nav className="sidebar-top-nav" style={{ padding: '0.4rem 0.85rem 0.5rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '0.2rem', flexShrink: 0 }}>
         <button
           onClick={() => onNavigate('chat')}
           className={`nav-link-btn ${currentView === 'chat' ? 'active' : ''}`}
@@ -66,73 +68,6 @@ export default function Sidebar({
           <MessageSquare size={18} />
           <span>AI Chat</span>
         </button>
-
-        {/* Dedicated "+ New Chat" Button in Sidebar */}
-        <button
-          onClick={() => {
-            if (onNewChat) onNewChat();
-            onNavigate('chat');
-          }}
-          className="btn btn-primary"
-          style={{
-            margin: '0.35rem 0.25rem 0.65rem 0.25rem',
-            padding: '0.65rem 0.9rem',
-            fontSize: '0.86rem',
-            fontWeight: 700,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.45rem',
-            borderRadius: '12px',
-            background: 'var(--primary)',
-            color: '#FFFFFF',
-            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.25)',
-          }}
-        >
-          <Plus size={16} strokeWidth={2.5} />
-          <span>New Chat</span>
-        </button>
-
-        {/* Chat History List */}
-        {chatSessions && chatSessions.length > 0 && (
-          <div className="sidebar-chat-history">
-            <div className="chat-history-label">
-              <span>Saved Chats</span>
-              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{chatSessions.length}</span>
-            </div>
-            <div className="chat-history-list">
-              {chatSessions.map((s) => (
-                <div
-                  key={s.id}
-                  onClick={() => {
-                    if (onSelectSession) onSelectSession(s.id);
-                    onNavigate('chat');
-                  }}
-                  className={`chat-history-item ${activeSessionId === s.id && currentView === 'chat' ? 'active' : ''}`}
-                >
-                  <div className="chat-history-title-wrap">
-                    <MessageSquare size={13} style={{ flexShrink: 0, opacity: 0.7 }} />
-                    <span className="chat-history-title-text" title={s.title}>
-                      {s.title || 'New Conversation'}
-                    </span>
-                  </div>
-                  {onDeleteSession && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onDeleteSession(s.id, e);
-                      }}
-                      title="Delete chat"
-                      className="chat-history-delete-btn"
-                    >
-                      <Trash2 size={12} />
-                    </button>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         <button
           onClick={() => onNavigate('knowledge')}
@@ -177,7 +112,105 @@ export default function Sidebar({
         </button>
       </nav>
 
-      <div className="sidebar-footer">
+      {/* Divider between fixed main nav and chat history */}
+      <div style={{ height: '1px', background: 'var(--border)', margin: '0.35rem 1rem', flexShrink: 0 }} />
+
+      {/* 2. CHAT HISTORY SECTION: Grows downwards into the remaining vertical space */}
+      <div 
+        className="sidebar-chat-section"
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '0.5rem 0.85rem',
+          minHeight: 0,
+          overflow: 'hidden'
+        }}
+      >
+        {/* "+ New Chat" Dedicated Button */}
+        <button
+          onClick={() => {
+            if (onNewChat) onNewChat();
+            onNavigate('chat');
+          }}
+          className="btn btn-primary"
+          style={{
+            margin: '0.1rem 0.15rem 0.65rem 0.15rem',
+            padding: '0.6rem 0.85rem',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.45rem',
+            borderRadius: '11px',
+            background: 'var(--primary)',
+            color: '#FFFFFF',
+            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.22)',
+            flexShrink: 0
+          }}
+        >
+          <Plus size={15} strokeWidth={2.5} />
+          <span>New Chat</span>
+        </button>
+
+        {/* Saved Chats List growing downwards */}
+        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0, overflow: 'hidden' }}>
+          <div className="chat-history-label" style={{ padding: '0.2rem 0.4rem', flexShrink: 0 }}>
+            <span>Saved Chats</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{chatSessions?.length || 0}</span>
+          </div>
+
+          <div 
+            className="chat-history-list" 
+            style={{ 
+              flex: 1, 
+              overflowY: 'auto', 
+              maxHeight: 'none',
+              padding: '0.2rem 0'
+            }}
+          >
+            {chatSessions && chatSessions.length > 0 ? (
+              chatSessions.map((s) => (
+                <div
+                  key={s.id}
+                  onClick={() => {
+                    if (onSelectSession) onSelectSession(s.id);
+                    onNavigate('chat');
+                  }}
+                  className={`chat-history-item ${activeSessionId === s.id && currentView === 'chat' ? 'active' : ''}`}
+                >
+                  <div className="chat-history-title-wrap">
+                    <MessageSquare size={13} style={{ flexShrink: 0, opacity: 0.7 }} />
+                    <span className="chat-history-title-text" title={s.title}>
+                      {s.title || 'New Conversation'}
+                    </span>
+                  </div>
+                  {onDeleteSession && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDeleteSession(s.id, e);
+                      }}
+                      title="Delete chat"
+                      className="chat-history-delete-btn"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div style={{ padding: '0.75rem 0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center' }}>
+                No saved chats yet
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* 3. FOOTER: Fixed at bottom */}
+      <div className="sidebar-footer" style={{ flexShrink: 0 }}>
         <button
           onClick={onOpenApiKey}
           className="nav-link-btn"
