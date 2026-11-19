@@ -7,122 +7,232 @@ interface ClinicalMarkdownProps {
 export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
   if (!content) return null;
 
-  // Split lines and parse into blocks
-  const lines = content.split('\n');
+  // Normalize newlines
+  const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const lines = normalized.split('\n');
   const blocks: React.ReactNode[] = [];
 
   let i = 0;
   while (i < lines.length) {
-    const line = lines[i];
-    const trimmed = line.trim();
+    const rawLine = lines[i];
+    const trimmed = rawLine.trim();
 
-    // Empty line
+    // 1. Empty line
     if (!trimmed) {
       i++;
       continue;
     }
 
-    // 1. Table Detection (starts with |)
-    if (trimmed.startsWith('|') && trimmed.endsWith('|') && lines[i + 1]?.includes('---')) {
-      const tableLines: string[] = [];
-      while (i < lines.length && lines[i].trim().startsWith('|')) {
-        tableLines.push(lines[i].trim());
+    // 2. Horizontal divider rule (---, ***, ___)
+    if (/^(\-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+      blocks.push(
+        <hr
+          key={`hr_${i}`}
+          style={{
+            border: 'none',
+            borderTop: '1px solid #E2E8F0',
+            margin: '1.75rem 0',
+          }}
+        />
+      );
+      i++;
+      continue;
+    }
+
+    // 3. Fenced Code Block (``` or isolated ` fence)
+    if (trimmed.startsWith('```') || trimmed === '`') {
+      const codeLines: string[] = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith('```') && lines[i].trim() !== '`') {
+        codeLines.push(lines[i]);
         i++;
       }
-
-      const headerCells = tableLines[0]
-        .split('|')
-        .slice(1, -1)
-        .map((c) => c.trim());
-
-      const bodyRows = tableLines.slice(2).map((rowLine) =>
-        rowLine
-          .split('|')
-          .slice(1, -1)
-          .map((c) => c.trim())
-      );
+      if (i < lines.length) i++; // consume closing backtick
 
       blocks.push(
         <div
-          key={`table_${i}`}
+          key={`code_${i}`}
           style={{
-            overflowX: 'auto',
             margin: '1.25rem 0',
+            background: '#0F172A',
+            color: '#F8FAFC',
             borderRadius: '10px',
-            border: '1px solid #E2E8F0',
-            background: '#FFFFFF',
+            padding: '1.1rem 1.25rem',
+            overflowX: 'auto',
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            fontSize: '0.84rem',
+            lineHeight: 1.55,
           }}
         >
-          <table
-            style={{
-              width: '100%',
-              borderCollapse: 'collapse',
-              fontSize: '0.88rem',
-              textAlign: 'left',
-            }}
-          >
-            <thead>
-              <tr style={{ background: '#F8FAFC', borderBottom: '2px solid #E2E8F0' }}>
-                {headerCells.map((h, hIdx) => (
-                  <th
-                    key={hIdx}
-                    style={{
-                      padding: '0.75rem 1rem',
-                      fontWeight: 800,
-                      color: '#0F172A',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {renderInline(h)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {bodyRows.map((row, rIdx) => (
-                <tr
-                  key={rIdx}
-                  style={{
-                    borderBottom: rIdx < bodyRows.length - 1 ? '1px solid #F1F5F9' : 'none',
-                    background: rIdx % 2 === 1 ? '#FAFAFC' : '#FFFFFF',
-                  }}
-                >
-                  {row.map((cell, cIdx) => (
-                    <td
-                      key={cIdx}
-                      style={{
-                        padding: '0.65rem 1rem',
-                        color: '#1E293B',
-                      }}
-                    >
-                      {renderInline(cell)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <pre style={{ margin: 0, whiteSpace: 'pre' }}>{codeLines.join('\n')}</pre>
         </div>
       );
       continue;
     }
 
-    // 2. Headings
-    if (trimmed.startsWith('### ')) {
+    // 4. Unicode / ASCII Box Diagram or Table (+---+)
+    if (/[┌─┐└┘│├┤┬┴┼▼▲]|\+[-=]{3,}\+/.test(trimmed)) {
+      const diagramLines: string[] = [];
+      while (
+        i < lines.length &&
+        lines[i].trim() &&
+        (/[┌─┐└┘│├┤┬┴┼▼▲]|\+[-=]{3,}\+/.test(lines[i]) ||
+          lines[i].trim().startsWith('|') ||
+          lines[i].trim().startsWith('│') ||
+          lines[i].startsWith(' ') ||
+          lines[i].startsWith('\t'))
+      ) {
+        diagramLines.push(lines[i]);
+        i++;
+      }
+
       blocks.push(
-        <h3
-          key={`h3_${i}`}
+        <div
+          key={`diagram_${i}`}
           style={{
-            fontSize: '1.15rem',
-            fontWeight: 800,
+            margin: '1.25rem 0',
+            background: '#F8FAFC',
+            border: '1px solid #CBD5E1',
+            borderRadius: '10px',
+            padding: '1rem 1.25rem',
+            overflowX: 'auto',
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            fontSize: '0.82rem',
             color: '#0F172A',
-            marginTop: '1.4rem',
-            marginBottom: '0.5rem',
-            letterSpacing: '-0.01em',
+            lineHeight: 1.45,
           }}
         >
-          {renderInline(trimmed.slice(4))}
-        </h3>
+          <pre style={{ margin: 0, whiteSpace: 'pre' }}>{diagramLines.join('\n')}</pre>
+        </div>
+      );
+      continue;
+    }
+
+    // 5. Tables: Pipe Tables or Tab-Separated Tables
+    const hasPipes = trimmed.includes('|');
+    const nextLineHasPipes = lines[i + 1]?.includes('|');
+    const nextLineHasDashes = lines[i + 1] && /[-:]{3,}/.test(lines[i + 1]);
+    const isPipeTable = hasPipes && (nextLineHasDashes || (trimmed.startsWith('|') && nextLineHasPipes));
+    const isTabTable = trimmed.includes('\t') && lines[i + 1]?.includes('\t');
+
+    if (isPipeTable || isTabTable) {
+      const tableLines: string[] = [];
+      while (
+        i < lines.length &&
+        lines[i].trim() &&
+        (isTabTable ? lines[i].includes('\t') : lines[i].includes('|'))
+      ) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+
+      if (tableLines.length >= 2) {
+        let headerRow: string[] = [];
+        let bodyRows: string[][] = [];
+
+        if (isTabTable) {
+          headerRow = tableLines[0].split('\t').map((c) => c.trim()).filter(Boolean);
+          bodyRows = tableLines.slice(1).map((l) => l.split('\t').map((c) => c.trim()));
+        } else {
+          const validRows = tableLines
+            .filter((l) => !/^[\|\s\-:]+$/.test(l.replace(/[-:|]/g, '')))
+            .map((l) => {
+              let clean = l;
+              if (clean.startsWith('|')) clean = clean.slice(1);
+              if (clean.endsWith('|')) clean = clean.slice(0, -1);
+              return clean.split('|').map((c) => c.trim());
+            });
+
+          headerRow = validRows[0] || [];
+          bodyRows = validRows.slice(1);
+        }
+
+        if (headerRow.length > 0) {
+          blocks.push(
+            <div
+              key={`table_${i}`}
+              style={{
+                overflowX: 'auto',
+                margin: '1.25rem 0',
+                borderRadius: '10px',
+                border: '1px solid #E2E8F0',
+                background: '#FFFFFF',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+              }}
+            >
+              <table
+                style={{
+                  width: '100%',
+                  borderCollapse: 'collapse',
+                  fontSize: '0.88rem',
+                  textAlign: 'left',
+                }}
+              >
+                <thead>
+                  <tr style={{ background: '#F8FAFC', borderBottom: '2px solid #E2E8F0' }}>
+                    {headerRow.map((h, hIdx) => (
+                      <th
+                        key={hIdx}
+                        style={{
+                          padding: '0.75rem 1rem',
+                          fontWeight: 800,
+                          color: '#0F172A',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {renderInline(h)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bodyRows.map((row, rIdx) => (
+                    <tr
+                      key={rIdx}
+                      style={{
+                        borderBottom: rIdx < bodyRows.length - 1 ? '1px solid #F1F5F9' : 'none',
+                        background: rIdx % 2 === 1 ? '#FAFAFC' : '#FFFFFF',
+                      }}
+                    >
+                      {row.map((cell, cIdx) => (
+                        <td
+                          key={cIdx}
+                          style={{
+                            padding: '0.65rem 1rem',
+                            color: '#1E293B',
+                            verticalAlign: 'top',
+                          }}
+                        >
+                          {renderInline(cell || '—')}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+          continue;
+        }
+      }
+    }
+
+    // 6. Headings (#, ##, ###, ####)
+    if (trimmed.startsWith('# ')) {
+      blocks.push(
+        <h1
+          key={`h1_${i}`}
+          style={{
+            fontSize: '1.45rem',
+            fontWeight: 800,
+            color: '#0F172A',
+            marginTop: '1.75rem',
+            marginBottom: '0.75rem',
+            letterSpacing: '-0.02em',
+          }}
+        >
+          {renderInline(trimmed.slice(2))}
+        </h1>
       );
       i++;
       continue;
@@ -136,7 +246,7 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
             fontSize: '1.28rem',
             fontWeight: 800,
             color: '#0F172A',
-            marginTop: '1.6rem',
+            marginTop: '1.5rem',
             marginBottom: '0.6rem',
             letterSpacing: '-0.015em',
           }}
@@ -148,20 +258,21 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
       continue;
     }
 
-    if (trimmed.startsWith('# ')) {
+    if (trimmed.startsWith('### ')) {
       blocks.push(
-        <h1
-          key={`h1_${i}`}
+        <h3
+          key={`h3_${i}`}
           style={{
-            fontSize: '1.45rem',
+            fontSize: '1.15rem',
             fontWeight: 800,
             color: '#0F172A',
-            marginTop: '1.75rem',
-            marginBottom: '0.75rem',
+            marginTop: '1.35rem',
+            marginBottom: '0.5rem',
+            letterSpacing: '-0.01em',
           }}
         >
-          {renderInline(trimmed.slice(2))}
-        </h1>
+          {renderInline(trimmed.slice(4))}
+        </h3>
       );
       i++;
       continue;
@@ -186,7 +297,30 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
       continue;
     }
 
-    // 3. Blockquote / Clinical Callout
+    // 7. Numbered Clinical Section Headers (e.g. "1. Primary Pharmacology & Molecular Mechanism")
+    if (/^\d+\.\s+[A-Z][A-Za-z0-9\s&,/–—-]+$/.test(trimmed) && trimmed.length < 90 && !trimmed.endsWith('.')) {
+      blocks.push(
+        <h3
+          key={`nh3_${i}`}
+          style={{
+            fontSize: '1.18rem',
+            fontWeight: 800,
+            color: '#0F172A',
+            marginTop: '1.5rem',
+            marginBottom: '0.65rem',
+            paddingBottom: '0.35rem',
+            borderBottom: '2px solid #E2E8F0',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          {renderInline(trimmed)}
+        </h3>
+      );
+      i++;
+      continue;
+    }
+
+    // 8. Blockquote / Clinical Alert / Callout
     if (trimmed.startsWith('> ')) {
       const quoteLines: string[] = [];
       while (i < lines.length && lines[i].trim().startsWith('>')) {
@@ -217,7 +351,7 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
       continue;
     }
 
-    // 4. Unordered List Items (*, -, •)
+    // 9. Unordered List Items (*, -, •)
     if (/^[-*•]\s+/.test(trimmed)) {
       const listItems: string[] = [];
       while (i < lines.length && /^[-*•]\s+/.test(lines[i].trim())) {
@@ -253,7 +387,7 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
       continue;
     }
 
-    // 5. Ordered List Items (1. 2. etc.)
+    // 10. Ordered List Items (1. 2. etc.)
     if (/^\d+\.\s+/.test(trimmed)) {
       const numItems: string[] = [];
       while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
@@ -289,7 +423,28 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
       continue;
     }
 
-    // 6. Normal Paragraph
+    // 11. Key-Value parameter line (e.g. "Class: GLP-1 Receptor Agonist" or "Half-Life: 7 days")
+    const kvMatch = trimmed.match(/^([A-Za-z\s–—-]+):\s+(.+)$/);
+    if (kvMatch && kvMatch[1].length < 35 && !trimmed.startsWith('http')) {
+      blocks.push(
+        <p
+          key={`kv_${i}`}
+          style={{
+            margin: '0.35rem 0',
+            fontSize: '0.93rem',
+            color: '#1E293B',
+            lineHeight: 1.65,
+          }}
+        >
+          <strong style={{ color: '#0F172A', fontWeight: 700 }}>{kvMatch[1]}: </strong>
+          {renderInline(kvMatch[2])}
+        </p>
+      );
+      i++;
+      continue;
+    }
+
+    // 12. Standard Paragraph
     blocks.push(
       <p
         key={`p_${i}`}
@@ -311,20 +466,14 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
 
 /**
  * Parses inline formatting:
- * - Bold: **text** or __text__ -> dark strong font
- * - Italic: *text* or _text_ -> em
- * - Inline Code: `code` -> styled code
- * - Links: [text](url) -> styled a
- * - Cleans any leftover raw asterisks
+ * - Bold: **text**
+ * - Italic: *text*
+ * - Inline Code: `code`
+ * - Links: [text](url)
  */
 function renderInline(rawText: string): React.ReactNode {
   if (!rawText) return null;
 
-  // Regex tokens:
-  // 1. Links: [text](url)
-  // 2. Bold: **text**
-  // 3. Italic: *text*
-  // 4. Code: `text`
   const regex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*)/g;
   const parts = rawText.split(regex);
 
@@ -355,49 +504,42 @@ function renderInline(rawText: string): React.ReactNode {
 
     // Bold: **text**
     if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
-      const inner = part.slice(2, -2);
       return (
-        <strong
-          key={index}
-          style={{
-            fontWeight: 800,
-            color: '#0F172A', // Dark font as requested by user
-          }}
-        >
-          {inner}
+        <strong key={index} style={{ color: '#0F172A', fontWeight: 800 }}>
+          {part.slice(2, -2)}
         </strong>
-      );
-    }
-
-    // Code: `text`
-    if (part.startsWith('`') && part.endsWith('`') && part.length >= 2) {
-      const inner = part.slice(1, -1);
-      return (
-        <code
-          key={index}
-          style={{
-            background: '#F1F5F9',
-            padding: '0.15rem 0.4rem',
-            borderRadius: '5px',
-            fontSize: '0.85em',
-            fontFamily: 'monospace',
-            color: '#0F172A',
-            fontWeight: 600,
-          }}
-        >
-          {inner}
-        </code>
       );
     }
 
     // Italic: *text*
     if (part.startsWith('*') && part.endsWith('*') && part.length >= 2) {
-      const inner = part.slice(1, -1);
-      return <em key={index}>{inner}</em>;
+      return (
+        <em key={index} style={{ color: '#334155', fontStyle: 'italic' }}>
+          {part.slice(1, -1)}
+        </em>
+      );
     }
 
-    // Plain text: strip any lone stray asterisks that failed matching
-    const cleanText = part.replace(/\*\*/g, '');
-    return <span key={index}>{cleanText}</span>;
+    // Inline Code: `text`
+    if (part.startsWith('`') && part.endsWith('`') && part.length >= 2) {
+      return (
+        <code
+          key={index}
+          style={{
+            background: '#F1F5F9',
+            border: '1px solid #E2E8F0',
+            color: '#0F172A',
+            padding: '0.15rem 0.4rem',
+            borderRadius: '4px',
+            fontSize: '0.85rem',
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          }}
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+
+    return part;
   });
 }
