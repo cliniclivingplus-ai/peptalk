@@ -29,8 +29,13 @@ export async function POST(req: NextRequest) {
     }
 
     // 1. Resolve effective API Key (server env takes priority or acts as permanent fallback)
+    const sanitizedClientKey =
+      clientApiKey && typeof clientApiKey === 'string' && clientApiKey.trim() !== 'server_configured'
+        ? clientApiKey.trim()
+        : '';
+
     const rawKey =
-      (clientApiKey && clientApiKey.trim()) ||
+      sanitizedClientKey ||
       process.env.GEMINI_API_KEY ||
       process.env.GOOGLE_API_KEY ||
       process.env.NEXT_PUBLIC_GEMINI_API_KEY ||
@@ -129,12 +134,13 @@ CRITICAL FORMATTING RULES:
 ${internalContext}
 ==========================================`;
 
-    // 3. Current active Gemini models in order of priority
+    // 3. Current active Gemini models in order of priority (tested live with active key)
     const candidateModels = [
+      'gemini-3-flash-preview',
+      'gemini-flash-lite-latest',
       'gemini-3.8-flash',
       'gemini-3.5-flash-lite',
-      'gemini-2.5-flash',
-      'gemini-3.1-pro-preview',
+      'gemini-flash-latest',
     ];
 
     // Build chat contents from history (last 6 turns max for speed and relevance)

@@ -161,7 +161,7 @@ export default function ChatView({
         body: JSON.stringify({
           message: text,
           history: historyPayload,
-          apiKey: apiKey.trim(),
+          apiKey: apiKey && apiKey !== 'server_configured' ? apiKey.trim() : '',
         }),
       });
 
