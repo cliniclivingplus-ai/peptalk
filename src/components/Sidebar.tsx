@@ -62,19 +62,19 @@ export default function Sidebar({
           className="brand-logo"
         >
           <div className="brand-icon-box">
-            <MessageSquare size={18} color="#FFFFFF" strokeWidth={2.5} />
+            <MessageSquare size={16} color="#FFFFFF" strokeWidth={2.5} />
           </div>
           <span className="brand-text">PepTalk</span>
         </a>
       </div>
 
       {/* 1. FIXED TOP NAVIGATION: Always stays at the top of the sidebar */}
-      <nav className="sidebar-top-nav" style={{ padding: '0.4rem 0.85rem 0.5rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '0.2rem', flexShrink: 0 }}>
+      <nav className="sidebar-top-nav" style={{ padding: '0.25rem 0.65rem 0.35rem 0.65rem', display: 'flex', flexDirection: 'column', gap: '0.12rem', flexShrink: 0 }}>
         <button
           onClick={() => onNavigate('chat')}
           className={`nav-link-btn ${currentView === 'chat' ? 'active' : ''}`}
         >
-          <MessageSquare size={18} />
+          <MessageSquare size={16} />
           <span>AI Chat</span>
         </button>
 
@@ -82,7 +82,7 @@ export default function Sidebar({
           onClick={() => onNavigate('knowledge')}
           className={`nav-link-btn ${currentView === 'knowledge' || currentView === 'compound_detail' ? 'active' : ''}`}
         >
-          <Dna size={18} />
+          <Dna size={16} />
           <span>Knowledge Base</span>
           <span className="nav-badge-pill">{compoundCount}</span>
         </button>
@@ -91,7 +91,7 @@ export default function Sidebar({
           onClick={() => onNavigate('protocols')}
           className={`nav-link-btn ${currentView === 'protocols' || currentView === 'protocol_detail' ? 'active' : ''}`}
         >
-          <FileText size={18} />
+          <FileText size={16} />
           <span>Protocols</span>
         </button>
 
@@ -99,7 +99,7 @@ export default function Sidebar({
           onClick={() => onNavigate('classroom')}
           className={`nav-link-btn ${currentView === 'classroom' || currentView === 'course_viewer' ? 'active' : ''}`}
         >
-          <GraduationCap size={18} />
+          <GraduationCap size={16} />
           <span>Classroom</span>
           <span className="nav-badge-pill">{courseCount}</span>
         </button>
@@ -108,7 +108,7 @@ export default function Sidebar({
           onClick={() => onNavigate('calculator')}
           className={`nav-link-btn ${currentView === 'calculator' ? 'active' : ''}`}
         >
-          <Droplet size={18} />
+          <Droplet size={16} />
           <span>Calculator</span>
         </button>
 
@@ -116,13 +116,13 @@ export default function Sidebar({
           onClick={() => onNavigate('research')}
           className={`nav-link-btn ${currentView === 'research' ? 'active' : ''}`}
         >
-          <BookOpen size={18} />
+          <BookOpen size={16} />
           <span>Research</span>
         </button>
       </nav>
 
       {/* Divider between fixed main nav and chat history */}
-      <div style={{ height: '1px', background: 'var(--border)', margin: '0.35rem 1rem', flexShrink: 0 }} />
+      <div style={{ height: '1px', background: 'var(--border)', margin: '0.25rem 0.85rem', flexShrink: 0 }} />
 
       {/* 2. CHAT HISTORY SECTION: Grows downwards into the remaining vertical space */}
       <div 
@@ -131,7 +131,7 @@ export default function Sidebar({
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          padding: '0.5rem 0.85rem',
+          padding: '0.35rem 0.65rem',
           minHeight: 0,
           overflow: 'hidden'
         }}
@@ -144,30 +144,30 @@ export default function Sidebar({
           }}
           className="btn btn-primary"
           style={{
-            margin: '0.1rem 0.15rem 0.65rem 0.15rem',
-            padding: '0.6rem 0.85rem',
-            fontSize: '0.85rem',
+            margin: '0.05rem 0.05rem 0.35rem 0.05rem',
+            padding: '0.42rem 0.75rem',
+            fontSize: '0.82rem',
             fontWeight: 700,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '0.45rem',
-            borderRadius: '11px',
+            gap: '0.4rem',
+            borderRadius: '9px',
             background: 'var(--primary)',
             color: '#FFFFFF',
-            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.22)',
+            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.2)',
             flexShrink: 0
           }}
         >
-          <Plus size={15} strokeWidth={2.5} />
+          <Plus size={14} strokeWidth={2.5} />
           <span>New Chat</span>
         </button>
 
         {/* Saved Chats List growing downwards */}
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0, overflow: 'hidden' }}>
-          <div className="chat-history-label" style={{ padding: '0.2rem 0.4rem', flexShrink: 0 }}>
+          <div className="chat-history-label" style={{ padding: '0.15rem 0.35rem', flexShrink: 0 }}>
             <span>Saved Chats</span>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{chatSessions?.length || 0}</span>
+            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{chatSessions?.length || 0}</span>
           </div>
 
           <div 
@@ -176,7 +176,7 @@ export default function Sidebar({
               flex: 1, 
               overflowY: 'auto', 
               maxHeight: 'none',
-              padding: '0.2rem 0'
+              padding: '0.1rem 0'
             }}
           >
             {chatSessions && chatSessions.length > 0 ? (
@@ -190,7 +190,7 @@ export default function Sidebar({
                   className={`chat-history-item ${activeSessionId === s.id && currentView === 'chat' ? 'active' : ''}`}
                 >
                   <div className="chat-history-title-wrap">
-                    <MessageSquare size={13} style={{ flexShrink: 0, opacity: 0.7 }} />
+                    <MessageSquare size={12} style={{ flexShrink: 0, opacity: 0.7 }} />
                     <span className="chat-history-title-text" title={s.title}>
                       {s.title || 'New Conversation'}
                     </span>
@@ -210,7 +210,7 @@ export default function Sidebar({
                 </div>
               ))
             ) : (
-              <div style={{ padding: '0.75rem 0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center' }}>
+              <div style={{ padding: '0.5rem 0.35rem', fontSize: '0.76rem', color: 'var(--text-muted)', textAlign: 'center' }}>
                 No saved chats yet
               </div>
             )}
@@ -219,22 +219,22 @@ export default function Sidebar({
       </div>
 
       {/* 3. FOOTER: User info and API key */}
-      <div className="sidebar-footer" style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+      <div className="sidebar-footer" style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
         {currentUser && (
           <div style={{
             background: '#F8F9FD',
             border: '1px solid #EAEAF2',
-            borderRadius: '12px',
-            padding: '0.55rem 0.75rem',
+            borderRadius: '9px',
+            padding: '0.35rem 0.6rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '0.5rem',
+            gap: '0.45rem',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0, flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', minWidth: 0, flex: 1 }}>
               <div style={{
-                width: '26px',
-                height: '26px',
+                width: '24px',
+                height: '24px',
                 borderRadius: '50%',
                 background: '#EAE6FE',
                 color: 'var(--primary)',
@@ -243,11 +243,11 @@ export default function Sidebar({
                 justifyContent: 'center',
                 flexShrink: 0
               }}>
-                <UserCheck size={14} />
+                <UserCheck size={13} />
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={{
-                  fontSize: '0.78rem',
+                  fontSize: '0.76rem',
                   fontWeight: 700,
                   color: 'var(--text-main)',
                   whiteSpace: 'nowrap',
@@ -256,7 +256,7 @@ export default function Sidebar({
                 }} title={currentUser.email}>
                   {currentUser.email.split('@')[0]}
                 </div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--accent-teal)', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.65rem', color: 'var(--accent-teal)', fontWeight: 600 }}>
                   @cliniclivingplus.com
                 </div>
               </div>
@@ -270,8 +270,8 @@ export default function Sidebar({
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  padding: '4px',
-                  borderRadius: '6px',
+                  padding: '3px',
+                  borderRadius: '5px',
                   color: 'var(--text-muted)',
                   display: 'flex',
                   alignItems: 'center',
@@ -281,7 +281,7 @@ export default function Sidebar({
                 onMouseEnter={(e) => (e.currentTarget.style.color = '#EF4444')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
-                <LogOut size={14} />
+                <LogOut size={13} />
               </button>
             )}
           </div>
@@ -292,19 +292,19 @@ export default function Sidebar({
             onClick={onOpenAdmin}
             className="nav-link-btn"
             style={{
-              padding: '0.55rem 0.85rem',
+              padding: '0.42rem 0.7rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem',
+              gap: '0.45rem',
               color: 'var(--primary)',
               background: 'rgba(127, 102, 255, 0.08)',
-              borderRadius: '9px',
+              borderRadius: '8px',
               border: '1px solid rgba(127, 102, 255, 0.18)',
-              marginTop: '0.2rem'
+              marginTop: '0.1rem'
             }}
           >
-            <ShieldAlert size={16} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontSize: '0.84rem', fontWeight: 700 }}>Admin Portal</span>
+            <ShieldAlert size={15} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700 }}>Admin Portal</span>
           </button>
         )}
       </div>
