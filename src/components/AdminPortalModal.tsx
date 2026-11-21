@@ -26,6 +26,7 @@ import {
   EyeOff,
   Sparkles,
   ExternalLink,
+  ArrowLeft,
 } from 'lucide-react';
 import { StaffMember, WeeklyAccess } from '@/lib/rosterStore';
 
@@ -538,81 +539,92 @@ export default function AdminPortalModal({
     <div style={{
       position: 'fixed',
       inset: 0,
-      background: 'rgba(15, 17, 26, 0.72)',
-      backdropFilter: 'blur(8px)',
+      width: '100vw',
+      height: '100vh',
+      background: '#F8FAFC',
       zIndex: 9999,
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '1.2rem',
+      flexDirection: 'column',
+      overflow: 'hidden',
       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif"
     }}>
-      <div style={{
-        width: '100%',
-        maxWidth: '860px',
-        maxHeight: '90vh',
-        background: '#FFFFFF',
-        borderRadius: '20px',
-        boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.3)',
+      {/* Full Page Navigation Header */}
+      <header style={{
+        padding: '0.9rem 2.2rem',
+        background: 'linear-gradient(90deg, #18113C 0%, #29186B 60%, #151A38 100%)',
+        color: '#FFFFFF',
         display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-        border: '1px solid rgba(127, 102, 255, 0.2)'
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        flexShrink: 0,
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'
       }}>
-        {/* Modal Top Bar */}
-        <div style={{
-          padding: '1.1rem 1.6rem',
-          background: 'linear-gradient(90deg, #18113C 0%, #29186B 60%, #151A38 100%)',
-          color: '#FFFFFF',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <div style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '9px',
-              background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <ShieldAlert size={18} color="#FFFFFF" />
-            </div>
-            <div>
-              <h2 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, letterSpacing: '-0.01em' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+          <div style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: '11px',
+            background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(127, 102, 255, 0.4)'
+          }}>
+            <ShieldAlert size={20} color="#FFFFFF" />
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <h1 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, letterSpacing: '-0.01em', color: '#FFFFFF' }}>
                 ClinicLivingPlus Staff Access & Weekly Passwords
-              </h2>
-              <div style={{ fontSize: '0.72rem', color: 'rgba(255, 255, 255, 0.7)' }}>
-                Administrator Security Center · 100% User & Access Control
-              </div>
+              </h1>
+              <span style={{
+                background: 'rgba(127, 102, 255, 0.35)',
+                color: '#E0D7FE',
+                fontSize: '0.68rem',
+                fontWeight: 800,
+                padding: '0.15rem 0.55rem',
+                borderRadius: '9999px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em'
+              }}>
+                Full Admin Console
+              </span>
+            </div>
+            <div style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.72)', marginTop: '0.15rem' }}>
+              Administrator Security Center · 100% User & Access Control · Per-Doctor Credentials
             </div>
           </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            style={{
-              background: 'rgba(255, 255, 255, 0.12)',
-              border: 'none',
-              borderRadius: '8px',
-              color: '#FFFFFF',
-              width: '30px',
-              height: '30px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer'
-            }}
-          >
-            <X size={17} />
-          </button>
         </div>
 
-        {/* Content Area */}
-        <div style={{ padding: '1.4rem 1.6rem', overflowY: 'auto', flex: 1 }}>
+        {/* Exit Admin & Return to Portal / Login */}
+        <button
+          type="button"
+          onClick={onClose}
+          style={{
+            background: 'rgba(255, 255, 255, 0.12)',
+            border: '1px solid rgba(255, 255, 255, 0.22)',
+            borderRadius: '10px',
+            color: '#FFFFFF',
+            padding: '0.55rem 1.15rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.55rem',
+            cursor: 'pointer',
+            fontSize: '0.84rem',
+            fontWeight: 700,
+            transition: 'all 0.15s ease'
+          }}
+        >
+          <ArrowLeft size={16} />
+          <span>Exit Admin</span>
+          <X size={15} style={{ opacity: 0.7, marginLeft: '0.2rem' }} />
+        </button>
+      </header>
+
+      {/* Full Page Content Viewport */}
+      <main style={{ padding: '1.8rem 2.2rem', overflowY: 'auto', flex: 1, background: '#F8FAFC' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
           {/* Alerts */}
           {errorMessage && (
             <div style={{
@@ -1217,18 +1229,20 @@ export default function AdminPortalModal({
                 {/* Roster Table */}
                 <div style={{
                   border: '1px solid #E2E8F0',
-                  borderRadius: '12px',
-                  overflow: 'hidden'
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  background: '#FFFFFF',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.02)'
                 }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.8rem' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
                     <thead>
-                      <tr style={{ background: '#F1F5F9', borderBottom: '1px solid #E2E8F0', color: '#475569' }}>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Staff Member</th>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Clinical Role</th>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>This Week's Password</th>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Access Status</th>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Last Emailed</th>
-                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700, textAlign: 'right' }}>Actions</th>
+                      <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0', color: '#475569' }}>
+                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, width: '24%' }}>Staff Member</th>
+                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '16%' }}>Clinical Role</th>
+                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, width: '26%' }}>This Week's Password</th>
+                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '12%' }}>Access Status</th>
+                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '10%' }}>Last Emailed</th>
+                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, textAlign: 'right', width: '12%' }}>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1237,33 +1251,33 @@ export default function AdminPortalModal({
                           borderBottom: idx < roster.length - 1 ? '1px solid #F1F5F9' : 'none',
                           background: staff.status === 'suspended' ? '#FEF2F2' : '#FFFFFF'
                         }}>
-                          <td style={{ padding: '0.75rem 0.9rem' }}>
-                            <div style={{ fontWeight: 700, color: '#0F172A' }}>{staff.name}</div>
-                            <div style={{ fontSize: '0.74rem', color: '#64748B' }}>{staff.email}</div>
+                          <td style={{ padding: '0.9rem 1.2rem' }}>
+                            <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.88rem' }}>{staff.name}</div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B' }}>{staff.email}</div>
                           </td>
-                          <td style={{ padding: '0.75rem 0.9rem' }}>
+                          <td style={{ padding: '0.9rem 1rem' }}>
                             <span style={{
-                              padding: '0.2rem 0.5rem',
+                              padding: '0.25rem 0.65rem',
                               background: '#F1EEFE',
                               color: '#583EDB',
-                              borderRadius: '6px',
-                              fontSize: '0.72rem',
-                              fontWeight: 600
+                              borderRadius: '7px',
+                              fontSize: '0.76rem',
+                              fontWeight: 700
                             }}>
                               {staff.role}
                             </span>
                           </td>
-                          <td style={{ padding: '0.75rem 0.9rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                          <td style={{ padding: '0.9rem 1.2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                               <code style={{
                                 fontFamily: "'SF Mono', Consolas, Monaco, monospace",
                                 fontWeight: 800,
-                                fontSize: '0.78rem',
-                                letterSpacing: '0.03em',
+                                fontSize: '0.84rem',
+                                letterSpacing: '0.04em',
                                 color: '#4F33C4',
                                 background: '#F1EEFE',
-                                padding: '0.28rem 0.6rem',
-                                borderRadius: '7px',
+                                padding: '0.35rem 0.75rem',
+                                borderRadius: '8px',
                                 border: '1px solid rgba(127, 102, 255, 0.28)',
                                 userSelect: 'all'
                               }}>
@@ -1276,19 +1290,20 @@ export default function AdminPortalModal({
                                 title="Copy this doctor's password"
                                 onClick={() => handleCopyStaffPassword(staff)}
                                 style={{
-                                  width: '26px',
-                                  height: '26px',
-                                  borderRadius: '6px',
+                                  width: '30px',
+                                  height: '30px',
+                                  borderRadius: '7px',
                                   background: copiedStaffId === staff.id ? '#ECFDF5' : '#F1F5F9',
                                   border: '1px solid #CBD5E1',
                                   display: 'flex',
                                   alignItems: 'center',
                                   justifyContent: 'center',
                                   cursor: 'pointer',
-                                  color: copiedStaffId === staff.id ? '#059669' : '#475569'
+                                  color: copiedStaffId === staff.id ? '#059669' : '#475569',
+                                  transition: 'all 0.15s ease'
                                 }}
                               >
-                                {copiedStaffId === staff.id ? <Check size={13} /> : <Copy size={13} />}
+                                {copiedStaffId === staff.id ? <Check size={14} /> : <Copy size={14} />}
                               </button>
 
                               {/* Regenerate this doctor's password */}
@@ -1298,70 +1313,72 @@ export default function AdminPortalModal({
                                 onClick={() => handleRegenerateStaffPassword(staff)}
                                 disabled={rotatingStaffId === staff.id || isLoading}
                                 style={{
-                                  width: '26px',
-                                  height: '26px',
-                                  borderRadius: '6px',
+                                  width: '30px',
+                                  height: '30px',
+                                  borderRadius: '7px',
                                   background: '#F1F5F9',
                                   border: '1px solid #CBD5E1',
                                   display: 'flex',
                                   alignItems: 'center',
                                   justifyContent: 'center',
                                   cursor: 'pointer',
-                                  color: '#475569'
+                                  color: '#475569',
+                                  transition: 'all 0.15s ease'
                                 }}
                               >
-                                <RefreshCw size={13} className={rotatingStaffId === staff.id ? 'animate-spin' : ''} />
+                                <RefreshCw size={14} className={rotatingStaffId === staff.id ? 'animate-spin' : ''} />
                               </button>
                             </div>
                           </td>
-                          <td style={{ padding: '0.75rem 0.9rem' }}>
+                          <td style={{ padding: '0.9rem 1rem' }}>
                             {staff.status === 'active' ? (
                               <span style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
-                                gap: '0.25rem',
+                                gap: '0.35rem',
                                 color: '#059669',
                                 fontWeight: 700,
-                                fontSize: '0.74rem'
+                                fontSize: '0.78rem'
                               }}>
-                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
+                                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10B981' }} />
                                 Active
                               </span>
                             ) : (
                               <span style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
-                                gap: '0.25rem',
+                                gap: '0.35rem',
                                 color: '#DC2626',
                                 fontWeight: 700,
-                                fontSize: '0.74rem'
+                                fontSize: '0.78rem'
                               }}>
-                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#EF4444' }} />
+                                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
                                 Suspended
                               </span>
                             )}
                           </td>
-                          <td style={{ padding: '0.75rem 0.9rem', color: '#64748B', fontSize: '0.74rem' }}>
+                          <td style={{ padding: '0.9rem 1rem', color: '#64748B', fontSize: '0.78rem' }}>
                             {staff.lastNotifiedAt ? new Date(staff.lastNotifiedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Never'}
                           </td>
-                          <td style={{ padding: '0.75rem 0.9rem', textAlign: 'right' }}>
-                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <td style={{ padding: '0.9rem 1.2rem', textAlign: 'right' }}>
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
                               {/* Email button */}
                               <button
                                 type="button"
                                 title="Send weekly password email to this doctor"
                                 onClick={() => handleSendSingleEmail(staff.email)}
                                 style={{
-                                  padding: '0.35rem 0.6rem',
+                                  padding: '0.4rem 0.75rem',
                                   background: '#F1F5F9',
                                   color: '#334155',
                                   border: '1px solid #CBD5E1',
-                                  borderRadius: '6px',
-                                  fontSize: '0.72rem',
+                                  borderRadius: '7px',
+                                  fontSize: '0.76rem',
+                                  fontWeight: 600,
                                   cursor: 'pointer',
                                   display: 'flex',
                                   alignItems: 'center',
-                                  gap: '0.25rem'
+                                  gap: '0.3rem'
                                 }}
                               >
                                 <Mail size={13} />
@@ -1374,13 +1391,13 @@ export default function AdminPortalModal({
                                 title={staff.status === 'active' ? 'Suspend access' : 'Reactivate access'}
                                 onClick={() => handleToggleStatus(staff.id, staff.status)}
                                 style={{
-                                  padding: '0.35rem 0.6rem',
+                                  padding: '0.4rem 0.75rem',
                                   background: staff.status === 'active' ? '#FFFBEB' : '#ECFDF5',
                                   color: staff.status === 'active' ? '#B45309' : '#059669',
                                   border: '1px solid transparent',
-                                  borderRadius: '6px',
-                                  fontSize: '0.72rem',
-                                  fontWeight: 600,
+                                  borderRadius: '7px',
+                                  fontSize: '0.76rem',
+                                  fontWeight: 700,
                                   cursor: 'pointer'
                                 }}
                               >
@@ -1393,15 +1410,15 @@ export default function AdminPortalModal({
                                 title="Delete from roster"
                                 onClick={() => handleRemoveStaff(staff.id, staff.email)}
                                 style={{
-                                  padding: '0.35rem 0.45rem',
+                                  padding: '0.4rem 0.55rem',
                                   background: '#FEF2F2',
                                   color: '#EF4444',
                                   border: 'none',
-                                  borderRadius: '6px',
+                                  borderRadius: '7px',
                                   cursor: 'pointer'
                                 }}
                               >
-                                <Trash2 size={13} />
+                                <Trash2 size={14} />
                               </button>
                             </div>
                           </td>
@@ -1414,7 +1431,7 @@ export default function AdminPortalModal({
             </div>
           )}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
