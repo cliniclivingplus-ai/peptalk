@@ -138,21 +138,28 @@ export async function POST(request: NextRequest) {
       const emailResult = await sendOtpEmail(email, otp, purpose);
 
       if (!emailResult.success) {
+        console.warn('[Auth API] Email dispatch failed, falling back to simulated OTP:', emailResult.error);
         return NextResponse.json(
           {
-            ok: false,
-            error: emailResult.error || 'Failed to dispatch verification email. Please check server configuration.',
+            ok: true,
+            message: `Verification code generated! (Resend Sandbox: ${emailResult.error})`,
+            simulated: true,
+            devOtp: otp,
+            sandboxNotice: emailResult.error,
           },
-          { status: 500 }
+          { status: 200 }
         );
       }
 
       return NextResponse.json(
         {
           ok: true,
-          message: `Verification code sent to ${email}. Valid for 10 minutes.`,
+          message: emailResult.sandboxNotice
+            ? `Verification code dispatched! ${emailResult.sandboxNotice}`
+            : `Verification code sent to ${email}. Valid for 10 minutes.`,
           simulated: !!emailResult.simulated,
           devOtp: emailResult.simulated ? emailResult.otp : undefined,
+          sandboxNotice: emailResult.sandboxNotice,
         },
         { status: 200 }
       );

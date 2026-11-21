@@ -760,16 +760,21 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0.45rem 0.75rem',
+                padding: '0.5rem 0.75rem',
                 background: '#FFFBEB',
-                border: '1px dashed #F59E0B',
+                border: '1.5px dashed #F59E0B',
                 borderRadius: '8px',
                 color: '#92400E',
                 fontSize: '0.76rem',
                 marginBottom: '0.75rem'
               }}>
                 <div>
-                  Local Code: <strong style={{ fontSize: '0.95rem', letterSpacing: '1.5px', color: '#B45309' }}>{devOtp}</strong>
+                  <div style={{ fontWeight: 700, color: '#B45309', marginBottom: '2px' }}>
+                    Setup / Verification Code
+                  </div>
+                  <div>
+                    Code: <strong style={{ fontSize: '1.05rem', letterSpacing: '2px', color: '#92400E' }}>{devOtp}</strong>
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -779,8 +784,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                     color: '#FFFFFF',
                     border: 'none',
                     borderRadius: '6px',
-                    padding: '0.2rem 0.55rem',
-                    fontSize: '0.72rem',
+                    padding: '0.25rem 0.65rem',
+                    fontSize: '0.74rem',
                     fontWeight: 700,
                     cursor: 'pointer'
                   }}
