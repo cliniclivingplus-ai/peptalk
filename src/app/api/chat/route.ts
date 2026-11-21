@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchInternalKnowledge, RAGDocument } from '@/lib/ragService';
+import { verifySessionToken, isValidClinicEmail, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -21,6 +22,20 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    // 0. Verify active ClinicLivingPlus session
+    const sessionCookie = req.cookies.get(SESSION_COOKIE_NAME)?.value;
+    const session = verifySessionToken(sessionCookie);
+
+    if (!session || !isValidClinicEmail(session.email)) {
+      return NextResponse.json(
+        {
+          error: 'UNAUTHORIZED',
+          message: 'Access restricted: Please authenticate with your authorized @cliniclivingplus.com email address.',
+        },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const { message, history = [], apiKey: clientApiKey } = body;
 

@@ -19,11 +19,16 @@ import ClassroomView from '@/components/ClassroomView';
 import CourseReaderView from '@/components/CourseReaderView';
 import CalculatorView from '@/components/CalculatorView';
 import ResearchView from '@/components/ResearchView';
+import LoginView from '@/components/LoginView';
+import { MessageSquare, LogOut, UserCheck } from 'lucide-react';
 
 const SESSIONS_STORAGE_KEY = 'peptalk_ai_chat_sessions_v2';
 const LEGACY_STORAGE_KEY = 'peptalk_ai_chat_history_v2';
 
 export default function Home() {
+  const [currentUser, setCurrentUser] = useState<{ email: string; domain: string } | null>(null);
+  const [isAuthChecking, setIsAuthChecking] = useState<boolean>(true);
+
   const [currentView, setCurrentView] = useState<ViewMode>('chat');
   const [selectedCompound, setSelectedCompound] = useState<Compound | null>(null);
   const [selectedProtocol, setSelectedProtocol] = useState<Protocol | null>(null);
@@ -38,6 +43,35 @@ export default function Home() {
   const [apiKey, setApiKey] = useState<string>('');
   const [hasServerKey, setHasServerKey] = useState<boolean>(false);
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
+
+  // Check auth status on initial load
+  useEffect(() => {
+    fetch('/api/auth')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.authenticated && data?.user) {
+          setCurrentUser(data.user);
+        } else {
+          setCurrentUser(null);
+        }
+      })
+      .catch((err) => {
+        console.warn('Could not verify auth status:', err);
+        setCurrentUser(null);
+      })
+      .finally(() => {
+        setIsAuthChecking(false);
+      });
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth', { method: 'DELETE' });
+    } catch (e) {
+      console.warn('Logout error:', e);
+    }
+    setCurrentUser(null);
+  };
 
   // Restore client-side API key from localStorage and check if server environment has GEMINI_API_KEY
   useEffect(() => {
@@ -218,6 +252,44 @@ export default function Home() {
     });
   };
 
+  if (isAuthChecking) {
+    return (
+      <div style={{
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#FAF9FE',
+        gap: '1rem',
+        fontFamily: "'Plus Jakarta Sans', sans-serif"
+      }}>
+        <div style={{
+          width: '52px',
+          height: '52px',
+          borderRadius: '16px',
+          background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#FFF',
+          boxShadow: '0 8px 24px rgba(127, 102, 255, 0.35)'
+        }}>
+          <MessageSquare size={26} />
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#5E6070', fontSize: '0.92rem', fontWeight: 600 }}>
+          <div className="spin-slow" style={{ width: '16px', height: '16px', border: '2.5px solid #7F66FF', borderTopColor: 'transparent', borderRadius: '50%' }} />
+          <span>Authenticating ClinicLivingPlus Access...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentUser) {
+    return <LoginView onLoginSuccess={(u) => setCurrentUser(u)} />;
+  }
+
   const activeSession = chatSessions.find((s) => s.id === activeSessionId) || chatSessions[0] || null;
 
   return (
@@ -234,6 +306,8 @@ export default function Home() {
         activeSessionId={activeSessionId}
         onSelectSession={handleSelectSession}
         onDeleteSession={handleDeleteSession}
+        currentUser={currentUser}
+        onLogout={handleLogout}
       />
 
       <main className="main-viewport">
@@ -254,6 +328,24 @@ export default function Home() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              {currentUser && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  background: '#F1EEFE',
+                  border: '1px solid #D8D1FC',
+                  borderRadius: '20px',
+                  padding: '0.3rem 0.75rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: 'var(--primary)'
+                }}>
+                  <UserCheck size={13} />
+                  <span>{currentUser.email}</span>
+                </div>
+              )}
+
               <button
                 onClick={() => setIsApiKeyOpen(true)}
                 className="btn btn-outline"

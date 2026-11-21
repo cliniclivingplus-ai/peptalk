@@ -11,7 +11,9 @@ import {
   BookOpen, 
   Plus,
   KeyRound,
-  Trash2
+  Trash2,
+  LogOut,
+  UserCheck
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -26,6 +28,8 @@ interface SidebarProps {
   activeSessionId?: string | null;
   onSelectSession?: (id: string) => void;
   onDeleteSession?: (id: string, e: React.MouseEvent) => void;
+  currentUser?: { email: string; domain: string } | null;
+  onLogout?: () => void;
 }
 
 export default function Sidebar({
@@ -40,6 +44,8 @@ export default function Sidebar({
   activeSessionId = null,
   onSelectSession,
   onDeleteSession,
+  currentUser = null,
+  onLogout,
 }: SidebarProps) {
   const isKeyActive = !!apiKey.trim();
 
@@ -209,16 +215,83 @@ export default function Sidebar({
         </div>
       </div>
 
-      {/* 3. FOOTER: Fixed at bottom */}
-      <div className="sidebar-footer" style={{ flexShrink: 0 }}>
+      {/* 3. FOOTER: User info and API key */}
+      <div className="sidebar-footer" style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+        {currentUser && (
+          <div style={{
+            background: '#F8F9FD',
+            border: '1px solid #EAEAF2',
+            borderRadius: '12px',
+            padding: '0.55rem 0.75rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '0.5rem',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0, flex: 1 }}>
+              <div style={{
+                width: '26px',
+                height: '26px',
+                borderRadius: '50%',
+                background: '#EAE6FE',
+                color: 'var(--primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <UserCheck size={14} />
+              </div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  color: 'var(--text-main)',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
+                }} title={currentUser.email}>
+                  {currentUser.email.split('@')[0]}
+                </div>
+                <div style={{ fontSize: '0.68rem', color: 'var(--accent-teal)', fontWeight: 600 }}>
+                  @cliniclivingplus.com
+                </div>
+              </div>
+            </div>
+
+            {onLogout && (
+              <button
+                onClick={onLogout}
+                title="Sign Out"
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '6px',
+                  color: 'var(--text-muted)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'color 0.15s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#EF4444')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              >
+                <LogOut size={14} />
+              </button>
+            )}
+          </div>
+        )}
+
         <button
           onClick={onOpenApiKey}
           className="nav-link-btn"
-          style={{ padding: '0.65rem 0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+          style={{ padding: '0.55rem 0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <KeyRound size={16} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontSize: '0.86rem' }}>Gemini API Key</span>
+            <KeyRound size={15} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.84rem' }}>Gemini API Key</span>
           </div>
           <span
             style={{
