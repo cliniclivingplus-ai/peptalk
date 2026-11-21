@@ -1195,7 +1195,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
                     {/* Passwords in 2 columns to save height! */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                      <div>
+                      <div style={{ position: 'relative' }}>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           value={password}
@@ -1205,7 +1205,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                           minLength={8}
                           style={{
                             width: '100%',
-                            padding: '0.55rem 0.65rem',
+                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
                             fontSize: '0.8rem',
                             borderRadius: '8px',
                             border: '1.5px solid #E2E4EB',
@@ -1214,8 +1214,27 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                             boxSizing: 'border-box',
                           }}
                         />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          aria-label={showPassword ? 'Hide password' : 'Show password'}
+                          style={{
+                            position: 'absolute',
+                            right: '6px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'none',
+                            border: 'none',
+                            color: '#8A8D9F',
+                            cursor: 'pointer',
+                            padding: '3px',
+                            display: 'flex',
+                          }}
+                        >
+                          {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
                       </div>
-                      <div>
+                      <div style={{ position: 'relative' }}>
                         <input
                           type={showConfirmPassword ? 'text' : 'password'}
                           value={confirmPassword}
@@ -1225,7 +1244,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                           minLength={8}
                           style={{
                             width: '100%',
-                            padding: '0.55rem 0.65rem',
+                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
                             fontSize: '0.8rem',
                             borderRadius: '8px',
                             border: '1.5px solid #E2E4EB',
@@ -1234,6 +1253,25 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                             boxSizing: 'border-box',
                           }}
                         />
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                          aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
+                          style={{
+                            position: 'absolute',
+                            right: '6px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'none',
+                            border: 'none',
+                            color: '#8A8D9F',
+                            cursor: 'pointer',
+                            padding: '3px',
+                            display: 'flex',
+                          }}
+                        >
+                          {showConfirmPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
                       </div>
                     </div>
 
@@ -1424,7 +1462,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
                     {/* Two columns for passwords */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                      <div>
+                      <div style={{ position: 'relative' }}>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           value={password}
@@ -1434,7 +1472,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                           minLength={8}
                           style={{
                             width: '100%',
-                            padding: '0.55rem 0.65rem',
+                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
                             fontSize: '0.8rem',
                             borderRadius: '8px',
                             border: '1.5px solid #E2E4EB',
@@ -1443,8 +1481,27 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                             boxSizing: 'border-box',
                           }}
                         />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          aria-label={showPassword ? 'Hide password' : 'Show password'}
+                          style={{
+                            position: 'absolute',
+                            right: '6px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'none',
+                            border: 'none',
+                            color: '#8A8D9F',
+                            cursor: 'pointer',
+                            padding: '3px',
+                            display: 'flex',
+                          }}
+                        >
+                          {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
                       </div>
-                      <div>
+                      <div style={{ position: 'relative' }}>
                         <input
                           type={showConfirmPassword ? 'text' : 'password'}
                           value={confirmPassword}
@@ -1454,7 +1511,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                           minLength={8}
                           style={{
                             width: '100%',
-                            padding: '0.55rem 0.65rem',
+                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
                             fontSize: '0.8rem',
                             borderRadius: '8px',
                             border: '1.5px solid #E2E4EB',
@@ -1463,6 +1520,25 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                             boxSizing: 'border-box',
                           }}
                         />
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                          aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
+                          style={{
+                            position: 'absolute',
+                            right: '6px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'none',
+                            border: 'none',
+                            color: '#8A8D9F',
+                            cursor: 'pointer',
+                            padding: '3px',
+                            display: 'flex',
+                          }}
+                        >
+                          {showConfirmPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
                       </div>
                     </div>
 

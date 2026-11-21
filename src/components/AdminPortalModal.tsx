@@ -22,6 +22,8 @@ import {
   Building2,
   Calendar,
   Zap,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 import { StaffMember, WeeklyAccess } from '@/lib/rosterStore';
 
@@ -32,6 +34,7 @@ interface AdminPortalModalProps {
 
 export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalProps) {
   const [adminKey, setAdminKey] = useState('');
+  const [showAdminKey, setShowAdminKey] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -513,24 +516,45 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
               </p>
 
               <form onSubmit={(e) => { e.preventDefault(); verifyKeyAndLoad(); }} style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                <input
-                  type="password"
-                  value={adminKey}
-                  onChange={(e) => setAdminKey(e.target.value)}
-                  placeholder="Enter Admin Security Key"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '0.8rem 1rem',
-                    fontSize: '0.92rem',
-                    borderRadius: '10px',
-                    border: '1.5px solid #E2E4EB',
-                    outline: 'none',
-                    textAlign: 'center',
-                    letterSpacing: '2px',
-                    boxSizing: 'border-box'
-                  }}
-                />
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showAdminKey ? 'text' : 'password'}
+                    value={adminKey}
+                    onChange={(e) => setAdminKey(e.target.value)}
+                    placeholder="Enter Admin Security Key"
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.8rem 2.6rem 0.8rem 1rem',
+                      fontSize: '0.92rem',
+                      borderRadius: '10px',
+                      border: '1.5px solid #E2E4EB',
+                      outline: 'none',
+                      textAlign: 'center',
+                      letterSpacing: '2px',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowAdminKey(!showAdminKey)}
+                    aria-label={showAdminKey ? 'Hide key' : 'Show key'}
+                    style={{
+                      position: 'absolute',
+                      right: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      color: '#8A8D9F',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      display: 'flex',
+                    }}
+                  >
+                    {showAdminKey ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
                 <button
                   type="submit"
                   disabled={isLoading}
