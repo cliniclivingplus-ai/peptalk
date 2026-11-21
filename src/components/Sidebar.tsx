@@ -136,38 +136,39 @@ export default function Sidebar({
           overflow: 'hidden'
         }}
       >
-        {/* "+ New Chat" Dedicated Button */}
-        <button
-          onClick={() => {
-            if (onNewChat) onNewChat();
-            onNavigate('chat');
-          }}
-          className="btn btn-primary"
-          style={{
-            margin: '0.05rem 0.05rem 0.35rem 0.05rem',
-            padding: '0.42rem 0.75rem',
-            fontSize: '0.82rem',
-            fontWeight: 700,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.4rem',
-            borderRadius: '9px',
-            background: 'var(--primary)',
-            color: '#FFFFFF',
-            boxShadow: '0 2px 8px rgba(127, 102, 255, 0.2)',
-            flexShrink: 0
-          }}
-        >
-          <Plus size={14} strokeWidth={2.5} />
-          <span>New Chat</span>
-        </button>
-
         {/* Saved Chats List growing downwards */}
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0, overflow: 'hidden' }}>
-          <div className="chat-history-label" style={{ padding: '0.15rem 0.35rem', flexShrink: 0 }}>
+          <div className="chat-history-label" style={{ padding: '0.15rem 0.35rem 0.35rem 0.35rem', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span>Saved Chats</span>
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{chatSessions?.length || 0}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{chatSessions?.length || 0}</span>
+              {onNewChat && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onNewChat();
+                    onNavigate('chat');
+                  }}
+                  title="New Conversation"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--primary)',
+                    cursor: 'pointer',
+                    padding: '2px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '4px',
+                    opacity: 0.8
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.8')}
+                >
+                  <Plus size={13} strokeWidth={2.5} />
+                </button>
+              )}
+            </div>
           </div>
 
           <div 
