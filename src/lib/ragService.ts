@@ -54,6 +54,17 @@ const COMMON_ALIASES: Record<string, string[]> = {
   labs: ['bloodwork', 'tests', 'baseline', 'biomarkers', 'panel'],
   protocol: ['dosing', 'cycle', 'titration', 'schedule', 'reconstitution'],
   protocols: ['dosing', 'cycle', 'titration', 'schedule', 'reconstitution'],
+  class: ['course', 'lesson', 'masterclass', 'classroom', 'video', 'module'],
+  classes: ['course', 'courses', 'lesson', 'lessons', 'masterclass', 'classroom', 'video'],
+  course: ['class', 'masterclass', 'classroom', 'lesson'],
+  courses: ['classes', 'masterclasses', 'lessons', 'classroom'],
+  lesson: ['class', 'course', 'masterclass', 'video'],
+  lessons: ['classes', 'courses', 'masterclasses', 'videos'],
+  video: ['class', 'lesson', 'masterclass', 'classroom'],
+  videos: ['classes', 'lessons', 'masterclasses', 'classroom'],
+  dosing: ['dose', 'dosage', 'titration', 'protocol', 'schedule', 'reconstitution', 'units'],
+  dose: ['dosing', 'dosage', 'titration', 'protocol'],
+  reconstitution: ['mixing', 'diluent', 'bac water', 'math', 'calculator'],
 };
 
 const STOP_WORDS = new Set([
@@ -90,6 +101,21 @@ export function searchInternalKnowledge(query: string, maxResults: number = 8): 
     cleanQuery.includes('shortage') ||
     cleanQuery.includes('ban') ||
     cleanQuery.includes('law');
+
+  // Check if user specifically asks about a classroom course or lesson
+  const isCourseQuery =
+    cleanQuery.includes('class') ||
+    cleanQuery.includes('classes') ||
+    cleanQuery.includes('course') ||
+    cleanQuery.includes('courses') ||
+    cleanQuery.includes('lesson') ||
+    cleanQuery.includes('lessons') ||
+    cleanQuery.includes('video') ||
+    cleanQuery.includes('videos') ||
+    cleanQuery.includes('masterclass') ||
+    cleanQuery.includes('lecture') ||
+    cleanQuery.includes('classroom') ||
+    cleanQuery.includes('curriculum');
 
   // 1. Search Compounds (690 Monographs) - High Priority
   for (const c of allCompounds) {
@@ -211,6 +237,10 @@ export function searchInternalKnowledge(query: string, maxResults: number = 8): 
       else if (lTitle.includes(token)) score += 30;
       else if (lCourse.includes(token)) score += 15;
       else if (lText.includes(token)) score += 6;
+    }
+
+    if (isCourseQuery && score > 0) {
+      score += 45; // Strongly prioritize classroom lessons when user specifically asks about a class/course/video
     }
 
     if (score > 0) {
