@@ -1,27 +1,23 @@
 'use strict';
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Lock,
   Mail,
-  KeyRound,
   ShieldCheck,
   AlertCircle,
   ArrowRight,
-  ArrowLeft,
   Eye,
   EyeOff,
   CheckCircle2,
   RefreshCw,
-  Sparkles,
   Dna,
-  Atom,
-  Pill,
   FlaskConical,
-  Activity,
   Check,
   ShieldAlert,
+  Info,
+  Sparkles,
 } from 'lucide-react';
 import AdminPortalModal from './AdminPortalModal';
 
@@ -29,35 +25,14 @@ interface LoginViewProps {
   onLoginSuccess: (user: { email: string; domain: string }) => void;
 }
 
-type AuthMode = 'signin' | 'signup' | 'forgot';
-
 export default function LoginView({ onLoginSuccess }: LoginViewProps) {
-  const [mode, setMode] = useState<AuthMode>('signin');
-  const [step, setStep] = useState<1 | 2>(1); // Step 1: Email -> Step 2: OTP + Password
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [otp, setOtp] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
-
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [devOtp, setDevOtp] = useState<string | null>(null);
-  const [cooldown, setCooldown] = useState(0);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-
-  // Resend cooldown timer
-  useEffect(() => {
-    if (cooldown > 0) {
-      const timer = setTimeout(() => setCooldown(cooldown - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [cooldown]);
 
   // Real-time domain validation check
   const trimmedEmail = email.trim().toLowerCase();
@@ -67,22 +42,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
   const resetMessages = () => {
     setErrorMessage(null);
-    setSuccessMessage(null);
   };
 
-  const switchMode = (newMode: AuthMode) => {
-    setMode(newMode);
-    setStep(1);
-    setPassword('');
-    setConfirmPassword('');
-    setOtp('');
-    setDevOtp(null);
-    resetMessages();
-  };
-
-  // --------------------------------------------------------------------------
-  // FLOW 1: Standard Sign In
-  // --------------------------------------------------------------------------
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     resetMessages();
@@ -135,171 +96,6 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
     }
   };
 
-  // --------------------------------------------------------------------------
-  // FLOW 2 & 3: Request OTP (First-Time Activation or Forgot Password)
-  // --------------------------------------------------------------------------
-  const handleRequestOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    resetMessages();
-
-    if (!email.trim()) {
-      setErrorMessage('Please enter your clinic email address.');
-      return;
-    }
-
-    if (!isClinicDomain) {
-      setErrorMessage('Access Denied: Only @cliniclivingplus.com email addresses are permitted.');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const purpose = mode === 'signup' ? 'signup' : 'reset';
-      const res = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'request_otp',
-          email: trimmedEmail,
-          purpose,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.ok) {
-        setErrorMessage(data.error || 'Failed to dispatch verification code.');
-        setIsLoading(false);
-        return;
-      }
-
-      setSuccessMessage(data.message || `Verification code sent to ${trimmedEmail}`);
-      if (data.simulated && data.devOtp) {
-        setDevOtp(data.devOtp);
-      }
-      setStep(2);
-      setCooldown(60);
-      setIsLoading(false);
-    } catch (err: any) {
-      console.error('Request OTP error:', err);
-      setErrorMessage('Network or server connection error. Please try again.');
-      setIsLoading(false);
-    }
-  };
-
-  // --------------------------------------------------------------------------
-  // FLOW 2: Complete First-Time Password Creation
-  // --------------------------------------------------------------------------
-  const handleCreatePassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    resetMessages();
-
-    if (!otp.trim()) {
-      setErrorMessage('Please enter the 6-digit verification code.');
-      return;
-    }
-
-    if (password.length < 8) {
-      setErrorMessage('Password must be at least 8 characters long.');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match. Please re-enter.');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const res = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'create_password',
-          email: trimmedEmail,
-          otp: otp.trim(),
-          password,
-          rememberMe,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.ok) {
-        setErrorMessage(data.error || 'Failed to activate account.');
-        setIsLoading(false);
-        return;
-      }
-
-      onLoginSuccess({
-        email: data.user?.email || trimmedEmail,
-        domain: data.user?.domain || 'cliniclivingplus.com',
-      });
-    } catch (err: any) {
-      console.error('Create password error:', err);
-      setErrorMessage('Network or server connection error. Please try again.');
-      setIsLoading(false);
-    }
-  };
-
-  // --------------------------------------------------------------------------
-  // FLOW 3: Complete Password Reset
-  // --------------------------------------------------------------------------
-  const handleResetPassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    resetMessages();
-
-    if (!otp.trim()) {
-      setErrorMessage('Please enter the 6-digit verification code.');
-      return;
-    }
-
-    if (password.length < 8) {
-      setErrorMessage('New password must be at least 8 characters long.');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match. Please re-enter.');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const res = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'reset_password',
-          email: trimmedEmail,
-          otp: otp.trim(),
-          newPassword: password,
-          rememberMe,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.ok) {
-        setErrorMessage(data.error || 'Failed to reset password.');
-        setIsLoading(false);
-        return;
-      }
-
-      onLoginSuccess({
-        email: data.user?.email || trimmedEmail,
-        domain: data.user?.domain || 'cliniclivingplus.com',
-      });
-    } catch (err: any) {
-      console.error('Reset password error:', err);
-      setErrorMessage('Network or server connection error. Please try again.');
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div style={{
       height: '100vh',
@@ -342,7 +138,6 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
         }} className="peptide-pulse-glow" />
 
         {/* Floating Peptide Icons */}
-        {/* 1. DNA Helix Top-Left */}
         <div style={{
           position: 'absolute',
           top: '7%',
@@ -359,89 +154,63 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           </span>
         </div>
 
-        {/* 2. Atom Top-Right */}
         <div style={{
           position: 'absolute',
-          top: '9%',
+          bottom: '7%',
           right: '7%',
+          color: '#00BFA5',
+          opacity: 0.35,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px'
+        }} className="peptide-float-reverse">
+          <FlaskConical size={38} strokeWidth={1.75} />
+          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#00BFA5' }}>
+            CJC-1295
+          </span>
+        </div>
+
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          right: '8%',
           color: '#10B981',
-          opacity: 0.42,
+          opacity: 0.35,
           display: 'flex',
           alignItems: 'center',
           gap: '6px'
         }} className="peptide-float-medium">
-          <Atom size={40} strokeWidth={1.75} />
+          <Sparkles size={36} strokeWidth={1.75} />
           <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#10B981' }}>
             TB-500
           </span>
         </div>
 
-        {/* 3. Peptide Capsule Bottom-Left */}
         <div style={{
           position: 'absolute',
           bottom: '8%',
           left: '8%',
-          color: '#583EDB',
-          opacity: 0.38,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px'
-        }} className="peptide-float-fast">
-          <Pill size={36} strokeWidth={1.8} />
-          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#583EDB' }}>
-            Retatrutide
-          </span>
-        </div>
-
-        {/* 4. Flask Laboratory Bottom-Right */}
-        <div style={{
-          position: 'absolute',
-          bottom: '7%',
-          right: '8%',
           color: '#8B5CF6',
-          opacity: 0.4,
+          opacity: 0.32,
           display: 'flex',
           alignItems: 'center',
           gap: '6px'
-        }} className="peptide-float-medium">
-          <FlaskConical size={38} strokeWidth={1.8} />
-          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B5CF6' }}>
-            CJC-1295
-          </span>
-        </div>
-
-        {/* 5. Bioactivity Mid-Left */}
-        <div style={{
-          position: 'absolute',
-          top: '48%',
-          left: '3%',
-          color: '#059669',
-          opacity: 0.32,
         }} className="peptide-float-slow">
-          <Activity size={32} strokeWidth={1.75} />
-        </div>
-
-        {/* 6. Sparkles Mid-Right */}
-        <div style={{
-          position: 'absolute',
-          top: '46%',
-          right: '4%',
-          color: '#F59E0B',
-          opacity: 0.35,
-        }} className="peptide-float-fast">
-          <Sparkles size={30} strokeWidth={1.75} />
+          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B5CF6' }}>
+            RETATRUTIDE
+          </span>
         </div>
       </div>
 
       {/* ==================================================================== */}
-      {/* MAIN EXECUTIVE PORTAL CARD (DUAL-PANEL, FIT-TO-VIEWPORT)             */}
+      {/* MAIN AUTHENTICATION CARD (ZERO-SCROLL VIEWPORT FITTED)                 */}
       {/* ==================================================================== */}
       <div style={{
         position: 'relative',
         zIndex: 10,
         width: '100%',
         maxWidth: '920px',
-        maxHeight: 'min(580px, 94vh)',
+        maxHeight: 'min(590px, 94vh)',
         background: '#FFFFFF',
         borderRadius: '20px',
         border: '1px solid rgba(127, 102, 255, 0.18)',
@@ -492,7 +261,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               color: '#A7F3D0',
-              marginBottom: '1rem'
+              marginBottom: '1.25rem'
             }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
               ClinicLivingPlus Security
@@ -526,7 +295,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
               fontSize: '0.82rem',
               color: 'rgba(255, 255, 255, 0.72)',
               lineHeight: 1.45,
-              margin: '0.4rem 0 1.25rem 0'
+              margin: '0.4rem 0 1.35rem 0'
             }}>
               Clinical Peptide Intelligence & Masterclass Archive for authorized practitioners.
             </p>
@@ -540,7 +309,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 fontSize: '0.78rem',
                 color: 'rgba(255, 255, 255, 0.9)',
                 background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.45rem 0.65rem',
+                padding: '0.5rem 0.7rem',
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.07)'
               }}>
@@ -555,7 +324,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 fontSize: '0.78rem',
                 color: 'rgba(255, 255, 255, 0.9)',
                 background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.45rem 0.65rem',
+                padding: '0.5rem 0.7rem',
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.07)'
               }}>
@@ -570,7 +339,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 fontSize: '0.78rem',
                 color: 'rgba(255, 255, 255, 0.9)',
                 background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.45rem 0.65rem',
+                padding: '0.5rem 0.7rem',
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.07)'
               }}>
@@ -596,11 +365,11 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
         </div>
 
         {/* ------------------------------------------------------------------ */}
-        {/* RIGHT PANEL: COMPACT AUTH FORM & CLEAR NAVIGATION TABS            */}
+        {/* RIGHT PANEL: UNIFIED CLINICAL PRACTITIONER SIGN IN                 */}
         {/* ------------------------------------------------------------------ */}
         <div style={{
           flex: 1,
-          padding: '1.5rem 1.85rem',
+          padding: '1.6rem 2rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -608,7 +377,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
         }}>
           <div>
             {/* Top Bar with Admin Access Pill */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
               <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#7F66FF' }}>
                 Clinic Access
               </span>
@@ -619,7 +388,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.35rem',
-                  padding: '0.2rem 0.55rem',
+                  padding: '0.22rem 0.6rem',
                   background: '#F1EEFE',
                   border: '1px solid rgba(127, 102, 255, 0.25)',
                   borderRadius: '6px',
@@ -634,120 +403,65 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
               </button>
             </div>
 
-            {/* Top Navigation Tabs - Completely eliminates hunting for links! */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              padding: '0.25rem',
-              background: '#F4F5F9',
-              borderRadius: '10px',
-              marginBottom: '1rem',
-              border: '1px solid #ECEEF4'
-            }}>
-              <button
-                type="button"
-                onClick={() => switchMode('signin')}
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.35rem',
-                  padding: '0.45rem 0.4rem',
-                  fontSize: '0.78rem',
-                  fontWeight: mode === 'signin' ? 700 : 600,
-                  color: mode === 'signin' ? '#583EDB' : '#6B7280',
-                  background: mode === 'signin' ? '#FFFFFF' : 'transparent',
-                  borderRadius: '8px',
-                  border: 'none',
-                  boxShadow: mode === 'signin' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s'
-                }}
-              >
-                <Lock size={13} />
-                <span>Sign In</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => switchMode('signup')}
-                style={{
-                  flex: 1.15,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.35rem',
-                  padding: '0.45rem 0.4rem',
-                  fontSize: '0.78rem',
-                  fontWeight: mode === 'signup' ? 700 : 600,
-                  color: mode === 'signup' ? '#583EDB' : '#6B7280',
-                  background: mode === 'signup' ? '#FFFFFF' : 'transparent',
-                  borderRadius: '8px',
-                  border: 'none',
-                  boxShadow: mode === 'signup' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s'
-                }}
-              >
-                <Sparkles size={13} />
-                <span>First-Time Setup</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => switchMode('forgot')}
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.35rem',
-                  padding: '0.45rem 0.4rem',
-                  fontSize: '0.78rem',
-                  fontWeight: mode === 'forgot' ? 700 : 600,
-                  color: mode === 'forgot' ? '#583EDB' : '#6B7280',
-                  background: mode === 'forgot' ? '#FFFFFF' : 'transparent',
-                  borderRadius: '8px',
-                  border: 'none',
-                  boxShadow: mode === 'forgot' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s'
-                }}
-              >
-                <KeyRound size={13} />
-                <span>Forgot Pass</span>
-              </button>
-            </div>
-
-            {/* Compact Header Title */}
-            <div style={{ marginBottom: '0.75rem' }}>
+            {/* Title & Domain Policy */}
+            <div style={{ marginBottom: '0.85rem' }}>
               <h1 style={{
-                fontSize: '1.2rem',
+                fontSize: '1.3rem',
                 fontWeight: 800,
                 color: '#111116',
-                margin: '0 0 0.2rem 0',
+                margin: '0 0 0.25rem 0',
                 letterSpacing: '-0.02em'
               }}>
-                {mode === 'signin' && 'Clinical Workstation Login'}
-                {mode === 'signup' && 'Activate Clinical Account'}
-                {mode === 'forgot' && 'Reset Staff Passcode'}
+                Clinical Practitioner Sign In
               </h1>
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.35rem',
-                fontSize: '0.74rem',
+                fontSize: '0.76rem',
                 color: '#4B5563',
               }}>
-                <ShieldCheck size={13} color="#7F66FF" />
+                <ShieldCheck size={14} color="#7F66FF" />
                 <span>Strict Domain Policy:</span>
                 <span style={{ fontWeight: 700, color: '#583EDB' }}>@cliniclivingplus.com</span>
               </div>
             </div>
 
-            {/* Inline Alerts */}
+            {/* Practitioner Instructions Guide Box */}
+            <div style={{
+              background: '#F7F6FD',
+              border: '1px solid #E4E0FB',
+              borderRadius: '10px',
+              padding: '0.7rem 0.85rem',
+              marginBottom: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.35rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#4F38CA', fontSize: '0.75rem', fontWeight: 700 }}>
+                <Info size={14} color="#7F66FF" />
+                <span>First-Time & Returning Doctors Login Guide</span>
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '1.2rem',
+                fontSize: '0.73rem',
+                color: '#4B5563',
+                lineHeight: 1.45
+              }}>
+                <li>
+                  <strong>No account signup needed:</strong> Simply enter your official <span style={{ color: '#583EDB', fontWeight: 600 }}>@cliniclivingplus.com</span> work email below.
+                </li>
+                <li>
+                  <strong>Weekly Password:</strong> Enter this week&apos;s active clinical passcode dispatched to your email inbox.
+                </li>
+                <li>
+                  <strong>Automatic Weekly Rotation:</strong> Passwords rotate and are re-emailed every Sunday at 11:30 PM IST.
+                </li>
+              </ul>
+            </div>
+
+            {/* Inline Error Alerts */}
             {errorMessage && (
               <div style={{
                 display: 'flex',
@@ -766,808 +480,186 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
               </div>
             )}
 
-            {successMessage && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.5rem 0.75rem',
-                background: '#ECFDF5',
-                border: '1px solid #A7F3D0',
-                borderRadius: '8px',
-                color: '#047857',
-                fontSize: '0.78rem',
-                marginBottom: '0.75rem'
-              }}>
-                <CheckCircle2 size={15} style={{ flexShrink: 0 }} />
-                <span>{successMessage}</span>
-              </div>
-            )}
-
-            {/* Dev / Local Mode OTP Auto-fill Badge */}
-            {devOtp && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '0.5rem 0.75rem',
-                background: '#FFFBEB',
-                border: '1.5px dashed #F59E0B',
-                borderRadius: '8px',
-                color: '#92400E',
-                fontSize: '0.76rem',
-                marginBottom: '0.75rem'
-              }}>
-                <div>
-                  <div style={{ fontWeight: 700, color: '#B45309', marginBottom: '2px' }}>
-                    Setup / Verification Code
-                  </div>
-                  <div>
-                    Code: <strong style={{ fontSize: '1.05rem', letterSpacing: '2px', color: '#92400E' }}>{devOtp}</strong>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setOtp(devOtp)}
-                  style={{
-                    background: '#F59E0B',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '6px',
-                    padding: '0.25rem 0.65rem',
-                    fontSize: '0.74rem',
-                    fontWeight: 700,
-                    cursor: 'pointer'
-                  }}
-                >
-                  Auto-Fill
-                </button>
-              </div>
-            )}
-
-            {/* ============================================================== */}
-            {/* TAB 1: SIGN IN                                                 */}
-            {/* ============================================================== */}
-            {mode === 'signin' && (
-              <form onSubmit={handleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
-                    Work Email Address
-                  </label>
-                  <div style={{ position: 'relative' }}>
-                    <Mail
-                      size={16}
-                      style={{
-                        position: 'absolute',
-                        left: '12px',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        color: isClinicDomain ? '#10B981' : isOtherDomain ? '#EF4444' : '#8A8D9F',
-                      }}
-                    />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (errorMessage) setErrorMessage(null);
-                      }}
-                      placeholder="doctor@cliniclivingplus.com"
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '0.65rem 0.85rem 0.65rem 2.35rem',
-                        fontSize: '0.86rem',
-                        borderRadius: '10px',
-                        border: isClinicDomain
-                          ? '1.5px solid #10B981'
-                          : isOtherDomain
-                          ? '1.5px solid #EF4444'
-                          : '1.5px solid #E2E4EB',
-                        outline: 'none',
-                        background: '#FFFFFF',
-                        color: '#111116',
-                        boxSizing: 'border-box',
-                        boxShadow: isClinicDomain
-                          ? '0 0 0 3px rgba(16, 185, 129, 0.12)'
-                          : isOtherDomain
-                          ? '0 0 0 3px rgba(239, 68, 68, 0.12)'
-                          : 'none',
-                      }}
-                    />
-                  </div>
-
-                  {isClinicDomain && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#059669', fontWeight: 600, marginTop: '0.2rem' }}>
-                      <CheckCircle2 size={12} color="#059669" />
-                      Verified ClinicLivingPlus Domain
-                    </div>
-                  )}
-
-                  {isOtherDomain && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#DC2626', fontWeight: 600, marginTop: '0.2rem' }}>
-                      <AlertCircle size={12} color="#DC2626" />
-                      Restricted: Only @cliniclivingplus.com is accepted
-                    </div>
-                  )}
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                    <label style={{ fontSize: '0.78rem', fontWeight: 700, color: '#1E202A' }}>
-                      Password
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => switchMode('forgot')}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                        fontSize: '0.74rem',
-                        color: '#7F66FF',
-                        fontWeight: 600,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      Forgot?
-                    </button>
-                  </div>
-
-                  <div style={{ position: 'relative' }}>
-                    <Lock
-                      size={16}
-                      style={{
-                        position: 'absolute',
-                        left: '12px',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        color: '#8A8D9F',
-                      }}
-                    />
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                        if (errorMessage) setErrorMessage(null);
-                      }}
-                      placeholder="Enter clinical password"
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '0.65rem 2.6rem 0.65rem 2.35rem',
-                        fontSize: '0.86rem',
-                        borderRadius: '10px',
-                        border: '1.5px solid #E2E4EB',
-                        outline: 'none',
-                        background: '#FFFFFF',
-                        color: '#111116',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      aria-label={showPassword ? 'Hide password' : 'Show password'}
-                      style={{
-                        position: 'absolute',
-                        right: '10px',
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        background: 'none',
-                        border: 'none',
-                        color: '#8A8D9F',
-                        cursor: 'pointer',
-                        padding: '3px',
-                        display: 'flex',
-                      }}
-                    >
-                      {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Workstation Remember Me */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <input
-                    type="checkbox"
-                    id="rememberMe"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
+            {/* Main Sign In Form */}
+            <form onSubmit={handleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
+                  Work Email Address
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Mail
+                    size={16}
                     style={{
-                      width: '14px',
-                      height: '14px',
-                      accentColor: '#7F66FF',
-                      borderRadius: '3px',
-                      cursor: 'pointer'
+                      position: 'absolute',
+                      left: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      color: isClinicDomain ? '#10B981' : isOtherDomain ? '#EF4444' : '#8A8D9F',
                     }}
                   />
-                  <label htmlFor="rememberMe" style={{ fontSize: '0.76rem', color: '#55586B', cursor: 'pointer', userSelect: 'none' }}>
-                    Keep signed in on this clinical workstation (7 days)
-                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
+                    placeholder="doctor@cliniclivingplus.com"
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.65rem 0.85rem 0.65rem 2.35rem',
+                      fontSize: '0.86rem',
+                      borderRadius: '10px',
+                      border: isClinicDomain
+                        ? '1.5px solid #10B981'
+                        : isOtherDomain
+                        ? '1.5px solid #EF4444'
+                        : '1.5px solid #E2E4EB',
+                      outline: 'none',
+                      background: '#FFFFFF',
+                      color: '#111116',
+                      boxSizing: 'border-box',
+                      boxShadow: isClinicDomain
+                        ? '0 0 0 3px rgba(16, 185, 129, 0.12)'
+                        : isOtherDomain
+                        ? '0 0 0 3px rgba(239, 68, 68, 0.12)'
+                        : 'none',
+                    }}
+                  />
                 </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isLoading}
+                {isClinicDomain && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#059669', fontWeight: 600, marginTop: '0.2rem' }}>
+                    <CheckCircle2 size={12} color="#059669" />
+                    Verified ClinicLivingPlus Domain
+                  </div>
+                )}
+
+                {isOtherDomain && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#DC2626', fontWeight: 600, marginTop: '0.2rem' }}>
+                    <AlertCircle size={12} color="#DC2626" />
+                    Restricted: Only @cliniclivingplus.com is accepted
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
+                  Weekly Clinical Password
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Lock
+                    size={16}
+                    style={{
+                      position: 'absolute',
+                      left: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      color: '#8A8D9F',
+                    }}
+                  />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
+                    placeholder="Enter this week's active password"
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.65rem 2.6rem 0.65rem 2.35rem',
+                      fontSize: '0.86rem',
+                      borderRadius: '10px',
+                      border: '1.5px solid #E2E4EB',
+                      outline: 'none',
+                      background: '#FFFFFF',
+                      color: '#111116',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    style={{
+                      position: 'absolute',
+                      right: '10px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      color: '#8A8D9F',
+                      cursor: 'pointer',
+                      padding: '3px',
+                      display: 'flex',
+                    }}
+                  >
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Workstation Remember Me */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    width: '100%',
-                    padding: '0.75rem',
-                    borderRadius: '10px',
-                    background: isLoading
-                      ? '#A594FD'
-                      : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                    color: '#FFFFFF',
-                    fontWeight: 700,
-                    fontSize: '0.88rem',
-                    border: 'none',
-                    cursor: isLoading ? 'not-allowed' : 'pointer',
-                    boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
-                    transition: 'transform 0.15s, box-shadow 0.15s',
-                    marginTop: '0.15rem'
+                    width: '14px',
+                    height: '14px',
+                    accentColor: '#7F66FF',
+                    borderRadius: '3px',
+                    cursor: 'pointer'
                   }}
-                >
-                  {isLoading ? (
-                    <>
-                      <RefreshCw size={15} className="animate-spin" />
-                      <span>Verifying...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Sign In to Clinical Portal</span>
-                      <ArrowRight size={15} />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-
-            {/* ============================================================== */}
-            {/* TAB 2: FIRST-TIME ACTIVATION                                   */}
-            {/* ============================================================== */}
-            {mode === 'signup' && (
-              <div>
-                {step === 1 ? (
-                  <form onSubmit={handleRequestOtp} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
-                        Clinic Work Email
-                      </label>
-                      <div style={{ position: 'relative' }}>
-                        <Mail
-                          size={16}
-                          style={{
-                            position: 'absolute',
-                            left: '12px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            color: isClinicDomain ? '#10B981' : isOtherDomain ? '#EF4444' : '#8A8D9F',
-                          }}
-                        />
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => {
-                            setEmail(e.target.value);
-                            if (errorMessage) setErrorMessage(null);
-                          }}
-                          placeholder="doctor@cliniclivingplus.com"
-                          required
-                          style={{
-                            width: '100%',
-                            padding: '0.65rem 0.85rem 0.65rem 2.35rem',
-                            fontSize: '0.86rem',
-                            borderRadius: '10px',
-                            border: isClinicDomain
-                              ? '1.5px solid #10B981'
-                              : isOtherDomain
-                              ? '1.5px solid #EF4444'
-                              : '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            color: '#111116',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                      </div>
-
-                      {isClinicDomain && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#059669', fontWeight: 600, marginTop: '0.2rem' }}>
-                          <CheckCircle2 size={12} color="#059669" />
-                          Verified ClinicLivingPlus Domain
-                        </div>
-                      )}
-
-                      {isOtherDomain && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#DC2626', fontWeight: 600, marginTop: '0.2rem' }}>
-                          <AlertCircle size={12} color="#DC2626" />
-                          Restricted: Only @cliniclivingplus.com is accepted
-                        </div>
-                      )}
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.5rem',
-                        width: '100%',
-                        padding: '0.75rem',
-                        borderRadius: '10px',
-                        background: isLoading
-                          ? '#A594FD'
-                          : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                        color: '#FFFFFF',
-                        fontWeight: 700,
-                        fontSize: '0.88rem',
-                        border: 'none',
-                        cursor: isLoading ? 'not-allowed' : 'pointer',
-                        boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
-                      }}
-                    >
-                      {isLoading ? (
-                        <>
-                          <RefreshCw size={15} className="animate-spin" />
-                          <span>Dispatching Code...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send Verification Code (OTP)</span>
-                          <ArrowRight size={15} />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                ) : (
-                  <form onSubmit={handleCreatePassword} style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                    <div style={{
-                      fontSize: '0.74rem',
-                      color: '#4B5563',
-                      background: '#F8F9FE',
-                      padding: '0.35rem 0.65rem',
-                      borderRadius: '6px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between'
-                    }}>
-                      <span>Sent to: <strong>{trimmedEmail}</strong></span>
-                      <button
-                        type="button"
-                        onClick={() => setStep(1)}
-                        style={{ background: 'none', border: 'none', color: '#7F66FF', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}
-                      >
-                        Change
-                      </button>
-                    </div>
-
-                    {/* Compact OTP input */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                      <div style={{ flex: 1 }}>
-                        <input
-                          type="text"
-                          maxLength={6}
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                          placeholder="6-digit OTP"
-                          required
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 0.75rem',
-                            fontSize: '1rem',
-                            fontWeight: 800,
-                            letterSpacing: '4px',
-                            textAlign: 'center',
-                            borderRadius: '8px',
-                            border: '1.5px solid #7F66FF',
-                            outline: 'none',
-                            background: '#FBFBFF',
-                            color: '#583EDB',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        disabled={cooldown > 0 || isLoading}
-                        onClick={handleRequestOtp}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          fontSize: '0.72rem',
-                          color: cooldown > 0 ? '#9CA3AF' : '#7F66FF',
-                          fontWeight: 600,
-                          cursor: cooldown > 0 ? 'not-allowed' : 'pointer',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        {cooldown > 0 ? `Resend (${cooldown}s)` : 'Resend Code'}
-                      </button>
-                    </div>
-
-                    {/* Passwords in 2 columns to save height! */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                      <div style={{ position: 'relative' }}>
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          placeholder="New password (8+)"
-                          required
-                          minLength={8}
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
-                            fontSize: '0.8rem',
-                            borderRadius: '8px',
-                            border: '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          aria-label={showPassword ? 'Hide password' : 'Show password'}
-                          style={{
-                            position: 'absolute',
-                            right: '6px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'none',
-                            border: 'none',
-                            color: '#8A8D9F',
-                            cursor: 'pointer',
-                            padding: '3px',
-                            display: 'flex',
-                          }}
-                        >
-                          {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                        </button>
-                      </div>
-                      <div style={{ position: 'relative' }}>
-                        <input
-                          type={showConfirmPassword ? 'text' : 'password'}
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          placeholder="Confirm password"
-                          required
-                          minLength={8}
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
-                            fontSize: '0.8rem',
-                            borderRadius: '8px',
-                            border: '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
-                          style={{
-                            position: 'absolute',
-                            right: '6px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'none',
-                            border: 'none',
-                            color: '#8A8D9F',
-                            cursor: 'pointer',
-                            padding: '3px',
-                            display: 'flex',
-                          }}
-                        >
-                          {showConfirmPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                        </button>
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.5rem',
-                        width: '100%',
-                        padding: '0.7rem',
-                        borderRadius: '10px',
-                        background: isLoading ? '#A594FD' : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                        color: '#FFFFFF',
-                        fontWeight: 700,
-                        fontSize: '0.86rem',
-                        border: 'none',
-                        cursor: isLoading ? 'not-allowed' : 'pointer',
-                        boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
-                      }}
-                    >
-                      {isLoading ? <span>Activating...</span> : <span>Activate & Sign In</span>}
-                    </button>
-                  </form>
-                )}
+                />
+                <label htmlFor="rememberMe" style={{ fontSize: '0.76rem', color: '#55586B', cursor: 'pointer', userSelect: 'none' }}>
+                  Keep signed in on this clinical workstation (7 days)
+                </label>
               </div>
-            )}
 
-            {/* ============================================================== */}
-            {/* TAB 3: FORGOT PASSWORD                                         */}
-            {/* ============================================================== */}
-            {mode === 'forgot' && (
-              <div>
-                {step === 1 ? (
-                  <form onSubmit={handleRequestOtp} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
-                        Your Clinic Email
-                      </label>
-                      <div style={{ position: 'relative' }}>
-                        <Mail
-                          size={16}
-                          style={{
-                            position: 'absolute',
-                            left: '12px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            color: isClinicDomain ? '#10B981' : isOtherDomain ? '#EF4444' : '#8A8D9F',
-                          }}
-                        />
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => {
-                            setEmail(e.target.value);
-                            if (errorMessage) setErrorMessage(null);
-                          }}
-                          placeholder="doctor@cliniclivingplus.com"
-                          required
-                          style={{
-                            width: '100%',
-                            padding: '0.65rem 0.85rem 0.65rem 2.35rem',
-                            fontSize: '0.86rem',
-                            borderRadius: '10px',
-                            border: isClinicDomain
-                              ? '1.5px solid #10B981'
-                              : isOtherDomain
-                              ? '1.5px solid #EF4444'
-                              : '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            color: '#111116',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                      </div>
-
-                      {isClinicDomain && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#059669', fontWeight: 600, marginTop: '0.2rem' }}>
-                          <CheckCircle2 size={12} color="#059669" />
-                          Verified ClinicLivingPlus Domain
-                        </div>
-                      )}
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.5rem',
-                        width: '100%',
-                        padding: '0.75rem',
-                        borderRadius: '10px',
-                        background: isLoading
-                          ? '#A594FD'
-                          : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                        color: '#FFFFFF',
-                        fontWeight: 700,
-                        fontSize: '0.88rem',
-                        border: 'none',
-                        cursor: isLoading ? 'not-allowed' : 'pointer',
-                        boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
-                      }}
-                    >
-                      {isLoading ? (
-                        <>
-                          <RefreshCw size={15} className="animate-spin" />
-                          <span>Dispatching Code...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send Password Reset OTP</span>
-                          <ArrowRight size={15} />
-                        </>
-                      )}
-                    </button>
-                  </form>
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '10px',
+                  background: isLoading
+                    ? '#A594FD'
+                    : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+                  color: '#FFFFFF',
+                  fontWeight: 700,
+                  fontSize: '0.88rem',
+                  border: 'none',
+                  cursor: isLoading ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
+                  transition: 'transform 0.15s, box-shadow 0.15s',
+                  marginTop: '0.15rem'
+                }}
+              >
+                {isLoading ? (
+                  <>
+                    <RefreshCw size={15} className="animate-spin" />
+                    <span>Verifying Credentials...</span>
+                  </>
                 ) : (
-                  <form onSubmit={handleResetPassword} style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                    <div style={{
-                      fontSize: '0.74rem',
-                      color: '#4B5563',
-                      background: '#F8F9FE',
-                      padding: '0.35rem 0.65rem',
-                      borderRadius: '6px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between'
-                    }}>
-                      <span>Resetting for: <strong>{trimmedEmail}</strong></span>
-                      <button
-                        type="button"
-                        onClick={() => setStep(1)}
-                        style={{ background: 'none', border: 'none', color: '#7F66FF', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}
-                      >
-                        Change
-                      </button>
-                    </div>
-
-                    {/* Compact OTP input */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                      <div style={{ flex: 1 }}>
-                        <input
-                          type="text"
-                          maxLength={6}
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                          placeholder="6-digit OTP"
-                          required
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 0.75rem',
-                            fontSize: '1rem',
-                            fontWeight: 800,
-                            letterSpacing: '4px',
-                            textAlign: 'center',
-                            borderRadius: '8px',
-                            border: '1.5px solid #7F66FF',
-                            outline: 'none',
-                            background: '#FBFBFF',
-                            color: '#583EDB',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        disabled={cooldown > 0 || isLoading}
-                        onClick={handleRequestOtp}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          fontSize: '0.72rem',
-                          color: cooldown > 0 ? '#9CA3AF' : '#7F66FF',
-                          fontWeight: 600,
-                          cursor: cooldown > 0 ? 'not-allowed' : 'pointer',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        {cooldown > 0 ? `Resend (${cooldown}s)` : 'Resend Code'}
-                      </button>
-                    </div>
-
-                    {/* Two columns for passwords */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                      <div style={{ position: 'relative' }}>
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          placeholder="New password (8+)"
-                          required
-                          minLength={8}
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
-                            fontSize: '0.8rem',
-                            borderRadius: '8px',
-                            border: '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          aria-label={showPassword ? 'Hide password' : 'Show password'}
-                          style={{
-                            position: 'absolute',
-                            right: '6px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'none',
-                            border: 'none',
-                            color: '#8A8D9F',
-                            cursor: 'pointer',
-                            padding: '3px',
-                            display: 'flex',
-                          }}
-                        >
-                          {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                        </button>
-                      </div>
-                      <div style={{ position: 'relative' }}>
-                        <input
-                          type={showConfirmPassword ? 'text' : 'password'}
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          placeholder="Confirm password"
-                          required
-                          minLength={8}
-                          style={{
-                            width: '100%',
-                            padding: '0.55rem 2.2rem 0.55rem 0.65rem',
-                            fontSize: '0.8rem',
-                            borderRadius: '8px',
-                            border: '1.5px solid #E2E4EB',
-                            outline: 'none',
-                            background: '#FFFFFF',
-                            boxSizing: 'border-box',
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
-                          style={{
-                            position: 'absolute',
-                            right: '6px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'none',
-                            border: 'none',
-                            color: '#8A8D9F',
-                            cursor: 'pointer',
-                            padding: '3px',
-                            display: 'flex',
-                          }}
-                        >
-                          {showConfirmPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                        </button>
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.5rem',
-                        width: '100%',
-                        padding: '0.7rem',
-                        borderRadius: '10px',
-                        background: isLoading ? '#A594FD' : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                        color: '#FFFFFF',
-                        fontWeight: 700,
-                        fontSize: '0.86rem',
-                        border: 'none',
-                        cursor: isLoading ? 'not-allowed' : 'pointer',
-                        boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
-                      }}
-                    >
-                      {isLoading ? <span>Updating...</span> : <span>Reset Password & Sign In</span>}
-                    </button>
-                  </form>
+                  <>
+                    <span>Sign In to Clinical Portal</span>
+                    <ArrowRight size={15} />
+                  </>
                 )}
-              </div>
-            )}
+              </button>
+            </form>
           </div>
 
           {/* Card micro-footer */}
