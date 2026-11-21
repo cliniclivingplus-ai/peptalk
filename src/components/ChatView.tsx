@@ -21,6 +21,7 @@ import {
   FileText,
   Search,
   AlertCircle,
+  Dna,
 } from 'lucide-react';
 import ClinicalMarkdown from './ClinicalMarkdown';
 
@@ -330,8 +331,19 @@ export default function ChatView({
           {/* Welcome Screen when no messages in active conversation */}
           {messages.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '3rem 1rem 2rem 1rem' }}>
-              <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.25rem' }}>
-                <Sparkles size={32} />
+              <div style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '18px',
+                background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#FFFFFF',
+                boxShadow: '0 8px 24px rgba(127, 102, 255, 0.35)',
+                marginBottom: '1.25rem'
+              }}>
+                <Dna size={32} color="#FFFFFF" strokeWidth={2.2} />
               </div>
               <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.65rem', letterSpacing: '-0.025em' }}>
                 PepTalk Clinical Intelligence

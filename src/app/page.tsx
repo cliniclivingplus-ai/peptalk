@@ -21,7 +21,7 @@ import CalculatorView from '@/components/CalculatorView';
 import ResearchView from '@/components/ResearchView';
 import LoginView from '@/components/LoginView';
 import AdminPortalModal from '@/components/AdminPortalModal';
-import { MessageSquare, LogOut, UserCheck } from 'lucide-react';
+import { MessageSquare, LogOut, UserCheck, Dna } from 'lucide-react';
 
 const SESSIONS_STORAGE_KEY = 'peptalk_ai_chat_sessions_v2';
 const LEGACY_STORAGE_KEY = 'peptalk_ai_chat_history_v2';
@@ -278,7 +278,7 @@ export default function Home() {
           color: '#FFF',
           boxShadow: '0 8px 24px rgba(127, 102, 255, 0.35)'
         }}>
-          <MessageSquare size={26} />
+          <Dna size={28} color="#FFFFFF" strokeWidth={2.2} />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#5E6070', fontSize: '0.92rem', fontWeight: 600 }}>
           <div className="spin-slow" style={{ width: '16px', height: '16px', border: '2.5px solid #7F66FF', borderTopColor: 'transparent', borderRadius: '50%' }} />

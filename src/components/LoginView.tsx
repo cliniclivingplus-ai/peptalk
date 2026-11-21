@@ -690,14 +690,13 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
             paddingTop: '0.75rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             marginTop: '1rem'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <ShieldCheck size={13} color="#10B981" />
               <span>Strict Clinic Domain Policy</span>
             </div>
-            <span>Support: it@cliniclivingplus.com</span>
           </div>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function Sidebar({
           className="brand-logo"
         >
           <div className="brand-icon-box">
-            <MessageSquare size={16} color="#FFFFFF" strokeWidth={2.5} />
+            <Dna size={18} color="#FFFFFF" strokeWidth={2.2} />
           </div>
           <span className="brand-text">PepTalk</span>
         </a>
