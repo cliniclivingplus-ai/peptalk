@@ -13,11 +13,11 @@ import {
   CheckCircle2,
   RefreshCw,
   Dna,
-  FlaskConical,
   Check,
   ShieldAlert,
-  Info,
-  Sparkles,
+  Inbox,
+  Key,
+  RotateCcw,
 } from 'lucide-react';
 import AdminPortalModal from './AdminPortalModal';
 
@@ -59,7 +59,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
     }
 
     if (!password) {
-      setErrorMessage('Please enter your password.');
+      setErrorMessage('Please enter your weekly password.');
       return;
     }
 
@@ -80,7 +80,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
       const data = await res.json();
 
       if (!res.ok || !data.ok) {
-        setErrorMessage(data.error || 'Authentication failed. Please verify your credentials.');
+        setErrorMessage(data.error || 'Authentication failed. Please check your email and weekly password.');
         setIsLoading(false);
         return;
       }
@@ -107,16 +107,15 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1rem',
+      padding: '1.25rem',
       position: 'relative',
       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
       boxSizing: 'border-box'
     }}>
       {/* ==================================================================== */}
-      {/* FLOATING PEPTIDE BACKGROUND PARTICLES & ICONS                         */}
+      {/* FLOATING PEPTIDE BACKGROUND PARTICLES                                */}
       {/* ==================================================================== */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-        {/* Soft glowing color spots */}
         <div style={{
           position: 'absolute',
           top: '-10%',
@@ -137,18 +136,18 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           background: 'radial-gradient(circle, rgba(0, 210, 180, 0.14) 0%, rgba(0, 210, 180, 0) 70%)',
         }} className="peptide-pulse-glow" />
 
-        {/* Floating Peptide Icons */}
+        {/* Subtle Watermarks */}
         <div style={{
           position: 'absolute',
-          top: '7%',
-          left: '6%',
+          top: '6%',
+          left: '5%',
           color: '#7F66FF',
-          opacity: 0.38,
+          opacity: 0.35,
           display: 'flex',
           alignItems: 'center',
           gap: '6px'
         }} className="peptide-float-slow">
-          <Dna size={42} strokeWidth={1.75} />
+          <Dna size={38} strokeWidth={1.75} />
           <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7F66FF' }}>
             BPC-157
           </span>
@@ -156,77 +155,45 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
         <div style={{
           position: 'absolute',
-          bottom: '7%',
-          right: '7%',
+          bottom: '6%',
+          right: '6%',
           color: '#00BFA5',
           opacity: 0.35,
           display: 'flex',
           alignItems: 'center',
           gap: '6px'
         }} className="peptide-float-reverse">
-          <FlaskConical size={38} strokeWidth={1.75} />
           <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#00BFA5' }}>
             CJC-1295
-          </span>
-        </div>
-
-        <div style={{
-          position: 'absolute',
-          top: '10%',
-          right: '8%',
-          color: '#10B981',
-          opacity: 0.35,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px'
-        }} className="peptide-float-medium">
-          <Sparkles size={36} strokeWidth={1.75} />
-          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#10B981' }}>
-            TB-500
-          </span>
-        </div>
-
-        <div style={{
-          position: 'absolute',
-          bottom: '8%',
-          left: '8%',
-          color: '#8B5CF6',
-          opacity: 0.32,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px'
-        }} className="peptide-float-slow">
-          <span style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8B5CF6' }}>
-            RETATRUTIDE
           </span>
         </div>
       </div>
 
       {/* ==================================================================== */}
-      {/* MAIN AUTHENTICATION CARD (ZERO-SCROLL VIEWPORT FITTED)                 */}
+      {/* MAIN AUTHENTICATION CARD                                             */}
       {/* ==================================================================== */}
       <div style={{
         position: 'relative',
         zIndex: 10,
         width: '100%',
-        maxWidth: '920px',
-        maxHeight: 'min(590px, 94vh)',
+        maxWidth: '960px',
+        maxHeight: 'min(620px, 94vh)',
         background: '#FFFFFF',
-        borderRadius: '20px',
+        borderRadius: '24px',
         border: '1px solid rgba(127, 102, 255, 0.18)',
         boxShadow: '0 24px 64px -14px rgba(127, 102, 255, 0.16), 0 2px 10px rgba(0, 0, 0, 0.04)',
         display: 'flex',
         overflow: 'hidden',
       }}>
         {/* ------------------------------------------------------------------ */}
-        {/* LEFT PANEL: CLINICAL PEPTIDE BRANDING & TRUST SHOWCASE             */}
+        {/* LEFT PANEL: PEPTALK + ULTRA-SIMPLE 4-STEP ACCESS GUIDE             */}
         {/* ------------------------------------------------------------------ */}
         <div style={{
-          width: '330px',
+          width: '375px',
           flexShrink: 0,
-          background: 'linear-gradient(150deg, #1C1344 0%, #29186B 55%, #101633 100%)',
+          background: 'linear-gradient(155deg, #1A123E 0%, #251660 50%, #0F132B 100%)',
           color: '#FFFFFF',
-          padding: '2rem 1.75rem',
+          padding: '2rem 1.85rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -234,40 +201,40 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           overflow: 'hidden',
           borderRight: '1px solid rgba(255, 255, 255, 0.08)'
         }}>
-          {/* Subtle background glow circle */}
+          {/* Ambient Glow */}
           <div style={{
             position: 'absolute',
             top: '-20%',
             right: '-20%',
-            width: '240px',
-            height: '240px',
+            width: '260px',
+            height: '260px',
             borderRadius: '50%',
             background: 'radial-gradient(circle, rgba(127, 102, 255, 0.35) 0%, transparent 70%)',
             pointerEvents: 'none'
           }} />
 
-          {/* Top Branding */}
+          {/* Top Brand Header */}
           <div style={{ position: 'relative', zIndex: 2 }}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              padding: '0.3rem 0.65rem',
+              padding: '0.28rem 0.65rem',
               borderRadius: '9999px',
               background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              fontSize: '0.68rem',
+              border: '1px solid rgba(255, 255, 255, 0.14)',
+              fontSize: '0.67rem',
               fontWeight: 800,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               color: '#A7F3D0',
-              marginBottom: '1.25rem'
+              marginBottom: '1rem'
             }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
               ClinicLivingPlus Security
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.4rem' }}>
               <div style={{
                 width: '38px',
                 height: '38px',
@@ -281,7 +248,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 <Dna size={22} color="#FFFFFF" strokeWidth={2.2} />
               </div>
               <h2 style={{
-                fontSize: '1.4rem',
+                fontSize: '1.45rem',
                 fontWeight: 800,
                 color: '#FFFFFF',
                 letterSpacing: '-0.02em',
@@ -293,58 +260,152 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
             <p style={{
               fontSize: '0.82rem',
-              color: 'rgba(255, 255, 255, 0.72)',
+              color: 'rgba(255, 255, 255, 0.75)',
               lineHeight: 1.45,
-              margin: '0.4rem 0 1.35rem 0'
+              margin: '0.2rem 0 1.25rem 0'
             }}>
               Clinical Peptide Intelligence & Masterclass Archive for authorized practitioners.
             </p>
 
-            {/* Scientific Highlights */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            {/* STEP-BY-STEP SIMPLE GUIDE (UNDERSTANDABLE BY A 5-YEAR OLD) */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.7rem',
+              background: 'rgba(255, 255, 255, 0.04)',
+              padding: '0.9rem',
+              borderRadius: '14px',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}>
               <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                fontSize: '0.78rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.5rem 0.7rem',
-                borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.07)'
+                fontSize: '0.68rem',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: '#A594FD',
+                marginBottom: '0.1rem'
               }}>
-                <Dna size={15} color="#A594FD" />
-                <span><strong>699</strong> Evidence Monographs</span>
+                How To Sign In · Step-by-Step
               </div>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                fontSize: '0.78rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.5rem 0.7rem',
-                borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.07)'
-              }}>
-                <FlaskConical size={15} color="#34D399" />
-                <span><strong>17</strong> Clinical Master Protocols</span>
+              {/* Step 1 */}
+              <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(127, 102, 255, 0.25)',
+                  border: '1px solid rgba(127, 102, 255, 0.5)',
+                  color: '#C4B5FD',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  flexShrink: 0,
+                  marginTop: '1px'
+                }}>
+                  1
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Mail size={12} color="#C4B5FD" />
+                    <span>Enter your clinic email</span>
+                  </div>
+                  <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
+                    Type your official <strong style={{ color: '#E0E7FF' }}>@cliniclivingplus.com</strong> address.
+                  </div>
+                </div>
               </div>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                fontSize: '0.78rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '0.5rem 0.7rem',
-                borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.07)'
-              }}>
-                <ShieldCheck size={15} color="#60A5FA" />
-                <span>Domain Restricted Access</span>
+              {/* Step 2 */}
+              <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(0, 210, 180, 0.22)',
+                  border: '1px solid rgba(0, 210, 180, 0.45)',
+                  color: '#6EE7B7',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  flexShrink: 0,
+                  marginTop: '1px'
+                }}>
+                  2
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Inbox size={12} color="#6EE7B7" />
+                    <span>Open your email inbox</span>
+                  </div>
+                  <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
+                    Find the email with subject: <em style={{ color: '#E0E7FF' }}>&quot;Weekly PepTalk Access Code&quot;</em>.
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(245, 158, 11, 0.22)',
+                  border: '1px solid rgba(245, 158, 11, 0.45)',
+                  color: '#FCD34D',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  flexShrink: 0,
+                  marginTop: '1px'
+                }}>
+                  3
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Key size={12} color="#FCD34D" />
+                    <span>Copy & paste the password</span>
+                  </div>
+                  <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
+                    Paste this week&apos;s active password into the box and click Sign In.
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: 'rgba(59, 130, 246, 0.22)',
+                  border: '1px solid rgba(59, 130, 246, 0.45)',
+                  color: '#93C5FD',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  flexShrink: 0,
+                  marginTop: '1px'
+                }}>
+                  4
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <RotateCcw size={12} color="#93C5FD" />
+                    <span>New password every Sunday</span>
+                  </div>
+                  <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
+                    Every Sunday night at 11:30 PM, a fresh code arrives for the next week.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -365,21 +426,21 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
         </div>
 
         {/* ------------------------------------------------------------------ */}
-        {/* RIGHT PANEL: UNIFIED CLINICAL PRACTITIONER SIGN IN                 */}
+        {/* RIGHT PANEL: CLEAN, MINIMAL, ULTRA-SPACIOUS LOGIN FORM            */}
         {/* ------------------------------------------------------------------ */}
         <div style={{
           flex: 1,
-          padding: '1.6rem 2rem',
+          padding: '2.25rem 2.5rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           overflow: 'hidden'
         }}>
           <div>
-            {/* Top Bar with Admin Access Pill */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
-              <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#7F66FF' }}>
-                Clinic Access
+            {/* Top Bar with Admin Access Button */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#7F66FF' }}>
+                Clinic Portal
               </span>
               <button
                 type="button"
@@ -387,78 +448,42 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.22rem 0.6rem',
+                  gap: '0.4rem',
+                  padding: '0.3rem 0.65rem',
                   background: '#F1EEFE',
                   border: '1px solid rgba(127, 102, 255, 0.25)',
-                  borderRadius: '6px',
+                  borderRadius: '7px',
                   color: '#583EDB',
-                  fontSize: '0.72rem',
+                  fontSize: '0.74rem',
                   fontWeight: 700,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'background 0.15s'
                 }}
               >
-                <ShieldAlert size={12} />
+                <ShieldAlert size={13} />
                 <span>Admin Roster & Passwords</span>
               </button>
             </div>
 
-            {/* Title & Domain Policy */}
-            <div style={{ marginBottom: '0.85rem' }}>
+            {/* Clean Title */}
+            <div style={{ marginBottom: '1.75rem' }}>
               <h1 style={{
-                fontSize: '1.3rem',
+                fontSize: '1.65rem',
                 fontWeight: 800,
                 color: '#111116',
-                margin: '0 0 0.25rem 0',
-                letterSpacing: '-0.02em'
+                margin: '0 0 0.35rem 0',
+                letterSpacing: '-0.025em'
               }}>
-                Clinical Practitioner Sign In
+                Sign In
               </h1>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontSize: '0.76rem',
-                color: '#4B5563',
-              }}>
-                <ShieldCheck size={14} color="#7F66FF" />
-                <span>Strict Domain Policy:</span>
-                <span style={{ fontWeight: 700, color: '#583EDB' }}>@cliniclivingplus.com</span>
-              </div>
-            </div>
-
-            {/* Practitioner Instructions Guide Box */}
-            <div style={{
-              background: '#F7F6FD',
-              border: '1px solid #E4E0FB',
-              borderRadius: '10px',
-              padding: '0.7rem 0.85rem',
-              marginBottom: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.35rem'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#4F38CA', fontSize: '0.75rem', fontWeight: 700 }}>
-                <Info size={14} color="#7F66FF" />
-                <span>First-Time & Returning Doctors Login Guide</span>
-              </div>
-              <ul style={{
+              <p style={{
+                fontSize: '0.86rem',
+                color: '#6B7280',
                 margin: 0,
-                paddingLeft: '1.2rem',
-                fontSize: '0.73rem',
-                color: '#4B5563',
-                lineHeight: 1.45
+                lineHeight: 1.4
               }}>
-                <li>
-                  <strong>No account signup needed:</strong> Simply enter your official <span style={{ color: '#583EDB', fontWeight: 600 }}>@cliniclivingplus.com</span> work email below.
-                </li>
-                <li>
-                  <strong>Weekly Password:</strong> Enter this week&apos;s active clinical passcode dispatched to your email inbox.
-                </li>
-                <li>
-                  <strong>Automatic Weekly Rotation:</strong> Passwords rotate and are re-emailed every Sunday at 11:30 PM IST.
-                </li>
-              </ul>
+                Enter your clinic email and this week&apos;s password to continue.
+              </p>
             </div>
 
             {/* Inline Error Alerts */}
@@ -467,31 +492,32 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                padding: '0.5rem 0.75rem',
+                padding: '0.65rem 0.85rem',
                 background: '#FEF2F2',
                 border: '1px solid #FECACA',
-                borderRadius: '8px',
+                borderRadius: '10px',
                 color: '#B91C1C',
-                fontSize: '0.78rem',
-                marginBottom: '0.75rem'
+                fontSize: '0.8rem',
+                marginBottom: '1.25rem'
               }}>
-                <AlertCircle size={15} style={{ flexShrink: 0 }} />
+                <AlertCircle size={16} style={{ flexShrink: 0 }} />
                 <span>{errorMessage}</span>
               </div>
             )}
 
-            {/* Main Sign In Form */}
-            <form onSubmit={handleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {/* Clean Login Form */}
+            <form onSubmit={handleSignIn} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
+              {/* Work Email */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.35rem' }}>
                   Work Email Address
                 </label>
                 <div style={{ position: 'relative' }}>
                   <Mail
-                    size={16}
+                    size={17}
                     style={{
                       position: 'absolute',
-                      left: '12px',
+                      left: '14px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: isClinicDomain ? '#10B981' : isOtherDomain ? '#EF4444' : '#8A8D9F',
@@ -508,9 +534,9 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                     required
                     style={{
                       width: '100%',
-                      padding: '0.65rem 0.85rem 0.65rem 2.35rem',
-                      fontSize: '0.86rem',
-                      borderRadius: '10px',
+                      padding: '0.75rem 0.95rem 0.75rem 2.6rem',
+                      fontSize: '0.9rem',
+                      borderRadius: '11px',
                       border: isClinicDomain
                         ? '1.5px solid #10B981'
                         : isOtherDomain
@@ -530,30 +556,31 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 </div>
 
                 {isClinicDomain && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#059669', fontWeight: 600, marginTop: '0.2rem' }}>
-                    <CheckCircle2 size={12} color="#059669" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.75rem', color: '#059669', fontWeight: 600, marginTop: '0.35rem' }}>
+                    <CheckCircle2 size={13} color="#059669" />
                     Verified ClinicLivingPlus Domain
                   </div>
                 )}
 
                 {isOtherDomain && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.72rem', color: '#DC2626', fontWeight: 600, marginTop: '0.2rem' }}>
-                    <AlertCircle size={12} color="#DC2626" />
-                    Restricted: Only @cliniclivingplus.com is accepted
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.75rem', color: '#DC2626', fontWeight: 600, marginTop: '0.35rem' }}>
+                    <AlertCircle size={13} color="#DC2626" />
+                    Only @cliniclivingplus.com work emails are permitted
                   </div>
                 )}
               </div>
 
+              {/* Weekly Password */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.25rem' }}>
-                  Weekly Clinical Password
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1E202A', marginBottom: '0.35rem' }}>
+                  This Week&apos;s Clinical Password
                 </label>
                 <div style={{ position: 'relative' }}>
                   <Lock
-                    size={16}
+                    size={17}
                     style={{
                       position: 'absolute',
-                      left: '12px',
+                      left: '14px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#8A8D9F',
@@ -566,13 +593,13 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                       setPassword(e.target.value);
                       if (errorMessage) setErrorMessage(null);
                     }}
-                    placeholder="Enter this week's active password"
+                    placeholder="Enter password from your email"
                     required
                     style={{
                       width: '100%',
-                      padding: '0.65rem 2.6rem 0.65rem 2.35rem',
-                      fontSize: '0.86rem',
-                      borderRadius: '10px',
+                      padding: '0.75rem 2.8rem 0.75rem 2.6rem',
+                      fontSize: '0.9rem',
+                      borderRadius: '11px',
                       border: '1.5px solid #E2E4EB',
                       outline: 'none',
                       background: '#FFFFFF',
@@ -586,39 +613,39 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                     style={{
                       position: 'absolute',
-                      right: '10px',
+                      right: '12px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       background: 'none',
                       border: 'none',
                       color: '#8A8D9F',
                       cursor: 'pointer',
-                      padding: '3px',
+                      padding: '4px',
                       display: 'flex',
                     }}
                   >
-                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
               </div>
 
               {/* Workstation Remember Me */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.1rem' }}>
                 <input
                   type="checkbox"
                   id="rememberMe"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
                   style={{
-                    width: '14px',
-                    height: '14px',
+                    width: '15px',
+                    height: '15px',
                     accentColor: '#7F66FF',
-                    borderRadius: '3px',
+                    borderRadius: '4px',
                     cursor: 'pointer'
                   }}
                 />
-                <label htmlFor="rememberMe" style={{ fontSize: '0.76rem', color: '#55586B', cursor: 'pointer', userSelect: 'none' }}>
-                  Keep signed in on this clinical workstation (7 days)
+                <label htmlFor="rememberMe" style={{ fontSize: '0.79rem', color: '#55586B', cursor: 'pointer', userSelect: 'none' }}>
+                  Keep me signed in on this workstation (7 days)
                 </label>
               </div>
 
@@ -632,50 +659,50 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   justifyContent: 'center',
                   gap: '0.5rem',
                   width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '10px',
+                  padding: '0.82rem',
+                  borderRadius: '11px',
                   background: isLoading
                     ? '#A594FD'
                     : 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
                   color: '#FFFFFF',
                   fontWeight: 700,
-                  fontSize: '0.88rem',
+                  fontSize: '0.92rem',
                   border: 'none',
                   cursor: isLoading ? 'not-allowed' : 'pointer',
                   boxShadow: '0 6px 18px -3px rgba(127, 102, 255, 0.4)',
                   transition: 'transform 0.15s, box-shadow 0.15s',
-                  marginTop: '0.15rem'
+                  marginTop: '0.5rem'
                 }}
               >
                 {isLoading ? (
                   <>
-                    <RefreshCw size={15} className="animate-spin" />
-                    <span>Verifying Credentials...</span>
+                    <RefreshCw size={16} className="animate-spin" />
+                    <span>Signing in...</span>
                   </>
                 ) : (
                   <>
                     <span>Sign In to Clinical Portal</span>
-                    <ArrowRight size={15} />
+                    <ArrowRight size={16} />
                   </>
                 )}
               </button>
             </form>
           </div>
 
-          {/* Card micro-footer */}
+          {/* Clean Micro Footer */}
           <div style={{
-            fontSize: '0.72rem',
+            fontSize: '0.74rem',
             color: '#8A8D9F',
             borderTop: '1px solid #F0F1F6',
-            paddingTop: '0.65rem',
+            paddingTop: '0.75rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginTop: '0.5rem'
+            marginTop: '1rem'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Check size={12} color="#10B981" />
-              <span>Verified Organization Access</span>
+              <ShieldCheck size={13} color="#10B981" />
+              <span>Strict Clinic Domain Policy</span>
             </div>
             <span>Support: it@cliniclivingplus.com</span>
           </div>
