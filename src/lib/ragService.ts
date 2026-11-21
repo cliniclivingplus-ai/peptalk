@@ -21,8 +21,15 @@ const COMMON_ALIASES: Record<string, string[]> = {
   tirzepatide: ['mounjaro', 'zepbound', 'glp-1', 'gip'],
   retatrutide: ['glp-3rt', 'ggg', 'triple agonist', 'glucagon'],
   'glp-3rt': ['retatrutide', 'triple agonist'],
-  'bpc-157': ['bpc', 'body protection compound', 'wolverine stack', 'gut healing'],
-  bpc: ['bpc-157', 'wolverine stack'],
+  'bpc-157': ['bpc', 'body protection compound', 'wolverine stack', 'gut healing', 'bpc157', 'ibc-156', 'ibc156', 'bpc156', 'bpc-156', 'ibc-157', 'ibc157'],
+  bpc: ['bpc-157', 'wolverine stack', 'bpc157'],
+  'ibc-156': ['bpc-157', 'bpc', 'wolverine stack', 'body protection compound'],
+  ibc156: ['bpc-157', 'bpc', 'wolverine stack', 'body protection compound'],
+  'bpc-156': ['bpc-157', 'bpc', 'wolverine stack'],
+  bpc156: ['bpc-157', 'bpc', 'wolverine stack'],
+  'ibc-157': ['bpc-157', 'bpc', 'wolverine stack'],
+  ibc157: ['bpc-157', 'bpc', 'wolverine stack'],
+  bpc157: ['bpc-157', 'bpc', 'wolverine stack'],
   'tb-500': ['thymosin beta 4', 'tb500', 'wolverine stack'],
   tb500: ['tb-500', 'thymosin beta 4'],
   'ghk-cu': ['copper peptide', 'ghk', 'cosmetic', 'collagen'],
@@ -73,6 +80,36 @@ const STOP_WORDS = new Set([
   'should', 'use', 'take', 'need', 'when', 'which', 'where', 'does',
 ]);
 
+const CANONICAL_PEPTIDES = [
+  'bpc-157', 'tb-500', 'retatrutide', 'tirzepatide', 'semaglutide', 'cjc-1295',
+  'ipamorelin', 'sermorelin', 'tesamorelin', 'aod-9604', 'epithalon', 'mots-c',
+  'selank', 'semax', 'kpv', 'll-37', 'ghk-cu', 'nad+', 'pt-141', 'melanotan-2',
+  'cagrilintide', 'amycretin', 'mazdutide', 'survodutide'
+];
+
+function getLevenshteinDistance(a: string, b: string): number {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  const matrix: number[][] = [];
+  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
 export function searchInternalKnowledge(query: string, maxResults: number = 8): RAGDocument[] {
   const cleanQuery = query.toLowerCase().trim();
   const rawTokens = cleanQuery
@@ -86,6 +123,19 @@ export function searchInternalKnowledge(query: string, maxResults: number = 8): 
   tokens.forEach((t) => {
     if (COMMON_ALIASES[t]) {
       COMMON_ALIASES[t].forEach((alias) => expandedTokens.add(alias));
+    }
+
+    // Fuzzy matching for peptide typos (e.g. ibc-156, retatutide, terzepatide)
+    for (const canonical of CANONICAL_PEPTIDES) {
+      const cleanCanonical = canonical.replace(/[^a-z0-9]/g, '');
+      const cleanToken = t.replace(/[^a-z0-9]/g, '');
+      const dist = getLevenshteinDistance(cleanToken, cleanCanonical);
+      if ((dist <= 2 && cleanToken.length >= 4) || (dist <= 3 && cleanToken.length >= 6)) {
+        expandedTokens.add(canonical);
+        if (COMMON_ALIASES[canonical]) {
+          COMMON_ALIASES[canonical].forEach((a) => expandedTokens.add(a));
+        }
+      }
     }
   });
 
