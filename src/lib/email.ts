@@ -196,6 +196,124 @@ export async function sendWeeklyPasswordBroadcast(
 }
 
 /**
+ * Send an Executive Director's Summary Email to the clinic administrator (cliniclivingplus.ai@gmail.com)
+ */
+export async function sendAdminWeeklySummaryEmail(
+  adminEmail: string,
+  newPassword: string,
+  weekLabel: string,
+  notifiedStaff: StaffMember[],
+  expiresAt: string
+): Promise<SendResult> {
+  const transport = getEmailTransport();
+  const targetEmail = adminEmail || process.env.SMTP_USER || 'cliniclivingplus.ai@gmail.com';
+  const expiresFormatted = new Date(expiresAt).toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  const staffRows = notifiedStaff
+    .map(
+      (s) =>
+        `<li style="margin-bottom: 6px;"><strong>${s.name}</strong> &lt;${s.email}&gt; · <span style="color: #059669; font-weight: 600;">Emailed</span></li>`
+    )
+    .join('');
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Director's Weekly Password Summary</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f6fd; margin: 0; padding: 24px; color: #1e202a; }
+          .container { max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 18px; border: 1.5px solid rgba(127, 102, 255, 0.25); overflow: hidden; box-shadow: 0 12px 40px -6px rgba(127, 102, 255, 0.15); }
+          .header-bar { height: 6px; width: 100%; background: linear-gradient(90deg, #7F66FF 0%, #583EDB 50%, #00D2B4 100%); }
+          .content { padding: 36px 32px; }
+          .badge { display: inline-block; padding: 5px 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #7F66FF; background: #f1eefe; border-radius: 9999px; margin-bottom: 14px; }
+          h1 { font-size: 22px; font-weight: 800; color: #111116; margin: 0 0 10px 0; }
+          p { font-size: 14px; line-height: 1.6; color: #4a4d5e; margin: 0 0 16px 0; }
+          .box { background: #f8f7fe; border: 1.5px solid #7F66FF; border-radius: 14px; padding: 22px; text-align: center; margin: 22px 0; }
+          .passcode { font-family: monospace; font-size: 30px; font-weight: 900; letter-spacing: 2px; color: #583EDB; }
+          .staff-list { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-size: 13px; line-height: 1.6; }
+          .footer { font-size: 11px; color: #9c9eb1; text-align: center; padding: 18px 24px; background: #fafafc; border-top: 1px solid #f0f0f4; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header-bar"></div>
+          <div class="content">
+            <div class="badge">Director Executive Summary</div>
+            <h1>Automated Weekly Rotation Complete</h1>
+            <p>The weekly credential rotation has finished automatically for <strong>${weekLabel}</strong>.</p>
+            
+            <div class="box">
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6949d7; margin-bottom: 6px;">New Active Clinic Password</div>
+              <div class="passcode">${newPassword}</div>
+            </div>
+
+            <p><strong>Approved Staff Members Notified (${notifiedStaff.length}):</strong></p>
+            <div class="staff-list">
+              <ul style="margin: 0; padding-left: 20px;">
+                ${staffRows}
+              </ul>
+            </div>
+
+            <p style="font-size: 13px; color: #6b7280;">
+              <strong>Valid Period:</strong> Active now through ${expiresFormatted}.<br>
+              <strong>Next Automated Rotation:</strong> Next Sunday at 11:30 PM.
+            </p>
+          </div>
+          <div class="footer">
+            ClinicLivingPlus Administration · PepTalk Automated Credential Governance
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  if (transport.type === 'smtp') {
+    try {
+      await transport.transporter.sendMail({
+        from: transport.fromEmail,
+        to: targetEmail,
+        subject: `[ClinicLivingPlus Director] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
+        html: htmlContent,
+      });
+      console.log(`[SMTP Success] Sent Director Summary to ${targetEmail}`);
+      return { success: true, provider: 'gmail-smtp' };
+    } catch (err: any) {
+      console.error(`[SMTP Error] Failed to send Director Summary to ${targetEmail}:`, err);
+      return { success: false, error: err.message, provider: 'gmail-smtp' };
+    }
+  }
+
+  if (transport.type === 'resend') {
+    try {
+      await transport.resend.emails.send({
+        from: transport.fromEmail,
+        to: targetEmail,
+        subject: `[ClinicLivingPlus Director] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
+        html: htmlContent,
+      });
+      return { success: true, provider: 'resend' };
+    } catch (err: any) {
+      return { success: false, error: err.message, provider: 'resend' };
+    }
+  }
+
+  console.log(`=======================================================`);
+  console.log(`[DIRECTOR SUMMARY SIMULATED] Sent to: ${targetEmail}`);
+  console.log(`Password: ${newPassword} (${weekLabel})`);
+  console.log(`Staff Notified: ${notifiedStaff.map((s) => s.email).join(', ')}`);
+  console.log(`=======================================================`);
+
+  return { success: true, simulated: true, provider: 'simulated' };
+}
+
+/**
  * Send OTP verification email (preserved for OTP actions)
  */
 export async function sendOtpEmail(

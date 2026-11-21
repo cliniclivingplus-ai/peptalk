@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Building2,
   Calendar,
+  Zap,
 } from 'lucide-react';
 import { StaffMember, WeeklyAccess } from '@/lib/rosterStore';
 
@@ -174,6 +175,39 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
       verifyKeyAndLoad(adminKey, true);
     } catch {
       setErrorMessage('Network error sending emails.');
+      setIsLoading(false);
+    }
+  };
+
+  const handleTestCronRun = async () => {
+    if (!window.confirm('Trigger the automated weekly rotation now? This simulates the Sunday 11:30 PM cron run: rotates the password, emails all active staff, and sends the Director Summary to your Gmail.')) {
+      return;
+    }
+
+    setIsLoading(true);
+    resetAlerts();
+
+    try {
+      const res = await fetch(`/api/cron/rotate-passwords?key=${encodeURIComponent(adminKey)}`);
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMessage(data.error || 'Failed to execute automated cron.');
+        setIsLoading(false);
+        return;
+      }
+
+      setWeeklyAccess((prev) => prev ? {
+        ...prev,
+        currentPassword: data.currentPassword,
+        weekLabel: data.weekLabel,
+        expiresAt: data.expiresAt,
+      } : null);
+
+      setSuccessMessage(`Automated Cron Executed! Rotated to: ${data.currentPassword}. Notified ${data.staffEmailedCount} staff + sent Director Summary to your Gmail.`);
+      setIsLoading(false);
+      verifyKeyAndLoad(adminKey, true);
+    } catch {
+      setErrorMessage('Network error executing cron.');
       setIsLoading(false);
     }
   };
@@ -530,9 +564,14 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
               }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.2rem' }}>
                   <div>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.2rem 0.6rem', background: '#F1EEFE', color: '#583EDB', borderRadius: '9999px', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem' }}>
-                      <Calendar size={13} />
-                      {weeklyAccess?.weekLabel || 'Active Week'}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.2rem 0.6rem', background: '#F1EEFE', color: '#583EDB', borderRadius: '9999px', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        <Calendar size={13} />
+                        {weeklyAccess?.weekLabel || 'Active Week'}
+                      </div>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.2rem 0.6rem', background: '#ECFDF5', color: '#047857', borderRadius: '9999px', fontSize: '0.72rem', fontWeight: 700, border: '1px solid #A7F3D0' }}>
+                        <span>🕒 Auto-Rotation: Every Sun 11:30 PM</span>
+                      </div>
                     </div>
                     <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#111116', margin: 0 }}>
                       Active Weekly Password
@@ -542,7 +581,31 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+                    <button
+                      type="button"
+                      onClick={handleTestCronRun}
+                      disabled={isLoading}
+                      title="Trigger the automated Sunday 11:30 PM cron rotation right now to test the full pipeline"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        padding: '0.55rem 0.95rem',
+                        borderRadius: '9px',
+                        background: '#0F172A',
+                        color: '#FFFFFF',
+                        fontWeight: 700,
+                        fontSize: '0.8rem',
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)'
+                      }}
+                    >
+                      <Zap size={14} color="#FBBF24" />
+                      <span>Simulate Auto-Cron Now</span>
+                    </button>
+
                     <button
                       type="button"
                       onClick={handleRotatePassword}
