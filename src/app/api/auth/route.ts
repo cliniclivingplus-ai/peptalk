@@ -16,6 +16,7 @@ import {
   verifyOtp,
 } from '@/lib/userStore';
 import { sendOtpEmail } from '@/lib/email';
+import { validateStaffLogin } from '@/lib/rosterStore';
 
 // In-memory rate limiting against brute-force (max 5 failed attempts per 5 minutes per IP)
 const failedAttemptsMap = new Map<string, { count: number; firstAttempt: number }>();
@@ -311,19 +312,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check user database
-    const user = await getUser(email);
-    let isAuthenticated = false;
+    // Check against Clinical Staff Roster & Weekly Passcode
+    const rosterCheck = await validateStaffLogin(email, password);
+    let isAuthenticated = rosterCheck.valid;
 
-    if (user && user.passwordHash && user.salt) {
-      // User has set their personal password
-      isAuthenticated = verifyPassword(password, user.passwordHash, user.salt);
-    }
+    // If roster validation passed, user is authenticated via weekly passcode or master key!
+    // If not, check if user has a personal password registered in userStore
+    if (!isAuthenticated) {
+      // If the rejection reason is that the user is not in the roster or suspended, stop immediately!
+      if (rosterCheck.reason && (rosterCheck.reason.includes('not registered') || rosterCheck.reason.includes('Suspended'))) {
+        recordFailedAttempt(rateLimitKey);
+        return NextResponse.json({ ok: false, error: rosterCheck.reason }, { status: 403 });
+      }
 
-    // Fallback: Check master clinic passcode
-    const configuredMasterPassword = process.env.CLINIC_PASSWORD || DEFAULT_CLINIC_PASSWORD;
-    if (!isAuthenticated && password === configuredMasterPassword) {
-      isAuthenticated = true;
+      // Check personal password
+      const user = await getUser(email);
+      if (user && user.passwordHash && user.salt) {
+        isAuthenticated = verifyPassword(password, user.passwordHash, user.salt);
+      }
     }
 
     if (!isAuthenticated) {
@@ -331,9 +337,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           ok: false,
-          error: user
-            ? 'Incorrect password. If you forgot your password, please click "Forgot Password".'
-            : 'Invalid password. If this is your first time here, click "Create Password (First Time)" to activate your account.',
+          error: rosterCheck.reason || 'Incorrect password. Please enter this week\'s active passcode or check your clinic email.',
         },
         { status: 401 }
       );

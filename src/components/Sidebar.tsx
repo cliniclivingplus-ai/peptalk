@@ -13,7 +13,8 @@ import {
   KeyRound,
   Trash2,
   LogOut,
-  UserCheck
+  UserCheck,
+  ShieldAlert
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -30,6 +31,7 @@ interface SidebarProps {
   onDeleteSession?: (id: string, e: React.MouseEvent) => void;
   currentUser?: { email: string; domain: string } | null;
   onLogout?: () => void;
+  onOpenAdmin?: () => void;
 }
 
 export default function Sidebar({
@@ -46,6 +48,7 @@ export default function Sidebar({
   onDeleteSession,
   currentUser = null,
   onLogout,
+  onOpenAdmin,
 }: SidebarProps) {
   const isKeyActive = !!apiKey.trim();
 
@@ -302,6 +305,26 @@ export default function Sidebar({
             }}
           />
         </button>
+
+        {onOpenAdmin && (
+          <button
+            onClick={onOpenAdmin}
+            className="nav-link-btn"
+            style={{
+              padding: '0.5rem 0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              color: 'var(--primary)',
+              background: 'rgba(127, 102, 255, 0.06)',
+              borderRadius: '8px',
+              marginTop: '0.35rem'
+            }}
+          >
+            <ShieldAlert size={15} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.82rem', fontWeight: 700 }}>Admin Portal</span>
+          </button>
+        )}
       </div>
     </aside>
   );

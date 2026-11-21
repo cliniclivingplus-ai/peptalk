@@ -20,6 +20,7 @@ import CourseReaderView from '@/components/CourseReaderView';
 import CalculatorView from '@/components/CalculatorView';
 import ResearchView from '@/components/ResearchView';
 import LoginView from '@/components/LoginView';
+import AdminPortalModal from '@/components/AdminPortalModal';
 import { MessageSquare, LogOut, UserCheck } from 'lucide-react';
 
 const SESSIONS_STORAGE_KEY = 'peptalk_ai_chat_sessions_v2';
@@ -43,6 +44,7 @@ export default function Home() {
   const [apiKey, setApiKey] = useState<string>('');
   const [hasServerKey, setHasServerKey] = useState<boolean>(false);
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
+  const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
 
   // Check auth status on initial load
   useEffect(() => {
@@ -308,6 +310,7 @@ export default function Home() {
         onDeleteSession={handleDeleteSession}
         currentUser={currentUser}
         onLogout={handleLogout}
+        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       <main className="main-viewport">
@@ -447,6 +450,11 @@ export default function Home() {
         onClose={() => setIsApiKeyOpen(false)}
         apiKey={apiKey}
         onSave={handleSaveApiKey}
+      />
+
+      <AdminPortalModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
       />
     </div>
   );

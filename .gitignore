@@ -13,7 +13,9 @@ Classroom - Course Folders/
 *.cookie
 *.env
 *.env.local
+data/*.json
 data/clinic_users.json
+data/clinic_roster.json
 
 
 # Logs and error outputs

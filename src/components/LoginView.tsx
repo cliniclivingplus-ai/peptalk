@@ -21,7 +21,9 @@ import {
   FlaskConical,
   Activity,
   Check,
+  ShieldAlert,
 } from 'lucide-react';
+import AdminPortalModal from './AdminPortalModal';
 
 interface LoginViewProps {
   onLoginSuccess: (user: { email: string; domain: string }) => void;
@@ -47,6 +49,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [devOtp, setDevOtp] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(0);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   // Resend cooldown timer
   useEffect(() => {
@@ -604,6 +607,33 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           overflow: 'hidden'
         }}>
           <div>
+            {/* Top Bar with Admin Access Pill */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
+              <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#7F66FF' }}>
+                Clinic Access
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsAdminOpen(true)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '0.2rem 0.55rem',
+                  background: '#F1EEFE',
+                  border: '1px solid rgba(127, 102, 255, 0.25)',
+                  borderRadius: '6px',
+                  color: '#583EDB',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                <ShieldAlert size={12} />
+                <span>Admin Roster & Passwords</span>
+              </button>
+            </div>
+
             {/* Top Navigation Tabs - Completely eliminates hunting for links! */}
             <div style={{
               display: 'flex',
@@ -1483,6 +1513,9 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           </div>
         </div>
       </div>
+
+      {/* Admin Management Modal */}
+      <AdminPortalModal isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </div>
   );
 }

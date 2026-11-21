@@ -1,31 +1,62 @@
+import nodemailer from 'nodemailer';
 import { Resend } from 'resend';
+import { StaffMember, recordStaffNotification } from './rosterStore';
 
-export interface SendOtpResult {
+export interface SendResult {
   success: boolean;
   simulated?: boolean;
   otp?: string;
   error?: string;
   sandboxNotice?: string;
+  provider?: 'gmail-smtp' | 'resend' | 'simulated';
 }
 
 /**
- * Send a 6-digit OTP email to the user's @cliniclivingplus.com address.
- * Integrates with Resend on Vercel, with automatic fallback for Resend Sandbox mode.
+ * Configure email transport: Prefers Gmail SMTP (zero DNS setup required), falls back to Resend or Simulation
  */
-export async function sendOtpEmail(
-  toEmail: string,
-  otpCode: string,
-  purpose: 'signup' | 'reset'
-): Promise<SendOtpResult> {
-  const normalizedEmail = toEmail.trim().toLowerCase();
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.EMAIL_FROM || 'ClinicLivingPlus Security <onboarding@resend.dev>';
+function getEmailTransport() {
+  const smtpUser = process.env.SMTP_USER; // e.g. cliniclivingplus.ai@gmail.com
+  const smtpPass = process.env.SMTP_PASS; // 16-char Google App Password
+  const resendKey = process.env.RESEND_API_KEY;
 
-  const isSignup = purpose === 'signup';
-  const actionTitle = isSignup ? 'Activate Your Clinic Account' : 'Password Reset Verification';
-  const actionDescription = isSignup
-    ? 'You are setting up your personal password for the ClinicLivingPlus Clinical Portal.'
-    : 'A password reset was requested for your ClinicLivingPlus Clinical Portal account.';
+  if (smtpUser && smtpPass) {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: smtpUser,
+        pass: smtpPass.replace(/\s+/g, ''), // Strip spaces if copied with spaces
+      },
+    });
+    return { type: 'smtp' as const, transporter, fromEmail: `ClinicLivingPlus Access <${smtpUser}>` };
+  }
+
+  if (resendKey) {
+    const resend = new Resend(resendKey);
+    const fromEmail = process.env.EMAIL_FROM || 'ClinicLivingPlus Security <onboarding@resend.dev>';
+    return { type: 'resend' as const, resend, fromEmail };
+  }
+
+  return { type: 'simulated' as const };
+}
+
+/**
+ * Send an individual weekly access password email to a staff member
+ */
+export async function sendWeeklyPasswordNotification(
+  staff: StaffMember,
+  weeklyPassword: string,
+  weekLabel: string,
+  expiresAt: string
+): Promise<SendResult> {
+  const transport = getEmailTransport();
+  const staffName = staff.name || 'Doctor';
+  const portalUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const expiresFormatted = new Date(expiresAt).toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -33,19 +64,21 @@ export async function sendOtpEmail(
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ClinicLivingPlus Security Code</title>
+        <title>Weekly Clinical Access Key</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f7f6fd; margin: 0; padding: 24px; color: #1e202a; }
-          .container { max-width: 520px; margin: 0 auto; background: #ffffff; border-radius: 18px; border: 1px solid rgba(127, 102, 255, 0.18); overflow: hidden; box-shadow: 0 10px 35px -5px rgba(127, 102, 255, 0.12); }
+          .container { max-width: 540px; margin: 0 auto; background: #ffffff; border-radius: 18px; border: 1px solid rgba(127, 102, 255, 0.18); overflow: hidden; box-shadow: 0 10px 35px -5px rgba(127, 102, 255, 0.12); }
           .header-bar { height: 6px; width: 100%; background: linear-gradient(90deg, #7F66FF 0%, #583EDB 50%, #00D2B4 100%); }
           .content { padding: 36px 32px; }
           .badge { display: inline-block; padding: 5px 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #7F66FF; background: #f1eefe; border-radius: 9999px; margin-bottom: 14px; }
           h1 { font-size: 22px; font-weight: 800; color: #111116; margin: 0 0 10px 0; letter-spacing: -0.02em; }
-          p { font-size: 14px; line-height: 1.6; color: #4a4d5e; margin: 0 0 20px 0; }
-          .code-box { background: #f8f7fe; border: 1.5px dashed #7F66FF; border-radius: 14px; padding: 20px; text-align: center; margin: 26px 0; }
-          .code-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6949d7; margin-bottom: 6px; }
-          .code { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 36px; font-weight: 900; letter-spacing: 8px; color: #583EDB; }
-          .notice { font-size: 12px; color: #727588; line-height: 1.5; border-top: 1px solid #ebebf2; padding-top: 18px; margin-top: 24px; }
+          p { font-size: 14px; line-height: 1.6; color: #4a4d5e; margin: 0 0 16px 0; }
+          .pass-box { background: #f8f7fe; border: 1.5px solid #7F66FF; border-radius: 14px; padding: 22px 20px; text-align: center; margin: 24px 0; box-shadow: 0 4px 16px rgba(127, 102, 255, 0.08); }
+          .pass-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6949d7; margin-bottom: 8px; }
+          .passcode { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 28px; font-weight: 900; letter-spacing: 2px; color: #583EDB; word-break: break-all; }
+          .btn-container { text-align: center; margin: 26px 0 10px 0; }
+          .btn { display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, #7F66FF 0%, #583EDB 100%); color: #ffffff !important; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 10px; box-shadow: 0 6px 18px rgba(127, 102, 255, 0.35); }
+          .meta { font-size: 12px; color: #6b7280; background: #f9fafb; padding: 12px 16px; border-radius: 10px; border: 1px solid #e5e7eb; margin: 20px 0; line-height: 1.5; }
           .footer { font-size: 11px; color: #9c9eb1; text-align: center; padding: 18px 24px; background: #fafafc; border-top: 1px solid #f0f0f4; }
         </style>
       </head>
@@ -53,95 +86,180 @@ export async function sendOtpEmail(
         <div class="container">
           <div class="header-bar"></div>
           <div class="content">
-            <div class="badge">ClinicLivingPlus Security</div>
-            <h1>${actionTitle}</h1>
-            <p>${actionDescription}</p>
-            <p>Please enter the following one-time verification code (OTP) in your browser window to verify your <strong>${normalizedEmail}</strong> account:</p>
+            <div class="badge">Weekly Security Update</div>
+            <h1>Your Weekly Access Key</h1>
+            <p>Hello <strong>${staffName}</strong>,</p>
+            <p>Your access passcode for the <strong>ClinicLivingPlus Clinical Portal (PepTalk)</strong> has been updated for <strong>${weekLabel}</strong>.</p>
             
-            <div class="code-box">
-              <div class="code-title">One-Time Verification Code</div>
-              <div class="code">${otpCode}</div>
+            <div class="pass-box">
+              <div class="pass-label">Active Passcode for This Week</div>
+              <div class="passcode">${weeklyPassword}</div>
             </div>
 
-            <p style="font-size: 13px; color: #5c5e70;">⏱️ This code will expire in <strong>10 minutes</strong>. Do not share this security code with anyone.</p>
+            <div class="btn-container">
+              <a href="${portalUrl}" class="btn">Open PepTalk Portal &rarr;</a>
+            </div>
 
-            <div class="notice">
-              <strong>Need help or didn't request this?</strong><br>
-              If you did not initiate this request from the ClinicLivingPlus portal, you can safely ignore this email or contact your clinic administrator.
+            <div class="meta">
+              <strong>Authorized User:</strong> ${staff.email}<br>
+              <strong>Clinical Role:</strong> ${staff.role}<br>
+              <strong>Valid Until:</strong> ${expiresFormatted}<br>
+              <em>Note: Previous week passwords have now expired.</em>
             </div>
           </div>
           <div class="footer">
-            &copy; ${new Date().getFullYear()} ClinicLivingPlus · PepTalk Clinical Intelligence Portal
+            &copy; ${new Date().getFullYear()} ClinicLivingPlus · PepTalk Clinical Intelligence Platform
           </div>
         </div>
       </body>
     </html>
   `;
 
-  if (apiKey) {
+  // 1. Send via Gmail SMTP
+  if (transport.type === 'smtp') {
     try {
-      const resend = new Resend(apiKey);
-      const res = await resend.emails.send({
-        from: fromEmail,
-        to: normalizedEmail,
-        subject: `[ClinicLivingPlus] Your Security Code: ${otpCode}`,
+      await transport.transporter.sendMail({
+        from: transport.fromEmail,
+        to: staff.email,
+        subject: `[ClinicLivingPlus] Your Clinical Access Password (${weekLabel})`,
+        html: htmlContent,
+      });
+      console.log(`[SMTP Success] Dispatched weekly password to ${staff.email}`);
+      await recordStaffNotification(staff.email);
+      return { success: true, provider: 'gmail-smtp' };
+    } catch (err: any) {
+      console.error(`[SMTP Error] Failed to send to ${staff.email}:`, err);
+      return { success: false, error: err.message, provider: 'gmail-smtp' };
+    }
+  }
+
+  // 2. Send via Resend
+  if (transport.type === 'resend') {
+    try {
+      const res = await transport.resend.emails.send({
+        from: transport.fromEmail,
+        to: staff.email,
+        subject: `[ClinicLivingPlus] Your Clinical Access Password (${weekLabel})`,
         html: htmlContent,
       });
 
       if (res.error) {
-        console.warn('[Resend Error Notice]', res.error);
-        const errMsg = res.error.message || '';
-
-        // Handle Resend Sandbox restriction (when domain is not yet verified on resend.com/domains)
-        if (errMsg.includes('only send testing emails to your own email address') || errMsg.includes('verify a domain')) {
-          // Extract the registered admin email from the error message (e.g. cliniclivingplus.ai@gmail.com)
-          const match = errMsg.match(/\(([^)]+)\)/);
-          const adminEmail = match ? match[1] : 'cliniclivingplus.ai@gmail.com';
-
-          console.log(`[Resend Sandbox] Forwarding OTP to account owner: ${adminEmail}`);
-
-          // Attempt forwarding to the verified admin email so the user receives it in their inbox!
-          try {
-            await resend.emails.send({
-              from: fromEmail,
-              to: adminEmail,
-              subject: `[ClinicLivingPlus Sandbox] OTP for ${normalizedEmail}: ${otpCode}`,
-              html: htmlContent,
-            });
-            console.log(`[Resend Sandbox] Successfully forwarded OTP to ${adminEmail}`);
-          } catch (fwdErr) {
-            console.warn('[Resend Sandbox Forward Error]', fwdErr);
-          }
-
-          // Return successful simulated fallback so user is NEVER blocked!
-          return {
-            success: true,
-            simulated: true,
-            otp: otpCode,
-            sandboxNotice: `Resend Sandbox Mode: Sent to ${adminEmail}. (To send directly to @cliniclivingplus.com, verify domain at resend.com/domains).`,
-          };
-        }
-
-        return { success: false, error: res.error.message };
+        console.warn(`[Resend Error] ${res.error.message}`);
+        return { success: false, error: res.error.message, provider: 'resend' };
       }
 
-      console.log(`[Resend Success] Sent OTP email to ${normalizedEmail}`);
-      return { success: true };
+      await recordStaffNotification(staff.email);
+      return { success: true, provider: 'resend' };
     } catch (err: any) {
-      console.error('[Resend Exception]', err);
-      return { success: false, error: err.message || 'Failed to dispatch email via Resend' };
+      return { success: false, error: err.message, provider: 'resend' };
     }
   }
 
-  // Simulated fallback when RESEND_API_KEY is not yet populated
+  // 3. Simulated Fallback (when SMTP and Resend are not yet configured)
   console.log(`=======================================================`);
-  console.log(`[ClinicLivingPlus Auth] RESEND_API_KEY is not set.`);
-  console.log(`[ClinicLivingPlus Auth] SIMULATED OTP for ${normalizedEmail}: ${otpCode}`);
+  console.log(`[WEEKLY ACCESS NOTIFICATION SIMULATED]`);
+  console.log(`Recipient: ${staff.email} (${staff.name})`);
+  console.log(`Password: ${weeklyPassword}`);
+  console.log(`Week: ${weekLabel}`);
   console.log(`=======================================================`);
 
-  return {
-    success: true,
-    simulated: true,
-    otp: otpCode,
-  };
+  await recordStaffNotification(staff.email);
+  return { success: true, simulated: true, provider: 'simulated' };
+}
+
+/**
+ * Send weekly password broadcast to all active staff members
+ */
+export async function sendWeeklyPasswordBroadcast(
+  staffList: StaffMember[],
+  weeklyPassword: string,
+  weekLabel: string,
+  expiresAt: string
+): Promise<{ totalSent: number; totalFailed: number; simulated: boolean }> {
+  let totalSent = 0;
+  let totalFailed = 0;
+  let isSimulated = false;
+
+  const activeStaff = staffList.filter((s) => s.status === 'active');
+
+  for (const staff of activeStaff) {
+    const result = await sendWeeklyPasswordNotification(staff, weeklyPassword, weekLabel, expiresAt);
+    if (result.success) {
+      totalSent++;
+      if (result.simulated) isSimulated = true;
+    } else {
+      totalFailed++;
+    }
+  }
+
+  return { totalSent, totalFailed, simulated: isSimulated };
+}
+
+/**
+ * Send OTP verification email (preserved for OTP actions)
+ */
+export async function sendOtpEmail(
+  toEmail: string,
+  otpCode: string,
+  purpose: 'signup' | 'reset'
+): Promise<SendResult> {
+  const normalizedEmail = toEmail.trim().toLowerCase();
+  const transport = getEmailTransport();
+  const isSignup = purpose === 'signup';
+  const actionTitle = isSignup ? 'Activate Your Clinic Account' : 'Password Reset Verification';
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>ClinicLivingPlus Security Code</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f7f6fd; padding: 24px; color: #1e202a; }
+          .box { max-width: 480px; margin: 0 auto; background: #ffffff; border-radius: 16px; padding: 32px; border: 1px solid #7F66FF33; text-align: center; }
+          .code { font-family: monospace; font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #583EDB; padding: 16px; background: #f8f7fe; border-radius: 12px; margin: 20px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="box">
+          <h2>${actionTitle}</h2>
+          <p>Your 6-digit one-time passcode for <strong>${normalizedEmail}</strong>:</p>
+          <div class="code">${otpCode}</div>
+          <p style="font-size: 12px; color: #6b7280;">Valid for 10 minutes. If you did not request this code, please contact your administrator.</p>
+        </div>
+      </body>
+    </html>
+  `;
+
+  if (transport.type === 'smtp') {
+    try {
+      await transport.transporter.sendMail({
+        from: transport.fromEmail,
+        to: normalizedEmail,
+        subject: `[ClinicLivingPlus] Your Security Code: ${otpCode}`,
+        html: htmlContent,
+      });
+      return { success: true, provider: 'gmail-smtp' };
+    } catch (err: any) {
+      return { success: false, error: err.message, provider: 'gmail-smtp' };
+    }
+  }
+
+  if (transport.type === 'resend') {
+    try {
+      const res = await transport.resend.emails.send({
+        from: transport.fromEmail,
+        to: normalizedEmail,
+        subject: `[ClinicLivingPlus] Your Security Code: ${otpCode}`,
+        html: htmlContent,
+      });
+      if (res.error) return { success: false, error: res.error.message, provider: 'resend' };
+      return { success: true, provider: 'resend' };
+    } catch (err: any) {
+      return { success: false, error: err.message, provider: 'resend' };
+    }
+  }
+
+  console.log(`[SIMULATED OTP] For ${normalizedEmail}: ${otpCode}`);
+  return { success: true, simulated: true, otp: otpCode, provider: 'simulated' };
 }
