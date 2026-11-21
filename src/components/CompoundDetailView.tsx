@@ -579,14 +579,115 @@ export default function CompoundDetailView({
       {/* ========================================================================= */}
       {/* SECTION 5: RECONSTITUTION & MIXING GUIDELINES */}
       {/* ========================================================================= */}
-      {(recon || typeof compound.reconstitution === 'string') && (
+      {(recon || typeof compound.reconstitution === 'string' || (parsed?.reconstitution && (parsed.reconstitution.steps.length > 0 || parsed.reconstitution.tables.length > 0 || parsed.reconstitution.diluent))) && (
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Droplet size={18} style={{ color: 'var(--primary)' }} />
             <span>5 · Reconstitution & Mixing Guidelines</span>
           </h3>
 
-          {recon ? (
+          {/* Case A: Rich structured reconstitution from Vault Monograph */}
+          {parsed?.reconstitution && (parsed.reconstitution.steps.length > 0 || parsed.reconstitution.tables.length > 0 || parsed.reconstitution.diluent) ? (
+            <div>
+              {parsed.reconstitution.diluent && (
+                <div style={{ background: '#EEF2FF', border: '1.5px solid #C7D2FE', borderRadius: '12px', padding: '0.85rem 1.15rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                  <Droplet size={18} color="#4F46E5" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.88rem', color: '#312E81', fontWeight: 600 }}>{parsed.reconstitution.diluent}</span>
+                </div>
+              )}
+
+              {parsed.reconstitution.steps.length > 0 && (
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h4 style={{ fontSize: '0.84rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.75rem' }}>
+                    Clinical Preparation Steps
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    {parsed.reconstitution.steps.map((step, idx) => (
+                      <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', background: '#F8F9FD', border: '1px solid var(--border)', borderRadius: '10px', padding: '0.85rem 1rem' }}>
+                        <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)', color: '#FFFFFF', fontSize: '0.78rem', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                          {idx + 1}
+                        </div>
+                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#2B2D3A', lineHeight: 1.6 }}>{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {parsed.reconstitution.tables.length > 0 && (
+                <div style={{ marginBottom: '1.25rem' }}>
+                  {parsed.reconstitution.tables.map((tbl, tIdx) => (
+                    <div key={tIdx} style={{ marginBottom: '1.25rem' }}>
+                      <h4 style={{ fontSize: '0.88rem', fontWeight: 700, color: '#374151', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                        <Layers size={15} color="var(--primary)" />
+                        <span>{tbl.title}</span>
+                      </h4>
+                      <div style={{ overflowX: 'auto', borderRadius: '10px', border: '1px solid var(--border)' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.88rem' }}>
+                          <thead>
+                            <tr style={{ background: 'var(--primary-light)', borderBottom: '2px solid var(--primary-border)' }}>
+                              {tbl.headers.map((h, hIdx) => (
+                                <th key={hIdx} style={{ padding: '0.65rem 1rem', color: 'var(--primary)', fontWeight: 700 }}>
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {tbl.rows.map((row, rIdx) => (
+                              <tr key={rIdx} style={{ borderBottom: rIdx < tbl.rows.length - 1 ? '1px solid var(--border)' : 'none', background: rIdx % 2 === 1 ? '#FAFBFF' : '#FFFFFF' }}>
+                                <td style={{ padding: '0.65rem 1rem', fontWeight: 700, color: '#111827' }}>{row.strength}</td>
+                                {row.cols.map((col, cIdx) => (
+                                  <td key={cIdx} style={{ padding: '0.65rem 1rem', color: '#374151' }}>{col}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {parsed.reconstitution.mathsRule && (
+                <div style={{ background: '#F0FDF4', border: '1.5px solid #BBF7D0', borderRadius: '10px', padding: '0.85rem 1.15rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                  <Sparkles size={16} color="#16A34A" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.86rem', color: '#15803D', fontWeight: 600 }}>{parsed.reconstitution.mathsRule}</span>
+                </div>
+              )}
+
+              {parsed.reconstitution.notes && (
+                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', fontStyle: 'italic', margin: '0.6rem 0' }}>
+                  {parsed.reconstitution.notes}
+                </p>
+              )}
+
+              <div style={{ marginTop: '1.25rem' }}>
+                <button
+                  type="button"
+                  onClick={() => onOpenCalculator(compound.name)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.55rem',
+                    padding: '0.65rem 1.25rem',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+                    color: '#FFFFFF',
+                    fontSize: '0.86rem',
+                    fontWeight: 700,
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px -2px rgba(127, 102, 255, 0.4)'
+                  }}
+                >
+                  <Droplet size={15} />
+                  <span>Open Interactive Reconstitution Calculator for {compound.name}</span>
+                </button>
+              </div>
+            </div>
+          ) : recon ? (
             <div>
               {recon.instructions && (
                 <p style={{ color: '#2B2D3A', lineHeight: 1.7, fontSize: '0.96rem', marginBottom: '1rem' }}>

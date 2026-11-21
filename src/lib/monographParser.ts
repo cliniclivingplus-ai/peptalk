@@ -24,6 +24,24 @@ export interface DosingTableRow {
   text: string;
 }
 
+export interface ReconstitutionTable {
+  title: string;
+  headers: string[];
+  rows: Array<{
+    strength: string;
+    cols: string[];
+  }>;
+}
+
+export interface MonographReconstitution {
+  diluent?: string;
+  steps: string[];
+  tables: ReconstitutionTable[];
+  notes?: string;
+  mathsRule?: string;
+  fullText: string;
+}
+
 export interface MonographDosing {
   dose?: string;
   frequency?: string;
@@ -68,6 +86,7 @@ export interface ParsedMonograph {
   mechanism: string;
   evidence: MonographEvidence;
   dosing: MonographDosing;
+  reconstitution?: MonographReconstitution;
   practicalTake: string;
   safetyProfile: MonographSafety;
   bloodwork: MonographBloodwork;
@@ -75,11 +94,109 @@ export interface ParsedMonograph {
   rawSections: Array<{ title: string; content: string }>;
 }
 
+export function cleanOcrGarbage(text?: string): string {
+  if (!text) return '';
+  return text
+    .replace(/^\s*(?:(?:\d+\s+){1,}(?:u\s+n\s+i\s+t\s+s|d\s+o\s+s\s+e\s+s?\s+p\s+e\s+r\s+v\s+i\s+a\s+l)|(?:u\s+n\s+i\s+t\s+s|d\s+o\s+s\s+e\s+s?\s+p\s+e\s+r\s+v\s+i\s+a\s+l)|(?:E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+(?:r\s*i\s*s\s*e|f\s*a\s*l\s*l|w\s*o\s*r\s*s\s*e\s*n)|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w|U\s*n\s*r\s*e\s*l\s*i\s*a\s*b\s*l\s*e\s+m\s*a\s*r\s*k\s*e\s*r\s+h\s*e\s*r\s*e))\s*$/gim, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 export function cleanSpacedDirectionText(str?: string): string {
   if (!str) return '';
-  return str
-    .replace(/(?:E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+(?:r\s*i\s*s\s*e|f\s*a\s*l\s*l|w\s*o\s*r\s*s\s*e\s*n)|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w)[\s\n]*/gi, '')
-    .trim();
+  return cleanOcrGarbage(
+    str
+      .replace(/(?:E\s*x\s*p\s*e\s*c\s*t\s*e\s*d\s+t\s*o\s+(?:r\s*i\s*s\s*e|f\s*a\s*l\s*l|w\s*o\s*r\s*s\s*e\s*n)|W\s*a\s*t\s*c\s*h\s+i\s*t|D\s*o\s+n\s*o\s*t\s+d\s*r\s*a\s*w)[\s\n]*/gi, '')
+  );
+}
+
+export function parseReconstitutionSection(text: string): MonographReconstitution {
+  const cleaned = cleanOcrGarbage(text);
+  const lines = cleaned.split('\n').map(l => l.trim()).filter(Boolean);
+
+  let diluent = '';
+  const steps: string[] = [];
+  const tables: ReconstitutionTable[] = [];
+  let currentTable: ReconstitutionTable | null = null;
+  let notes = '';
+  let mathsRule = '';
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (/^5\s*·\s*RECONSTITUTION/i.test(line)) continue;
+
+    if (/^Diluent:\s*/i.test(line)) {
+      diluent = line;
+      continue;
+    }
+
+    if (/^(CONCENTRATION AFTER MIXING|UNITS TO DRAW FOR)/i.test(line)) {
+      if (currentTable) tables.push(currentTable);
+      currentTable = {
+        title: line,
+        headers: ['Vial Strength', '1 mL (100u)', '2 mL (200u)', '3 mL (300u)'],
+        rows: []
+      };
+      continue;
+    }
+
+    if (currentTable && /^Vial strength/i.test(line)) {
+      continue;
+    }
+
+    if (currentTable) {
+      const rowMatch = line.match(/^(\d+(?:\.\d+)?\s*(?:mg|g|mcg|iu)?\s*vial)\s+(.+)/i);
+      if (rowMatch) {
+        const strength = rowMatch[1];
+        const rest = rowMatch[2].trim().split(/\s{2,}|\s+(?=[0-9—<])/);
+        currentTable.rows.push({
+          strength,
+          cols: rest
+        });
+        continue;
+      }
+    }
+
+    if (/^The maths:\s*/i.test(line)) {
+      mathsRule = line;
+      if (currentTable) {
+        tables.push(currentTable);
+        currentTable = null;
+      }
+      continue;
+    }
+
+    if (/^A dash means/i.test(line)) {
+      notes = (notes ? notes + ' ' : '') + line;
+      if (currentTable) {
+        tables.push(currentTable);
+        currentTable = null;
+      }
+      continue;
+    }
+
+    // Step handling with multi-line wrap support
+    const stepMatch = line.match(/^(\d+)\.\s+(.*)/);
+    if (stepMatch && !currentTable) {
+      steps.push(stepMatch[2]);
+      continue;
+    } else if (steps.length > 0 && !currentTable) {
+      steps[steps.length - 1] += ' ' + line;
+      continue;
+    }
+  }
+
+  if (currentTable) tables.push(currentTable);
+
+  return {
+    diluent,
+    steps,
+    tables,
+    notes,
+    mathsRule,
+    fullText: cleaned
+  };
 }
 
 export function parseBloodworkSection(text: string): MonographBloodwork {
@@ -259,6 +376,7 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
     mechanism: '',
     evidence: { fullText: '' },
     dosing: { fullText: '' },
+    reconstitution: { steps: [], tables: [], fullText: '' },
     practicalTake: '',
     safetyProfile: { fullText: '' },
     bloodwork: { tableRows: [], fullText: '' },
@@ -298,6 +416,9 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
     } else if (/^[34]\s*·\s*DOSING/i.test(trimmed)) {
       flush();
       currentKey = 'dosing';
+    } else if (/^[45]\s*·\s*RECONSTITUTION/i.test(trimmed)) {
+      flush();
+      currentKey = 'reconstitution';
     } else if (/^[56]\s*·\s*THE PRACTICAL TAKE/i.test(trimmed)) {
       flush();
       currentKey = 'practicalTake';
@@ -371,32 +492,34 @@ export function parseVaultMonograph(body: string): ParsedMonograph {
       if (parsedDosing.tableRows) {
         result.dosing.tableRows = parsedDosing.tableRows;
       }
+    } else if (key === 'reconstitution') {
+      result.reconstitution = parseReconstitutionSection(text);
     } else if (key === 'practicalTake') {
-      result.practicalTake = (result.practicalTake ? result.practicalTake + '\n\n' : '') + text;
+      result.practicalTake = cleanOcrGarbage((result.practicalTake ? result.practicalTake + '\n\n' : '') + text);
     } else if (key === 'safetyProfile') {
-      result.safetyProfile.fullText = (result.safetyProfile.fullText ? result.safetyProfile.fullText + '\n\n' : '') + text;
+      result.safetyProfile.fullText = cleanOcrGarbage((result.safetyProfile.fullText ? result.safetyProfile.fullText + '\n\n' : '') + text);
 
       const predMatch = text.match(/Predicted from mechanism\s+([\s\S]*?)(?=Observed in use|Avoid if|$)/i);
-      if (predMatch) result.safetyProfile.predicted = predMatch[1].trim();
+      if (predMatch) result.safetyProfile.predicted = cleanOcrGarbage(predMatch[1]);
 
       const obsMatch = text.match(/Observed in use\s+([\s\S]*?)(?=Avoid if|What is not known|$)/i);
-      if (obsMatch) result.safetyProfile.observed = obsMatch[1].trim();
+      if (obsMatch) result.safetyProfile.observed = cleanOcrGarbage(obsMatch[1]);
 
       const avoidMatch = text.match(/Avoid if\s+([\s\S]*?)(?=What is not known|How to run|$)/i);
-      if (avoidMatch) result.safetyProfile.avoidIf = avoidMatch[1].trim();
+      if (avoidMatch) result.safetyProfile.avoidIf = cleanOcrGarbage(avoidMatch[1]);
 
       const notKnownMatch = text.match(/What is not known\s+([\s\S]*?)(?=How to run|How to judge|$)/i);
-      if (notKnownMatch) result.safetyProfile.whatIsNotKnown = notKnownMatch[1].trim();
+      if (notKnownMatch) result.safetyProfile.whatIsNotKnown = cleanOcrGarbage(notKnownMatch[1]);
 
       const howRunMatch = text.match(/How to run it more safely\s+([\s\S]*?)(?=How to judge|$)/i);
-      if (howRunMatch) result.safetyProfile.howToRunSafely = howRunMatch[1].trim();
+      if (howRunMatch) result.safetyProfile.howToRunSafely = cleanOcrGarbage(howRunMatch[1]);
 
       const howJudgeMatch = text.match(/How to judge it\s+([\s\S]*?)$/i);
-      if (howJudgeMatch) result.safetyProfile.howToJudgeIt = howJudgeMatch[1].trim();
+      if (howJudgeMatch) result.safetyProfile.howToJudgeIt = cleanOcrGarbage(howJudgeMatch[1]);
     } else if (key === 'bloodwork') {
       result.bloodwork = parseBloodworkSection(text);
     } else if (key === 'sourcing') {
-      result.sourcing = (result.sourcing ? result.sourcing + '\n\n' : '') + text;
+      result.sourcing = cleanOcrGarbage((result.sourcing ? result.sourcing + '\n\n' : '') + text);
     }
   }
 
