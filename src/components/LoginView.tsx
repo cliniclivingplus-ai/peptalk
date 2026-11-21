@@ -15,9 +15,6 @@ import {
   Dna,
   Check,
   ShieldAlert,
-  Inbox,
-  Key,
-  RotateCcw,
 } from 'lucide-react';
 import AdminPortalModal from './AdminPortalModal';
 
@@ -308,9 +305,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   1
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Mail size={12} color="#C4B5FD" />
-                    <span>Enter your clinic email</span>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    Enter your clinic email
                   </div>
                   <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
                     Type your official <strong style={{ color: '#E0E7FF' }}>@cliniclivingplus.com</strong> address.
@@ -338,9 +334,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   2
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Inbox size={12} color="#6EE7B7" />
-                    <span>Open your email inbox</span>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    Open your email inbox
                   </div>
                   <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
                     Find the email with subject: <em style={{ color: '#E0E7FF' }}>&quot;Weekly PepTalk Access Code&quot;</em>.
@@ -368,9 +363,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   3
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Key size={12} color="#FCD34D" />
-                    <span>Copy & paste the password</span>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    Copy & paste the password
                   </div>
                   <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
                     Paste this week&apos;s active password into the box and click Sign In.
@@ -398,9 +392,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                   4
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <RotateCcw size={12} color="#93C5FD" />
-                    <span>New password every Sunday</span>
+                  <div style={{ fontSize: '0.79rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    New password every Sunday
                   </div>
                   <div style={{ fontSize: '0.71rem', color: 'rgba(255, 255, 255, 0.65)', lineHeight: 1.35, marginTop: '1px' }}>
                     Every Sunday night at 11:30 PM, a fresh code arrives for the next week.
