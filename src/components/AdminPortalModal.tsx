@@ -65,14 +65,14 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
     setSuccessMessage(null);
   };
 
-  const verifyKeyAndLoad = async (keyToVerify = adminKey) => {
+  const verifyKeyAndLoad = async (keyToVerify = adminKey, keepAlerts = false) => {
     if (!keyToVerify.trim()) {
       setErrorMessage('Please enter the Admin Security Key.');
       return;
     }
 
     setIsLoading(true);
-    resetAlerts();
+    if (!keepAlerts) resetAlerts();
 
     try {
       const res = await fetch('/api/admin', {
@@ -170,8 +170,8 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
 
       setSuccessMessage(data.message || 'Weekly password emails successfully sent to all staff!');
       setIsLoading(false);
-      // Reload roster to reflect lastNotifiedAt
-      verifyKeyAndLoad(adminKey);
+      // Reload roster to reflect lastNotifiedAt without wiping success alert
+      verifyKeyAndLoad(adminKey, true);
     } catch {
       setErrorMessage('Network error sending emails.');
       setIsLoading(false);
@@ -317,7 +317,7 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
 
       setSuccessMessage(`Sent weekly password to ${staffEmail}.`);
       setIsLoading(false);
-      verifyKeyAndLoad(adminKey);
+      verifyKeyAndLoad(adminKey, true);
     } catch {
       setErrorMessage('Network error sending email.');
       setIsLoading(false);
