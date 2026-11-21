@@ -6,6 +6,7 @@ import {
   toggleStaffStatus,
   getWeeklyAccess,
   rotateWeeklyPassword,
+  rotateStaffPassword,
   verifyAdminSecret,
   StaffMember,
 } from '@/lib/rosterStore';
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, error: 'Unauthorized: Invalid Admin Security Key' }, { status: 401 });
     }
 
-    // 1. ROTATE WEEKLY PASSWORD
+    // 1. ROTATE WEEKLY PASSWORDS FOR ALL STAFF
     if (action === 'rotate_password') {
       const customPass = body.customPassword?.trim();
       const newAccess = await rotateWeeklyPassword(customPass);
@@ -80,8 +81,43 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         ok: true,
         weeklyAccess: newAccess,
+        roster,
         broadcastResult,
-        message: `Weekly password successfully rotated to ${newAccess.currentPassword}!`,
+        message: `Successfully rotated weekly passwords for all clinic staff!`,
+      });
+    }
+
+    // 1b. ROTATE INDIVIDUAL STAFF PASSWORD ON DEMAND
+    if (action === 'rotate_staff_password') {
+      const target = body.id || body.email;
+      if (!target) {
+        return NextResponse.json({ ok: false, error: 'Staff ID or email is required' }, { status: 400 });
+      }
+
+      const customPass = body.customPassword?.trim();
+      const result = await rotateStaffPassword(target, customPass);
+      if (!result.success || !result.staff) {
+        return NextResponse.json({ ok: false, error: result.error || 'Failed to rotate password' }, { status: 400 });
+      }
+
+      let emailResult = null;
+      if (body.dispatchEmail) {
+        const weeklyAccess = await getWeeklyAccess();
+        emailResult = await sendWeeklyPasswordNotification(
+          result.staff,
+          result.staff.currentPassword || weeklyAccess.currentPassword,
+          weeklyAccess.weekLabel,
+          weeklyAccess.expiresAt
+        );
+      }
+
+      const updatedRoster = await getRoster();
+      return NextResponse.json({
+        ok: true,
+        staff: result.staff,
+        roster: updatedRoster,
+        emailResult,
+        message: `Password for ${result.staff.name} successfully rotated to ${result.staff.currentPassword}!`,
       });
     }
 
@@ -102,7 +138,7 @@ export async function POST(request: NextRequest) {
         const weeklyAccess = await getWeeklyAccess();
         await sendWeeklyPasswordNotification(
           result.staff,
-          weeklyAccess.currentPassword,
+          result.staff.currentPassword || weeklyAccess.currentPassword,
           weeklyAccess.weekLabel,
           weeklyAccess.expiresAt
         );
@@ -113,7 +149,7 @@ export async function POST(request: NextRequest) {
         ok: true,
         staff: result.staff,
         roster: updatedRoster,
-        message: `Added ${result.staff.name} (${result.staff.email}) to active roster.`,
+        message: `Added ${result.staff.name} (${result.staff.email}) to active roster with password ${result.staff.currentPassword}.`,
       });
     }
 
@@ -159,9 +195,10 @@ export async function POST(request: NextRequest) {
       }
 
       const weeklyAccess = await getWeeklyAccess();
+      const passwordToSend = staff.currentPassword || weeklyAccess.currentPassword;
       const sendRes = await sendWeeklyPasswordNotification(
         staff,
-        weeklyAccess.currentPassword,
+        passwordToSend,
         weeklyAccess.weekLabel,
         weeklyAccess.expiresAt
       );
@@ -189,7 +226,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         ok: true,
         result,
-        message: `Dispatched weekly password to ${result.totalSent} staff members.`,
+        message: `Dispatched weekly passwords to ${result.totalSent} staff members.`,
       });
     }
 

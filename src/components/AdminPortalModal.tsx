@@ -81,6 +81,8 @@ export default function AdminPortalModal({
   // Copy Feedback
   const [copiedPass, setCopiedPass] = useState(false);
   const [copiedBroadcast, setCopiedBroadcast] = useState(false);
+  const [copiedStaffId, setCopiedStaffId] = useState<string | null>(null);
+  const [rotatingStaffId, setRotatingStaffId] = useState<string | null>(null);
 
   // Check saved admin session
   useEffect(() => {
@@ -161,15 +163,74 @@ export default function AdminPortalModal({
       }
 
       setWeeklyAccess(data.weeklyAccess);
+      if (data.roster) setRoster(data.roster);
       const emailNote = shouldEmail && data.broadcastResult
-        ? ` Dispatched emails to ${data.broadcastResult.totalSent} staff.`
+        ? ` Dispatched individual emails to ${data.broadcastResult.totalSent} staff.`
         : '';
-      setSuccessMessage(`Password successfully rotated to: ${data.weeklyAccess.currentPassword}!${emailNote}`);
+      setSuccessMessage(`Weekly passwords successfully rotated for all doctors!${emailNote}`);
       setIsLoading(false);
     } catch {
       setErrorMessage('Network error rotating password.');
       setIsLoading(false);
     }
+  };
+
+  const handleCopyStaffPassword = (staff: StaffMember) => {
+    const pass = staff.currentPassword || weeklyAccess?.currentPassword || '';
+    if (!pass) return;
+    navigator.clipboard.writeText(pass);
+    setCopiedStaffId(staff.id);
+    setTimeout(() => setCopiedStaffId(null), 2000);
+  };
+
+  const handleRegenerateStaffPassword = async (staff: StaffMember) => {
+    if (!window.confirm(`Generate a new unique weekly password for ${staff.name} (${staff.email})?`)) {
+      return;
+    }
+
+    const shouldEmail = window.confirm(`Would you like to email the new password directly to ${staff.email} right now?`);
+
+    setRotatingStaffId(staff.id);
+    resetAlerts();
+
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey,
+        },
+        body: JSON.stringify({
+          action: 'rotate_staff_password',
+          id: staff.id,
+          dispatchEmail: shouldEmail,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMessage(data.error || 'Failed to rotate staff password.');
+        setRotatingStaffId(null);
+        return;
+      }
+
+      if (data.roster) setRoster(data.roster);
+      const emailNote = shouldEmail && data.emailResult?.success ? ' and emailed directly to doctor' : '';
+      setSuccessMessage(`New password generated for ${staff.name}: ${data.staff.currentPassword}${emailNote}!`);
+      setRotatingStaffId(null);
+    } catch {
+      setErrorMessage('Network error rotating staff password.');
+      setRotatingStaffId(null);
+    }
+  };
+
+  const handleCopyWhatsAppBroadcast = () => {
+    const activeStaff = roster.filter((s) => s.status === 'active');
+    const staffLines = activeStaff
+      .map((s) => `• *${s.name}* (${s.email}): \`${s.currentPassword || weeklyAccess?.currentPassword}\``)
+      .join('\n');
+    const msg = `*ClinicLivingPlus · PepTalk Access Keys*\n*${weeklyAccess?.weekLabel}*\n\nHere are this week's active passwords for each doctor:\n\n${staffLines}\n\n*Sign In:* http://localhost:3000\n_Note: Passwords are valid for 7 days._`;
+    copyToClipboard(msg, true);
   };
 
   const handleBroadcastEmails = async () => {
@@ -749,7 +810,7 @@ export default function AdminPortalModal({
                       }}
                     >
                       <RefreshCw size={14} className={isLoading ? 'animate-spin' : ''} />
-                      <span>Rotate Password for This Week</span>
+                      <span>Rotate All Passwords</span>
                     </button>
 
                     <button
@@ -777,7 +838,7 @@ export default function AdminPortalModal({
                   </div>
                 </div>
 
-                {/* Password Display Box */}
+                {/* Password Governance Summary Box */}
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -785,61 +846,39 @@ export default function AdminPortalModal({
                   background: '#FFFFFF',
                   border: '1.5px solid #7F66FF',
                   borderRadius: '12px',
-                  padding: '1rem 1.4rem'
+                  padding: '1rem 1.4rem',
+                  flexWrap: 'wrap',
+                  gap: '1rem'
                 }}>
                   <div>
                     <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#7F66FF', marginBottom: '0.2rem' }}>
-                      Current Password (Expires in 7 days)
+                      Active Clinical Rotation Cycle · {weeklyAccess?.weekLabel || 'Current Week'}
                     </div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 900, fontFamily: 'monospace', letterSpacing: '2px', color: '#583EDB' }}>
-                      {weeklyAccess?.currentPassword || '—'}
+                    <div style={{ fontSize: '0.85rem', color: '#334155', fontWeight: 600 }}>
+                      Each doctor has their own unique weekly password. View, copy, or regenerate anyone's password in the Roster table below.
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                     <button
                       type="button"
-                      onClick={() => copyToClipboard(weeklyAccess?.currentPassword || '')}
+                      onClick={handleCopyWhatsAppBroadcast}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.35rem',
-                        padding: '0.45rem 0.8rem',
-                        background: copiedPass ? '#ECFDF5' : '#F4F5F9',
-                        color: copiedPass ? '#059669' : '#4B5563',
-                        border: '1px solid #E5E7EB',
-                        borderRadius: '8px',
-                        fontSize: '0.76rem',
-                        fontWeight: 700,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      {copiedPass ? <Check size={14} /> : <Copy size={14} />}
-                      <span>{copiedPass ? 'Copied' : 'Copy Key'}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const msg = `ClinicLivingPlus Team: Here is our PepTalk portal access password for ${weeklyAccess?.weekLabel}: ${weeklyAccess?.currentPassword} (Valid for all approved @cliniclivingplus.com staff). Access at http://localhost:3000`;
-                        copyToClipboard(msg, true);
-                      }}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.35rem',
-                        padding: '0.45rem 0.8rem',
+                        padding: '0.5rem 0.85rem',
                         background: copiedBroadcast ? '#ECFDF5' : '#F4F5F9',
                         color: copiedBroadcast ? '#059669' : '#4B5563',
-                        border: '1px solid #E5E7EB',
+                        border: '1px solid #CBD5E1',
                         borderRadius: '8px',
-                        fontSize: '0.76rem',
+                        fontSize: '0.78rem',
                         fontWeight: 700,
                         cursor: 'pointer'
                       }}
                     >
                       {copiedBroadcast ? <Check size={14} /> : <Copy size={14} />}
-                      <span>{copiedBroadcast ? 'Copied Announcement' : 'Copy for WhatsApp / Slack'}</span>
+                      <span>{copiedBroadcast ? 'Copied WhatsApp List' : 'Copy All for WhatsApp / Slack'}</span>
                     </button>
                   </div>
                 </div>
@@ -1186,6 +1225,7 @@ export default function AdminPortalModal({
                       <tr style={{ background: '#F1F5F9', borderBottom: '1px solid #E2E8F0', color: '#475569' }}>
                         <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Staff Member</th>
                         <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Clinical Role</th>
+                        <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>This Week's Password</th>
                         <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Access Status</th>
                         <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700 }}>Last Emailed</th>
                         <th style={{ padding: '0.65rem 0.9rem', fontWeight: 700, textAlign: 'right' }}>Actions</th>
@@ -1212,6 +1252,67 @@ export default function AdminPortalModal({
                             }}>
                               {staff.role}
                             </span>
+                          </td>
+                          <td style={{ padding: '0.75rem 0.9rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                              <code style={{
+                                fontFamily: "'SF Mono', Consolas, Monaco, monospace",
+                                fontWeight: 800,
+                                fontSize: '0.78rem',
+                                letterSpacing: '0.03em',
+                                color: '#4F33C4',
+                                background: '#F1EEFE',
+                                padding: '0.28rem 0.6rem',
+                                borderRadius: '7px',
+                                border: '1px solid rgba(127, 102, 255, 0.28)',
+                                userSelect: 'all'
+                              }}>
+                                {staff.currentPassword || weeklyAccess?.currentPassword || '—'}
+                              </code>
+
+                              {/* 1-Click Copy */}
+                              <button
+                                type="button"
+                                title="Copy this doctor's password"
+                                onClick={() => handleCopyStaffPassword(staff)}
+                                style={{
+                                  width: '26px',
+                                  height: '26px',
+                                  borderRadius: '6px',
+                                  background: copiedStaffId === staff.id ? '#ECFDF5' : '#F1F5F9',
+                                  border: '1px solid #CBD5E1',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  cursor: 'pointer',
+                                  color: copiedStaffId === staff.id ? '#059669' : '#475569'
+                                }}
+                              >
+                                {copiedStaffId === staff.id ? <Check size={13} /> : <Copy size={13} />}
+                              </button>
+
+                              {/* Regenerate this doctor's password */}
+                              <button
+                                type="button"
+                                title="Generate new weekly password for this doctor"
+                                onClick={() => handleRegenerateStaffPassword(staff)}
+                                disabled={rotatingStaffId === staff.id || isLoading}
+                                style={{
+                                  width: '26px',
+                                  height: '26px',
+                                  borderRadius: '6px',
+                                  background: '#F1F5F9',
+                                  border: '1px solid #CBD5E1',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  cursor: 'pointer',
+                                  color: '#475569'
+                                }}
+                              >
+                                <RefreshCw size={13} className={rotatingStaffId === staff.id ? 'animate-spin' : ''} />
+                              </button>
+                            </div>
                           </td>
                           <td style={{ padding: '0.75rem 0.9rem' }}>
                             {staff.status === 'active' ? (

@@ -168,13 +168,14 @@ export async function sendWeeklyPasswordNotification(
 }
 
 /**
- * Send weekly password broadcast to all active staff members
+ * Send weekly password broadcast to all active staff members.
+ * Sends each doctor their own personalized weekly password!
  */
 export async function sendWeeklyPasswordBroadcast(
   staffList: StaffMember[],
-  weeklyPassword: string,
-  weekLabel: string,
-  expiresAt: string
+  weeklyPassword?: string,
+  weekLabel?: string,
+  expiresAt?: string
 ): Promise<{ totalSent: number; totalFailed: number; simulated: boolean }> {
   let totalSent = 0;
   let totalFailed = 0;
@@ -183,7 +184,13 @@ export async function sendWeeklyPasswordBroadcast(
   const activeStaff = staffList.filter((s) => s.status === 'active');
 
   for (const staff of activeStaff) {
-    const result = await sendWeeklyPasswordNotification(staff, weeklyPassword, weekLabel, expiresAt);
+    const passwordToSend = staff.currentPassword || weeklyPassword || '';
+    const result = await sendWeeklyPasswordNotification(
+      staff,
+      passwordToSend,
+      weekLabel || 'Current Week',
+      expiresAt || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
+    );
     if (result.success) {
       totalSent++;
       if (result.simulated) isSimulated = true;
@@ -217,7 +224,11 @@ export async function sendAdminWeeklySummaryEmail(
   const staffRows = notifiedStaff
     .map(
       (s) =>
-        `<li style="margin-bottom: 6px;"><strong>${s.name}</strong> &lt;${s.email}&gt; · <span style="color: #059669; font-weight: 600;">Emailed</span></li>`
+        `<tr style="border-bottom: 1px solid #e5e7eb;">
+          <td style="padding: 8px 10px; font-weight: 700; color: #111827;">${s.name}</td>
+          <td style="padding: 8px 10px; color: #4b5563; font-size: 12px;">${s.email}</td>
+          <td style="padding: 8px 10px; font-family: monospace; font-weight: 800; color: #583EDB; font-size: 13px;">${s.currentPassword || newPassword}</td>
+        </tr>`
     )
     .join('');
 
@@ -229,15 +240,15 @@ export async function sendAdminWeeklySummaryEmail(
         <title>Director's Weekly Password Summary</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f6fd; margin: 0; padding: 24px; color: #1e202a; }
-          .container { max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 18px; border: 1.5px solid rgba(127, 102, 255, 0.25); overflow: hidden; box-shadow: 0 12px 40px -6px rgba(127, 102, 255, 0.15); }
+          .container { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 18px; border: 1.5px solid rgba(127, 102, 255, 0.25); overflow: hidden; box-shadow: 0 12px 40px -6px rgba(127, 102, 255, 0.15); }
           .header-bar { height: 6px; width: 100%; background: linear-gradient(90deg, #7F66FF 0%, #583EDB 50%, #00D2B4 100%); }
           .content { padding: 36px 32px; }
           .badge { display: inline-block; padding: 5px 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #7F66FF; background: #f1eefe; border-radius: 9999px; margin-bottom: 14px; }
           h1 { font-size: 22px; font-weight: 800; color: #111116; margin: 0 0 10px 0; }
           p { font-size: 14px; line-height: 1.6; color: #4a4d5e; margin: 0 0 16px 0; }
-          .box { background: #f8f7fe; border: 1.5px solid #7F66FF; border-radius: 14px; padding: 22px; text-align: center; margin: 22px 0; }
-          .passcode { font-family: monospace; font-size: 30px; font-weight: 900; letter-spacing: 2px; color: #583EDB; }
-          .staff-list { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; margin: 20px 0; font-size: 13px; line-height: 1.6; }
+          .table-container { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin: 20px 0; }
+          table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+          th { background: #f3f4f6; padding: 9px 10px; font-weight: 700; color: #374151; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; }
           .footer { font-size: 11px; color: #9c9eb1; text-align: center; padding: 18px 24px; background: #fafafc; border-top: 1px solid #f0f0f4; }
         </style>
       </head>
@@ -247,23 +258,26 @@ export async function sendAdminWeeklySummaryEmail(
           <div class="content">
             <div class="badge">Director Executive Summary</div>
             <h1>Automated Weekly Rotation Complete</h1>
-            <p>The weekly credential rotation has finished automatically for <strong>${weekLabel}</strong>.</p>
+            <p>The weekly credential rotation has finished automatically for <strong>${weekLabel}</strong>. Each doctor has been issued their own distinct active password:</p>
             
-            <div class="box">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6949d7; margin-bottom: 6px;">New Active Clinic Password</div>
-              <div class="passcode">${newPassword}</div>
-            </div>
-
-            <p><strong>Approved Staff Members Notified (${notifiedStaff.length}):</strong></p>
-            <div class="staff-list">
-              <ul style="margin: 0; padding-left: 20px;">
-                ${staffRows}
-              </ul>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Doctor</th>
+                    <th>Email</th>
+                    <th>This Week's Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${staffRows}
+                </tbody>
+              </table>
             </div>
 
             <p style="font-size: 13px; color: #6b7280;">
               <strong>Valid Period:</strong> Active now through ${expiresFormatted}.<br>
-              <strong>Next Automated Rotation:</strong> Next Sunday at 11:30 PM.
+              <strong>Next Automated Rotation:</strong> Next Sunday at 11:30 PM IST.
             </p>
           </div>
           <div class="footer">
