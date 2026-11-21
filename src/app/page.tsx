@@ -349,21 +349,7 @@ export default function Home() {
                 </div>
               )}
 
-              <button
-                onClick={() => setIsApiKeyOpen(true)}
-                className="btn btn-outline"
-                style={{ fontSize: '0.82rem', padding: '0.4rem 0.85rem' }}
-              >
-                <span>{isKeyActive ? 'Gemini Key Ready' : 'Add Gemini Key'}</span>
-                <span
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: isKeyActive ? 'var(--accent-teal)' : '#F59E0B',
-                  }}
-                ></span>
-              </button>
+
             </div>
           </header>
         )}
@@ -455,6 +441,9 @@ export default function Home() {
       <AdminPortalModal
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}
+        geminiKey={apiKey}
+        hasServerKey={hasServerKey}
+        onSaveGeminiKey={handleSaveApiKey}
       />
     </div>
   );

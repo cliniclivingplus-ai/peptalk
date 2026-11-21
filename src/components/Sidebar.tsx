@@ -20,7 +20,7 @@ import {
 interface SidebarProps {
   currentView: ViewMode;
   onNavigate: (view: ViewMode) => void;
-  onOpenApiKey: () => void;
+  onOpenApiKey?: () => void;
   onNewChat?: () => void;
   apiKey?: string;
   compoundCount: number;
@@ -287,42 +287,24 @@ export default function Sidebar({
           </div>
         )}
 
-        <button
-          onClick={onOpenApiKey}
-          className="nav-link-btn"
-          style={{ padding: '0.55rem 0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <KeyRound size={15} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontSize: '0.84rem' }}>Gemini API Key</span>
-          </div>
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: isKeyActive ? 'var(--accent-teal)' : '#F59E0B',
-            }}
-          />
-        </button>
-
         {onOpenAdmin && (
           <button
             onClick={onOpenAdmin}
             className="nav-link-btn"
             style={{
-              padding: '0.5rem 0.85rem',
+              padding: '0.55rem 0.85rem',
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
               color: 'var(--primary)',
-              background: 'rgba(127, 102, 255, 0.06)',
-              borderRadius: '8px',
-              marginTop: '0.35rem'
+              background: 'rgba(127, 102, 255, 0.08)',
+              borderRadius: '9px',
+              border: '1px solid rgba(127, 102, 255, 0.18)',
+              marginTop: '0.2rem'
             }}
           >
-            <ShieldAlert size={15} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontSize: '0.82rem', fontWeight: 700 }}>Admin Portal</span>
+            <ShieldAlert size={16} style={{ color: 'var(--primary)' }} />
+            <span style={{ fontSize: '0.84rem', fontWeight: 700 }}>Admin Portal</span>
           </button>
         )}
       </div>

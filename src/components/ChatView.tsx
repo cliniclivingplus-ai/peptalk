@@ -20,6 +20,7 @@ import {
   RefreshCw,
   FileText,
   Search,
+  AlertCircle,
 } from 'lucide-react';
 import ClinicalMarkdown from './ClinicalMarkdown';
 
@@ -340,11 +341,27 @@ export default function ChatView({
               </p>
 
               {!apiKey && (
-                <div style={{ marginBottom: '2rem' }}>
-                  <button onClick={onOpenApiKey} className="btn btn-primary" style={{ padding: '0.8rem 1.6rem', fontSize: '0.94rem' }}>
-                    <Key size={18} />
-                    <span>Connect Gemini API Key</span>
-                  </button>
+                <div style={{
+                  marginBottom: '2rem',
+                  padding: '0.9rem 1.4rem',
+                  background: '#FEF3C7',
+                  border: '1px solid #FCD34D',
+                  borderRadius: '14px',
+                  maxWidth: '520px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  textAlign: 'left'
+                }}>
+                  <AlertCircle size={20} color="#D97706" style={{ flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#92400E' }}>
+                      Gemini AI Engine Key Required
+                    </div>
+                    <div style={{ fontSize: '0.78rem', color: '#B45309', marginTop: '0.15rem' }}>
+                      Google Gemini API Key is configured centrally by the Clinic Administrator in the Admin Portal.
+                    </div>
+                  </div>
                 </div>
               )}
 

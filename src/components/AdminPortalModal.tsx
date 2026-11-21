@@ -24,21 +24,48 @@ import {
   Zap,
   Eye,
   EyeOff,
+  Sparkles,
+  ExternalLink,
 } from 'lucide-react';
 import { StaffMember, WeeklyAccess } from '@/lib/rosterStore';
 
 interface AdminPortalModalProps {
   isOpen: boolean;
   onClose: () => void;
+  geminiKey?: string;
+  hasServerKey?: boolean;
+  onSaveGeminiKey?: (key: string) => void;
 }
 
-export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalProps) {
+export default function AdminPortalModal({
+  isOpen,
+  onClose,
+  geminiKey = '',
+  hasServerKey = false,
+  onSaveGeminiKey,
+}: AdminPortalModalProps) {
   const [adminKey, setAdminKey] = useState('');
   const [showAdminKey, setShowAdminKey] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  // Gemini AI Engine Key Management
+  const [localGeminiKey, setLocalGeminiKey] = useState(geminiKey || '');
+  const [showGeminiKey, setShowGeminiKey] = useState(false);
+  const [isTestingGemini, setIsTestingGemini] = useState(false);
+  const [geminiTestResult, setGeminiTestResult] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+
+  // Sync Gemini key when modal opens or prop updates
+  useEffect(() => {
+    if (geminiKey) {
+      setLocalGeminiKey(geminiKey);
+    } else {
+      const stored = localStorage.getItem('peptalk_gemini_api_key') || localStorage.getItem('peppal_gemini_api_key') || '';
+      if (stored) setLocalGeminiKey(stored);
+    }
+  }, [geminiKey, isOpen]);
 
   // Roster & Weekly Access Data
   const [roster, setRoster] = useState<StaffMember[]>([]);
@@ -370,6 +397,78 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
       setCopiedPass(true);
       setTimeout(() => setCopiedPass(false), 2000);
     }
+  };
+
+  const handleTestGeminiKey = async () => {
+    const cleaned = localGeminiKey.trim().replace(/^['"]|['"]$/g, '');
+    if (!cleaned && !hasServerKey) {
+      setGeminiTestResult({ type: 'error', message: 'Please enter a Gemini API Key to test.' });
+      return;
+    }
+
+    setIsTestingGemini(true);
+    setGeminiTestResult(null);
+
+    try {
+      if (cleaned) {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${cleaned}`);
+        const data = await res.json();
+        if (!res.ok || data.error) {
+          setGeminiTestResult({
+            type: 'error',
+            message: data.error?.message || `Google API rejected this key (HTTP ${res.status}).`,
+          });
+        } else {
+          setGeminiTestResult({
+            type: 'success',
+            message: 'Google Gemini API key verified successfully! Gemini 2.5 Flash / Pro models are active and responding.',
+          });
+        }
+      } else if (hasServerKey) {
+        setGeminiTestResult({
+          type: 'success',
+          message: 'Server-side Gemini API Key is configured in environment (.env.local / Vercel).',
+        });
+      }
+    } catch (err: any) {
+      setGeminiTestResult({
+        type: 'error',
+        message: `Network error verifying Gemini API Key: ${err.message}`,
+      });
+    } finally {
+      setIsTestingGemini(false);
+    }
+  };
+
+  const handleSaveGeminiKey = () => {
+    const cleaned = localGeminiKey.trim().replace(/^['"]|['"]$/g, '');
+    if (onSaveGeminiKey) {
+      onSaveGeminiKey(cleaned);
+    } else {
+      if (cleaned) {
+        localStorage.setItem('peptalk_gemini_api_key', cleaned);
+      } else {
+        localStorage.removeItem('peptalk_gemini_api_key');
+        localStorage.removeItem('peppal_gemini_api_key');
+      }
+    }
+    setSuccessMessage('Gemini API Key configuration saved successfully. All clinic staff AI chat sessions will now use this key.');
+    setGeminiTestResult({
+      type: 'success',
+      message: cleaned ? 'Gemini API Key saved and active for the clinic portal.' : 'Custom Gemini API Key cleared.',
+    });
+  };
+
+  const handleClearGeminiKey = () => {
+    setLocalGeminiKey('');
+    if (onSaveGeminiKey) {
+      onSaveGeminiKey('');
+    } else {
+      localStorage.removeItem('peptalk_gemini_api_key');
+      localStorage.removeItem('peppal_gemini_api_key');
+    }
+    setGeminiTestResult(null);
+    setSuccessMessage('Custom Gemini API Key removed.');
   };
 
   if (!isOpen) return null;
@@ -766,7 +865,219 @@ export default function AdminPortalModal({ isOpen, onClose }: AdminPortalModalPr
                 </div>
               </div>
 
-              {/* SECTION 2: STAFF ROSTER TABLE */}
+              {/* SECTION 2: GOOGLE GEMINI AI ENGINE CONFIGURATION */}
+              <div style={{
+                background: '#FFFFFF',
+                border: '1.5px solid rgba(127, 102, 255, 0.25)',
+                borderRadius: '16px',
+                padding: '1.35rem',
+                boxShadow: '0 4px 18px rgba(127, 102, 255, 0.05)'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                    <div style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '10px',
+                      background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+                      color: '#FFFFFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <Sparkles size={18} />
+                    </div>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
+                        <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111116', margin: 0 }}>
+                          Google Gemini AI Engine Key
+                        </h3>
+                        <span style={{
+                          fontSize: '0.68rem',
+                          fontWeight: 700,
+                          padding: '0.15rem 0.5rem',
+                          borderRadius: '9999px',
+                          background: '#F1EEFE',
+                          color: '#583EDB',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em'
+                        }}>
+                          Admin Exclusive
+                        </span>
+                      </div>
+                      <div style={{ fontSize: '0.76rem', color: '#6B7280', marginTop: '0.15rem' }}>
+                        Powers AI Chat & RAG clinical queries across 699 monographs for all authorized staff.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: '8px',
+                      background: (localGeminiKey || hasServerKey) ? '#ECFDF5' : '#FFFBEB',
+                      border: `1px solid ${(localGeminiKey || hasServerKey) ? '#A7F3D0' : '#FDE68A'}`,
+                      color: (localGeminiKey || hasServerKey) ? '#047857' : '#B45309',
+                      fontSize: '0.74rem',
+                      fontWeight: 700
+                    }}>
+                      <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: (localGeminiKey || hasServerKey) ? '#10B981' : '#F59E0B' }} />
+                      <span>{(localGeminiKey || hasServerKey) ? 'AI Engine Ready' : 'Key Required'}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Input Row */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <div style={{ display: 'flex', gap: '0.55rem', flexWrap: 'wrap' }}>
+                    <div style={{ position: 'relative', flex: 1, minWidth: '280px' }}>
+                      <input
+                        type={showGeminiKey ? 'text' : 'password'}
+                        value={localGeminiKey}
+                        onChange={(e) => setLocalGeminiKey(e.target.value)}
+                        placeholder={hasServerKey ? "Using server key from .env.local (or paste custom key)" : "AIzaSy... (Paste Google Gemini API Key)"}
+                        style={{
+                          width: '100%',
+                          padding: '0.6rem 2.4rem 0.6rem 0.85rem',
+                          fontSize: '0.86rem',
+                          borderRadius: '9px',
+                          border: '1.5px solid #CBD5E1',
+                          outline: 'none',
+                          background: '#FFFFFF',
+                          boxSizing: 'border-box'
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowGeminiKey(!showGeminiKey)}
+                        aria-label={showGeminiKey ? 'Hide key' : 'Show key'}
+                        style={{
+                          position: 'absolute',
+                          right: '8px',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          background: 'none',
+                          border: 'none',
+                          color: '#8A8D9F',
+                          cursor: 'pointer',
+                          padding: '3px',
+                          display: 'flex',
+                        }}
+                      >
+                        {showGeminiKey ? <EyeOff size={15} /> : <Eye size={15} />}
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleTestGeminiKey}
+                      disabled={isTestingGemini || (!localGeminiKey.trim() && !hasServerKey)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        padding: '0.6rem 0.95rem',
+                        borderRadius: '9px',
+                        background: '#F1F5F9',
+                        color: '#334155',
+                        border: '1px solid #CBD5E1',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        cursor: (!localGeminiKey.trim() && !hasServerKey) ? 'not-allowed' : 'pointer'
+                      }}
+                    >
+                      {isTestingGemini ? <RefreshCw size={13} className="animate-spin" /> : <Zap size={13} color="#7F66FF" />}
+                      <span>{isTestingGemini ? 'Testing...' : 'Test Key'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleSaveGeminiKey}
+                      disabled={isLoading}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        padding: '0.6rem 1.1rem',
+                        borderRadius: '9px',
+                        background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
+                        color: '#FFFFFF',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 12px rgba(127, 102, 255, 0.3)'
+                      }}
+                    >
+                      <Check size={14} />
+                      <span>Save Key</span>
+                    </button>
+
+                    {localGeminiKey && (
+                      <button
+                        type="button"
+                        onClick={handleClearGeminiKey}
+                        title="Remove custom key"
+                        style={{
+                          padding: '0.6rem 0.8rem',
+                          borderRadius: '9px',
+                          background: '#FEF2F2',
+                          color: '#EF4444',
+                          border: '1px solid #FECACA',
+                          fontSize: '0.8rem',
+                          fontWeight: 600,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Clear
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Feedback on test */}
+                  {geminiTestResult && (
+                    <div style={{
+                      padding: '0.55rem 0.85rem',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      background: geminiTestResult.type === 'success' ? '#ECFDF5' : '#FEF2F2',
+                      border: `1px solid ${geminiTestResult.type === 'success' ? '#A7F3D0' : '#FECACA'}`,
+                      color: geminiTestResult.type === 'success' ? '#065F46' : '#991B1B'
+                    }}>
+                      {geminiTestResult.type === 'success' ? <CheckCircle2 size={14} /> : <AlertCircle size={14} />}
+                      <span>{geminiTestResult.message}</span>
+                    </div>
+                  )}
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.72rem', color: '#64748B' }}>
+                    <span>
+                      {hasServerKey ? (
+                        <span style={{ color: '#059669', fontWeight: 600 }}>✓ Server fallback key detected in .env.local</span>
+                      ) : (
+                        <span>Configured key applies to all clinic users automatically without them needing to enter keys.</span>
+                      )}
+                    </span>
+                    <a
+                      href="https://aistudio.google.com/app/apikey"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: '#7F66FF', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                    >
+                      <span>Get a free key from Google AI Studio</span>
+                      <ExternalLink size={11} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 3: STAFF ROSTER TABLE */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
                   <div>
