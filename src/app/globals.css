@@ -732,3 +732,59 @@ body {
 .spin-slow {
   animation: spinSlow 3s linear infinite;
 }
+
+/* Floating Peptide Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(8deg);
+  }
+}
+
+@keyframes floatMedium {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(-10deg);
+  }
+}
+
+@keyframes floatFast {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(14deg);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.1);
+  }
+}
+
+.peptide-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.peptide-float-medium {
+  animation: floatMedium 5.5s ease-in-out infinite;
+}
+
+.peptide-float-fast {
+  animation: floatFast 4s ease-in-out infinite;
+}
+
+.peptide-pulse-glow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
