@@ -102,7 +102,6 @@ export async function sendWeeklyPasswordNotification(
 
             <div class="meta">
               <strong>Authorized User:</strong> ${staff.email}<br>
-              <strong>Clinical Role:</strong> ${staff.role}<br>
               <strong>Valid Until:</strong> ${expiresFormatted}<br>
               <em>Note: Previous week passwords have now expired.</em>
             </div>
@@ -121,7 +120,7 @@ export async function sendWeeklyPasswordNotification(
       await transport.transporter.sendMail({
         from: transport.fromEmail,
         to: staff.email,
-        subject: `[ClinicLivingPlus] Your Clinical Access Password (${weekLabel})`,
+        subject: `[PepTalk · ClinicLivingPlus] Your Weekly Clinical Access Password (${weekLabel})`,
         html: htmlContent,
       });
       console.log(`[SMTP Success] Dispatched weekly password to ${staff.email}`);
@@ -139,7 +138,7 @@ export async function sendWeeklyPasswordNotification(
       const res = await transport.resend.emails.send({
         from: transport.fromEmail,
         to: staff.email,
-        subject: `[ClinicLivingPlus] Your Clinical Access Password (${weekLabel})`,
+        subject: `[PepTalk · ClinicLivingPlus] Your Weekly Clinical Access Password (${weekLabel})`,
         html: htmlContent,
       });
 
@@ -293,7 +292,7 @@ export async function sendAdminWeeklySummaryEmail(
       await transport.transporter.sendMail({
         from: transport.fromEmail,
         to: targetEmail,
-        subject: `[ClinicLivingPlus Director] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
+        subject: `[PepTalk · Director Summary] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
         html: htmlContent,
       });
       console.log(`[SMTP Success] Sent Director Summary to ${targetEmail}`);
@@ -309,7 +308,7 @@ export async function sendAdminWeeklySummaryEmail(
       await transport.resend.emails.send({
         from: transport.fromEmail,
         to: targetEmail,
-        subject: `[ClinicLivingPlus Director] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
+        subject: `[PepTalk · Director Summary] Weekly Passcode Rotated: ${newPassword} (${weekLabel})`,
         html: htmlContent,
       });
       return { success: true, provider: 'resend' };

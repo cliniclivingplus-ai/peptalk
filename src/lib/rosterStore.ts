@@ -75,7 +75,7 @@ function getDefaultData(): RosterData {
         id: 'staff-shakthi',
         email: 'shakthi@cliniclivingplus.com',
         name: 'Dr. Shakthi',
-        role: 'Clinic Lead',
+        role: 'Doctor',
         status: 'active',
         currentPassword: 'LivingPlus-Shakthi-8429',
         passwordGeneratedAt: now.toISOString(),
