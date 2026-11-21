@@ -623,8 +623,8 @@ export default function AdminPortalModal({
       </header>
 
       {/* Full Page Content Viewport */}
-      <main style={{ padding: '1.8rem 2.2rem', overflowY: 'auto', flex: 1, background: '#F8FAFC' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
+      <main style={{ padding: '1.2rem 1.6rem', overflowY: 'auto', flex: 1, background: '#F8FAFC' }}>
+        <div style={{ width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.2rem', boxSizing: 'border-box' }}>
           {/* Alerts */}
           {errorMessage && (
             <div style={{
@@ -1229,20 +1229,21 @@ export default function AdminPortalModal({
                 {/* Roster Table */}
                 <div style={{
                   border: '1px solid #E2E8F0',
-                  borderRadius: '14px',
-                  overflow: 'hidden',
+                  borderRadius: '12px',
+                  overflowX: 'auto',
                   background: '#FFFFFF',
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.02)'
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.02)',
+                  width: '100%'
                 }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.82rem' }}>
                     <thead>
                       <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0', color: '#475569' }}>
-                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, width: '24%' }}>Staff Member</th>
-                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '16%' }}>Clinical Role</th>
-                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, width: '26%' }}>This Week's Password</th>
-                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '12%' }}>Access Status</th>
-                        <th style={{ padding: '0.85rem 1rem', fontWeight: 700, width: '10%' }}>Last Emailed</th>
-                        <th style={{ padding: '0.85rem 1.2rem', fontWeight: 700, textAlign: 'right', width: '12%' }}>Actions</th>
+                        <th style={{ padding: '0.75rem 1rem', fontWeight: 700, whiteSpace: 'nowrap' }}>Staff Member</th>
+                        <th style={{ padding: '0.75rem 0.85rem', fontWeight: 700, whiteSpace: 'nowrap' }}>Clinical Role</th>
+                        <th style={{ padding: '0.75rem 1rem', fontWeight: 700, whiteSpace: 'nowrap' }}>This Week's Password</th>
+                        <th style={{ padding: '0.75rem 0.85rem', fontWeight: 700, whiteSpace: 'nowrap' }}>Access Status</th>
+                        <th style={{ padding: '0.75rem 0.85rem', fontWeight: 700, whiteSpace: 'nowrap' }}>Last Emailed</th>
+                        <th style={{ padding: '0.75rem 1rem', fontWeight: 700, textAlign: 'right', whiteSpace: 'nowrap' }}>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1251,34 +1252,38 @@ export default function AdminPortalModal({
                           borderBottom: idx < roster.length - 1 ? '1px solid #F1F5F9' : 'none',
                           background: staff.status === 'suspended' ? '#FEF2F2' : '#FFFFFF'
                         }}>
-                          <td style={{ padding: '0.9rem 1.2rem' }}>
-                            <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.88rem' }}>{staff.name}</div>
-                            <div style={{ fontSize: '0.78rem', color: '#64748B' }}>{staff.email}</div>
+                          <td style={{ padding: '0.75rem 1rem', whiteSpace: 'nowrap' }}>
+                            <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.86rem', whiteSpace: 'nowrap' }}>{staff.name}</div>
+                            <div style={{ fontSize: '0.74rem', color: '#64748B', whiteSpace: 'nowrap' }}>{staff.email}</div>
                           </td>
-                          <td style={{ padding: '0.9rem 1rem' }}>
+                          <td style={{ padding: '0.75rem 0.85rem', whiteSpace: 'nowrap' }}>
                             <span style={{
-                              padding: '0.25rem 0.65rem',
+                              padding: '0.2rem 0.55rem',
                               background: '#F1EEFE',
                               color: '#583EDB',
-                              borderRadius: '7px',
-                              fontSize: '0.76rem',
-                              fontWeight: 700
+                              borderRadius: '6px',
+                              fontSize: '0.74rem',
+                              fontWeight: 700,
+                              whiteSpace: 'nowrap',
+                              display: 'inline-block'
                             }}>
                               {staff.role}
                             </span>
                           </td>
-                          <td style={{ padding: '0.9rem 1.2rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <td style={{ padding: '0.75rem 1rem', whiteSpace: 'nowrap' }}>
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', whiteSpace: 'nowrap' }}>
                               <code style={{
                                 fontFamily: "'SF Mono', Consolas, Monaco, monospace",
                                 fontWeight: 800,
-                                fontSize: '0.84rem',
-                                letterSpacing: '0.04em',
+                                fontSize: '0.82rem',
+                                letterSpacing: '0.03em',
                                 color: '#4F33C4',
                                 background: '#F1EEFE',
-                                padding: '0.35rem 0.75rem',
-                                borderRadius: '8px',
+                                padding: '0.3rem 0.65rem',
+                                borderRadius: '7px',
                                 border: '1px solid rgba(127, 102, 255, 0.28)',
+                                whiteSpace: 'nowrap',
+                                display: 'inline-block',
                                 userSelect: 'all'
                               }}>
                                 {staff.currentPassword || weeklyAccess?.currentPassword || '—'}
@@ -1290,9 +1295,9 @@ export default function AdminPortalModal({
                                 title="Copy this doctor's password"
                                 onClick={() => handleCopyStaffPassword(staff)}
                                 style={{
-                                  width: '30px',
-                                  height: '30px',
-                                  borderRadius: '7px',
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '6px',
                                   background: copiedStaffId === staff.id ? '#ECFDF5' : '#F1F5F9',
                                   border: '1px solid #CBD5E1',
                                   display: 'flex',
@@ -1300,10 +1305,11 @@ export default function AdminPortalModal({
                                   justifyContent: 'center',
                                   cursor: 'pointer',
                                   color: copiedStaffId === staff.id ? '#059669' : '#475569',
-                                  transition: 'all 0.15s ease'
+                                  transition: 'all 0.15s ease',
+                                  flexShrink: 0
                                 }}
                               >
-                                {copiedStaffId === staff.id ? <Check size={14} /> : <Copy size={14} />}
+                                {copiedStaffId === staff.id ? <Check size={13} /> : <Copy size={13} />}
                               </button>
 
                               {/* Regenerate this doctor's password */}
@@ -1313,9 +1319,9 @@ export default function AdminPortalModal({
                                 onClick={() => handleRegenerateStaffPassword(staff)}
                                 disabled={rotatingStaffId === staff.id || isLoading}
                                 style={{
-                                  width: '30px',
-                                  height: '30px',
-                                  borderRadius: '7px',
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '6px',
                                   background: '#F1F5F9',
                                   border: '1px solid #CBD5E1',
                                   display: 'flex',
@@ -1323,14 +1329,15 @@ export default function AdminPortalModal({
                                   justifyContent: 'center',
                                   cursor: 'pointer',
                                   color: '#475569',
-                                  transition: 'all 0.15s ease'
+                                  transition: 'all 0.15s ease',
+                                  flexShrink: 0
                                 }}
                               >
-                                <RefreshCw size={14} className={rotatingStaffId === staff.id ? 'animate-spin' : ''} />
+                                <RefreshCw size={13} className={rotatingStaffId === staff.id ? 'animate-spin' : ''} />
                               </button>
                             </div>
                           </td>
-                          <td style={{ padding: '0.9rem 1rem' }}>
+                          <td style={{ padding: '0.75rem 0.85rem', whiteSpace: 'nowrap' }}>
                             {staff.status === 'active' ? (
                               <span style={{
                                 display: 'inline-flex',
@@ -1338,9 +1345,10 @@ export default function AdminPortalModal({
                                 gap: '0.35rem',
                                 color: '#059669',
                                 fontWeight: 700,
-                                fontSize: '0.78rem'
+                                fontSize: '0.76rem',
+                                whiteSpace: 'nowrap'
                               }}>
-                                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10B981' }} />
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
                                 Active
                               </span>
                             ) : (
@@ -1350,35 +1358,37 @@ export default function AdminPortalModal({
                                 gap: '0.35rem',
                                 color: '#DC2626',
                                 fontWeight: 700,
-                                fontSize: '0.78rem'
+                                fontSize: '0.76rem',
+                                whiteSpace: 'nowrap'
                               }}>
-                                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#EF4444' }} />
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#EF4444' }} />
                                 Suspended
                               </span>
                             )}
                           </td>
-                          <td style={{ padding: '0.9rem 1rem', color: '#64748B', fontSize: '0.78rem' }}>
+                          <td style={{ padding: '0.75rem 0.85rem', color: '#64748B', fontSize: '0.76rem', whiteSpace: 'nowrap' }}>
                             {staff.lastNotifiedAt ? new Date(staff.lastNotifiedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Never'}
                           </td>
-                          <td style={{ padding: '0.9rem 1.2rem', textAlign: 'right' }}>
-                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+                          <td style={{ padding: '0.75rem 1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', whiteSpace: 'nowrap' }}>
                               {/* Email button */}
                               <button
                                 type="button"
                                 title="Send weekly password email to this doctor"
                                 onClick={() => handleSendSingleEmail(staff.email)}
                                 style={{
-                                  padding: '0.4rem 0.75rem',
+                                  padding: '0.3rem 0.65rem',
                                   background: '#F1F5F9',
                                   color: '#334155',
                                   border: '1px solid #CBD5E1',
-                                  borderRadius: '7px',
-                                  fontSize: '0.76rem',
+                                  borderRadius: '6px',
+                                  fontSize: '0.74rem',
                                   fontWeight: 600,
                                   cursor: 'pointer',
                                   display: 'flex',
                                   alignItems: 'center',
-                                  gap: '0.3rem'
+                                  gap: '0.25rem',
+                                  whiteSpace: 'nowrap'
                                 }}
                               >
                                 <Mail size={13} />
@@ -1391,14 +1401,15 @@ export default function AdminPortalModal({
                                 title={staff.status === 'active' ? 'Suspend access' : 'Reactivate access'}
                                 onClick={() => handleToggleStatus(staff.id, staff.status)}
                                 style={{
-                                  padding: '0.4rem 0.75rem',
+                                  padding: '0.3rem 0.65rem',
                                   background: staff.status === 'active' ? '#FFFBEB' : '#ECFDF5',
                                   color: staff.status === 'active' ? '#B45309' : '#059669',
                                   border: '1px solid transparent',
-                                  borderRadius: '7px',
-                                  fontSize: '0.76rem',
+                                  borderRadius: '6px',
+                                  fontSize: '0.74rem',
                                   fontWeight: 700,
-                                  cursor: 'pointer'
+                                  cursor: 'pointer',
+                                  whiteSpace: 'nowrap'
                                 }}
                               >
                                 {staff.status === 'active' ? 'Suspend' : 'Activate'}
@@ -1410,15 +1421,20 @@ export default function AdminPortalModal({
                                 title="Delete from roster"
                                 onClick={() => handleRemoveStaff(staff.id, staff.email)}
                                 style={{
-                                  padding: '0.4rem 0.55rem',
+                                  width: '28px',
+                                  height: '28px',
                                   background: '#FEF2F2',
                                   color: '#EF4444',
                                   border: 'none',
-                                  borderRadius: '7px',
-                                  cursor: 'pointer'
+                                  borderRadius: '6px',
+                                  cursor: 'pointer',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  flexShrink: 0
                                 }}
                               >
-                                <Trash2 size={14} />
+                                <Trash2 size={13} />
                               </button>
                             </div>
                           </td>
