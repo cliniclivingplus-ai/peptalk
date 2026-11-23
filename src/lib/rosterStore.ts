@@ -1,6 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { getFirestoreDb } from './firebaseAdmin';
+
+const FIRESTORE_COLLECTION = 'peptalk';
+const FIRESTORE_DOC = 'roster';
 
 export interface StaffMember {
   id: string;
@@ -78,26 +82,6 @@ function getDefaultData(): RosterData {
         role: 'Doctor',
         status: 'active',
         currentPassword: 'LivingPlus-Shakthi-8429',
-        passwordGeneratedAt: now.toISOString(),
-        addedAt: now.toISOString(),
-      },
-      {
-        id: 'staff-admin',
-        email: 'admin@cliniclivingplus.com',
-        name: 'Clinic Administrator',
-        role: 'Portal Admin',
-        status: 'active',
-        currentPassword: 'LivingPlus-Admin-5120',
-        passwordGeneratedAt: now.toISOString(),
-        addedAt: now.toISOString(),
-      },
-      {
-        id: 'staff-taylor',
-        email: 'dr.taylor@cliniclivingplus.com',
-        name: 'Dr. Taylor',
-        role: 'Attending Physician',
-        status: 'active',
-        currentPassword: 'LivingPlus-Taylor-3918',
         passwordGeneratedAt: now.toISOString(),
         addedAt: now.toISOString(),
       },
@@ -192,21 +176,36 @@ function getStoragePath(): string {
   return tmpPath;
 }
 
-function loadData(): RosterData {
-  if (cachedData) return cachedData;
+async function loadData(): Promise<RosterData> {
+  const db = getFirestoreDb();
   let data: RosterData | null = null;
-  try {
-    const filePath = getStoragePath();
-    if (fs.existsSync(filePath)) {
-      const text = fs.readFileSync(filePath, 'utf-8');
-      data = JSON.parse(text) as RosterData;
+
+  if (db) {
+    // Always read fresh from Firestore so every serverless instance sees the same roster
+    const ref = db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC);
+    const snap = await ref.get();
+    if (snap.exists) {
+      data = snap.data() as RosterData;
+    } else {
+      data = getDefaultData();
+      await ref.set(JSON.parse(JSON.stringify(data)));
     }
-  } catch (err) {
-    console.warn('[RosterStore] Error loading data from disk:', err);
+  } else {
+    if (cachedData) return cachedData;
+    try {
+      const filePath = getStoragePath();
+      if (fs.existsSync(filePath)) {
+        const text = fs.readFileSync(filePath, 'utf-8');
+        data = JSON.parse(text) as RosterData;
+      }
+    } catch (err) {
+      console.warn('[RosterStore] Error loading data from disk:', err);
+    }
   }
   if (!data) {
     data = getDefaultData();
   }
+  data.staff = data.staff || [];
 
   // Ensure every staff member has their own unique active weekly password
   let modified = false;
@@ -221,13 +220,19 @@ function loadData(): RosterData {
 
   cachedData = data;
   if (modified) {
-    saveData(data);
+    await saveData(data);
   }
-  return cachedData;
+  return data;
 }
 
-function saveData(data: RosterData): void {
+async function saveData(data: RosterData): Promise<void> {
   cachedData = data;
+  const db = getFirestoreDb();
+  if (db) {
+    // Strip undefined values (Firestore rejects them)
+    await db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC).set(JSON.parse(JSON.stringify(data)));
+    return;
+  }
   try {
     const filePath = getStoragePath();
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
@@ -241,13 +246,13 @@ function saveData(data: RosterData): void {
 // ----------------------------------------------------------------------------
 
 export async function getRoster(): Promise<StaffMember[]> {
-  const data = loadData();
+  const data = await loadData();
   return data.staff;
 }
 
 export async function getStaffByEmail(email: string): Promise<StaffMember | null> {
   const normalized = email.trim().toLowerCase();
-  const data = loadData();
+  const data = await loadData();
   return data.staff.find((s) => s.email.toLowerCase() === normalized) || null;
 }
 
@@ -262,7 +267,7 @@ export async function addStaff(
     return { success: false, error: 'Only @cliniclivingplus.com email addresses can be added to the clinic staff roster.' };
   }
 
-  const data = loadData();
+  const data = await loadData();
   const existing = data.staff.find((s) => s.email.toLowerCase() === normalized);
   if (existing) {
     return { success: false, error: 'This email is already in the clinic roster.' };
@@ -284,12 +289,12 @@ export async function addStaff(
   };
 
   data.staff.push(newStaff);
-  saveData(data);
+  await saveData(data);
   return { success: true, staff: newStaff };
 }
 
 export async function removeStaff(idOrEmail: string): Promise<{ success: boolean; error?: string }> {
-  const data = loadData();
+  const data = await loadData();
   const target = idOrEmail.trim().toLowerCase();
   const initialCount = data.staff.length;
 
@@ -299,7 +304,7 @@ export async function removeStaff(idOrEmail: string): Promise<{ success: boolean
     return { success: false, error: 'Staff member not found.' };
   }
 
-  saveData(data);
+  await saveData(data);
   return { success: true };
 }
 
@@ -307,7 +312,7 @@ export async function toggleStaffStatus(
   idOrEmail: string,
   status: 'active' | 'suspended'
 ): Promise<{ success: boolean; error?: string }> {
-  const data = loadData();
+  const data = await loadData();
   const target = idOrEmail.trim().toLowerCase();
   const staff = data.staff.find((s) => s.id === target || s.email.toLowerCase() === target);
 
@@ -316,17 +321,17 @@ export async function toggleStaffStatus(
   }
 
   staff.status = status;
-  saveData(data);
+  await saveData(data);
   return { success: true };
 }
 
 export async function recordStaffNotification(email: string): Promise<void> {
   const normalized = email.trim().toLowerCase();
-  const data = loadData();
+  const data = await loadData();
   const staff = data.staff.find((s) => s.email.toLowerCase() === normalized);
   if (staff) {
     staff.lastNotifiedAt = new Date().toISOString();
-    saveData(data);
+    await saveData(data);
   }
 }
 
@@ -335,7 +340,7 @@ export async function recordStaffNotification(email: string): Promise<void> {
 // ----------------------------------------------------------------------------
 
 export async function getWeeklyAccess(): Promise<WeeklyAccess> {
-  const data = loadData();
+  const data = await loadData();
   return data.weeklyAccess;
 }
 
@@ -346,7 +351,7 @@ export async function rotateStaffPassword(
   idOrEmail: string,
   customPassword?: string
 ): Promise<{ success: boolean; staff?: StaffMember; error?: string }> {
-  const data = loadData();
+  const data = await loadData();
   const target = idOrEmail.trim().toLowerCase();
   const staff = data.staff.find((s) => s.id === target || s.email.toLowerCase() === target);
 
@@ -358,7 +363,7 @@ export async function rotateStaffPassword(
   staff.currentPassword = newPass;
   staff.passwordGeneratedAt = new Date().toISOString();
 
-  saveData(data);
+  await saveData(data);
   return { success: true, staff };
 }
 
@@ -368,7 +373,7 @@ export async function rotateStaffPassword(
  * - Updates baseline weekly access metadata and history
  */
 export async function rotateWeeklyPassword(customPassword?: string): Promise<WeeklyAccess> {
-  const data = loadData();
+  const data = await loadData();
   const now = new Date();
   const expires = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
   const newPassword = (customPassword || generateWeeklyPasscode()).trim();
@@ -398,7 +403,7 @@ export async function rotateWeeklyPassword(customPassword?: string): Promise<Wee
     history: updatedHistory,
   };
 
-  saveData(data);
+  await saveData(data);
   return data.weeklyAccess;
 }
 
@@ -411,7 +416,7 @@ export async function validateStaffLogin(
   password: string
 ): Promise<{ valid: boolean; staff?: StaffMember; reason?: string }> {
   const normalized = email.trim().toLowerCase();
-  const data = loadData();
+  const data = await loadData();
 
   // 1. Strict Domain Check
   if (!normalized.endsWith('@cliniclivingplus.com')) {
