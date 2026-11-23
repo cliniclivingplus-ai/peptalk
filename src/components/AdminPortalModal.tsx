@@ -230,7 +230,7 @@ export default function AdminPortalModal({
     const staffLines = activeStaff
       .map((s) => `• *${s.name}* (${s.email}): \`${s.currentPassword || weeklyAccess?.currentPassword}\``)
       .join('\n');
-    const msg = `*ClinicLivingPlus · PepTalk Access Keys*\n*${weeklyAccess?.weekLabel}*\n\nHere are this week's active passwords for each doctor:\n\n${staffLines}\n\n*Sign In:* http://localhost:3000\n_Note: Passwords are valid for 7 days._`;
+    const msg = `*ClinicLivingPlus · PepTalk Access Keys*\n*${weeklyAccess?.weekLabel}*\n\nHere are this week's active passwords for each doctor:\n\n${staffLines}\n\n*Sign In:* https://cliniclivingplus-ai-peptalk.vercel.app\n_Note: Passwords are valid for 7 days._`;
     copyToClipboard(msg, true);
   };
 

@@ -50,7 +50,7 @@ export async function sendWeeklyPasswordNotification(
 ): Promise<SendResult> {
   const transport = getEmailTransport();
   const staffName = staff.name || 'Doctor';
-  const portalUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const portalUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://cliniclivingplus-ai-peptalk.vercel.app';
   const expiresFormatted = new Date(expiresAt).toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'short',
