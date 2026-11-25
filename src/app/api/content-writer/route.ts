@@ -27,14 +27,17 @@ export async function POST(req: NextRequest) {
       format = 'Blog / Educational Article',
       audience = 'Patients & General Public',
       tone = 'Clear, Engaging & Trustworthy',
-      refinement = '',
-      previousDraft = '',
+      mode = 'generate', // 'generate' | 'refine' | 'chat'
+      message = '',
+      history = [],
       apiKey: clientApiKey,
     } = body;
 
-    if (!idea || typeof idea !== 'string' || !idea.trim()) {
+    const searchQuery = [idea, message].filter(Boolean).join(' ').trim();
+
+    if (!searchQuery) {
       return NextResponse.json(
-        { error: 'INVALID_INPUT', message: 'Please describe your content idea first.' },
+        { error: 'INVALID_INPUT', message: 'Please describe your content idea or message first.' },
         { status: 400 }
       );
     }
@@ -65,8 +68,8 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Deep RAG search across PepTalk Knowledge Base + Supplement Vault
-    const relevantDocs: RAGDocument[] = searchInternalKnowledge(idea, 8);
-    const relevantSupplements: RAGDocument[] = searchSupplementVault(idea, 4);
+    const relevantDocs: RAGDocument[] = searchInternalKnowledge(searchQuery, 8);
+    const relevantSupplements: RAGDocument[] = searchSupplementVault(searchQuery, 4);
 
     const internalContext =
       relevantDocs.length > 0
@@ -125,9 +128,31 @@ ${internalContext}
 ${supplementContext}
 ======================================`;
 
-    const userPrompt = previousDraft && refinement
-      ? `Original Content Idea: ${idea.trim()}\nFormat: ${format}\nTarget Audience: ${audience}\nTone: ${tone}\n\nPrevious Draft:\n${previousDraft}\n\nWriter's Refinement Request:\n${refinement.trim()}\n\nPlease revise and improve the content based on this refinement request while keeping the full 4-section structure.`
-      : `Content Idea / What I want to talk about:\n${idea.trim()}\n\nContent Format: ${format}\nTarget Audience: ${audience}\nTone & Style: ${tone}\n\nPlease analyze this idea using both the PepTalk Knowledge Base and broader clinical evidence, and generate the complete content package.`;
+    // Build multi-turn conversation contents so the writer can go back-and-forth seamlessly
+    const formattedContents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+
+    if (Array.isArray(history) && history.length > 0) {
+      for (const turn of history.slice(-8)) {
+        if (turn.role === 'user' || turn.role === 'assistant' || turn.role === 'model') {
+          formattedContents.push({
+            role: turn.role === 'user' ? 'user' : 'model',
+            parts: [{ text: String(turn.content || '') }],
+          });
+        }
+      }
+    }
+
+    const currentUserPrompt =
+      mode === 'chat'
+        ? `[CHAT MODE — Conversational Copywriting Partner]\nThe content writer is asking a follow-up question or brainstorming about the draft above (Format: ${format}, Audience: ${audience}, Tone: ${tone}). Answer directly, concisely, and helpfully without forcing the full 4-section template unless they ask for a full rewrite.\n\nWriter's message:\n${message.trim()}`
+        : mode === 'refine'
+        ? `[REFINE MODE — New Polished Version]\nOriginal Idea: ${idea.trim()}\nFormat: ${format}\nTarget Audience: ${audience}\nTone: ${tone}\n\nWriter's Refinement Request:\n${message.trim()}\n\nPlease produce a complete, upgraded new version incorporating this feedback while keeping the full 4-section structure.`
+        : `Content Idea / What I want to talk about:\n${idea.trim()}\n\nContent Format: ${format}\nTarget Audience: ${audience}\nTone & Style: ${tone}\n\nPlease analyze this idea using both the PepTalk Knowledge Base and broader clinical evidence, and generate the complete content package.`;
+
+    formattedContents.push({
+      role: 'user',
+      parts: [{ text: currentUserPrompt }],
+    });
 
     const candidateModels = [
       'gemini-3-flash-preview',
@@ -148,7 +173,7 @@ ${supplementContext}
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: systemPrompt }] },
-            contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+            contents: formattedContents,
             generationConfig: {
               temperature: 0.45,
               maxOutputTokens: 16384,
