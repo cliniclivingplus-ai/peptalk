@@ -153,6 +153,14 @@ export default function Sidebar({
           <span className="nav-badge-pill">{courseCount}</span>
         </button>
 
+        <button
+          onClick={() => onNavigate('research')}
+          className={`nav-link-btn ${currentView === 'research' ? 'active' : ''}`}
+        >
+          <BookOpen size={16} />
+          <span>Research</span>
+        </button>
+
         <div style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.07em', padding: '0.45rem 0.6rem 0.15rem 0.6rem' }}>
           Tools
         </div>
@@ -171,14 +179,6 @@ export default function Sidebar({
         >
           <GitCompareArrows size={16} />
           <span>Compare</span>
-        </button>
-
-        <button
-          onClick={() => onNavigate('research')}
-          className={`nav-link-btn ${currentView === 'research' ? 'active' : ''}`}
-        >
-          <BookOpen size={16} />
-          <span>Research</span>
         </button>
 
         <button
