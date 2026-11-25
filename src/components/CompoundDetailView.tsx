@@ -229,6 +229,8 @@ export default function CompoundDetailView({
     );
   }
 
+  let sectionNum = 0;
+
   return (
     <div style={{ maxWidth: '960px', margin: '0 auto', paddingBottom: '3rem' }}>
       {/* Back button */}
@@ -420,7 +422,7 @@ export default function CompoundDetailView({
       <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
         <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
           <Dna size={18} style={{ color: 'var(--primary)' }} />
-          <span>1 · What It Is & Where It Sits</span>
+          <span>{++sectionNum} · What It Is & Where It Sits</span>
         </h3>
         
         {parsed?.whatItIs ? (
@@ -441,7 +443,7 @@ export default function CompoundDetailView({
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Activity size={18} style={{ color: 'var(--primary)' }} />
-            <span>2 · Function & Mechanism of Action</span>
+            <span>{++sectionNum} · Function & Mechanism of Action</span>
           </h3>
           <div style={{ whiteSpace: 'pre-line', color: '#2B2D3A', lineHeight: 1.75, fontSize: '0.96rem' }}>
             {parsed?.mechanism || compound.mechanismOfAction || compound.mechanism}
@@ -471,7 +473,7 @@ export default function CompoundDetailView({
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <BarChart3 size={18} style={{ color: 'var(--primary)' }} />
-            <span>3 · Evidence & Clinical Trial Context</span>
+            <span>{++sectionNum} · Evidence & Clinical Trial Context</span>
           </h3>
 
           {parsed.evidence.clinicalTrial && (
@@ -511,7 +513,7 @@ export default function CompoundDetailView({
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Syringe size={18} style={{ color: 'var(--primary)' }} />
-            <span>4 · Dosing & Protocol Guidelines</span>
+            <span>{++sectionNum} · Dosing & Protocol Guidelines</span>
           </h3>
 
           {/* Dosing metric pill bar */}
@@ -772,7 +774,7 @@ export default function CompoundDetailView({
         >
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: '#4C1D95', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Lightbulb size={18} style={{ color: '#6D28D9' }} />
-            <span>6 · The Practical Take</span>
+            <span>{++sectionNum} · The Practical Take</span>
           </h3>
           <div style={{ whiteSpace: 'pre-line', color: '#3730A3', lineHeight: 1.75, fontSize: '0.96rem', fontWeight: 500 }}>
             {parsed.practicalTake}
@@ -787,7 +789,7 @@ export default function CompoundDetailView({
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Shield size={20} style={{ color: 'var(--primary)' }} />
-            <span>7 · Safety Profile & Risk Mitigation</span>
+            <span>{++sectionNum} · Safety Profile & Risk Mitigation</span>
           </h3>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -879,7 +881,7 @@ export default function CompoundDetailView({
         <div className="compound-item-card" style={{ padding: '1.75rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
             <Activity size={20} style={{ color: 'var(--primary)' }} />
-            <span>8 · Bloodwork Markers & Compound Interactions</span>
+            <span>{++sectionNum} · Bloodwork Markers & Compound Interactions</span>
           </h3>
 
           {/* Clinical rationale intro */}
@@ -1103,7 +1105,7 @@ export default function CompoundDetailView({
       {/* ========================================================================= */}
       {/* UNABRIDGED RAW MONOGRAPH ACCORDION (100% of the extracted text) */}
       {/* ========================================================================= */}
-      {compound.body && (
+      {compound.body && compound.kind !== 'supplement' && (
         <div className="compound-item-card" style={{ padding: '1.5rem', marginBottom: '1.5rem', cursor: 'default' }}>
           <div 
             onClick={() => setShowRawMonograph(!showRawMonograph)}
