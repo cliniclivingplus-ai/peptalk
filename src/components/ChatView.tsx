@@ -110,9 +110,13 @@ export default function ChatView({
   // Auto-resize textarea to fit multi-line paragraphs up to max-height
   useEffect(() => {
     if (textareaRef.current) {
+      if (!input) {
+        textareaRef.current.style.height = '48px';
+        return;
+      }
       textareaRef.current.style.height = 'auto';
-      const newHeight = Math.min(textareaRef.current.scrollHeight, 220);
-      textareaRef.current.style.height = `${Math.max(newHeight, 52)}px`;
+      const newHeight = Math.min(textareaRef.current.scrollHeight, 180);
+      textareaRef.current.style.height = `${Math.max(newHeight, 48)}px`;
     }
   }, [input]);
 
@@ -694,13 +698,13 @@ export default function ChatView({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask PepTalk about compounds, dosing protocols, masterclasses, or reconstitution math... (Shift + Enter for new line)"
+            placeholder="Ask PepTalk about peptides, dosing, or labs..."
             style={{
               width: '100%',
-              minHeight: '52px',
+              minHeight: '48px',
               maxHeight: '180px',
-              padding: '0.95rem 3.6rem 0.95rem 1.25rem',
-              borderRadius: '16px',
+              padding: '0.78rem 3.4rem 0.78rem 1.1rem',
+              borderRadius: '14px',
               border: '1px solid #CBD5E1',
               outline: 'none',
               fontSize: '0.95rem',
