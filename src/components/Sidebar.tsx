@@ -5,6 +5,7 @@ import { ViewMode, ChatSession } from '@/types';
 import { 
   MessageSquare, 
   Dna, 
+  Pill,
   FileText, 
   GraduationCap, 
   Droplet, 
@@ -24,6 +25,7 @@ interface SidebarProps {
   onNewChat?: () => void;
   apiKey?: string;
   compoundCount: number;
+  supplementCount: number;
   courseCount: number;
   chatSessions?: ChatSession[];
   activeSessionId?: string | null;
@@ -41,6 +43,7 @@ export default function Sidebar({
   onNewChat,
   apiKey = '',
   compoundCount,
+  supplementCount,
   courseCount,
   chatSessions = [],
   activeSessionId = null,
@@ -85,6 +88,15 @@ export default function Sidebar({
           <Dna size={16} />
           <span>Knowledge Base</span>
           <span className="nav-badge-pill">{compoundCount}</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate('supplements')}
+          className={`nav-link-btn ${currentView === 'supplements' ? 'active' : ''}`}
+        >
+          <Pill size={16} />
+          <span>Supplements</span>
+          <span className="nav-badge-pill">{supplementCount}</span>
         </button>
 
         <button

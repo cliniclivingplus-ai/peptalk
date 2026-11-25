@@ -1,6 +1,7 @@
 export type ViewMode =
   | 'chat'
   | 'knowledge'
+  | 'supplements'
   | 'compound_detail'
   | 'protocols'
   | 'protocol_detail'
