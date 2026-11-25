@@ -158,33 +158,105 @@ export default function Home() {
     localStorage.setItem('peppal_gemini_api_key', cleaned);
   };
 
+  // Sync browser Back / Forward buttons (window.history) with in-app navigation
+  const pushHistory = (state: {
+    view: ViewMode;
+    kbTab?: KbTabType;
+    compoundId?: string | null;
+    protocolId?: string | null;
+    courseId?: string | null;
+  }) => {
+    if (typeof window === 'undefined') return;
+    try {
+      const hash =
+        state.view === 'compound_detail' && state.compoundId
+          ? `#compound/${encodeURIComponent(state.compoundId)}`
+          : state.view === 'protocol_detail' && state.protocolId
+          ? `#protocol/${encodeURIComponent(state.protocolId)}`
+          : state.view === 'course_viewer' && state.courseId
+          ? `#course/${encodeURIComponent(state.courseId)}`
+          : state.view === 'knowledge' && state.kbTab
+          ? `#knowledge/${state.kbTab}`
+          : `#${state.view}`;
+      window.history.pushState(state, '', hash);
+    } catch {
+      // Ignore history errors
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    // Seed initial history entry
+    if (!window.history.state?.view) {
+      window.history.replaceState({ view: 'chat', kbTab: 'core' }, '', '#chat');
+    }
+
+    const onPopState = (e: PopStateEvent) => {
+      const st = e.state;
+      if (!st || !st.view) {
+        setCurrentView('chat');
+        return;
+      }
+      if (st.kbTab) setKbActiveTab(st.kbTab);
+      if (st.view === 'compound_detail' && st.compoundId) {
+        const found =
+          allCompounds.find((c) => (c.id || c.name) === st.compoundId) ||
+          clinicalGuides.find((c) => (c.id || c.name) === st.compoundId) ||
+          extraInfoItems.find((c) => (c.id || c.name) === st.compoundId) ||
+          null;
+        if (found) setSelectedCompound(found);
+      } else if (st.view === 'protocol_detail' && st.protocolId) {
+        const found = protocols.find((p) => p.id === st.protocolId) || null;
+        if (found) setSelectedProtocol(found);
+      } else if (st.view === 'course_viewer' && st.courseId) {
+        const found = courses.find((c) => c.id === st.courseId) || null;
+        if (found) setSelectedCourse(found);
+      }
+      setCurrentView(st.view);
+    };
+
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
   const handleNavigate = (view: ViewMode) => {
     setCurrentView(view);
+    pushHistory({ view, kbTab: kbActiveTab });
+  };
+
+  const handleKbTabChange = (tab: KbTabType) => {
+    setKbActiveTab(tab);
+    pushHistory({ view: 'knowledge', kbTab: tab });
   };
 
   const handleSelectCompound = (c: Compound) => {
     setSelectedCompound(c);
     setCurrentView('compound_detail');
+    pushHistory({ view: 'compound_detail', kbTab: kbActiveTab, compoundId: c.id || c.name });
   };
 
   const handleSelectProtocol = (p: Protocol) => {
     setSelectedProtocol(p);
     setCurrentView('protocol_detail');
+    pushHistory({ view: 'protocol_detail', protocolId: p.id });
   };
 
   const handleSelectCourse = (c: Course) => {
     setSelectedCourse(c);
     setCurrentView('course_viewer');
+    pushHistory({ view: 'course_viewer', courseId: c.id });
   };
 
   const handleAskAiAboutCompound = (compoundName: string) => {
     setChatPrompt(`Provide a comprehensive clinical monograph for ${compoundName}: mechanism of action, evidence-based research contexts, dosing protocols, reconstitution instructions, and safety profile.`);
     setCurrentView('chat');
+    pushHistory({ view: 'chat' });
   };
 
   const handleOpenCalculator = (name?: string) => {
     if (name) setCalcCompoundName(name);
     setCurrentView('calculator');
+    pushHistory({ view: 'calculator' });
   };
 
   // Chat Session Actions
@@ -403,7 +475,7 @@ export default function Home() {
               clinicalGuides={clinicalGuides}
               extraInfoItems={extraInfoItems}
               activeTab={kbActiveTab}
-              onTabChange={setKbActiveTab}
+              onTabChange={handleKbTabChange}
               category={kbCategory}
               onCategoryChange={setKbCategory}
               search={kbSearch}
