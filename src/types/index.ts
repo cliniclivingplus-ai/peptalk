@@ -7,7 +7,8 @@ export type ViewMode =
   | 'classroom'
   | 'course_viewer'
   | 'calculator'
-  | 'research';
+  | 'research'
+  | 'content_writer';
 
 export type KbTabType = 'core' | 'vault_peptide' | 'vault_supplement' | 'vault_cosmetic' | 'vault_goal' | 'guides';
 

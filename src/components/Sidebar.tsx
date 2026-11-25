@@ -9,6 +9,7 @@ import {
   GraduationCap, 
   Droplet, 
   BookOpen, 
+  PenTool,
   Plus,
   KeyRound,
   Trash2,
@@ -118,6 +119,14 @@ export default function Sidebar({
         >
           <BookOpen size={16} />
           <span>Research</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate('content_writer')}
+          className={`nav-link-btn ${currentView === 'content_writer' ? 'active' : ''}`}
+        >
+          <PenTool size={16} />
+          <span>Content Studio</span>
         </button>
       </nav>
 

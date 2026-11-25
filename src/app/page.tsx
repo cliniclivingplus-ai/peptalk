@@ -20,6 +20,7 @@ import ClassroomView from '@/components/ClassroomView';
 import CourseReaderView from '@/components/CourseReaderView';
 import CalculatorView from '@/components/CalculatorView';
 import ResearchView from '@/components/ResearchView';
+import ContentWriterView from '@/components/ContentWriterView';
 import LoginView from '@/components/LoginView';
 import AdminPortalModal from '@/components/AdminPortalModal';
 import { MessageSquare, LogOut, UserCheck, Dna } from 'lucide-react';
@@ -328,6 +329,7 @@ export default function Home() {
                 {currentView === 'course_viewer' && (selectedCourse?.clean_title || selectedCourse?.title || 'Course Reader')}
                 {currentView === 'calculator' && 'Reconstitution Syringe Calculator'}
                 {currentView === 'research' && 'PubMed & Pharmacology Studies'}
+                {currentView === 'content_writer' && 'Peptide Content Studio'}
               </span>
             </div>
 
@@ -436,6 +438,13 @@ export default function Home() {
 
           {currentView === 'research' && (
             <ResearchView papers={researchPapers} />
+          )}
+
+          {currentView === 'content_writer' && (
+            <ContentWriterView
+              apiKey={effectiveApiKey}
+              onOpenApiKey={() => setIsApiKeyOpen(true)}
+            />
           )}
         </div>
       </main>
