@@ -25,7 +25,7 @@ import ResearchView from '@/components/ResearchView';
 import ContentWriterView from '@/components/ContentWriterView';
 import LoginView from '@/components/LoginView';
 import AdminPortalModal from '@/components/AdminPortalModal';
-import { MessageSquare, LogOut, UserCheck, Dna } from 'lucide-react';
+import { MessageSquare, LogOut, UserCheck, Dna, PanelLeftOpen } from 'lucide-react';
 
 const SESSIONS_STORAGE_KEY = 'peptalk_ai_chat_sessions_v2';
 const LEGACY_STORAGE_KEY = 'peptalk_ai_chat_history_v2';
@@ -52,6 +52,7 @@ export default function Home() {
   const [hasServerKey, setHasServerKey] = useState<boolean>(false);
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   // Check auth status on initial load
   useEffect(() => {
@@ -391,29 +392,87 @@ export default function Home() {
 
   return (
     <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-      <Sidebar
-        currentView={currentView}
-        onNavigate={handleNavigate}
-        onOpenApiKey={() => setIsApiKeyOpen(true)}
-        onNewChat={handleNewChat}
-        apiKey={effectiveApiKey}
-        compoundCount={allCompounds.length}
-        courseCount={courses.length}
-        chatSessions={chatSessions}
-        activeSessionId={activeSessionId}
-        onSelectSession={handleSelectSession}
-        onDeleteSession={handleDeleteSession}
-        onRenameSession={handleRenameSession}
-        currentUser={currentUser}
-        onLogout={handleLogout}
-        onOpenAdmin={() => setIsAdminOpen(true)}
-      />
+      {isSidebarOpen && (
+        <Sidebar
+          currentView={currentView}
+          onNavigate={handleNavigate}
+          onOpenApiKey={() => setIsApiKeyOpen(true)}
+          onNewChat={handleNewChat}
+          onCollapse={() => setIsSidebarOpen(false)}
+          apiKey={effectiveApiKey}
+          compoundCount={allCompounds.length}
+          courseCount={courses.length}
+          chatSessions={chatSessions}
+          activeSessionId={activeSessionId}
+          onSelectSession={handleSelectSession}
+          onDeleteSession={handleDeleteSession}
+          onRenameSession={handleRenameSession}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+          onOpenAdmin={() => setIsAdminOpen(true)}
+        />
+      )}
 
-      <main className="main-viewport">
+      <main className="main-viewport" style={{ position: 'relative' }}>
+        {/* Floating Open Sidebar button when in Chat view and sidebar is closed */}
+        {!isSidebarOpen && currentView === 'chat' && (
+          <button
+            type="button"
+            onClick={() => setIsSidebarOpen(true)}
+            title="Open sidebar"
+            aria-label="Open sidebar"
+            style={{
+              position: 'absolute',
+              top: '14px',
+              left: '14px',
+              zIndex: 40,
+              background: '#FFFFFF',
+              border: '1px solid var(--border)',
+              borderRadius: '10px',
+              padding: '7px 9px',
+              color: 'var(--text-secondary)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              boxShadow: '0 2px 10px rgba(17, 17, 22, 0.08)',
+            }}
+          >
+            <PanelLeftOpen size={17} style={{ color: 'var(--primary)' }} />
+            <span>Menu</span>
+          </button>
+        )}
+
         {/* Top Navbar: only displayed in reference/library views to keep AI Chat 100% immersive and distraction-free */}
         {currentView !== 'chat' && (
           <header className="top-navbar">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              {!isSidebarOpen && (
+                <button
+                  type="button"
+                  onClick={() => setIsSidebarOpen(true)}
+                  title="Open sidebar"
+                  aria-label="Open sidebar"
+                  style={{
+                    background: '#F5F3FF',
+                    border: '1px solid #DDD6FE',
+                    borderRadius: '8px',
+                    padding: '5px 8px',
+                    color: 'var(--primary)',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                  }}
+                >
+                  <PanelLeftOpen size={16} />
+                  <span>Menu</span>
+                </button>
+              )}
               <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
                 {currentView === 'knowledge' && 'Peptide & Vault Monograph Library'}
                 {currentView === 'compound_detail' && (selectedCompound?.name || 'Compound Monograph')}

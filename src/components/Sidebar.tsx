@@ -17,7 +17,8 @@ import {
   Check,
   LogOut,
   UserCheck,
-  ShieldAlert
+  ShieldAlert,
+  PanelLeftClose
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -25,6 +26,7 @@ interface SidebarProps {
   onNavigate: (view: ViewMode) => void;
   onOpenApiKey?: () => void;
   onNewChat?: () => void;
+  onCollapse?: () => void;
   apiKey?: string;
   compoundCount: number;
   courseCount: number;
@@ -43,6 +45,7 @@ export default function Sidebar({
   onNavigate,
   onOpenApiKey,
   onNewChat,
+  onCollapse,
   apiKey = '',
   compoundCount,
   courseCount,
@@ -70,7 +73,7 @@ export default function Sidebar({
   return (
     <aside className="sidebar">
       {/* Brand Header */}
-      <div className="sidebar-header">
+      <div className="sidebar-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a 
           href="#" 
           onClick={(e) => { e.preventDefault(); onNavigate('chat'); }} 
@@ -81,6 +84,36 @@ export default function Sidebar({
           </div>
           <span className="brand-text">PepTalk</span>
         </a>
+        {onCollapse && (
+          <button
+            type="button"
+            onClick={onCollapse}
+            title="Close sidebar"
+            aria-label="Close sidebar"
+            style={{
+              background: 'transparent',
+              border: '1px solid transparent',
+              borderRadius: '8px',
+              padding: '5px',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#F1EEFE';
+              e.currentTarget.style.color = 'var(--primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = 'var(--text-muted)';
+            }}
+          >
+            <PanelLeftClose size={17} />
+          </button>
+        )}
       </div>
 
       {/* 1. FIXED TOP NAVIGATION: Always stays at the top of the sidebar */}
