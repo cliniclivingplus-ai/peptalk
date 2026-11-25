@@ -135,7 +135,7 @@ export default function ClinicalMarkdown({ content }: ClinicalMarkdownProps) {
           bodyRows = tableLines.slice(1).map((l) => l.split('\t').map((c) => c.trim()));
         } else {
           const validRows = tableLines
-            .filter((l) => !/^[\|\s\-:]+$/.test(l.replace(/[-:|]/g, '')))
+            .filter((l) => !/^[\|\s\-:]+$/.test(l.trim()))
             .map((l) => {
               let clean = l;
               if (clean.startsWith('|')) clean = clean.slice(1);
