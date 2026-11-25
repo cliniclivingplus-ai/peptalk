@@ -53,6 +53,19 @@ export default function Home() {
   const [isApiKeyOpen, setIsApiKeyOpen] = useState<boolean>(false);
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect mobile viewport so sidebar behaves as a clean slide-over drawer on phones
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) setIsSidebarOpen(false);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Check auth status on initial load
   useEffect(() => {
@@ -222,6 +235,7 @@ export default function Home() {
 
   const handleNavigate = (view: ViewMode) => {
     setCurrentView(view);
+    if (isMobile) setIsSidebarOpen(false);
     pushHistory({ view, kbTab: kbActiveTab });
   };
 
@@ -391,7 +405,13 @@ export default function Home() {
   const activeSession = chatSessions.find((s) => s.id === activeSessionId) || chatSessions[0] || null;
 
   return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', width: '100vw', height: '100dvh', overflow: 'hidden', position: 'relative' }}>
+      {isMobile && isSidebarOpen && (
+        <div
+          className="mobile-sidebar-backdrop"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
       {isSidebarOpen && (
         <Sidebar
           currentView={currentView}
@@ -404,12 +424,18 @@ export default function Home() {
           courseCount={courses.length}
           chatSessions={chatSessions}
           activeSessionId={activeSessionId}
-          onSelectSession={handleSelectSession}
+          onSelectSession={(id) => {
+            handleSelectSession(id);
+            if (isMobile) setIsSidebarOpen(false);
+          }}
           onDeleteSession={handleDeleteSession}
           onRenameSession={handleRenameSession}
           currentUser={currentUser}
           onLogout={handleLogout}
-          onOpenAdmin={() => setIsAdminOpen(true)}
+          onOpenAdmin={() => {
+            setIsAdminOpen(true);
+            if (isMobile) setIsSidebarOpen(false);
+          }}
         />
       )}
 
