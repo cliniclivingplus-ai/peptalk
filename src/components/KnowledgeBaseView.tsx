@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Compound, KbTabType } from '@/types';
 import { Search } from 'lucide-react';
 
@@ -9,6 +9,12 @@ interface KnowledgeBaseViewProps {
   vaultItems: Compound[];
   clinicalGuides?: Compound[];
   extraInfoItems?: Compound[];
+  activeTab: KbTabType;
+  onTabChange: (tab: KbTabType) => void;
+  category: string;
+  onCategoryChange: (cat: string) => void;
+  search: string;
+  onSearchChange: (q: string) => void;
   onSelectCompound: (c: Compound) => void;
 }
 
@@ -17,11 +23,14 @@ export default function KnowledgeBaseView({
   vaultItems,
   clinicalGuides = [],
   extraInfoItems = [],
+  activeTab,
+  onTabChange,
+  category,
+  onCategoryChange,
+  search,
+  onSearchChange,
   onSelectCompound,
 }: KnowledgeBaseViewProps) {
-  const [activeTab, setActiveTab] = useState<KbTabType>('core');
-  const [category, setCategory] = useState<string>('All');
-  const [search, setSearch] = useState<string>('');
 
   const activeDataset = useMemo(() => {
     if (activeTab === 'core') return corePeptides;
@@ -73,7 +82,7 @@ export default function KnowledgeBaseView({
       <div className="library-tabs-bar">
         <button
           className={`library-tab ${activeTab === 'core' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('core'); setCategory('All'); }}
+          onClick={() => { onTabChange('core'); onCategoryChange('All'); }}
         >
           <span>Core Peptides</span>
           <span className="tab-badge-count">{corePeptides.length}</span>
@@ -81,7 +90,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'vault_peptide' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('vault_peptide'); setCategory('All'); }}
+          onClick={() => { onTabChange('vault_peptide'); onCategoryChange('All'); }}
         >
           <span>Peptide Vault</span>
           <span className="tab-badge-count">{vaultItems.filter((i) => i.kind === 'peptide').length}</span>
@@ -89,7 +98,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'vault_supplement' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('vault_supplement'); setCategory('All'); }}
+          onClick={() => { onTabChange('vault_supplement'); onCategoryChange('All'); }}
         >
           <span>Supplement Vault</span>
           <span className="tab-badge-count">{vaultItems.filter((i) => i.kind === 'supplement').length}</span>
@@ -97,7 +106,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'vault_cosmetic' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('vault_cosmetic'); setCategory('All'); }}
+          onClick={() => { onTabChange('vault_cosmetic'); onCategoryChange('All'); }}
         >
           <span>Cosmetic Vault</span>
           <span className="tab-badge-count">{vaultItems.filter((i) => i.kind === 'cosmetic').length}</span>
@@ -105,7 +114,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'vault_goal' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('vault_goal'); setCategory('All'); }}
+          onClick={() => { onTabChange('vault_goal'); onCategoryChange('All'); }}
         >
           <span>Goal Stacks</span>
           <span className="tab-badge-count">{vaultItems.filter((i) => i.kind === 'goal').length}</span>
@@ -113,7 +122,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'guides' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('guides'); setCategory('All'); }}
+          onClick={() => { onTabChange('guides'); onCategoryChange('All'); }}
         >
           <span>Guides & Deep Dives</span>
           <span className="tab-badge-count">{clinicalGuides.length}</span>
@@ -121,7 +130,7 @@ export default function KnowledgeBaseView({
 
         <button
           className={`library-tab ${activeTab === 'extra_info' ? 'active' : ''}`}
-          onClick={() => { setActiveTab('extra_info'); setCategory('All'); }}
+          onClick={() => { onTabChange('extra_info'); onCategoryChange('All'); }}
         >
           <span>Extra Information</span>
           <span className="tab-badge-count">{extraInfoItems.length}</span>
@@ -134,7 +143,7 @@ export default function KnowledgeBaseView({
         <input
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => onSearchChange(e.target.value)}
           placeholder={`Search across ${activeDataset.length} entries...`}
           className="search-input-field"
         />
@@ -146,7 +155,7 @@ export default function KnowledgeBaseView({
           <button
             key={cat}
             className={`chip ${category === cat ? 'active' : ''}`}
-            onClick={() => setCategory(cat)}
+            onClick={() => onCategoryChange(cat)}
           >
             <span>{cat}</span>
             {cat !== 'All' && (

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ViewMode, Compound, Protocol, Course, ChatSession } from '@/types';
+import { ViewMode, KbTabType, Compound, Protocol, Course, ChatSession } from '@/types';
 import { corePeptides, vaultItems, allCompounds } from '@/lib/data/compounds';
 import { protocols } from '@/lib/data/protocols';
 import { courses } from '@/lib/data/courses';
@@ -35,6 +35,9 @@ export default function Home() {
   const [isAuthChecking, setIsAuthChecking] = useState<boolean>(true);
 
   const [currentView, setCurrentView] = useState<ViewMode>('chat');
+  const [kbActiveTab, setKbActiveTab] = useState<KbTabType>('core');
+  const [kbCategory, setKbCategory] = useState<string>('All');
+  const [kbSearch, setKbSearch] = useState<string>('');
   const [selectedCompound, setSelectedCompound] = useState<Compound | null>(null);
   const [selectedProtocol, setSelectedProtocol] = useState<Protocol | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -399,6 +402,12 @@ export default function Home() {
               vaultItems={vaultItems}
               clinicalGuides={clinicalGuides}
               extraInfoItems={extraInfoItems}
+              activeTab={kbActiveTab}
+              onTabChange={setKbActiveTab}
+              category={kbCategory}
+              onCategoryChange={setKbCategory}
+              search={kbSearch}
+              onSearchChange={setKbSearch}
               onSelectCompound={handleSelectCompound}
             />
           )}
