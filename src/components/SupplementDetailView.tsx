@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Compound } from '@/types';
 import {
   ArrowLeft,
@@ -164,28 +164,12 @@ function parseSupplementBody(supplement: Compound): ParsedSupplement {
   };
 }
 
-const NAV_ITEMS = [
-  { id: 'supp-what-it-is', label: 'What it is' },
-  { id: 'supp-evidence', label: 'Evidence' },
-  { id: 'supp-dosing', label: 'Dosing & protocol' },
-  { id: 'supp-safety', label: 'Safety & interactions' },
-];
-
 export default function SupplementDetailView({
   supplement,
   onBack,
   onAskAi,
 }: SupplementDetailViewProps) {
-  const [activeSection, setActiveSection] = useState<string>('supp-what-it-is');
   const parsed = useMemo(() => parseSupplementBody(supplement), [supplement]);
-
-  const scrollToSection = (id: string) => {
-    setActiveSection(id);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <div style={{ maxWidth: '1040px', margin: '0 auto', paddingBottom: '2.5rem' }}>
@@ -355,57 +339,8 @@ export default function SupplementDetailView({
         )}
       </div>
 
-      {/* Two-Column Body: Sticky TOC + 4 Structured Cards */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '200px minmax(0, 1fr)',
-          gap: '1.75rem',
-          alignItems: 'start',
-        }}
-      >
-        {/* Left Sticky "On this page" Nav */}
-        <aside style={{ position: 'sticky', top: '1rem' }}>
-          <div
-            style={{
-              fontSize: '0.74rem',
-              fontWeight: 700,
-              color: 'var(--text-muted)',
-              padding: '0 0.75rem 0.55rem 0.75rem',
-            }}
-          >
-            On this page
-          </div>
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => scrollToSection(item.id)}
-                  style={{
-                    textAlign: 'left',
-                    padding: '0.52rem 0.8rem',
-                    borderRadius: '9px',
-                    border: 'none',
-                    background: isActive ? '#F1EEFE' : 'transparent',
-                    color: isActive ? 'var(--primary)' : 'var(--text-secondary)',
-                    fontSize: '0.85rem',
-                    fontWeight: isActive ? 700 : 500,
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                  }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
-        </aside>
-
-        {/* Right Content Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', minWidth: 0 }}>
+      {/* 4 Structured Content Cards */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {/* 1. What it is */}
           <section
             id="supp-what-it-is"
@@ -704,7 +639,6 @@ export default function SupplementDetailView({
               </div>
             </section>
           )}
-        </div>
       </div>
 
       {/* Bottom Disclaimer Banner */}
