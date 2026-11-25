@@ -7,6 +7,7 @@ export type ViewMode =
   | 'classroom'
   | 'course_viewer'
   | 'calculator'
+  | 'compare'
   | 'research'
   | 'content_writer';
 

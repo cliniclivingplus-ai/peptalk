@@ -21,6 +21,7 @@ import ProtocolDetailView from '@/components/ProtocolDetailView';
 import ClassroomView from '@/components/ClassroomView';
 import CourseReaderView from '@/components/CourseReaderView';
 import CalculatorView from '@/components/CalculatorView';
+import CompareView from '@/components/CompareView';
 import ResearchView from '@/components/ResearchView';
 import ContentWriterView from '@/components/ContentWriterView';
 import LoginView from '@/components/LoginView';
@@ -476,6 +477,7 @@ export default function Home() {
                 {currentView === 'classroom' && 'Masterclass Classroom'}
                 {currentView === 'course_viewer' && (selectedCourse?.clean_title || selectedCourse?.title || 'Course Reader')}
                 {currentView === 'calculator' && 'Reconstitution Syringe Calculator'}
+                {currentView === 'compare' && 'Side-by-Side Compound Comparison'}
                 {currentView === 'research' && 'PubMed & Pharmacology Studies'}
                 {currentView === 'content_writer' && 'Peptide Content Studio'}
               </span>
@@ -597,6 +599,18 @@ export default function Home() {
 
           {currentView === 'calculator' && (
             <CalculatorView initialCompoundName={calcCompoundName} />
+          )}
+
+          {currentView === 'compare' && (
+            <CompareView
+              compounds={allCompounds}
+              onSelectCompound={handleSelectCompound}
+              onAskAiCompare={(names) => {
+                setChatPrompt(`Provide a detailed clinical side-by-side comparison of ${names.join(' vs ')}: mechanisms of action, efficacy, dosing protocols, half-life, ideal patient profiles, and key safety differences.`);
+                setCurrentView('chat');
+                pushHistory({ view: 'chat' });
+              }}
+            />
           )}
 
           {currentView === 'research' && (

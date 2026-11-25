@@ -8,6 +8,7 @@ import {
   FileText, 
   GraduationCap, 
   Droplet, 
+  GitCompareArrows,
   BookOpen, 
   PenTool,
   Plus,
@@ -152,12 +153,24 @@ export default function Sidebar({
           <span className="nav-badge-pill">{courseCount}</span>
         </button>
 
+        <div style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.07em', padding: '0.45rem 0.6rem 0.15rem 0.6rem' }}>
+          Tools
+        </div>
+
         <button
           onClick={() => onNavigate('calculator')}
           className={`nav-link-btn ${currentView === 'calculator' ? 'active' : ''}`}
         >
           <Droplet size={16} />
           <span>Calculator</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate('compare')}
+          className={`nav-link-btn ${currentView === 'compare' ? 'active' : ''}`}
+        >
+          <GitCompareArrows size={16} />
+          <span>Compare</span>
         </button>
 
         <button
