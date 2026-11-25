@@ -8,6 +8,7 @@ interface KnowledgeBaseViewProps {
   corePeptides: Compound[];
   vaultItems: Compound[];
   clinicalGuides?: Compound[];
+  extraInfoItems?: Compound[];
   onSelectCompound: (c: Compound) => void;
 }
 
@@ -15,6 +16,7 @@ export default function KnowledgeBaseView({
   corePeptides,
   vaultItems,
   clinicalGuides = [],
+  extraInfoItems = [],
   onSelectCompound,
 }: KnowledgeBaseViewProps) {
   const [activeTab, setActiveTab] = useState<KbTabType>('core');
@@ -28,8 +30,9 @@ export default function KnowledgeBaseView({
     if (activeTab === 'vault_cosmetic') return vaultItems.filter((i) => i.kind === 'cosmetic');
     if (activeTab === 'vault_goal') return vaultItems.filter((i) => i.kind === 'goal');
     if (activeTab === 'guides') return clinicalGuides;
+    if (activeTab === 'extra_info') return extraInfoItems;
     return [];
-  }, [activeTab, corePeptides, vaultItems, clinicalGuides]);
+  }, [activeTab, corePeptides, vaultItems, clinicalGuides, extraInfoItems]);
 
   const categories = useMemo(() => {
     const set = new Set<string>(['All']);
@@ -115,6 +118,14 @@ export default function KnowledgeBaseView({
           <span>Guides & Deep Dives</span>
           <span className="tab-badge-count">{clinicalGuides.length}</span>
         </button>
+
+        <button
+          className={`library-tab ${activeTab === 'extra_info' ? 'active' : ''}`}
+          onClick={() => { setActiveTab('extra_info'); setCategory('All'); }}
+        >
+          <span>Extra Information</span>
+          <span className="tab-badge-count">{extraInfoItems.length}</span>
+        </button>
       </div>
 
       {/* Search Input */}
@@ -168,7 +179,15 @@ export default function KnowledgeBaseView({
               <div className="compound-item-footer">
                 <span className="badge-tag">{item.category}</span>
                 <span style={{ marginLeft: 'auto', color: 'var(--primary)', fontWeight: 700, fontSize: '0.88rem' }}>
-                  {item.kind === 'guide' ? 'Read Full Guide →' : item.kind === 'goal' ? 'View Goal Stack →' : 'View Monograph →'}
+                  {item.kind === 'guide'
+                    ? 'Read Full Guide →'
+                    : item.kind === 'goal'
+                    ? 'View Goal Stack →'
+                    : item.kind === 'extra_info'
+                    ? item.pdfUrl
+                      ? 'Open PDF →'
+                      : 'Watch & Read Transcript →'
+                    : 'View Monograph →'}
                 </span>
               </div>
             </div>

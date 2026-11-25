@@ -7,12 +7,14 @@ import { protocols } from '@/lib/data/protocols';
 import { courses } from '@/lib/data/courses';
 import { researchPapers } from '@/lib/data/research';
 import { clinicalGuides } from '@/lib/data/guides';
+import { extraInfoItems } from '@/lib/data/extraInfo';
 
 import Sidebar from '@/components/Sidebar';
 import ApiKeyModal from '@/components/ApiKeyModal';
 import ChatView from '@/components/ChatView';
 import KnowledgeBaseView from '@/components/KnowledgeBaseView';
 import SupplementDetailView from '@/components/SupplementDetailView';
+import ExtraInfoDetailView from '@/components/ExtraInfoDetailView';
 import CompoundDetailView from '@/components/CompoundDetailView';
 import ProtocolsView from '@/components/ProtocolsView';
 import ProtocolDetailView from '@/components/ProtocolDetailView';
@@ -396,6 +398,7 @@ export default function Home() {
               corePeptides={corePeptides}
               vaultItems={vaultItems}
               clinicalGuides={clinicalGuides}
+              extraInfoItems={extraInfoItems}
               onSelectCompound={handleSelectCompound}
             />
           )}
@@ -404,6 +407,12 @@ export default function Home() {
             selectedCompound.kind === 'supplement' ? (
               <SupplementDetailView
                 supplement={selectedCompound}
+                onBack={() => setCurrentView('knowledge')}
+                onAskAi={handleAskAiAboutCompound}
+              />
+            ) : selectedCompound.kind === 'extra_info' ? (
+              <ExtraInfoDetailView
+                item={selectedCompound}
                 onBack={() => setCurrentView('knowledge')}
                 onAskAi={handleAskAiAboutCompound}
               />

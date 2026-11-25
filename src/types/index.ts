@@ -10,7 +10,7 @@ export type ViewMode =
   | 'research'
   | 'content_writer';
 
-export type KbTabType = 'core' | 'vault_peptide' | 'vault_supplement' | 'vault_cosmetic' | 'vault_goal' | 'guides';
+export type KbTabType = 'core' | 'vault_peptide' | 'vault_supplement' | 'vault_cosmetic' | 'vault_goal' | 'guides' | 'extra_info';
 
 export interface ResearchPaperRef {
   title: string;
