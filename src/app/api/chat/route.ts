@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { searchInternalKnowledge, RAGDocument } from '@/lib/ragService';
+import { searchInternalKnowledge, searchSupplementVault, RAGDocument } from '@/lib/ragService';
 import { verifySessionToken, isValidClinicEmail, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 export const runtime = 'nodejs';
@@ -68,8 +68,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 2. Perform Deep RAG Search across internal Knowledge Base, Protocols, and Classroom Lessons
+    // 2. Perform Deep RAG Search across internal Knowledge Base, Protocols, Classroom Lessons, and Supplement Vault
     const relevantDocs: RAGDocument[] = searchInternalKnowledge(message, 8);
+    const relevantSupplements: RAGDocument[] = searchSupplementVault(message, 5);
 
     const internalContext = relevantDocs.length > 0
       ? relevantDocs
@@ -79,6 +80,15 @@ export async function POST(req: NextRequest) {
           )
           .join('\n\n')
       : 'No direct keyword match in internal files. Ground response in peer-reviewed clinical peptide pharmacology.';
+
+    const supplementContext = relevantSupplements.length > 0
+      ? relevantSupplements
+          .map(
+            (d, idx) =>
+              `[VAULT SUPPLEMENT ${idx + 1}: "${d.title}"]\n${d.text}`
+          )
+          .join('\n\n')
+      : 'No direct keyword match in the Supplement Vault for this query — draw from broader peer-reviewed clinical supplement literature.';
 
     const systemPrompt = `You are PepTalk, the premier clinical peptide intelligence assistant.
 Your mission is to provide deep, actionable, exhaustive, and rigorously data-grounded clinical responses synthesized directly from the internal PepTalk database (compounds, vetted protocols, masterclass curriculum, and published studies).
@@ -154,8 +164,23 @@ CRITICAL FORMATTING RULES:
 
 - Conclude with a brief standard educational clinical reference disclaimer.
 
+=== MANDATORY SUPPLEMENT SUGGESTIONS FOR EVERY CLINICAL QUERY ===
+For EVERY clinical, compound, protocol, lab/bloodwork, or health-goal query (skip only for pure greetings or non-clinical navigation questions), you MUST include a dedicated section right before the disclaimer titled:
+### Recommended Adjunct Supplements
+- Tailor the supplement recommendations directly to the user's specific query, target pathway, or condition so the physician can evaluate and choose the best options.
+- Include **BOTH**:
+  1. **PepTalk Supplement Vault** entries (drawn from the matching internal Supplement Vault entries below whenever relevant — use their exact doses and safety notes, and label their Source as \`PepTalk Vault\`).
+  2. **Broader Clinical Evidence** supplements (well-established, peer-reviewed supplements from broader medical/clinical literature beyond the matched vault items, labeled \`Clinical Evidence\`).
+- Present 4–6 targeted, high-value supplement options in a clean GitHub-Flavored Markdown table:
+  | Supplement | Source | Typical Dose | Clinical Rationale | Key Safety / Interactions |
+  |---|---|---|---|---|
+- Follow the table with 1–2 concise physician decision pearls (e.g., how to prioritize or pair them with the primary peptide/protocol).
+
 === INTERNAL PEPTALK DATABASE SOURCES ===
 ${internalContext}
+
+=== MATCHING PEPTALK SUPPLEMENT VAULT ENTRIES ===
+${supplementContext}
 ==========================================`;
 
     // 3. Current active Gemini models in order of priority (tested live with active key)

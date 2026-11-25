@@ -353,3 +353,55 @@ export function searchInternalKnowledge(query: string, maxResults: number = 8): 
 
   return topDocs;
 }
+
+/**
+ * Dedicated RAG search across the 349 internal Supplement Vault entries so every
+ * clinical chat query can recommend relevant supplements from the Knowledge Base.
+ */
+export function searchSupplementVault(query: string, maxResults: number = 5): RAGDocument[] {
+  const cleanQuery = query.toLowerCase().trim();
+  const rawTokens = cleanQuery
+    .replace(/[^\w\s-]/g, ' ')
+    .split(/\s+/)
+    .filter((t) => t.length > 2 && !STOP_WORDS.has(t));
+
+  const expandedTokens = new Set<string>(rawTokens);
+  rawTokens.forEach((t) => {
+    if (COMMON_ALIASES[t]) {
+      COMMON_ALIASES[t].forEach((a) => expandedTokens.add(a));
+    }
+  });
+  const tokenList = Array.from(expandedTokens);
+
+  const supplements = allCompounds.filter((c) => c.kind === 'supplement');
+  const scored: RAGDocument[] = [];
+
+  for (const s of supplements) {
+    const nameLower = (s.name || '').toLowerCase();
+    const akaLower = (s.aka || s.fullName || '').toLowerCase();
+    const catLower = (s.category || '').toLowerCase();
+    const bodyLower = `${s.overview || ''} ${s.body || ''}`.toLowerCase();
+
+    let score = 0;
+    if (cleanQuery.includes(nameLower) && nameLower.length > 3) score += 60;
+
+    for (const token of tokenList) {
+      if (nameLower.includes(token)) score += 25;
+      if (akaLower.includes(token)) score += 15;
+      if (catLower.includes(token)) score += 12;
+      if (bodyLower.includes(token)) score += 5;
+    }
+
+    if (score > 0) {
+      scored.push({
+        title: `Supplement Vault: ${s.name} (${s.category})`,
+        category: 'Knowledge Base',
+        score,
+        text: `Supplement: ${s.name}${s.aka ? ` (Also known as: ${s.aka})` : ''}\nCategory: ${s.category}\n${(s.body || s.overview || '').slice(0, 1200)}`,
+      });
+    }
+  }
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, maxResults);
+}
