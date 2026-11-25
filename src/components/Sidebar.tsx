@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ViewMode, ChatSession } from '@/types';
 import { 
   MessageSquare, 
@@ -13,6 +13,8 @@ import {
   Plus,
   KeyRound,
   Trash2,
+  Pencil,
+  Check,
   LogOut,
   UserCheck,
   ShieldAlert
@@ -30,6 +32,7 @@ interface SidebarProps {
   activeSessionId?: string | null;
   onSelectSession?: (id: string) => void;
   onDeleteSession?: (id: string, e: React.MouseEvent) => void;
+  onRenameSession?: (id: string, newTitle: string) => void;
   currentUser?: { email: string; domain: string } | null;
   onLogout?: () => void;
   onOpenAdmin?: () => void;
@@ -47,11 +50,22 @@ export default function Sidebar({
   activeSessionId = null,
   onSelectSession,
   onDeleteSession,
+  onRenameSession,
   currentUser = null,
   onLogout,
   onOpenAdmin,
 }: SidebarProps) {
   const isKeyActive = !!apiKey.trim();
+  const [editingChatId, setEditingChatId] = useState<string | null>(null);
+  const [editingChatTitle, setEditingChatTitle] = useState<string>('');
+
+  const commitChatRename = (id: string) => {
+    const trimmed = editingChatTitle.trim();
+    if (trimmed && onRenameSession) {
+      onRenameSession(id, trimmed);
+    }
+    setEditingChatId(null);
+  };
 
   return (
     <aside className="sidebar">
@@ -190,35 +204,94 @@ export default function Sidebar({
             }}
           >
             {chatSessions && chatSessions.length > 0 ? (
-              chatSessions.map((s) => (
-                <div
-                  key={s.id}
-                  onClick={() => {
-                    if (onSelectSession) onSelectSession(s.id);
-                    onNavigate('chat');
-                  }}
-                  className={`chat-history-item ${activeSessionId === s.id && currentView === 'chat' ? 'active' : ''}`}
-                >
-                  <div className="chat-history-title-wrap">
-                    <MessageSquare size={12} style={{ flexShrink: 0, opacity: 0.7 }} />
-                    <span className="chat-history-title-text" title={s.title}>
-                      {s.title || 'New Conversation'}
-                    </span>
+              chatSessions.map((s) => {
+                const isEditing = editingChatId === s.id;
+                return (
+                  <div
+                    key={s.id}
+                    onClick={() => {
+                      if (isEditing) return;
+                      if (onSelectSession) onSelectSession(s.id);
+                      onNavigate('chat');
+                    }}
+                    className={`chat-history-item ${activeSessionId === s.id && currentView === 'chat' ? 'active' : ''}`}
+                  >
+                    <div className="chat-history-title-wrap" style={{ flex: 1, minWidth: 0 }}>
+                      <MessageSquare size={12} style={{ flexShrink: 0, opacity: 0.7 }} />
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={editingChatTitle}
+                          autoFocus
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => setEditingChatTitle(e.target.value)}
+                          onBlur={() => commitChatRename(s.id)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') commitChatRename(s.id);
+                            if (e.key === 'Escape') setEditingChatId(null);
+                          }}
+                          style={{
+                            width: '100%',
+                            fontSize: '0.76rem',
+                            padding: '1px 4px',
+                            borderRadius: '4px',
+                            border: '1px solid var(--primary)',
+                            outline: 'none',
+                            background: '#FFFFFF',
+                            color: 'var(--text-main)',
+                          }}
+                        />
+                      ) : (
+                        <span className="chat-history-title-text" title={s.title}>
+                          {s.title || 'New Conversation'}
+                        </span>
+                      )}
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '2px', flexShrink: 0 }}>
+                      {isEditing ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            commitChatRename(s.id);
+                          }}
+                          title="Save name"
+                          className="chat-history-delete-btn"
+                          style={{ color: '#059669', opacity: 1 }}
+                        >
+                          <Check size={12} />
+                        </button>
+                      ) : (
+                        onRenameSession && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setEditingChatId(s.id);
+                              setEditingChatTitle(s.title || 'New Conversation');
+                            }}
+                            title="Rename chat"
+                            className="chat-history-delete-btn"
+                          >
+                            <Pencil size={11} />
+                          </button>
+                        )
+                      )}
+                      {onDeleteSession && !isEditing && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onDeleteSession(s.id, e);
+                          }}
+                          title="Delete chat"
+                          className="chat-history-delete-btn"
+                        >
+                          <Trash2 size={12} />
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  {onDeleteSession && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onDeleteSession(s.id, e);
-                      }}
-                      title="Delete chat"
-                      className="chat-history-delete-btn"
-                    >
-                      <Trash2 size={12} />
-                    </button>
-                  )}
-                </div>
-              ))
+                );
+              })
             ) : (
               <div style={{ padding: '0.5rem 0.35rem', fontSize: '0.76rem', color: 'var(--text-muted)', textAlign: 'center' }}>
                 No saved chats yet

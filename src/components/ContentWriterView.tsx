@@ -16,6 +16,7 @@ import {
   MessageSquare,
   Plus,
   Trash2,
+  Pencil,
   ChevronDown,
   ChevronUp,
   Layers,
@@ -103,6 +104,8 @@ export default function ContentWriterView({ apiKey, onOpenApiKey }: ContentWrite
   const [collapsedIds, setCollapsedIds] = useState<Record<string, boolean>>({});
   const [followUpText, setFollowUpText] = useState('');
   const [followUpMode, setFollowUpMode] = useState<'refine' | 'chat'>('refine');
+  const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
+  const [editingProjectTitle, setEditingProjectTitle] = useState<string>('');
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // Load saved projects from localStorage
@@ -149,6 +152,17 @@ export default function ContentWriterView({ apiKey, onOpenApiKey }: ContentWrite
     setActiveProjectId(fresh.id);
     setError(null);
     setFollowUpText('');
+  };
+
+  const commitProjectRename = (id: string) => {
+    const trimmed = editingProjectTitle.trim();
+    if (trimmed) {
+      const next = projects.map((p) =>
+        p.id === id ? { ...p, title: trimmed, updatedAt: Date.now() } : p
+      );
+      persistProjects(next);
+    }
+    setEditingProjectId(null);
   };
 
   const handleDeleteProject = (id: string, e: React.MouseEvent) => {
@@ -339,11 +353,13 @@ export default function ContentWriterView({ apiKey, onOpenApiKey }: ContentWrite
           </span>
           {projects.map((p) => {
             const isActive = p.id === activeProject.id;
+            const isEditing = editingProjectId === p.id;
             const vCount = p.entries.filter((e) => e.kind === 'draft' || e.kind === 'refinement').length;
             return (
               <div
                 key={p.id}
                 onClick={() => {
+                  if (isEditing) return;
                   setActiveProjectId(p.id);
                   setError(null);
                 }}
@@ -361,11 +377,77 @@ export default function ContentWriterView({ apiKey, onOpenApiKey }: ContentWrite
                   cursor: 'pointer',
                 }}
               >
-                <span>{p.title}</span>
-                {vCount > 0 && (
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={editingProjectTitle}
+                    autoFocus
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => setEditingProjectTitle(e.target.value)}
+                    onBlur={() => commitProjectRename(p.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') commitProjectRename(p.id);
+                      if (e.key === 'Escape') setEditingProjectId(null);
+                    }}
+                    style={{
+                      width: '130px',
+                      fontSize: '0.76rem',
+                      padding: '1px 5px',
+                      borderRadius: '6px',
+                      border: '1px solid var(--primary)',
+                      outline: 'none',
+                      background: '#FFFFFF',
+                      color: 'var(--text-main)',
+                    }}
+                  />
+                ) : (
+                  <span>{p.title}</span>
+                )}
+                {!isEditing && vCount > 0 && (
                   <span style={{ fontSize: '0.68rem', opacity: 0.8 }}>({vCount}v)</span>
                 )}
-                {projects.length > 1 && (
+                {isEditing ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      commitProjectRename(p.id);
+                    }}
+                    title="Save draft name"
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#059669',
+                      cursor: 'pointer',
+                      padding: 0,
+                      display: 'flex',
+                    }}
+                  >
+                    <Check size={12} />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setEditingProjectId(p.id);
+                      setEditingProjectTitle(p.title);
+                    }}
+                    title="Rename draft"
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: 'inherit',
+                      opacity: 0.65,
+                      cursor: 'pointer',
+                      padding: 0,
+                      display: 'flex',
+                    }}
+                  >
+                    <Pencil size={11} />
+                  </button>
+                )}
+                {!isEditing && projects.length > 1 && (
                   <button
                     type="button"
                     onClick={(e) => handleDeleteProject(p.id, e)}

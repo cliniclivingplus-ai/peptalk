@@ -237,6 +237,22 @@ export default function Home() {
     }
   };
 
+  const handleRenameSession = (id: string, newTitle: string) => {
+    const trimmed = newTitle.trim();
+    if (!trimmed) return;
+    setChatSessions((prev) => {
+      const nextSessions = prev.map((s) =>
+        s.id === id ? { ...s, title: trimmed, updatedAt: Date.now() } : s
+      );
+      try {
+        localStorage.setItem(SESSIONS_STORAGE_KEY, JSON.stringify(nextSessions));
+      } catch (e) {
+        console.warn('Failed to save renamed chat session:', e);
+      }
+      return nextSessions;
+    });
+  };
+
   const handleUpdateActiveSession = (updatedSession: ChatSession) => {
     setChatSessions((prev) => {
       const idx = prev.findIndex((s) => s.id === updatedSession.id);
@@ -310,6 +326,7 @@ export default function Home() {
         activeSessionId={activeSessionId}
         onSelectSession={handleSelectSession}
         onDeleteSession={handleDeleteSession}
+        onRenameSession={handleRenameSession}
         currentUser={currentUser}
         onLogout={handleLogout}
         onOpenAdmin={() => setIsAdminOpen(true)}
