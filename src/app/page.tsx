@@ -12,7 +12,7 @@ import Sidebar from '@/components/Sidebar';
 import ApiKeyModal from '@/components/ApiKeyModal';
 import ChatView from '@/components/ChatView';
 import KnowledgeBaseView from '@/components/KnowledgeBaseView';
-import SupplementsView from '@/components/SupplementsView';
+import SupplementDetailView from '@/components/SupplementDetailView';
 import CompoundDetailView from '@/components/CompoundDetailView';
 import ProtocolsView from '@/components/ProtocolsView';
 import ProtocolDetailView from '@/components/ProtocolDetailView';
@@ -32,7 +32,6 @@ export default function Home() {
   const [isAuthChecking, setIsAuthChecking] = useState<boolean>(true);
 
   const [currentView, setCurrentView] = useState<ViewMode>('chat');
-  const [compoundReturnView, setCompoundReturnView] = useState<'knowledge' | 'supplements'>('knowledge');
   const [selectedCompound, setSelectedCompound] = useState<Compound | null>(null);
   const [selectedProtocol, setSelectedProtocol] = useState<Protocol | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -157,9 +156,8 @@ export default function Home() {
     setCurrentView(view);
   };
 
-  const handleSelectCompound = (c: Compound, returnTo: 'knowledge' | 'supplements' = 'knowledge') => {
+  const handleSelectCompound = (c: Compound) => {
     setSelectedCompound(c);
-    setCompoundReturnView(returnTo);
     setCurrentView('compound_detail');
   };
 
@@ -295,8 +293,6 @@ export default function Home() {
     return <LoginView onLoginSuccess={(u) => setCurrentUser(u)} />;
   }
 
-  const supplements = vaultItems.filter((i) => i.kind === 'supplement');
-
   const activeSession = chatSessions.find((s) => s.id === activeSessionId) || chatSessions[0] || null;
 
   return (
@@ -308,7 +304,6 @@ export default function Home() {
         onNewChat={handleNewChat}
         apiKey={effectiveApiKey}
         compoundCount={allCompounds.length}
-        supplementCount={supplements.length}
         courseCount={courses.length}
         chatSessions={chatSessions}
         activeSessionId={activeSessionId}
@@ -326,7 +321,6 @@ export default function Home() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
                 {currentView === 'knowledge' && 'Peptide & Vault Monograph Library'}
-                {currentView === 'supplements' && 'Clinical Supplements Directory'}
                 {currentView === 'compound_detail' && (selectedCompound?.name || 'Compound Monograph')}
                 {currentView === 'protocols' && 'Vetted Clinical Protocols'}
                 {currentView === 'protocol_detail' && (selectedProtocol?.name || 'Protocol Guidelines')}
@@ -383,31 +377,28 @@ export default function Home() {
               corePeptides={corePeptides}
               vaultItems={vaultItems}
               clinicalGuides={clinicalGuides}
-              onSelectCompound={(c) => handleSelectCompound(c, 'knowledge')}
-            />
-          )}
-
-          {currentView === 'supplements' && (
-            <SupplementsView
-              supplements={supplements}
-              courses={courses}
-              protocols={protocols}
-              onSelectSupplement={(c) => handleSelectCompound(c, 'supplements')}
-              onSelectCourse={handleSelectCourse}
-              onSelectProtocol={handleSelectProtocol}
+              onSelectCompound={handleSelectCompound}
             />
           )}
 
           {currentView === 'compound_detail' && selectedCompound && (
-            <CompoundDetailView
-              compound={selectedCompound}
-              onBack={() => setCurrentView(compoundReturnView)}
-              onAskAi={handleAskAiAboutCompound}
-              onOpenCalculator={handleOpenCalculator}
-              allPapers={researchPapers}
-              allProtocols={protocols}
-              onSelectProtocol={handleSelectProtocol}
-            />
+            selectedCompound.kind === 'supplement' ? (
+              <SupplementDetailView
+                supplement={selectedCompound}
+                onBack={() => setCurrentView('knowledge')}
+                onAskAi={handleAskAiAboutCompound}
+              />
+            ) : (
+              <CompoundDetailView
+                compound={selectedCompound}
+                onBack={() => setCurrentView('knowledge')}
+                onAskAi={handleAskAiAboutCompound}
+                onOpenCalculator={handleOpenCalculator}
+                allPapers={researchPapers}
+                allProtocols={protocols}
+                onSelectProtocol={handleSelectProtocol}
+              />
+            )
           )}
 
           {currentView === 'protocols' && (

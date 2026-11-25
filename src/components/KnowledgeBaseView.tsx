@@ -36,7 +36,7 @@ export default function KnowledgeBaseView({
     activeDataset.forEach((c) => {
       if (c.category) set.add(c.category);
     });
-    return Array.from(set).slice(0, 12);
+    return Array.from(set);
   }, [activeDataset]);
 
   const filteredCompounds = useMemo(() => {
