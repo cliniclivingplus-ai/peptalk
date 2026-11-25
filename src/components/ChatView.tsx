@@ -22,6 +22,7 @@ import {
   Search,
   AlertCircle,
   Dna,
+  PanelLeftOpen,
 } from 'lucide-react';
 import ClinicalMarkdown from './ClinicalMarkdown';
 
@@ -36,6 +37,8 @@ interface ChatViewProps {
   activeSession: ChatSession | null;
   onUpdateSession: (session: ChatSession) => void;
   onNewChat?: () => void;
+  isSidebarOpen?: boolean;
+  onOpenSidebar?: () => void;
 }
 
 const LOADING_STAGES = [
@@ -87,6 +90,8 @@ export default function ChatView({
   activeSession,
   onUpdateSession,
   onNewChat,
+  isSidebarOpen = true,
+  onOpenSidebar,
 }: ChatViewProps) {
   const [messages, setMessages] = useState<ChatMessage[]>(activeSession?.messages || []);
   const [input, setInput] = useState('');
@@ -287,13 +292,38 @@ export default function ChatView({
     <div className="chat-layout-root">
       {/* Top Session Header Bar */}
       <header className="chat-top-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', overflow: 'hidden' }}>
-          <MessageSquare size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', overflow: 'hidden', minWidth: 0, flex: 1 }}>
+          {!isSidebarOpen && onOpenSidebar && (
+            <button
+              type="button"
+              onClick={onOpenSidebar}
+              title="Open sidebar"
+              aria-label="Open sidebar"
+              style={{
+                background: '#F5F3FF',
+                border: '1px solid #DDD6FE',
+                borderRadius: '8px',
+                padding: '5px 8px',
+                color: 'var(--primary)',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                flexShrink: 0,
+              }}
+            >
+              <PanelLeftOpen size={16} />
+              <span>Menu</span>
+            </button>
+          )}
+          <MessageSquare size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} className="hide-on-mobile" />
           <span style={{ fontSize: '0.92rem', fontWeight: 700, color: '#0F172A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {activeSession?.title || 'New Conversation'}
           </span>
           {messages.length > 0 && (
-            <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+            <span className="hide-on-mobile" style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600, flexShrink: 0 }}>
               ({messages.length} messages)
             </span>
           )}
