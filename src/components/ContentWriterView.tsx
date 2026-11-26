@@ -307,7 +307,7 @@ export default function ContentWriterView({ apiKey, onOpenApiKey }: ContentWrite
         <div>
           <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <PenTool size={25} style={{ color: 'var(--primary)' }} />
-            <span>Peptide Content Studio</span>
+            <span>Content Studio</span>
           </h1>
           <p className="page-subtitle">
             Drop in any rough idea — every draft, refinement, and chat reply is saved below so you can compare versions and polish until it&apos;s ready to publish.

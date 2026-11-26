@@ -479,7 +479,7 @@ export default function Home() {
                 {currentView === 'calculator' && 'Reconstitution Syringe Calculator'}
                 {currentView === 'compare' && 'Side-by-Side Compound Comparison'}
                 {currentView === 'research' && 'PubMed & Pharmacology Studies'}
-                {currentView === 'content_writer' && 'Peptide Content Studio'}
+                {currentView === 'content_writer' && 'Content Studio'}
               </span>
             </div>
 
