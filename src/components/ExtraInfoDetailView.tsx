@@ -230,54 +230,12 @@ export default function ExtraInfoDetailView({
             </div>
           )}
 
-          {/* Direct PDF Actions */}
+          {/* Direct PDF Notice (View-Only Protection) */}
           {isPdf && item.pdfUrl && (
             <div style={{ marginTop: '0.75rem' }}>
-              <p style={{ fontSize: '0.94rem', color: '#374151', lineHeight: 1.65, margin: '0 0 1rem 0' }}>
+              <p style={{ fontSize: '0.94rem', color: '#374151', lineHeight: 1.65, margin: 0 }}>
                 {item.overview}
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
-                <a
-                  href={item.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    padding: '0.58rem 1.15rem',
-                    borderRadius: '10px',
-                    background: 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)',
-                    color: '#FFFFFF',
-                    fontSize: '0.85rem',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                  }}
-                >
-                  <ExternalLink size={15} />
-                  <span>Open Full PDF in New Tab</span>
-                </a>
-                <a
-                  href={item.pdfUrl}
-                  download
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    padding: '0.58rem 1.15rem',
-                    borderRadius: '10px',
-                    background: '#F5F3FF',
-                    border: '1px solid #DDD6FE',
-                    color: 'var(--primary)',
-                    fontSize: '0.85rem',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                  }}
-                >
-                  <Download size={15} />
-                  <span>Download PDF</span>
-                </a>
-              </div>
             </div>
           )}
         </div>
@@ -317,7 +275,7 @@ export default function ExtraInfoDetailView({
           }}
         >
           <iframe
-            src={item.pdfUrl}
+            src={`${item.pdfUrl}#toolbar=0&navpanes=0`}
             title={item.name}
             style={{ width: '100%', height: '100%', border: 'none' }}
           />
@@ -373,27 +331,6 @@ export default function ExtraInfoDetailView({
                   }}
                 />
               </div>
-
-              <button
-                type="button"
-                onClick={handleCopy}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.42rem 0.85rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: copied ? '#059669' : 'var(--primary)',
-                  color: '#FFFFFF',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                }}
-              >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
-                <span>{copied ? 'Copied!' : 'Copy Transcript'}</span>
-              </button>
             </div>
           </div>
 

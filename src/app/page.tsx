@@ -26,6 +26,7 @@ import ResearchView from '@/components/ResearchView';
 import ContentWriterView from '@/components/ContentWriterView';
 import LoginView from '@/components/LoginView';
 import AdminPortalModal from '@/components/AdminPortalModal';
+import ContentProtection from '@/components/ContentProtection';
 import { MessageSquare, LogOut, UserCheck, Dna, PanelLeftOpen } from 'lucide-react';
 
 const SESSIONS_STORAGE_KEY = 'peptalk_ai_chat_sessions_v2';
@@ -234,10 +235,19 @@ export default function Home() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  const trackActivity = (action: string, detail: string) => {
+    fetch('/api/activity', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action, detail }),
+    }).catch(() => {});
+  };
+
   const handleNavigate = (view: ViewMode) => {
     setCurrentView(view);
     if (isMobile) setIsSidebarOpen(false);
     pushHistory({ view, kbTab: kbActiveTab });
+    trackActivity('page_view', `Opened ${view}`);
   };
 
   const handleKbTabChange = (tab: KbTabType) => {
@@ -249,18 +259,21 @@ export default function Home() {
     setSelectedCompound(c);
     setCurrentView('compound_detail');
     pushHistory({ view: 'compound_detail', kbTab: kbActiveTab, compoundId: c.id || c.name });
+    trackActivity('compound_view', `${c.name} (${c.category})`);
   };
 
   const handleSelectProtocol = (p: Protocol) => {
     setSelectedProtocol(p);
     setCurrentView('protocol_detail');
     pushHistory({ view: 'protocol_detail', protocolId: p.id });
+    trackActivity('protocol_view', p.name);
   };
 
   const handleSelectCourse = (c: Course) => {
     setSelectedCourse(c);
     setCurrentView('course_viewer');
     pushHistory({ view: 'course_viewer', courseId: c.id });
+    trackActivity('course_view', c.clean_title || c.title);
   };
 
   const handleAskAiAboutCompound = (compoundName: string) => {
@@ -407,6 +420,7 @@ export default function Home() {
 
   return (
     <div style={{ display: 'flex', width: '100vw', height: '100dvh', overflow: 'hidden', position: 'relative' }}>
+      <ContentProtection userEmail={currentUser.email} />
       {isMobile && isSidebarOpen && (
         <div
           className="mobile-sidebar-backdrop"

@@ -29,6 +29,7 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 import { StaffMember, WeeklyAccess } from '@/lib/rosterStore';
+import GodViewPanel from './GodViewPanel';
 
 interface AdminPortalModalProps {
   isOpen: boolean;
@@ -48,6 +49,7 @@ export default function AdminPortalModal({
   const [adminKey, setAdminKey] = useState('');
   const [showAdminKey, setShowAdminKey] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [adminTab, setAdminTab] = useState<'roster' | 'god_view'>('roster');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -749,7 +751,56 @@ export default function AdminPortalModal({
             /* ---------------------------------------------------------------- */
             /* STEP 2: AUTHENTICATED ADMIN DASHBOARD                            */
             /* ---------------------------------------------------------------- */
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {/* Admin Section Switcher: Staff Roster vs God View */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+                <button
+                  type="button"
+                  onClick={() => setAdminTab('roster')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.55rem 1.05rem',
+                    borderRadius: '10px',
+                    border: adminTab === 'roster' ? 'none' : '1px solid #E2E8F0',
+                    background: adminTab === 'roster' ? 'linear-gradient(135deg, #7F66FF 0%, #583EDB 100%)' : '#FFFFFF',
+                    color: adminTab === 'roster' ? '#FFFFFF' : '#475569',
+                    fontSize: '0.84rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Users size={15} />
+                  <span>Staff Roster &amp; Passwords</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setAdminTab('god_view')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.55rem 1.05rem',
+                    borderRadius: '10px',
+                    border: adminTab === 'god_view' ? 'none' : '1px solid #E2E8F0',
+                    background: adminTab === 'god_view' ? 'linear-gradient(135deg, #0F172A 0%, #312E81 100%)' : '#FFFFFF',
+                    color: adminTab === 'god_view' ? '#FFFFFF' : '#475569',
+                    fontSize: '0.84rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Eye size={15} />
+                  <span>God View · Activity &amp; Security</span>
+                </button>
+              </div>
+
+              {adminTab === 'god_view' ? (
+                <GodViewPanel adminKey={adminKey} />
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {/* SECTION 1: WEEKLY PASSWORD ROTATION CARD */}
               <div style={{
                 background: '#F9FAFE',
@@ -1444,6 +1495,8 @@ export default function AdminPortalModal({
                   </table>
                 </div>
               </div>
+                </div>
+              )}
             </div>
           )}
         </div>

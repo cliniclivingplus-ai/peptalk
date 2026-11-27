@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchInternalKnowledge, searchSupplementVault, RAGDocument } from '@/lib/ragService';
 import { verifySessionToken, isValidClinicEmail, SESSION_COOKIE_NAME } from '@/lib/auth';
+import { logActivity } from '@/lib/activityStore';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -42,6 +43,14 @@ export async function POST(req: NextRequest) {
     if (!message || typeof message !== 'string' || !message.trim()) {
       return NextResponse.json({ error: 'INVALID_INPUT', message: 'Message is required.' }, { status: 400 });
     }
+
+    // Non-blocking God View telemetry log
+    logActivity({
+      email: session.email,
+      action: 'ai_chat',
+      detail: message.trim().slice(0, 200),
+      userAgent: req.headers.get('user-agent') || '',
+    }).catch(() => {});
 
     // 1. Resolve effective API Key (server env takes priority or acts as permanent fallback)
     const sanitizedClientKey =

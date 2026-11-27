@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchInternalKnowledge, searchSupplementVault, RAGDocument } from '@/lib/ragService';
 import { verifySessionToken, isValidClinicEmail, SESSION_COOKIE_NAME } from '@/lib/auth';
+import { logActivity } from '@/lib/activityStore';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -41,6 +42,14 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Non-blocking God View telemetry log
+    logActivity({
+      email: session.email,
+      action: 'content_studio',
+      detail: `[${mode}/${format}] ${searchQuery.slice(0, 180)}`,
+      userAgent: req.headers.get('user-agent') || '',
+    }).catch(() => {});
 
     // 1. Resolve API Key
     const sanitizedClientKey =
