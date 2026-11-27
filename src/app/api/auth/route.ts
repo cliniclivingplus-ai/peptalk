@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   isValidClinicEmail,
@@ -17,6 +18,8 @@ import {
 } from '@/lib/userStore';
 import { sendOtpEmail } from '@/lib/email';
 import { validateStaffLogin } from '@/lib/rosterStore';
+import { setActiveDeviceSession, isActiveDeviceSession } from '@/lib/sessionStore';
+import { logActivity } from '@/lib/activityStore';
 
 // In-memory rate limiting against brute-force (max 5 failed attempts per 5 minutes per IP)
 const failedAttemptsMap = new Map<string, { count: number; firstAttempt: number }>();
@@ -50,13 +53,35 @@ function clearRateLimit(identifier: string) {
   failedAttemptsMap.delete(identifier);
 }
 
-// GET: Check current authentication session
+// GET: Check current authentication session (enforcing One ID = One Device)
 export async function GET(request: NextRequest) {
   const sessionCookie = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const payload = verifySessionToken(sessionCookie);
 
   if (!payload) {
     return NextResponse.json({ authenticated: false }, { status: 200 });
+  }
+
+  const stillActive = await isActiveDeviceSession(payload.email, payload.sessionId);
+  if (!stillActive) {
+    const res = NextResponse.json(
+      {
+        authenticated: false,
+        kicked: true,
+        reason: 'You were signed out because this account was logged in on another device (One ID · One Device policy).',
+      },
+      { status: 200 }
+    );
+    res.cookies.set({
+      name: SESSION_COOKIE_NAME,
+      value: '',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 0,
+    });
+    return res;
   }
 
   return NextResponse.json(
@@ -343,9 +368,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Clear rate limit & issue authenticated session
+    // Clear rate limit & issue single-device authenticated session (One ID = One Device)
     clearRateLimit(rateLimitKey);
-    const token = createSessionToken(email, rememberMe);
+    const sessionId = crypto.randomUUID();
+    const userAgent = request.headers.get('user-agent') || '';
+    const deviceResult = await setActiveDeviceSession(email, sessionId, userAgent);
+
+    logActivity({
+      email,
+      action: 'login',
+      detail: deviceResult.replacedExisting
+        ? `Signed in (replaced previous ${deviceResult.previousDevice || 'device'} session)`
+        : 'Signed in',
+      userAgent,
+    }).catch(() => {});
+
+    if (deviceResult.replacedExisting) {
+      logActivity({
+        email,
+        action: 'device_kicked',
+        detail: `Previous ${deviceResult.previousDevice || 'device'} session invalidated by new login`,
+        userAgent,
+      }).catch(() => {});
+    }
+
+    const token = createSessionToken(email, rememberMe, sessionId);
     const maxAgeSeconds = rememberMe ? 7 * 24 * 60 * 60 : 24 * 60 * 60;
 
     const response = NextResponse.json(

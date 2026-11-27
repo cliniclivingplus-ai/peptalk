@@ -11,6 +11,7 @@ import {
   Smartphone,
   Monitor,
   AlertTriangle,
+  Clock,
 } from 'lucide-react';
 
 interface GodViewEvent {
@@ -25,11 +26,22 @@ interface GodViewEvent {
 interface GodViewUser {
   email: string;
   totalActions: number;
+  logins: number;
   aiChats: number;
   views: number;
   securityAlerts: number;
+  totalTimeSeconds: number;
   lastActive: string;
   device: string;
+}
+
+function formatDuration(seconds: number): string {
+  if (!seconds || seconds < 60) return '< 1m';
+  const mins = Math.floor(seconds / 60);
+  if (mins < 60) return `${mins}m`;
+  const hrs = Math.floor(mins / 60);
+  const rem = mins % 60;
+  return rem > 0 ? `${hrs}h ${rem}m` : `${hrs}h`;
 }
 
 interface GodViewPanelProps {
@@ -47,6 +59,7 @@ const ACTION_LABELS: Record<string, { label: string; color: string; bg: string }
   copy_blocked: { label: 'Copy Blocked', color: '#B91C1C', bg: '#FEF2F2' },
   print_blocked: { label: 'Print Blocked', color: '#B91C1C', bg: '#FEF2F2' },
   devtools_blocked: { label: 'DevTools Blocked', color: '#B91C1C', bg: '#FEF2F2' },
+  device_kicked: { label: '2nd Device Blocked', color: '#C2410C', bg: '#FFF7ED' },
 };
 
 function formatTime(iso: string) {
@@ -64,7 +77,7 @@ function formatTime(iso: string) {
 
 export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
   const [loading, setLoading] = useState(true);
-  const [summary, setSummary] = useState({ activeUsers: 0, totalEvents: 0, totalAiQueries: 0, totalAlerts: 0 });
+  const [summary, setSummary] = useState({ activeUsers: 0, totalEvents: 0, totalAiQueries: 0, totalAlerts: 0, totalTimeSeconds: 0 });
   const [users, setUsers] = useState<GodViewUser[]>([]);
   const [events, setEvents] = useState<GodViewEvent[]>([]);
   const [filterType, setFilterType] = useState<'all' | 'alerts' | 'ai' | 'views'>('all');
@@ -96,7 +109,12 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
   const filteredEvents = events.filter((ev) => {
     if (filterEmail !== 'all' && ev.email !== filterEmail) return false;
     if (filterType === 'alerts') {
-      return ev.action === 'copy_blocked' || ev.action === 'print_blocked' || ev.action === 'devtools_blocked';
+      return (
+        ev.action === 'copy_blocked' ||
+        ev.action === 'print_blocked' ||
+        ev.action === 'devtools_blocked' ||
+        ev.action === 'device_kicked'
+      );
     }
     if (filterType === 'ai') {
       return ev.action === 'ai_chat' || ev.action === 'content_studio';
@@ -156,6 +174,14 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
 
         <div style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '14px', padding: '1rem 1.15rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.74rem', fontWeight: 700, color: '#6B7280', marginBottom: '0.35rem' }}>
+            <Clock size={15} style={{ color: '#2563EB' }} />
+            <span>Total Study Time</span>
+          </div>
+          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#111827' }}>{formatDuration(summary.totalTimeSeconds)}</div>
+        </div>
+
+        <div style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '14px', padding: '1rem 1.15rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.74rem', fontWeight: 700, color: '#6B7280', marginBottom: '0.35rem' }}>
             <Activity size={15} style={{ color: '#059669' }} />
             <span>Tracked Actions</span>
           </div>
@@ -190,8 +216,9 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
 
       {/* Per-User Summary Table */}
       <div style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '14px', overflow: 'hidden' }}>
-        <div style={{ padding: '0.85rem 1.15rem', background: '#F9FAFB', borderBottom: '1px solid #E5E7EB', fontSize: '0.84rem', fontWeight: 800, color: '#111827' }}>
-          Usage Breakdown by User
+        <div style={{ padding: '0.85rem 1.15rem', background: '#F9FAFB', borderBottom: '1px solid #E5E7EB', fontSize: '0.84rem', fontWeight: 800, color: '#111827', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span>Usage &amp; Time Breakdown by User</span>
+          <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#6B7280' }}>Click any user to filter their full activity below</span>
         </div>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.82rem' }}>
@@ -199,6 +226,8 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
               <tr style={{ borderBottom: '1px solid #E5E7EB', color: '#6B7280', fontSize: '0.74rem', textTransform: 'uppercase' }}>
                 <th style={{ padding: '0.7rem 1rem' }}>User Email</th>
                 <th style={{ padding: '0.7rem 1rem' }}>Device</th>
+                <th style={{ padding: '0.7rem 1rem' }}>Time Spent</th>
+                <th style={{ padding: '0.7rem 1rem' }}>Logins</th>
                 <th style={{ padding: '0.7rem 1rem' }}>Page Views</th>
                 <th style={{ padding: '0.7rem 1rem' }}>AI Queries</th>
                 <th style={{ padding: '0.7rem 1rem' }}>Security Alerts</th>
@@ -207,7 +236,15 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
             </thead>
             <tbody>
               {users.map((u) => (
-                <tr key={u.email} style={{ borderBottom: '1px solid #F3F4F6' }}>
+                <tr
+                  key={u.email}
+                  onClick={() => setFilterEmail(filterEmail === u.email ? 'all' : u.email)}
+                  style={{
+                    borderBottom: '1px solid #F3F4F6',
+                    cursor: 'pointer',
+                    background: filterEmail === u.email ? '#F5F3FF' : 'transparent',
+                  }}
+                >
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 700, color: '#111827' }}>{u.email}</td>
                   <td style={{ padding: '0.75rem 1rem', color: '#4B5563' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
@@ -215,13 +252,15 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
                       {u.device}
                     </span>
                   </td>
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 700, color: '#2563EB' }}>{formatDuration(u.totalTimeSeconds)}</td>
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 600 }}>{u.logins || 0}</td>
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 600 }}>{u.views}</td>
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: '#583EDB' }}>{u.aiChats}</td>
                   <td style={{ padding: '0.75rem 1rem' }}>
                     {u.securityAlerts > 0 ? (
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', padding: '0.15rem 0.55rem', borderRadius: '9999px', background: '#FEF2F2', color: '#B91C1C', fontWeight: 700, fontSize: '0.74rem' }}>
                         <AlertTriangle size={12} />
-                        {u.securityAlerts} blocked
+                        {u.securityAlerts} alerts
                       </span>
                     ) : (
                       <span style={{ color: '#059669', fontWeight: 600, fontSize: '0.76rem' }}>Clean</span>
@@ -232,7 +271,7 @@ export default function GodViewPanel({ adminKey }: GodViewPanelProps) {
               ))}
               {users.length === 0 && (
                 <tr>
-                  <td colSpan={6} style={{ padding: '1.5rem', textAlign: 'center', color: '#6B7280' }}>
+                  <td colSpan={8} style={{ padding: '1.5rem', textAlign: 'center', color: '#6B7280' }}>
                     No user activity recorded yet. Activity will appear here automatically as staff use the portal.
                   </td>
                 </tr>

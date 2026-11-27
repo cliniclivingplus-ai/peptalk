@@ -416,7 +416,7 @@ export default function Sidebar({
           </div>
         )}
 
-        {onOpenAdmin && (
+        {onOpenAdmin && currentUser?.email?.toLowerCase() === 'shakthi@cliniclivingplus.com' && (
           <button
             onClick={onOpenAdmin}
             className="nav-link-btn"

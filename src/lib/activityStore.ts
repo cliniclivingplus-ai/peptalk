@@ -4,6 +4,7 @@ import { getFirestoreDb } from './firebaseAdmin';
 
 export type ActivityAction =
   | 'login'
+  | 'time_spent'
   | 'page_view'
   | 'compound_view'
   | 'protocol_view'
@@ -12,13 +13,15 @@ export type ActivityAction =
   | 'content_studio'
   | 'copy_blocked'
   | 'print_blocked'
-  | 'devtools_blocked';
+  | 'devtools_blocked'
+  | 'device_kicked';
 
 export interface ActivityEvent {
   id: string;
   email: string;
   action: ActivityAction;
   detail: string;
+  durationSeconds?: number;
   device?: string;
   timestamp: string;
 }
@@ -40,6 +43,7 @@ export async function logActivity(params: {
   email: string;
   action: ActivityAction;
   detail: string;
+  durationSeconds?: number;
   userAgent?: string;
 }): Promise<void> {
   const email = (params.email || 'unknown').trim().toLowerCase();
@@ -50,6 +54,7 @@ export async function logActivity(params: {
     email,
     action: params.action,
     detail: (params.detail || '').slice(0, 300),
+    ...(params.durationSeconds ? { durationSeconds: params.durationSeconds } : {}),
     device,
     timestamp: new Date().toISOString(),
   };

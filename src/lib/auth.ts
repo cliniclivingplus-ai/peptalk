@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 
 export const CLINIC_DOMAIN = 'cliniclivingplus.com';
+export const ADMIN_EMAIL = 'shakthi@cliniclivingplus.com';
 export const DEFAULT_CLINIC_PASSWORD = process.env.CLINIC_PASSWORD || 'ClinicLivingPlus2026!';
 export const SESSION_COOKIE_NAME = 'peptalk_auth_session';
 
@@ -10,6 +11,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'cliniclivingplus-secure-pe
 export interface AuthSessionPayload {
   email: string;
   domain: string;
+  sessionId?: string;
   issuedAt: number;
   expiresAt: number;
 }
@@ -35,7 +37,7 @@ export function isValidClinicEmail(email: string): boolean {
 /**
  * Creates a cryptographically signed HMAC token for the session
  */
-export function createSessionToken(email: string, rememberMe = true): string {
+export function createSessionToken(email: string, rememberMe = true, sessionId?: string): string {
   const durationMs = rememberMe 
     ? 7 * 24 * 60 * 60 * 1000 // 7 days
     : 24 * 60 * 60 * 1000;    // 24 hours
@@ -44,6 +46,7 @@ export function createSessionToken(email: string, rememberMe = true): string {
   const payload: AuthSessionPayload = {
     email: email.trim().toLowerCase(),
     domain: CLINIC_DOMAIN,
+    sessionId: sessionId || crypto.randomUUID(),
     issuedAt: now,
     expiresAt: now + durationMs,
   };

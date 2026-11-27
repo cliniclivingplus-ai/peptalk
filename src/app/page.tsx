@@ -235,6 +235,35 @@ export default function Home() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  // 60-second active time heartbeat + One-ID-One-Device enforcement check
+  useEffect(() => {
+    if (!currentUser) return;
+    const interval = setInterval(async () => {
+      if (document.visibilityState !== 'visible') return;
+      try {
+        const res = await fetch('/api/activity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'time_spent',
+            durationSeconds: 60,
+            detail: `Active on ${currentView}`,
+          }),
+        });
+        if (res.status === 401) {
+          const data = await res.json().catch(() => ({}));
+          if (data?.kicked) {
+            alert('You have been signed out because your account was logged in on another device (One ID · One Device policy).');
+            setCurrentUser(null);
+          }
+        }
+      } catch {
+        // Ignore transient network errors
+      }
+    }, 60000);
+    return () => clearInterval(interval);
+  }, [currentUser, currentView]);
+
   const trackActivity = (action: string, detail: string) => {
     fetch('/api/activity', {
       method: 'POST',
