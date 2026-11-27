@@ -119,44 +119,8 @@ export default function ContentProtection({ userEmail }: ContentProtectionProps)
     };
   }, []);
 
-  const watermarkText = `${userEmail} · ClinicLivingPlus Confidential`;
-
   return (
     <>
-      {/* Subtle Forensic User Watermark (visible on screenshots/photos, invisible to normal reading) */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          pointerEvents: 'none',
-          zIndex: 9990,
-          overflow: 'hidden',
-          opacity: 0.038,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridTemplateRows: 'repeat(4, 1fr)',
-          alignItems: 'center',
-          justifyItems: 'center',
-          userSelect: 'none',
-        }}
-      >
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={i}
-            style={{
-              transform: 'rotate(-24deg)',
-              fontSize: '0.82rem',
-              fontWeight: 700,
-              color: '#1E1B4B',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {watermarkText}
-          </div>
-        ))}
-      </div>
-
       {/* Toast when a copy/print/export attempt is blocked */}
       {notice && (
         <div
